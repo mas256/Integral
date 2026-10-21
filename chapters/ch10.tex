@@ -1,0 +1,558 @@
+\chapter{置換の背景にある関数と図形}\label{章:置換の背景}
+
+\chapterref{章:置換積分}では，$x=\sin\theta$や$x=\tan\theta$と置いて，根号や分母を簡単にした。しかし，不定積分の答えを$x$へ戻そうとすると，「正弦が$x$になる角」を関数として書く必要がある。また，$\sin x$と$\cos x$が分母で混ざった式では，一方を新しい変数にするだけでは，他方が根号として残ることがある。
+
+この章では，まず逆三角関数を定義して，角へ戻る操作を明確にする。続いて，三角関数を同時に有理式へ変える置換を考える。その式は円上の点を直線の傾きで表す式でもあり，整数の直角三角形とも結び付く。最後に，平方の差が一定になる双曲線関数を導入し，同じ根号積分を三つの方法で比べる。使う前提は，これまでの三角関数・指数関数の性質と微分，置換積分，部分積分である。新しい関数の微分や積分公式は，それらから導く。
+
+\section{角を一つに決める逆三角関数}\label{節:逆三角関数}
+
+$\sin\theta=\frac12$を満たす角は，$\frac\pi6$，$\frac{5\pi}6$など無数にある。このままでは，$x$から角を返す関数にはならない。\sectionref{節:逆向きの置換}で扱った枝の選択を，ここでも行う。
+
+\begin{definition}{逆三角関数とその値の範囲}
+次の区間に制限した三角関数の逆関数を，それぞれ$\arcsin$，$\arccos$，$\arctan$と書く。
+\[
+\begin{array}{c|c|c}
+\text{逆関数}&\text{入力の範囲}&\text{返す角の範囲}\\ \hline
+\arcsin x&[-1,1]&\left[-\frac\pi2,\frac\pi2\right]\\[3pt]
+\arccos x&[-1,1]&[0,\pi]\\[3pt]
+\arctan x&\R&\left(-\frac\pi2,\frac\pi2\right)
+\end{array}
+\]
+例えば$\theta=\arcsin x$とは，$\sin\theta=x$かつ$-\frac\pi2\leqq\theta\leqq\frac\pi2$であることを表す。
+\end{definition}
+
+正弦と正接は指定した区間で狭義単調増加し，余弦は狭義単調減少するので，角は一つに決まる。正接の範囲の端を含めないのは，そこで$\cos\theta=0$になり，正接が定義されないためである。$\sin^{-1}x$などの表記もあるが，逆数との混同を避け，本書では$\arcsin x$を使う。
+
+定義から$\sin(\arcsin x)=x$は$-1\leqq x\leqq1$で成り立つ。一方，$\arcsin(\sin\theta)=\theta$は，$\theta$が選んだ範囲にあるときに限る。左辺が返す値は，必ずその範囲内だからである。
+
+\begin{example}{逆向きに戻すと角が変わる場合}
+次の値を求めよ。
+\[
+\arcsin\left(\sin\frac{5\pi}6\right),\qquad
+\arccos\left(\cos\frac{7\pi}6\right),\qquad
+\arctan\left(\tan\frac{3\pi}4\right).
+\]
+\end{example}
+
+第一の正弦は$\frac12$であり，$\arcsin$の値の範囲にある角は$\frac\pi6$である。第二の余弦は$-\frac{\sqrt3}2$であり，$[0,\pi]$の中では$\frac{5\pi}6$になる。第三の正接は$-1$であり，$\left(-\frac\pi2,\frac\pi2\right)$の中では$-\frac\pi4$になる。従って答えは順に
+\[
+\frac\pi6,\qquad\frac{5\pi}6,\qquad-\frac\pi4
+\]
+である。逆関数の記号を打ち消す前に，戻った角が指定された範囲にあるかを確かめる。
+
+\subsection{微分の分母と符号を決める}
+
+$y=\arcsin x$，$-1<x<1$とおく。$\sin y=x$だから，逆関数の微分の公式，または両辺の微分によって
+\[
+\cos y\,y'=1
+\]
+となる。ここで$-\frac\pi2<y<\frac\pi2$なので$\cos y>0$である。従って$\cos y=\sqrt{1-x^2}$と符号まで決まり，
+\[
+(\arcsin x)'=\frac1{\sqrt{1-x^2}}\qquad(-1<x<1)
+\]
+を得る。端点では分母が$0$になり，この有限な微分係数の公式は使えない。
+
+$y=\arccos x$の場合には，$0<y<\pi$で$\sin y>0$であり，$-\sin y\,y'=1$となる。そのため
+\[
+(\arccos x)'=-\frac1{\sqrt{1-x^2}}\qquad(-1<x<1)
+\]
+である。負号は，余弦が選んだ区間で減少することとも一致する。$y=\arctan x$では$\tan y=x$を微分して
+\[
+(1+\tan^2y)y'=1,\qquad
+(\arctan x)'=\frac1{1+x^2}\qquad(x\in\R)
+\]
+となる。これらは積分公式を仮定して得たものではなく，もとの三角関数の微分から得た公式である。
+
+合成関数の微分を使えば，$a>0$に対して
+\begin{equation}\label{式:逆三角関数の積分}
+\begin{aligned}
+\int\frac1{a^2+x^2}\dd x
+ &=\frac1a\arctan\frac xa+C,\\
+\int\frac1{\sqrt{a^2-x^2}}\dd x
+ &=\arcsin\frac xa+C\qquad(|x|<a)
+\end{aligned}
+\end{equation}
+を得る。第一の式では，$x$を$a$で割ることと，外側の係数$\frac1a$の両方が必要である。第二の式では，根号から出る$a$と合成関数の微分の$\frac1a$が打ち消し合う。
+
+\begin{example}{平方完成と逆三角関数をつなぐ}
+次の不定積分を求めよ。
+\[
+\text{(1)}\quad\int\frac1{x^2-4x+8}\dd x,
+\qquad
+\text{(2)}\quad\int\frac1{\sqrt{9-4x^2}}\dd x.
+\]
+\end{example}
+
+(1) の分母は$(x-2)^2+4$である。中心を$2$へ移し，長さの尺度を$2$でそろえるため，$u=\frac{x-2}{2}$と置く。$\dd x=2\dd u$だから
+\[
+\int\frac1{x^2-4x+8}\dd x
+=\frac12\int\frac1{1+u^2}\dd u
+=\frac12\arctan\frac{x-2}{2}+C.
+\]
+(2) では$u=\frac{2x}{3}$と置くと，$\dd x=\frac32\dd u$，$\sqrt{9-4x^2}=3\sqrt{1-u^2}$である。よって
+\[
+\int\frac1{\sqrt{9-4x^2}}\dd x
+=\frac12\int\frac1{\sqrt{1-u^2}}\dd u
+=\frac12\arcsin\frac{2x}{3}+C.
+\]
+もとの関数が実数で定義される区間は$-\frac32<x<\frac32$であり，この範囲で答えを用いる。
+
+\section{逆数の三角関数を使う理由}\label{節:相反三角関数}
+
+三角置換では$\frac1{\cos\theta}$や$\frac1{\sin\theta}$が繰り返し現れる。これらを一つの関数として書くと，平方や微分の関係を読み取りやすい。
+\begin{definition}{正割・余割・余接}
+分母が$0$でないところで
+\[
+\sec x=\frac1{\cos x},\qquad
+\csc x=\frac1{\sin x},\qquad
+\cot x=\frac{\cos x}{\sin x}
+\]
+と定義する。順に正割，余割，余接という。ここでの逆数と，前節の逆関数は異なる操作である。
+\end{definition}
+
+$\sin^2x+\cos^2x=1$を$\cos^2x$，$\sin^2x$で割ると，それぞれ
+\[
+1+\tan^2x=\sec^2x,\qquad
+1+\cot^2x=\csc^2x
+\]
+となる。微分も，すでに知っている商の微分から得られる。例えば
+\[
+(\sec x)'=\frac{\sin x}{\cos^2x}=\sec x\tan x.
+\]
+同様に計算して
+\begin{equation}\label{式:相反三角関数の微分}
+(\csc x)'=-\csc x\cot x,\qquad
+(\cot x)'=-\csc^2x
+\end{equation}
+を得る。この記法により，$x=\tan\theta$と置いたときの$\dd x$は$\sec^2\theta\dd\theta$，$\sqrt{1+x^2}$は$|\sec\theta|$と短く書ける。ただし，記号を短くしても，絶対値を外すための符号の確認は残る。
+
+\begin{example}{正割と余割を対数へ結び付ける}
+$\int\sec x\dd x$と$\int\csc x\dd x$を求めよ。
+\end{example}
+
+$\sec x$の微分は$\sec x\tan x$，$\tan x$の微分は$\sec^2x$である。この二つを足すと
+\[
+(\sec x+\tan x)'=\sec x(\sec x+\tan x)
+\]
+となり，元の$\sec x$が因子に現れる。また
+\[
+(\sec x+\tan x)(\sec x-\tan x)=1
+\]
+だから，$\sec x+\tan x$は定義されるところで$0$にならない。従って
+\[
+\int\sec x\dd x
+=\int\frac{(\sec x+\tan x)'}{\sec x+\tan x}\dd x
+=\log|\sec x+\tan x|+C.
+\]
+これは，分母の微分を分子に作る対数型の積分である。
+
+余割では引き算を考えると
+\[
+(\csc x-\cot x)'=-\csc x\cot x+\csc^2x
+=\csc x(\csc x-\cot x).
+\]
+さらに$(\csc x-\cot x)(\csc x+\cot x)=1$なので，
+\[
+\int\csc x\dd x=\log|\csc x-\cot x|+C
+\]
+となる。どちらも，もとの三角関数が定義される一つの区間で使う。特異点をまたぐ不定積分の定数を，一つにそろえる必要はない。
+
+\section{半角を使って三角関数を有理式にする}\label{節:半角置換}
+
+$\int R(\sin x,\cos x)\dd x$のように，正弦と余弦を足す・掛ける・割ることで作った式を考える。このような式を，二変数の\textbf{有理式}$R$で表すと書く。$t=\sin x$と置くだけでは，$\cos x$を$\pm\sqrt{1-t^2}$と表すことになり，根号が残る。両方を一度に有理式へ変えるには，半分の角の正接を使う。
+
+$t=\tan\frac x2$と置く。二倍角の公式と$1+\tan^2\frac x2=\sec^2\frac x2$から
+\begin{equation}\label{式:半角置換}
+\begin{aligned}
+\sin x&=\cfrac{2\sin\cfrac x2\cos\cfrac x2}
+ {\cos^2\cfrac x2+\sin^2\cfrac x2}
+ =\frac{2t}{1+t^2},\\
+\cos x&=\cfrac{\cos^2\cfrac x2-\sin^2\cfrac x2}
+ {\cos^2\cfrac x2+\sin^2\cfrac x2}
+ =\frac{1-t^2}{1+t^2},\\
+\frac{\dd t}{\dd x}&=\frac12\sec^2\frac x2
+ =\frac{1+t^2}{2},\qquad
+\dd x=\frac{2}{1+t^2}\dd t
+\end{aligned}
+\end{equation}
+を得る。最初の二つでは分子・分母を$\cos^2\frac x2$で割っている。この操作が可能な，$x\ne(2k+1)\pi$の区間を選ぶ。ここで$k$は整数である。
+
+この置換を\textbf{半角置換}，または\textbf{ワイエルシュトラス置換}という。例えば$-\pi<x<\pi$では$t$は実数全体を狭義単調増加して動き，逆向きには$x=2\arctan t$と書ける。一般には
+\[
+(2k-1)\pi<x<(2k+1)\pi,\qquad
+x=2\arctan t+2k\pi
+\]
+である。正弦・余弦・$\dd x$のすべてが$t$の有理式になるので，置換後は割り算や部分分数などの代数的な整理を使える。
+
+\begin{example}{分母に混ざった正弦を取り除く}
+$\int_0^{\frac\pi2}\frac1{2+\sin x}\dd x$を求めよ。
+\end{example}
+
+分母$2+\sin x$の微分は$\cos x$であり，分子には現れていない。そこで半角置換を使う。$t=\tan\frac x2$と置くと，端点は$t=0,1$へ移り，
+\[
+\begin{aligned}
+\int_0^{\frac\pi2}\frac1{2+\sin x}\dd x
+&=\int_0^1\cfrac1{2+\cfrac{2t}{1+t^2}}
+ \frac2{1+t^2}\dd t\\
+&=\int_0^1\frac1{t^2+t+1}\dd t.
+\end{aligned}
+\]
+ここで分母を平方完成すると$t^2+t+1=\left(t+\frac12\right)^2+\frac34$である。よって
+\[
+\begin{aligned}
+\int_0^1\frac1{t^2+t+1}\dd t
+&=\frac2{\sqrt3}\left[\arctan\frac{2t+1}{\sqrt3}\right]_0^1\\
+&=\frac2{\sqrt3}\left(\frac\pi3-\frac\pi6\right)
+=\frac\pi{3\sqrt3}.
+\end{aligned}
+\]
+
+もし積分区間が$[0,2\pi]$なら，$x=\pi$で$t$が定義されなくなる。端点だけを$t=0,0$へ換えて答えを$0$としてはいけない。元の被積分関数は$\pi$で連続でも，置換に使った座標はそこで途切れる。この場合には$\pi$の前後に分け，$t\to+\infty$と$t\to-\infty$を別々に扱う。章末問題で確かめる。
+
+\section{同じ有理式が円から現れる}\label{節:円の有理パラメータ}
+
+前節の二式は
+\[
+X=\frac{1-t^2}{1+t^2},\qquad
+Y=\frac{2t}{1+t^2}
+\]
+と書くと，$X^2+Y^2=1$を満たす。正弦と余弦を使ったのだから当然ともいえるが，この式は三角関数なしでも導ける。
+
+図\ref{図:円の有理パラメータ}のように，単位円上の点$A=(-1,0)$を固定し，傾き$t$の直線$Y=t(X+1)$を引く。円との交点を求めるため代入すると
+\[
+\begin{aligned}
+X^2+t^2(X+1)^2&=1,\\
+(X+1)\{(1+t^2)X+(t^2-1)\}&=0.
+\end{aligned}
+\]
+一つの解$X=-1$は，固定した点$A$である。もう一つの交点$P$は，上の$X,Y$で表される。$t$を動かして点を表すので，$t$を\textbf{媒介変数}，この表示を円の\textbf{有理パラメータ表示}という。
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[x=2.25cm,y=2.25cm,>=Stealth]
+ \draw[->] (-1.4,0)--(1.45,0) node[right]{$X$};
+ \draw[->] (0,-1.2)--(0,1.35) node[above]{$Y$};
+ \draw[thick,tealblack] (0,0) circle(1);
+ \draw[thick,blueblack] (-1.23,-0.115)--(1.15,1.075);
+ \draw[dashed] (0.6,0)--(0.6,0.8)--(0,0.8);
+ \draw[blueblack] (0,0)--(0.6,0.8);
+ \draw[->] (0.26,0) arc[start angle=0,end angle=53.1301,radius=0.26];
+ \node at (0.35,0.17) {$x$};
+ \draw[->] (-0.65,0) arc[start angle=0,end angle=26.5651,radius=0.35];
+ \node at (-0.42,0.15) {$\frac x2$};
+ \fill (-1,0) circle(1.2pt) node[below left]{$A=(-1,0)$};
+ \fill (0.6,0.8) circle(1.2pt);
+ \draw[thin,gray] (0.63,0.79)--(1.04,0.56);
+ \node[anchor=west] at (1.04,0.52) {$P=(\cos x,\sin x)$};
+ \node[above right] at (0.97,0.985) {$Y=t(X+1)$};
+ \node[below left] at (0,0) {$O$};
+\end{tikzpicture}
+\caption{円上の固定点から引いた直線の傾きで，もう一つの交点を表す。図は$t=\frac12$の場合。}
+\label{図:円の有理パラメータ}
+\end{figure}
+
+$P=(X,Y)\ne A$からは$t=\frac{Y}{X+1}$と戻せるので，有限な実数$t$で，円上の$A$以外のすべての点を一度ずつ表せる。$P=(\cos x,\sin x)$なら
+\[
+t=\frac{\sin x}{1+\cos x}=\tan\frac x2
+\]
+である。最後の等式は二倍角の公式から確かめられる。図の上半円では，二等辺三角形$AOP$の角を見ても，直線$AP$が正の$X$方向となす角は$\frac x2$になる。半角が現れる理由を，円の上の角としても読めた。表せなかった点$A$は，ちょうど$x=(2k+1)\pi$に対応する。
+
+\subsection{有理数の点から整数の直角三角形へ}
+
+$t=\frac nm$を整数$m,n$で表すと，
+\[
+X=\frac{m^2-n^2}{m^2+n^2},\qquad
+Y=\frac{2mn}{m^2+n^2}.
+\]
+従って
+\begin{equation}\label{式:ピタゴラス数}
+(m^2-n^2)^2+(2mn)^2=(m^2+n^2)^2
+\end{equation}
+である。$m>n>0$なら三つの整数は正であり，直角三角形の三辺になる。$a^2+b^2=c^2$を満たす正の整数の組を\textbf{ピタゴラス数}という。
+
+逆に整数の直角三角形$(a,b,c)$があれば，点$\left(\frac ac,\frac bc\right)$は単位円上にある。その傾きは
+\[
+t=\cfrac{\cfrac bc}{1+\cfrac ac}=\frac{b}{c+a}
+\]
+と有理数になる。これを$\frac nm$と表せば，上の公式が元の三辺と同じ比を与える。従って，この表示は偶然いくつかの例を作るだけでなく，すべての整数の直角三角形の辺の比を表す。得られた三整数に共通因数があれば，それで割ればよい。
+
+三辺の最大公約数が$1$のピタゴラス数を，\textbf{原始ピタゴラス数}という。整数$m>n>0$が互いに素で，一方が偶数，他方が奇数ならば，式\eqref{式:ピタゴラス数}は原始ピタゴラス数を与える。逆に，すべての原始ピタゴラス数は，直角を挟む二辺の交換を除いてこの形で表せる。この主張を，整数の素因数分解の一意性を使って確かめよう。
+
+まず上の条件で作った三整数に，共通の素因数$p$があると仮定する。$m^2-n^2$と$m^2+n^2$はともに奇数なので，$p$は奇素数である。この二数の和と差から，$p$は$2m^2$と$2n^2$を割る。従って$p$は$m,n$の両方を割り，互いに素という条件に反する。共通の素因数がないので，三整数の最大公約数は$1$である。
+
+逆に原始ピタゴラス数$(a,b,c)$を考える。二辺$a,b$がともに偶数なら原始ではなく，ともに奇数なら$a^2+b^2$を$4$で割った余りが$2$となり，平方数$c^2$にはなれない。従って一方だけが偶数であり，必要なら辺を交換して$b$を偶数，$a$を奇数とする。このとき$c$も奇数である。また$a,c$に共通の素因数があれば，$b^2=c^2-a^2$，従って$b$もその素因数で割れ，原始という条件に反する。よって$a,c$は互いに素である。
+
+ここで
+\[
+A=\frac{c+a}{2},\qquad B=\frac{c-a}{2}
+\]
+と置くと，$A>B>0$の整数であり，
+\[
+AB=\frac{c^2-a^2}{4}=\left(\frac b2\right)^2.
+\]
+$A,B$の共通因数は$A+B=c$と$A-B=a$も割るので，$A,B$は互いに素である。互いに素な二数の積が平方数なら，素因数は片方にしか現れず，その指数はすべて偶数になる。従って$A=m^2$，$B=n^2$と書ける。和と差を戻せば
+\[
+a=m^2-n^2,\qquad b=2mn,\qquad c=m^2+n^2.
+\]
+$A,B$が互いに素だから$m,n$も互いに素であり，$c$が奇数だから$m,n$の偶奇は異なる。これで逆向きも示せた。円の表示が辺の比を与えることに加えて，約分の要らない整数を作る条件まで分かった。
+
+\begin{example}{傾きから三辺を作り，三辺から傾きを戻す}
+$t=\frac23$からピタゴラス数を作れ。また三辺が$8,15,17$の三角形に対応する傾きを求めよ。
+\end{example}
+
+$m=3,n=2$なので
+\[
+m^2-n^2=5,\qquad2mn=12,\qquad m^2+n^2=13.
+\]
+確かに$5^2+12^2=13^2$である。後半では$P=\left(\frac{15}{17},\frac8{17}\right)$と選ぶと
+\[
+t=\frac8{17+15}=\frac14.
+\]
+$m=4,n=1$を公式へ戻せば$(15,8,17)$となる。二つの直角を挟む辺のどちらを$X$座標にするかで，対応する傾きは変わる。
+
+\section{平方の差を作る双曲線関数}\label{節:双曲線関数}
+
+円では$X^2+Y^2=1$を使った。これに対して，$\sqrt{1+x^2}$を簡単にしたい場合には，$Y^2-X^2=1$という平方の差を使えればよい。指数関数の和と差が，その形を作る。
+
+\begin{definition}{双曲線関数}
+実数$u$に対して
+\[
+\sinh u=\frac{\e^u-\e^{-u}}2,\qquad
+\cosh u=\frac{\e^u+\e^{-u}}2,\qquad
+\tanh u=\frac{\sinh u}{\cosh u}
+\]
+と定義する。順に双曲線正弦，双曲線余弦，双曲線正接という。
+\end{definition}
+
+$\cosh u>0$なので$\tanh u$はすべての実数で定義される。和と差の積から
+\[
+\begin{aligned}
+\cosh^2u-\sinh^2u
+&=\frac{(\e^u+\e^{-u})^2-(\e^u-\e^{-u})^2}{4}\\
+&=\e^u\e^{-u}=1
+\end{aligned}
+\]
+となる。従って$(X,Y)=(\sinh u,\cosh u)$は，双曲線$Y^2-X^2=1$の上側にある。図\ref{図:双曲線の媒介表示}のように，$u$が正なら$X>0$，負なら$X<0$である。この$u$は，円のときのような通常の中心角として定義したものではない。
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[x=1.5cm,y=1.5cm,>=Stealth]
+ \draw[->] (-2.4,0)--(2.55,0) node[right]{$X$};
+ \draw[->] (0,-0.15)--(0,2.8) node[above]{$Y$};
+ \draw[dashed,gray] (-2.2,2.2)--(0,0)--(2.2,2.2);
+ \draw[very thick,tealblack,domain=-2.2:2.2,samples=80]
+  plot(\x,{sqrt(1+\x*\x)});
+ \draw[dashed,blueblack] (1.175201,0)--(1.175201,1.543081)--(0,1.543081);
+ \fill[blueblack] (1.175201,1.543081) circle(1.3pt);
+ \node[anchor=west] at (0.25,2.55) {$Y^2-X^2=1$};
+ \node[anchor=east] at (-0.3,1.65) {$u<0$};
+ \node[anchor=west] at (0.35,1.95) {$u>0$};
+ \node[anchor=west] at (1.4,0.58) {$(\sinh u,\cosh u)$};
+ \draw[->,blueblack] (1.75,0.82)--(1.2,1.48);
+ \node[left] at (0,1) {$1$};
+ \node[below left] at (0,0) {$0$};
+\end{tikzpicture}
+\caption{指数関数の和と差によって，双曲線の上側を一度ずつ表す。点は$u=1$の位置。}
+\label{図:双曲線の媒介表示}
+\end{figure}
+
+定義を微分すると
+\[
+(\sinh u)'=\frac{\e^u+\e^{-u}}2=\cosh u,
+\qquad
+(\cosh u)'=\frac{\e^u-\e^{-u}}2=\sinh u.
+\]
+余弦の場合と違って，$\cosh$を微分しても負号は付かない。商の微分から
+\begin{equation}\label{式:双曲線正接の微分}
+(\tanh u)'=\frac{\cosh^2u-\sinh^2u}{\cosh^2u}
+=\frac1{\cosh^2u}=1-\tanh^2u
+\end{equation}
+である。加えて指数関数の定義式を展開すると
+\begin{equation}\label{式:双曲線の二倍公式}
+\sinh(2u)=2\sinh u\cosh u,\qquad
+\cosh(2u)=2\cosh^2u-1
+\end{equation}
+となる。例えば後者の右辺は
+\[
+\frac{(\e^u+\e^{-u})^2}{2}-1
+=\frac{\e^{2u}+\e^{-2u}}2
+\]
+であり，左辺の定義に一致する。
+
+\subsection{双曲線正弦から元へ戻す}
+
+$\cosh u>0$なので，$\sinh u$は実数全体で狭義単調増加する。また$u\to\infty$で$\sinh u\to\infty$，$u\to-\infty$で$\sinh u\to-\infty$だから，どの実数$x$も$x=\sinh u$と一意に書ける。この逆関数を$\operatorname{arsinh}x$と書く。
+
+$x=\sinh u$なら，$\cosh u=\sqrt{1+x^2}$である。定義式を足すと$\sinh u+\cosh u=\e^u$だから
+\begin{equation}\label{式:逆双曲線正弦}
+u=\operatorname{arsinh}x=\log\bigl(x+\sqrt{1+x^2}\bigr).
+\end{equation}
+対数の中は，$\sqrt{1+x^2}>|x|$によって常に正である。逆関数の微分から
+\[
+\frac{\dd u}{\dd x}=\frac1{\cosh u}
+=\frac1{\sqrt{1+x^2}}
+\]
+となる。ここでも積分の値から逆関数を定義したのではなく，指数関数による定義から順に導いた。
+
+\begin{example}{根号の分母を双曲線正弦で取り除く}
+$\int_0^3\frac1{\sqrt{4+x^2}}\dd x$を求めよ。
+\end{example}
+
+$x=2\sinh u$と置けば
+\[
+\dd x=2\cosh u\dd u,\qquad
+\sqrt{4+x^2}=2\cosh u.
+\]
+分母と微分の係数が打ち消し合う。端点$x=0$は$u=0$へ，$x=3$は
+\[
+u=\operatorname{arsinh}\frac32
+=\log\frac{3+\sqrt{13}}2
+\]
+へ移る。従って積分値は$\log\frac{3+\sqrt{13}}2$である。三角置換$x=2\tan\theta$では$\sec\theta$の積分が残るが，この置換では$1$の積分になる。
+
+$\cosh u$は偶関数なので，実数全体では逆関数を持たない。しかし$u\geqq0$に制限すれば，$1$から無限大へ狭義単調増加する。$x=\cosh u$を使う置換では，このように枝を選ぶ。$\sinh$と$\cosh$で，逆向きに戻すときの条件は同じではない。
+
+\begin{example}{平方の差を双曲線正接で取り除く}
+$\int_0^{\frac12}\frac1{1-x^2}\dd x$を求めよ。
+\end{example}
+
+$\tanh u=\frac{\e^{2u}-1}{\e^{2u}+1}$は実数全体で狭義単調増加し，値の範囲は$(-1,1)$である。$x=\tanh u$と置けば，式\eqref{式:双曲線正接の微分}によって$\dd x=(1-x^2)\dd u$となる。元へ戻す式は
+\[
+x(\e^{2u}+1)=\e^{2u}-1,\qquad
+\e^{2u}=\frac{1+x}{1-x},\qquad
+u=\frac12\log\frac{1+x}{1-x}
+\]
+である。従って端点は$0$と$\frac12\log3$へ移り，求める積分値は$\frac12\log3$となる。部分分数で
+\[
+\frac1{1-x^2}=\frac12\left(\frac1{1+x}+\frac1{1-x}\right)
+\]
+と分けても同じ対数が現れる。双曲線正接の逆関数が，その二つの対数を一つにまとめている。
+
+\section{一つの根号積分を三つの置換で比べる}\label{節:根号積分の三方法}
+
+ここまでの道具を，同じ積分に使ってみよう。違いは答えそのものではなく，途中のどの式が簡単になるかにある。
+
+\begin{example}{三角・双曲線・代数による三通りの計算}
+$\int\sqrt{1+x^2}\dd x$を，三角置換，双曲線関数の置換，根号を含む代数的な置換によって求めよ。
+\end{example}
+
+\subsection{三角置換では正割の三乗になる}
+
+$x=\tan\theta$，$-\frac\pi2<\theta<\frac\pi2$と置く。この範囲では$\sec\theta>0$なので
+\[
+\sqrt{1+x^2}=\sec\theta,\qquad
+\dd x=\sec^2\theta\dd\theta,\qquad
+\int\sqrt{1+x^2}\dd x=\int\sec^3\theta\dd\theta.
+\]
+根号はなくなったが，三乗の積分が残った。$J=\int\sec^3\theta\dd\theta$と書き，$\sec\theta$を微分する側，$\sec^2\theta$を積分する側にして部分積分する。
+\[
+\begin{aligned}
+J&=\sec\theta\tan\theta
+-\int\sec\theta\tan^2\theta\dd\theta\\
+&=\sec\theta\tan\theta
+-\int\sec\theta(\sec^2\theta-1)\dd\theta\\
+&=\sec\theta\tan\theta-J+\int\sec\theta\dd\theta.
+\end{aligned}
+\]
+任意定数を最後にまとめるものとして，この等式を$J$について解く。前に求めた正割の積分から
+\[
+J=\frac12\sec\theta\tan\theta
++\frac12\log(\sec\theta+\tan\theta)+C.
+\]
+この範囲では$\sec\theta>|\tan\theta|$だから，対数の中は正である。$x$へ戻して
+\begin{equation}\label{式:一と二乗の根号積分}
+\int\sqrt{1+x^2}\dd x
+=\frac12\left\{x\sqrt{1+x^2}
++\log\bigl(x+\sqrt{1+x^2}\bigr)\right\}+C
+\end{equation}
+を得る。三角置換だけで計算が終わるのではなく，その後に部分積分を使った。
+
+\subsection{双曲線置換では二乗の公式を使う}
+
+$x=\sinh u$と置くと，実数$x$全体に対して$u$が一つに決まり，
+\[
+\sqrt{1+x^2}=\cosh u,\qquad
+\dd x=\cosh u\dd u
+\]
+となる。今回は微分も同じ$\cosh u$になるので，積分は二乗で済む。式\eqref{式:双曲線の二倍公式}より
+\[
+\begin{aligned}
+\int\sqrt{1+x^2}\dd x
+&=\int\cosh^2u\dd u\\
+&=\frac12\int\{1+\cosh(2u)\}\dd u\\
+&=\frac u2+\frac14\sinh(2u)+C\\
+&=\frac12\{u+\sinh u\cosh u\}+C.
+\end{aligned}
+\]
+$u=\log(x+\sqrt{1+x^2})$と戻せば，式\eqref{式:一と二乗の根号積分}と一致する。
+
+\subsection{根号と元の変数の和を置く}
+
+第三の方法では，関数の名前を使わずに
+\[
+t=x+\sqrt{1+x^2}
+\]
+と置く。この和を選ぶ理由は，差との積が$1$になるためである。
+\[
+\bigl(\sqrt{1+x^2}+x\bigr)
+\bigl(\sqrt{1+x^2}-x\bigr)=1.
+\]
+従って$\sqrt{1+x^2}-x=\frac1t$であり，和と差を取れば
+\[
+x=\frac12\left(t-\frac1t\right),\qquad
+\sqrt{1+x^2}=\frac12\left(t+\frac1t\right),\qquad
+\dd x=\frac12\left(1+\frac1{t^2}\right)\dd t.
+\]
+$t>0$であり，この$x$の式は$t>0$から実数全体への狭義単調増加な対応である。根号も微分も有理式へ変わったので，
+\[
+\begin{aligned}
+\int\sqrt{1+x^2}\dd x
+&=\frac14\int\left(t+\frac2t+\frac1{t^3}\right)\dd t\\
+&=\frac{t^2}{8}+\frac12\log t-\frac1{8t^2}+C.
+\end{aligned}
+\]
+ここで
+\[
+x\sqrt{1+x^2}=\frac14\left(t^2-\frac1{t^2}\right)
+\]
+だから，再び同じ答えになる。
+
+実は第二，第三の置換は直接つながっている。$x=\sinh u$なら
+\[
+t=x+\sqrt{1+x^2}=\sinh u+\cosh u=\e^u.
+\]
+つまり第三の方法は，双曲線の媒介変数$u$の代わりに$\e^u$を変数として，式を有理式へ直したものである。三角置換は円の関係式$1+\tan^2\theta=\sec^2\theta$を使い，双曲線置換は$\cosh^2u-\sinh^2u=1$を使う。同じ平方根に対して，どの恒等式と微分の組が短い計算を作るかが違う。
+
+最後に答えを微分して確認しておく。$s=\sqrt{1+x^2}$と書けば$s'=\frac xs$であり，
+\[
+\frac{\dd}{\dd x}\log(x+s)
+=\cfrac{1+\cfrac xs}{x+s}=\frac1s.
+\]
+従って式\eqref{式:一と二乗の根号積分}の右辺の微分は
+\[
+\frac12\left(s+\frac{x^2}{s}+\frac1s\right)
+=\frac12(s+s)=\sqrt{1+x^2}
+\]
+となる。三つの計算は同じ原始関数へ到達した。
+
+\section*{章末問題}
+\begin{enumerate}[label=\textbf{\thechapter.\arabic*},leftmargin=*]
+\item\label{問:逆三角関数の枝}
+$\arcsin(\sin\frac{4\pi}3)$，$\arccos(\cos\frac{5\pi}4)$，$\arctan(\tan(-\frac{2\pi}3))$を求めよ。また$y=\arcsin(x^2)$を$-1<x<1$で微分せよ。
+\item\label{問:逆三角関数の積分練習}
+$\int\frac1{x^2+2x+5}\dd x$と$\int_0^1\frac1{\sqrt{4-x^2}}\dd x$を求めよ。
+\item\label{問:余接と正接の和}
+定義から$(\cot x)'=-\csc^2x$を示せ。さらに$\frac1{\sin x\cos x}=\tan x+\cot x$を使って，$\int\frac1{\sin x\cos x}\dd x$を求め，答えを用いる区間の条件を述べよ。
+\item\label{問:半角置換の区間分割}
+半角置換を使って$\int_0^{2\pi}\frac1{2+\sin x}\dd x$を求めよ。$x=\pi$の前後を分け，置換後の無限の端点は極限として扱うこと。
+\item\label{問:円の点とピタゴラス数}
+円上の点$\left(\frac{12}{13},\frac5{13}\right)$に対応する傾き$t$を求めよ。$t=\frac nm$から式\eqref{式:ピタゴラス数}で作られる三整数を求め，共通因数で割れ。また$m,n$がともに奇数なら，三整数がすべて偶数になることを示せ。
+\item\label{問:双曲線二倍角と積分}
+指数関数の定義から$\sinh(2u)=2\sinh u\cosh u$を示せ。さらに$\int_0^{\log2}\cosh^2u\dd u$を求めよ。
+\item\label{問:双曲線余弦の置換}
+$x>1$で$\int\frac1{\sqrt{x^2-1}}\dd x$を，$x=\cosh u$によって求めよ。$u$の範囲を指定し，元の変数へ戻す対数の式も導け。
+\item\label{問:双曲線置換と代数置換}
+$\int_0^2\sqrt{4+x^2}\dd x$を，$x=2\sinh u$と$t=x+\sqrt{4+x^2}$の二通りの置換で求めよ。また二つの変数の間に$t=2\e^u$が成り立つことを確かめよ。
+\end{enumerate}
+
+\smallskip\noindent 解答は\pageref{解答:第10章}ページ。

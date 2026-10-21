@@ -1,0 +1,115 @@
+% LuaLaTeX / A4実寸 / 10pt / 数式左寄せ
+\documentclass[a4paper,10pt,oneside,openany,fleqn]{ltjsbook}
+\usepackage[margin=22mm,headheight=16pt,headsep=8mm,footskip=11mm]{geometry}
+\usepackage{luatexja-fontspec}
+\setmainjfont[BoldFont=HaranoAjiGothic-Bold]{HaranoAjiMincho-Regular}
+\setsansjfont[BoldFont=HaranoAjiGothic-Bold]{HaranoAjiGothic-Medium}
+\usepackage{amsmath,amssymb,amsthm}
+\everymath{\displaystyle}
+\usepackage{graphicx,xcolor,tikz,pgfplots}
+\usetikzlibrary{calc,arrows.meta,patterns}
+\pgfplotsset{compat=1.18}
+\usepackage{booktabs,longtable,tabularx,array,enumitem}
+\usepackage[most]{tcolorbox}
+\usepackage{needspace,fancyhdr}
+\definecolor{blueblack}{HTML}{18374B}
+\definecolor{tealblack}{HTML}{176C73}
+\definecolor{softblue}{HTML}{F0F5F7}
+\definecolor{softteal}{HTML}{EDF6F3}
+\usepackage[unicode,colorlinks=true,linkcolor=blueblack,urlcolor=tealblack,bookmarksnumbered=true]{hyperref}
+\hypersetup{pdftitle={積分の体系的解説},pdfsubject={微分とのつながりから，計算の選択と発展へ}}
+\setcounter{tocdepth}{1}
+\setcounter{secnumdepth}{2}
+\renewcommand{\arraystretch}{1.35}
+\setlength{\parskip}{0.18\baselineskip}
+\setlength{\parindent}{2em}
+\setlength{\mathindent}{2em}
+\setlength{\emergencystretch}{2em}
+\allowdisplaybreaks[2]
+\raggedbottom
+\newcommand{\dd}{\,\mathrm{d}}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\chapterref}[1]{第\ref{#1}章}
+\newcommand{\sectionref}[1]{第\ref{#1}節}
+\newcounter{example}[chapter]
+\renewcommand{\theexample}{\thechapter.\arabic{example}}
+\newenvironment{example}[1]{\refstepcounter{example}\begin{tcolorbox}[enhanced,breakable,colback=softblue,colframe=blueblack,boxrule=0.5pt,arc=0mm,left=2.5mm,right=2.5mm,top=1.5mm,bottom=1.5mm,title={例題\theexample\quad #1},fonttitle=\bfseries]}{\end{tcolorbox}}
+\newcounter{result}[chapter]
+\renewcommand{\theresult}{\thechapter.\arabic{result}}
+\newenvironment{theorem}[1]{\refstepcounter{result}\begin{tcolorbox}[enhanced,breakable,colback=softteal,colframe=tealblack,boxrule=0.4pt,arc=0mm,title={定理\theresult\quad #1},fonttitle=\bfseries]}{\end{tcolorbox}}
+\newenvironment{definition}[1]{\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=tealblack,boxrule=0.4pt,arc=0mm,title={定義\quad #1},fonttitle=\bfseries]}{\end{tcolorbox}}
+\newenvironment{note}{\par\smallskip\noindent\textbf{補足}\quad}{\par\smallskip}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\nouppercase{\leftmark}}
+\fancyhead[R]{\small 積分の体系的解説}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+\renewcommand{\chaptermark}[1]{\markboth{第\thechapter 章\quad #1}{}}
+\fancypagestyle{plain}{\fancyhf{}\fancyfoot[C]{\thepage}\renewcommand{\headrulewidth}{0pt}}
+\fancypagestyle{plainhead}{\fancyhf{}\fancyfoot[C]{\thepage}\renewcommand{\headrulewidth}{0pt}}
+\begin{document}
+\begin{titlepage}
+\thispagestyle{empty}
+\vspace*{15mm}
+{\sffamily\color{tealblack}\large CALCULUS\par}
+\vspace{7mm}
+{\sffamily\bfseries\color{blueblack}\Huge 積分の体系的解説\par}
+\vspace{6mm}
+{\Large 微分とのつながりから，計算の選択と発展へ\par}
+\vspace{18mm}
+\begin{center}
+\begin{tikzpicture}[x=2.9cm,y=1.9cm,>=Stealth]
+\fill[softteal] (0,0) -- plot[domain=0:1.8,samples=80] (\x,{0.6*\x*\x}) -- (1.8,0) -- cycle;
+\foreach \i in {0,...,8}{\pgfmathsetmacro{\xx}{\i*0.2}\pgfmathsetmacro{\yy}{0.6*(\xx+0.2)*(\xx+0.2)}\draw[tealblack!35] (\xx,0) rectangle ({\xx+0.2},\yy);}
+\draw[->,blueblack] (-0.1,0)--(2.45,0) node[right]{$x$};
+\draw[->,blueblack] (0,-0.1)--(0,3.05) node[above]{$y$};
+\draw[very thick,tealblack,domain=0:2.12,samples=100] plot (\x,{0.6*\x*\x});
+\draw[thick,blueblack,domain=0.8:2.3] plot (\x,{1.8*\x-1.35});
+\fill[blueblack] (1.5,1.35) circle(1.2pt);
+\node[anchor=west,blueblack] at (2.15,2.15) {変化を調べる};
+\node[tealblack] at (1.25,0.35) {細かく分けて足す};
+\end{tikzpicture}
+\end{center}
+\vfill
+{\large 高校の微積分から，その先の考え方へ\par}
+\vspace{4mm}
+{第1版\quad 2026年10月21日\par}
+\end{titlepage}
+\frontmatter
+\input{frontmatter.tex}
+\tableofcontents
+\mainmatter
+\input{chapters/ch01.tex}
+\input{chapters/ch02.tex}
+\input{chapters/ch03.tex}
+\input{chapters/ch04.tex}
+\input{chapters/ch05.tex}
+\input{chapters/ch06.tex}
+\input{chapters/ch07.tex}
+\input{chapters/ch08.tex}
+\input{chapters/ch09.tex}
+\input{chapters/ch10.tex}
+\input{chapters/ch11.tex}
+\input{chapters/ch12.tex}
+\appendix
+\renewcommand{\chaptermark}[1]{\markboth{付録\thechapter\quad #1}{}}
+\chapter{章末問題・総合演習の解答}\label{章:解答}
+\input{answers/ans01.tex}
+\input{answers/ans02.tex}
+\input{answers/ans03.tex}
+\input{answers/ans04.tex}
+\input{answers/ans05.tex}
+\input{answers/ans06.tex}
+\input{answers/ans07.tex}
+\input{answers/ans08.tex}
+\input{answers/ans09.tex}
+\input{answers/ans10.tex}
+\input{answers/ans11.tex}
+\input{answers/ans12.tex}
+\input{reference.tex}
+\backmatter
+\input{index.tex}
+\input{bibliography.tex}
+\end{document}

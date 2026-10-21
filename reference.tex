@@ -1,0 +1,93 @@
+\chapter{公式と解法の参照表}\label{章:参照表}
+この付録は，本文で導いた結果を探すためのものである。公式の条件や選び方に迷ったときは，対応する章へ戻ってほしい。特に，積分区間内に分母が零になる点がある場合には，原始関数への代入だけでは積分を計算できない。
+
+\section{微分と積分を結ぶ公式}
+$f$が$[a,b]$で連続，$F'=f$とすると，
+\[
+ \int_a^b f(x)\dd x=F(b)-F(a),\qquad
+ \frac{\dd}{\dd x}\int_a^x f(t)\dd t=f(x).
+\]
+変数の上端・下端が微分可能で，必要な範囲で$f$が連続なら，
+\[
+ \frac{\dd}{\dd x}\int_{u(x)}^{v(x)}f(t)\dd t
+ =f(v(x))v'(x)-f(u(x))u'(x).
+\]
+これらは\chapterref{章:定積分}の基本定理と合成関数の微分法から得られる。被積分関数に積分変数$t$とは別に$x$も入るときには，上の最後の式だけでは不十分である。
+
+\section{基本的な不定積分}
+以下は，各被積分関数が定義される一つの区間上で用いる。$C$はその区間での任意定数である。$a>0$，$b\ne0$とする。
+\begin{longtable}{@{}ll@{}}
+\toprule
+被積分関数 & 原始関数の一つ\\
+\midrule
+\endhead
+$x^p\ (p\ne-1)$ & $\frac{x^{p+1}}{p+1}$\\[4pt]
+$\frac1x$ & $\log|x|$\\[4pt]
+$\e^{bx}$ & $\frac1b\e^{bx}$\\[4pt]
+$\sin bx$ & $-\frac1b\cos bx$\\[4pt]
+$\cos bx$ & $\frac1b\sin bx$\\[4pt]
+$\frac1{\cos^2x}$ & $\tan x$\\[4pt]
+$\frac{f'(x)}{f(x)}\quad(f(x)\ne0)$ & $\log|f(x)|$\\[4pt]
+$\frac1{a^2+x^2}$ & $\frac1a\arctan\frac xa$\\[4pt]
+$\frac1{\sqrt{a^2-x^2}}\quad(|x|<a)$ & $\arcsin\frac xa$\\[4pt]
+\bottomrule
+\end{longtable}
+一般の実数$p$では，まず$x>0$でべき関数を考える。逆三角関数の記号と範囲は\chapterref{章:置換の背景}で定義した。高校の基本計算では，対応する三角置換を使って定積分を求めることもできる。
+
+\section{置換と部分積分}
+$f$が連続，$g$が連続微分可能であるとき，
+\[
+ \int_\alpha^\beta f(g(t))g'(t)\dd t
+ =\int_{g(\alpha)}^{g(\beta)}f(x)\dd x.
+\]
+この形の置換公式に$g$の単調性は不要である。ただし，もとの$x$から$t$へ一意に戻す方法として$x=g(t)$を使う場合は，区間と枝を選ぶ必要がある。\chapterref{章:置換積分}を参照。
+
+$u,v$が連続微分可能なら，
+\[
+ \int_a^b u(x)v'(x)\dd x
+ =[u(x)v(x)]_a^b-\int_a^b u'(x)v(x)\dd x.
+\]
+右側に残る積分が簡単になるかを考えて，微分する因子と積分する因子を決める。二回の部分積分で元の積分が戻った場合には，得られた等式を元の積分について解く。\chapterref{章:部分積分}を参照。
+
+\section{定積分に固有の判断}
+\begin{longtable}{@{}p{39mm}p{85mm}p{20mm}@{}}
+\toprule
+式に見えるもの & まず確かめること & 本文\\
+\midrule
+\endhead
+対称な区間$[-a,a]$ & $f(-x)$を計算し，偶関数・奇関数に分けられるかを調べる。 & \chapterref{章:定積分の対称性}\\
+区間$[a,b]$と両端の対称性 & $x\mapsto a+b-x$で変形し，元の被積分関数と足すと簡単になるかを見る。 & \chapterref{章:定積分の対称性}\\
+$\sin x$と$\cos x$が対称 & $x\mapsto\frac\pi2-x$で分子と分母がどう変わるかを調べる。 & \chapterref{章:定積分の対称性}\\
+分母$1+\e^x$と偶関数の因子 & $\frac1{1+\e^x}+\frac1{1+\e^{-x}}=1$を使い，左右を合わせる。 & \chapterref{章:定積分の対称性}\\
+$k$と$n$を含む和 & 幅$\frac1n$と高さ$f(\frac kn)$を取り出す。区間も確認する。 & \chapterref{章:積分と数列}\\
+自然数$n$を含む積分 & 部分積分などで隣の添字と結ぶか，積分のまま上下を評価する。 & \chapterref{章:積分と数列}\\
+原始関数が見つからない & 値の表示・近似・大小比較・収束判定のどれが必要かを分ける。 & 第9・11章\\
+端点や内部で関数が発散 & 各特異点の片側を独立に切り取り，通常の積分を計算してから極限を取る。 & \chapterref{章:近似と広義積分}\\
+\bottomrule
+\end{longtable}
+
+\section{積分で量を表す}
+$a<b$とする。必要な連続性・滑らかさを仮定し，曲線や立体の同じ部分を重複して数えない。
+\begin{align*}
+ \text{二曲線間の面積}\quad&A=\int_a^b|f(x)-g(x)|\dd x,\\
+ \text{断面積からの体積}\quad&V=\int_a^b A(x)\dd x,\\
+ \text{円環断面の体積}\quad&V=\pi\int_a^b\{R(x)^2-r(x)^2\}\dd x,\\
+ \text{グラフの長さ}\quad&L=\int_a^b\sqrt{1+f'(x)^2}\dd x,\\
+ \text{媒介曲線の長さ}\quad&L=\int_\alpha^\beta\sqrt{x'(t)^2+y'(t)^2}\dd t,\\
+ \text{位置の変化}\quad&s(b)-s(a)=\int_a^b v(t)\dd t,\\
+ \text{道のり}\quad&D=\int_a^b|v(t)|\dd t,\\
+ \text{関数の平均値}\quad&\overline f=\frac1{b-a}\int_a^b f(x)\dd x.
+\end{align*}
+円環の式の$R,r$は回転軸からの距離であり，$0\le r\le R$である。回転させる領域が軸をまたぐとき，符号付きの高さをそのまま外半径・内半径に使わない。\chapterref{章:積分の応用}を参照。
+
+\section{累乗の積分}
+非負整数$m,n$に対して，
+\[
+ \int_0^1x^m(1-x)^n\dd x=\frac{m!n!}{(m+n+1)!}.
+\]
+$W_n=\int_0^{\frac\pi2}\sin^n x\dd x$とおくと，
+\[
+ W_0=\frac\pi2,\quad W_1=1,\quad
+ W_n=\frac{n-1}{n}W_{n-2}\quad(n\ge2).
+\]
+どちらも\chapterref{章:積分と数列}で部分積分から導いた。添字を下げる前に，境界項と開始できる$n$を確認する。

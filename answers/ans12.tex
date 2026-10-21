@@ -1,0 +1,543 @@
+\section{第12章の解答}\label{解答:第12章}
+
+\paragraph{12.1}
+分母の次数より分子の次数が高いので，先に多項式の割り算をする。
+\[
+ x^3+x^2+2x+1=(x+1)(1+x^2)+x
+\]
+だから
+\[
+ \begin{aligned}
+ \int_0^1\frac{x^3+x^2+2x+1}{1+x^2}\dd x
+ &=\int_0^1\left(x+1+\frac{x}{1+x^2}\right)\dd x\\
+ &=\left[\frac{x^2}{2}+x+\frac12\log(1+x^2)\right]_0^1\\
+ &=\boxed{\frac32+\frac12\log2}.
+ \end{aligned}
+\]
+余りの分子$x$が分母の微分$2x$の定数倍になったため，対数の形で積分できた。
+
+\paragraph{12.2}
+$u=1+x^2$と置くと$\dd u=2x\dd x$であり，$x=0,1$はそれぞれ$u=1,2$に対応する。従って
+\[
+ \int_0^1x\sqrt{1+x^2}\dd x
+ =\frac12\int_1^2u^{\frac12}\dd u
+ =\left[\frac13u^{\frac32}\right]_1^2
+ =\boxed{\frac{2\sqrt2-1}{3}}.
+\]
+積分変数を$u$へ変えた時点で，端点も$u$の値へ変えている。
+
+\paragraph{12.3}
+$\log x$を微分し，$x$を積分すると，残りは整式の積分になる。部分積分により
+\[
+ \begin{aligned}
+ \int_1^{\e}x\log x\dd x
+ &=\left[\frac{x^2}{2}\log x\right]_1^{\e}
+   -\frac12\int_1^{\e}x\dd x\\
+ &=\frac{\e^2}{2}-\frac{\e^2-1}{4}
+ =\boxed{\frac{\e^2+1}{4}}.
+ \end{aligned}
+\]
+
+\paragraph{12.4}
+$G(u)=\int_0^u\sqrt{1+t^2}\dd t$と置く。基本定理より$G'(u)=\sqrt{1+u^2}$であり，$F(x)=G(x^2)-G(x)$だから，合成関数の微分によって
+\[
+ F'(x)=2x\sqrt{1+x^4}-\sqrt{1+x^2}.
+\]
+上端だけでなく，下端からも項が現れる。$x=1$では上下端が一致するため$F(1)=0$，また$F'(1)=\sqrt2$である。従って接線は
+\[
+ \boxed{y=\sqrt2(x-1)}.
+\]
+
+\paragraph{12.5}
+求める積分を$I$とする。$x=-t$と置き，$1+x^2$が偶関数であることを使えば
+\[
+ I=\int_{-a}^{a}\frac{1+t^2}{1+\e^{-t}}\dd t.
+\]
+元の式と足すと，
+\[
+ \frac1{1+\e^x}+\frac1{1+\e^{-x}}=1
+\]
+によって重みが消える。従って
+\[
+ 2I=\int_{-a}^{a}(1+x^2)\dd x
+ =2a+\frac{2a^3}{3},\qquad
+ \boxed{I=a+\frac{a^3}{3}}.
+\]
+不定積分を求めずに値が決まるのは，区間と分子が反転に対して変わらないためである。
+
+\paragraph{12.6}
+交点は$x^2=x$より$x=0,1$である。$0\leqq x\leqq1$では$x^2\leqq x$なので，面積$S$は
+\[
+ S=\int_0^1(x-x^2)\dd x
+ =\left[\frac{x^2}{2}-\frac{x^3}{3}\right]_0^1
+ =\boxed{\frac16}.
+\]
+回転すると，$x$を固定した断面は外半径$x$，内半径$x^2$の円環になる。従って体積$V$は
+\[
+ V=\pi\int_0^1\{x^2-(x^2)^2\}\dd x
+ =\pi\left(\frac13-\frac15\right)
+ =\boxed{\frac{2\pi}{15}}.
+\]
+面積では上下の高さの差を積分し，体積では二つの半径の平方の差を積分している。
+
+\paragraph{12.7}
+積分の両端を微分すると
+\[
+ \begin{aligned}
+ H'(a)&=\{(a+1)^2-2(a+1)\}^2-(a^2-2a)^2\\
+ &=(a^2-1)^2-(a^2-2a)^2\\
+ &=(2a-1)(2a^2-2a-1).
+ \end{aligned}
+\]
+従って極値の候補は$a=\frac12,\frac{1-\sqrt3}{2},\frac{1+\sqrt3}{2}$である。候補の値を比べ，実数全体での最小値を確かめるため，積分区間の中心を使って式を整理する。
+
+$y=a-\frac12$とし，$x=a+\frac12+s$と置くと，$-\frac12\leqq s\leqq\frac12$，$x-1=y+s$である。$x^2-2x=(x-1)^2-1$なので
+\[
+ H(a)=\int_{-\frac12}^{\frac12}\{(y+s)^2-1\}^2\dd s.
+\]
+展開後の$s$の奇数次の項は積分すると消える。残る項は
+\[
+ \begin{aligned}
+ H(a)
+ &=\int_{-\frac12}^{\frac12}
+   \{s^4+(6y^2-2)s^2+(y^2-1)^2\}\dd s\\
+ &=\frac1{80}+\frac{6y^2-2}{12}+(y^2-1)^2\\
+ &=y^4-\frac32y^2+\frac{203}{240}
+ =\left(y^2-\frac34\right)^2+\frac{17}{60}.
+ \end{aligned}
+\]
+最後の平方は$0$以上で，$y=\pm\frac{\sqrt3}{2}$のときに限り$0$になる。従って
+\[
+ \boxed{\min H(a)=\frac{17}{60},\qquad
+ a=\frac{1-\sqrt3}{2},\ \frac{1+\sqrt3}{2}}.
+\]
+二つの区間が同じ最小値を与えるのは，被積分関数が$x=1$に関して対称であることにも対応する。
+
+\paragraph{12.8}
+対数の中を$u=1+x^2$と置くと，$\dd u=2x\dd x$，$x^2=u-1$だから
+\[
+ x^3\dd x=\frac12(u-1)\dd u.
+\]
+区間は$[1,2]$となり，求める積分は$\frac12\int_1^2(u-1)\log u\dd u$である。ここで$\log u$を微分する部分積分を行う。
+\[
+ \begin{aligned}
+ \frac12\int_1^2(u-1)\log u\dd u
+ &=\frac12\left[\left(\frac{u^2}{2}-u\right)\log u\right]_1^2
+   -\frac12\int_1^2\left(\frac u2-1\right)\dd u\\
+ &=\left[-\frac{u^2}{8}+\frac u2\right]_1^2
+ =\frac12-\frac38
+ =\boxed{\frac18}.
+ \end{aligned}
+\]
+端点の項は，$u=1$では$\log1=0$，$u=2$では$\frac{u^2}{2}-u=0$となるため，両方とも消える。
+
+\paragraph{12.9}
+一項を
+\[
+ \frac{k^2}{n(n^2+k^2)}
+ =\frac1n\cfrac{\left(\cfrac kn\right)^2}{1+\left(\cfrac kn\right)^2}
+\]
+と書く。$f(x)=\frac{x^2}{1+x^2}$は$[0,1]$で連続なので，この和の極限はその区間での積分である。分子を$x^2=(1+x^2)-1$と分けると
+\[
+ \begin{aligned}
+ \int_0^1\frac{x^2}{1+x^2}\dd x
+ &=\int_0^1\left(1-\frac1{1+x^2}\right)\dd x\\
+ &=\left[x-\arctan x\right]_0^1
+ =\boxed{1-\frac{\pi}{4}}.
+ \end{aligned}
+\]
+
+\paragraph{12.10}
+各$x\in[0,1]$で，縦の線分は$y=x-1$から$y=x$まであり，常に$x$軸を含む。従って回転断面の中心には穴がなく，円板になる。端点の軸からの距離はそれぞれ$1-x$，$x$なので，半径$r(x)$は
+\[
+ r(x)=
+ \begin{cases}
+  1-x&\left(0\leqq x\leqq\frac12\right),\\
+  x&\left(\frac12\leqq x\leqq1\right).
+ \end{cases}
+\]
+切り替わりは$x=1-x$，すなわち$x=\frac12$で起こる。従って
+\[
+ \begin{aligned}
+ V&=\pi\int_0^{\frac12}(1-x)^2\dd x
+   +\pi\int_{\frac12}^{1}x^2\dd x\\
+ &=2\pi\int_{\frac12}^{1}x^2\dd x
+ =\frac{2\pi}{3}\left(1-\frac18\right)
+ =\boxed{\frac{7\pi}{12}}.
+ \end{aligned}
+\]
+上下の部分を別々に回して体積を足すと，同じ円板内の点を重複して数える。ここでは回転後にできる断面そのものを一枚ずつ数えた。
+
+\paragraph{12.11}
+まず
+\[
+ K_0=\int_0^1\frac1{1+x}\dd x=\log2.
+\]
+$n\geqq1$では，隣り合う二つの積分を足すと分母が消える。
+\[
+ K_n+K_{n-1}
+ =\int_0^1\frac{x^n+x^{n-1}}{1+x}\dd x
+ =\int_0^1x^{n-1}\dd x=\frac1n.
+\]
+従って漸化式は$K_n=\frac1n-K_{n-1}$であり，順に
+\[
+ K_1=1-\log2,\qquad
+ K_2=\log2-\frac12,\qquad
+ \boxed{K_3=\frac56-\log2}
+\]
+となる。
+
+また$0\leqq x\leqq1$では$0\leqq\frac{x^n}{1+x}\leqq x^n$だから
+\[
+ 0\leqq K_n\leqq\frac1{n+1}\longrightarrow0.
+\]
+ここで漸化式の添字を$k$とし，両辺に$(-1)^{k-1}$を掛けて$k=1,\ldots,n$について足す。
+中間の$K_k$が消え，
+\[
+ \sum_{k=1}^n\frac{(-1)^{k-1}}k
+ =K_0+(-1)^{n-1}K_n
+ =\log2+(-1)^{n-1}K_n
+\]
+となる。右辺の最後の項は$0$へ近づくので，求める極限は$\log2$である。同時に，部分和と$\log2$との差の絶対値が$\frac1{n+1}$以下であることも分かる。
+
+\paragraph{12.12}
+積分を$x=1$で分け，$0$と無限大を独立に調べる。$x\to0+$では
+\[
+ \cfrac{\cfrac{x^\alpha}{1+x^2}}{x^\alpha}
+ =\frac1{1+x^2}\longrightarrow1.
+\]
+従って$0$付近では$x^\alpha$との極限比較が使え，収束条件は$\alpha>-1$である。
+一方，$x\to\infty$では
+\[
+ \cfrac{\cfrac{x^\alpha}{1+x^2}}{x^{\alpha-2}}
+ =\frac{x^2}{1+x^2}\longrightarrow1.
+\]
+無限大で$x^{\alpha-2}$が積分可能になる条件は$\alpha-2<-1$，すなわち$\alpha<1$である。
+従って全体の収束条件は
+\[
+ \boxed{-1<\alpha<1}.
+\]
+$\alpha=0$では，端点を避けて計算してから極限を取り，
+\[
+ \int_0^{\infty}\frac1{1+x^2}\dd x
+ =\lim_{R\to\infty}\arctan R-\lim_{\varepsilon\to0+}\arctan\varepsilon
+ =\boxed{\frac{\pi}{2}}.
+\]
+
+\paragraph{12.13}
+最初から$f$が微分可能だと仮定せず，右辺の積分から確かめる。
+\[
+ A(x)=\int_0^xf(t)\dd t,\qquad
+ B(x)=\int_0^xtf(t)\dd t
+\]
+と置くと，$f$が連続であるため$A'(x)=f(x)$，$B'(x)=xf(x)$である。与式は
+\[
+ f(x)=1+xA(x)-B(x)
+\]
+と書けるので，右辺が微分可能であり，
+\[
+ f'(x)=A(x)+xf(x)-xf(x)=A(x)
+\]
+を得る。さらに$f''(x)=f(x)$である。また$x=0$を代入すると
+\[
+ f(0)=1,\qquad f'(0)=0.
+\]
+
+ここからは，$f''=f$を満たす関数を積の微分によって求める。
+\[
+ \frac{\dd}{\dd x}\{\e^{-x}(f(x)+f'(x))\}
+ =\e^{-x}(f''(x)-f(x))=0
+\]
+だから，括弧を含む積は定数である。$x=0$での値は$1$なので
+$f'(x)+f(x)=\e^x$となる。今度は$\e^xf(x)$を微分すれば
+\[
+ \frac{\dd}{\dd x}\{\e^xf(x)\}=\e^x(f'(x)+f(x))=\e^{2x}.
+\]
+$0$から$x$まで積分し，$f(0)=1$を使うと
+\[
+ \e^xf(x)-1=\frac{\e^{2x}-1}{2},\qquad
+ \boxed{f(x)=\frac{\e^x+\e^{-x}}2}.
+\]
+
+微分して得た条件だけでは，元の積分の等式を満たすかの確認が残る。
+求めた関数を$g(x)=\frac{\e^x+\e^{-x}}2$と書くと，$g''=g$，$g(0)=1$，$g'(0)=0$である。従って部分積分によって
+\[
+ \begin{aligned}
+ \int_0^x(x-t)g(t)\dd t
+ &=\int_0^x(x-t)g''(t)\dd t\\
+ &=\bigl[(x-t)g'(t)\bigr]_0^x+\int_0^xg'(t)\dd t\\
+ &=-xg'(0)+g(x)-g(0)=g(x)-1.
+ \end{aligned}
+\]
+よって元の等式も成立する。また，条件を満たすどの$f$も上の計算から同じ式になるため，解は一つに定まる。
+
+\paragraph{12.14}
+二つの制約を満たす一次関数を先に探す。$\ell(x)=a+bx$を代入すると
+\[
+ a+\frac b2=1,\qquad \frac a2+\frac b3=0.
+\]
+これを解くと$a=4$，$b=-6$なので，$\ell(x)=4-6x$である。
+任意の条件を満たす$f$について$g(x)=f(x)-\ell(x)$と置けば
+\[
+ \int_0^1g(x)\dd x=0,\qquad
+ \int_0^1xg(x)\dd x=0.
+\]
+従って
+\[
+ \int_0^1\ell(x)g(x)\dd x
+ =4\int_0^1g(x)\dd x-6\int_0^1xg(x)\dd x=0.
+\]
+この関係を平方の展開に使うと
+\[
+ \begin{aligned}
+ \int_0^1f(x)^2\dd x
+ &=\int_0^1\ell(x)^2\dd x
+   +2\int_0^1\ell(x)g(x)\dd x+\int_0^1g(x)^2\dd x\\
+ &=\int_0^1(16-48x+36x^2)\dd x+\int_0^1g(x)^2\dd x\\
+ &=4+\int_0^1g(x)^2\dd x\geqq4.
+ \end{aligned}
+\]
+$g$は連続なので，最後の積分が$0$になるのは$g(x)=0$が全区間で成り立つ場合に限る。
+実際，ある点で$g\ne0$なら，その近くでは$g^2$が正の一定値以上になり，積分も正になる。従って
+\[
+ \boxed{\min\int_0^1f(x)^2\dd x=4,\qquad f(x)=4-6x}.
+\]
+制約から候補を見つけた後で，どの関数との差も平方の積分として表したことが，最小値の証明になっている。
+
+\paragraph{12.15}
+微分すると
+\[
+ x'(t)=1-\cos2t=2\sin^2t,\qquad
+ y'(t)=2\sin t\cos t.
+\]
+$0<t<\pi$では$x'(t)>0$なので，$x$は$0$から$\pi$まで狭義に増加する。また$y\geqq0$であり，両端で$y=0$となる。このため曲線は各$x$に対して一つの高さを持ち，曲線の下の領域を$x$方向に積分して重複することはない。
+
+面積$S$は
+\[
+ S=\int_0^\pi y(t)x'(t)\dd t
+ =2\int_0^\pi\sin^4t\dd t.
+\]
+反転$t\mapsto\pi-t$で両半分の積分は等しい。ウォリスの公式より
+\[
+ \int_0^{\frac\pi2}\sin^4t\dd t
+ =\frac34\frac12\frac\pi2=\frac{3\pi}{16}
+\]
+なので，
+\[
+ \boxed{S=4\cdot\frac{3\pi}{16}=\frac{3\pi}{4}}.
+\]
+
+曲線の長さ$L$では，根号の中を先にまとめる。
+\[
+ \begin{aligned}
+ \sqrt{x'(t)^2+y'(t)^2}
+ &=\sqrt{4\sin^4t+4\sin^2t\cos^2t}\\
+ &=2|\sin t|=2\sin t\qquad(0\leqq t\leqq\pi).
+ \end{aligned}
+\]
+従って
+\[
+ \boxed{L=\int_0^\pi2\sin t\dd t=4}.
+\]
+
+回転体の断面は半径$y(t)$の円板であり，$x$の増分は$x'(t)\dd t$である。従って体積は
+\[
+ \begin{aligned}
+ V&=\pi\int_0^\pi y(t)^2x'(t)\dd t
+ =2\pi\int_0^\pi\sin^6t\dd t\\
+ &=4\pi\int_0^{\frac\pi2}\sin^6t\dd t
+ =4\pi\cdot\frac{5\pi}{32}
+ =\boxed{\frac{5\pi^2}{8}}.
+ \end{aligned}
+\]
+ここでも$x(t)$の単調性により，同じ$x$での円板を二回数えていない。
+
+\paragraph{12.16}
+(1) $g(u)=\sin u$の$0$を中心とする六次テイラー多項式は
+\[
+ P_6(u)=u-\frac{u^3}{6}+\frac{u^5}{120}
+\]
+である。偶数次の係数は$0$だが，六次までの有限テイラー公式として剰余を評価する。
+七階微分は$g^{(7)}(u)=-\cos u$なので，$0\leqq u\leqq1$では
+$-1\leqq g^{(7)}(u)\leqq0$である。従って
+\[
+ \sin u=P_6(u)+R_6(u),\qquad
+ -\frac{u^7}{5040}\leqq R_6(u)\leqq0.
+\]
+$u=x^2$を代入して積分した多項式の値は
+\[
+ Q=\int_0^1\left(x^2-\frac{x^6}{6}+\frac{x^{10}}{120}\right)\dd x
+ =\frac13-\frac1{42}+\frac1{1320}
+ =\frac{2867}{9240}.
+\]
+残りの積分は
+\[
+ -\frac1{5040}\int_0^1x^{14}\dd x
+ \leqq A-Q\leqq0
+\]
+だから
+\[
+ \boxed{\frac{2867}{9240}-\frac1{75600}
+ \leqq A\leqq\frac{2867}{9240}}.
+\]
+両端は有理数であり，幅$\frac1{75600}$は$\frac1{10000}$より小さい。有限の式に対する区間全体の誤差を積分したので，無限級数と積分の交換は用いていない。
+
+(2) 有限の$R>1$に対して$u=x^2$と置けば
+\[
+ \int_1^R\sin(x^2)\dd x
+ =\frac12\int_1^{R^2}\frac{\sin u}{\sqrt u}\dd u.
+\]
+右辺で部分積分を行う。$T>1$として
+\[
+ \begin{aligned}
+ \int_1^T\frac{\sin u}{\sqrt u}\dd u
+ &=\left[-\frac{\cos u}{\sqrt u}\right]_1^T
+   -\frac12\int_1^T\cfrac{\cos u}{u^{\cfrac32}}\dd u\\
+ &=\cos1-\frac{\cos T}{\sqrt T}
+   -\frac12\int_1^T\cfrac{\cos u}{u^{\cfrac32}}\dd u.
+ \end{aligned}
+\]
+境界項$\frac{\cos T}{\sqrt T}$は$0$へ近づく。また
+$\cfrac{|\cos u|}{u^{\cfrac32}}\leqq u^{-\frac32}$であり，右辺のべき関数は無限大で積分可能だから，最後の積分は絶対収束する。従って元の広義積分は収束する。
+
+絶対値を付けた場合も同じ置換が使え，
+\[
+ \int_1^R|\sin(x^2)|\dd x
+ =\frac12\int_1^{R^2}\frac{|\sin u|}{\sqrt u}\dd u.
+\]
+整数$k\geqq1$について，$u\in[k\pi,(k+1)\pi]$なら
+$\frac1{\sqrt u}\geqq\frac1{\sqrt{(k+1)\pi}}$なので
+\[
+ \int_{k\pi}^{(k+1)\pi}\frac{|\sin u|}{\sqrt u}\dd u
+ \geqq\frac1{\sqrt{(k+1)\pi}}
+       \int_{k\pi}^{(k+1)\pi}|\sin u|\dd u
+ =\frac2{\sqrt{(k+1)\pi}}.
+\]
+この下限の和は発散する。実際，$t^{-\frac12}$の減少性から
+\[
+ \sum_{k=1}^N\frac1{\sqrt{k+1}}
+ \geqq\int_2^{N+2}\frac1{\sqrt t}\dd t
+ =2(\sqrt{N+2}-\sqrt2)\longrightarrow\infty.
+\]
+従って絶対値の積分は発散し，$\int_1^{\infty}\sin(x^2)\dd x$は条件収束する。
+
+\paragraph{12.17}
+$n=0$では$C_0=1$である。$n\geqq1$で，$(1-x^2)^n$を微分し，$1$を積分する部分積分を行う。
+\[
+ \begin{aligned}
+ C_n
+ &=\left[x(1-x^2)^n\right]_0^1
+   +2n\int_0^1x^2(1-x^2)^{n-1}\dd x\\
+ &=2n\int_0^1\{1-(1-x^2)\}(1-x^2)^{n-1}\dd x\\
+ &=2n(C_{n-1}-C_n).
+ \end{aligned}
+\]
+従って漸化式と有限積の表示は
+\[
+ \boxed{C_n=\frac{2n}{2n+1}C_{n-1},\qquad
+ C_n=\prod_{k=1}^n\frac{2k}{2k+1}}.
+\]
+
+極限を求めるため，$x=\sin t$と置くと
+\[
+ C_n=\int_0^{\frac\pi2}\cos^{2n+1}t\dd t.
+\]
+$W_m=\int_0^{\frac\pi2}\cos^mt\dd t$と書けば$C_n=W_{2n+1}$である。
+$t\mapsto\frac\pi2-t$により$W_m$は$\sin$のべきのウォリス積分と等しい。
+従って偶数，奇数の積の公式から
+\[
+ W_{2n}W_{2n+1}=\frac{\pi}{2(2n+1)}.
+\]
+また$0\leqq\cos t\leqq1$なので$W_{2n+2}\leqq W_{2n+1}\leqq W_{2n}$であり，漸化式を使うと
+\[
+ \frac{2n+1}{2n+2}
+ =\frac{W_{2n+2}}{W_{2n}}
+ \leqq\frac{W_{2n+1}}{W_{2n}}\leqq1.
+\]
+従って隣り合う二つの比は$1$へ近づく。積と比を合わせて
+\[
+ nC_n^2
+ =nW_{2n}W_{2n+1}\frac{W_{2n+1}}{W_{2n}}
+ \longrightarrow\frac\pi4.
+\]
+$C_n>0$なので平方根を取り，
+\[
+ \boxed{\lim_{n\to\infty}\sqrt n\,C_n=\frac{\sqrt\pi}{2}}.
+\]
+最後に漸化式から
+\[
+ C_n-C_{n+1}
+ =\left(1-\frac{2n+2}{2n+3}\right)C_n
+ =\frac{C_n}{2n+3}.
+\]
+元の数列の極限をこの式へ戻せば
+\[
+ \boxed{\lim_{n\to\infty}n^{\frac32}(C_n-C_{n+1})
+ =\lim_{n\to\infty}\frac{n}{2n+3}\sqrt n\,C_n
+ =\frac{\sqrt\pi}{4}}.
+\]
+
+\paragraph{12.18}
+まず両端の収束を調べる。$-\pi<x<\pi$では$\cos\frac x2>0$だから，半角公式により
+\[
+ \begin{aligned}
+ h_n(x):=\frac{\sin^{2n}x}{\sqrt{1+\cos x}}
+ &=\frac{2^{2n}}{\sqrt2}
+   \sin^{2n}\frac x2\,\cos^{2n-1}\frac x2.
+ \end{aligned}
+\]
+$n\geqq1$より$2n-1\geqq1$である。$x\to\pi-$，$x\to-\pi+$のそれぞれで$\cos\frac x2\to0$となり，$\sin^{2n}\frac x2$は有界なので，$h_n(x)\to0$となる。
+さらに$\frac1{1+\e^x}$は両端を含めて連続である。従って元の被積分関数は，各端点で値$0$を補えば連続になる。左右の広義積分はそれぞれ有限に収束し，ここからは対称性や置換を使ってよい。
+
+$h_n$は偶関数である。$w(x)=\frac1{1+\e^x}$と置けば$w(x)+w(-x)=1$だから，$x=-t$による反転で得た式を元の積分と足して
+\[
+ \begin{aligned}
+ 2J_n
+ &=\int_{-\pi}^{\pi}h_n(x)\{w(x)+w(-x)\}\dd x\\
+ &=\int_{-\pi}^{\pi}h_n(x)\dd x
+ =2\int_0^\pi h_n(x)\dd x.
+ \end{aligned}
+\]
+従って指数関数を含む重みは消え，$J_n=\int_0^\pi h_n(x)\dd x$となる。
+
+先ほどの半角公式を使い，$t=\frac x2$と置くと
+\[
+ J_n=2^{2n}\sqrt2\int_0^{\frac\pi2}
+          \sin^{2n}t\cos^{2n-1}t\dd t.
+\]
+次に$u=\sin t$と置く。$\dd u=\cos t\dd t$なので，$\cos$の残りの偶数べきは$(1-u^2)^{n-1}$になり，
+\[
+ J_n=2^{2n}\sqrt2\int_0^1u^{2n}(1-u^2)^{n-1}\dd u.
+\]
+最後の積分は多項式の積分である。しかし，展開すると項数が$n$個になるため，ここでは$(1-u^2)$の指数を部分積分で一つずつ下げる。
+
+非負整数$r,s$に対して
+\[
+ L_{r,s}=\int_0^1u^{2r}(1-u^2)^s\dd u
+\]
+と置く。$s\geqq1$なら
+\[
+ \begin{aligned}
+ L_{r,s}
+ &=\left[\frac{u^{2r+1}}{2r+1}(1-u^2)^s\right]_0^1
+   +\frac{2s}{2r+1}\int_0^1u^{2r+2}(1-u^2)^{s-1}\dd u\\
+ &=\frac{2s}{2r+1}L_{r+1,s-1}.
+ \end{aligned}
+\]
+端点の項は，$u=0$では$u^{2r+1}=0$，$u=1$では$(1-u^2)^s=0$なので消える。$s=0$の初期値は別に
+\[
+ L_{r,0}=\int_0^1u^{2r}\dd u=\frac1{2r+1}
+\]
+である。漸化式を$s$回使い，最後にこの初期値へ戻すと
+\[
+ L_{r,s}
+ =\frac{2^s s!}{(2r+1)(2r+3)\cdots(2r+2s+1)}.
+\]
+$r=n$，$s=n-1$を代入し，前の係数$2^{2n}\sqrt2$を掛けることで
+\[
+ \boxed{J_n=
+ \frac{2^{3n-1}\sqrt2\,(n-1)!}
+ {(2n+1)(2n+3)\cdots(4n-1)}}.
+\]
+分母には$n$個の奇数因子がある。例えば$n=1$では分母は$3$だけになり，$J_1=\frac{4\sqrt2}{3}$となる。
+端点の収束を確かめた後，対称性で指数関数を除き，半角公式と置換で整数べきの積分へ直した。最後の有限積は，その多項式の積分を部分積分で順に結んだ結果である。

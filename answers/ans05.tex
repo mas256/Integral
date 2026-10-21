@@ -1,0 +1,78 @@
+\section{第5章の解答}\label{解答:第5章}
+
+\paragraph{5.1}
+括弧の中を $t=3x^2-4x+7$ と置くと，$\dd t=(6x-4)\dd x$ である。したがって
+\[
+ \int(6x-4)(3x^2-4x+7)^5\dd x
+ =\int t^5\dd t
+ =\frac{(3x^2-4x+7)^6}{6}+C.
+\]
+微分すれば，外側の六乗から $6$ が現れて分母と打ち消し合い，内側の微分 $6x-4$ が掛かって元の式に戻る。多項式なので全実数上で成り立つ。
+
+\paragraph{5.2}
+$t=\log x$ と置くと $\dd t=\frac1x\dd x$ だから，
+\[
+ \int\frac1{x\log x}\dd x
+ =\int\frac1t\dd t
+ =\log|\log x|+C.
+\]
+実数の対数のために $x>0$ が必要で，さらに分母の $\log x$ が $0$ となる $x=1$ を除く。よって適用する区間は $0<x<1$ と $1<x$ に分かれ，それぞれの任意定数は独立である。$0<x<1$ では $\log x<0$ なので，外側の対数の絶対値を外せない。
+
+\paragraph{5.3}
+$t=x^2$，$\dd t=2x\dd x$ と置く。$x=-2$ は $t=4$，$x=1$ は $t=1$ に対応するので，
+\[
+ \int_{-2}^1 2x\e^{x^2}\dd x
+ =\int_4^1\e^t\dd t
+ =[\e^t]_4^1=\e-\e^4.
+\]
+合成形の置換は，$\frac{\dd}{\dd x}\e^{x^2}=2x\e^{x^2}$ に基づいており，$x^2$ が単調である必要はない。区間を分けても
+\[
+ \int_4^0\e^t\dd t+\int_0^1\e^t\dd t
+ =\int_4^1\e^t\dd t
+\]
+となる。被積分関数が負になる部分があるため，定積分が負でも矛盾しない。
+
+\paragraph{5.4}
+$t=\sqrt{1+x}$ と置けば，$x=t^2-1$，$\dd x=2t\dd t$ である。端点は $x=0,3$ から $t=1,2$ へ移る。したがって
+\[
+\begin{aligned}
+ \int_0^3\frac1{1+\sqrt{1+x}}\dd x
+ &=2\int_1^2\frac{t}{1+t}\dd t\\
+ &=2\int_1^2\left(1-\frac1{1+t}\right)\dd t\\
+ &=2[t-\log(1+t)]_1^2\\
+ &=2-2\log\frac32.
+\end{aligned}
+\]
+$1\le t\le2$ では $1+t>0$ なので，対数の絶対値は不要である。
+
+\paragraph{5.5}
+$x=a\sin\theta$ と置き，$0\le\theta\le\frac\pi6$ を選ぶ。この区間で $\cos\theta>0$ だから，$\sqrt{a^2-x^2}=a\cos\theta$ と書ける。また $\dd x=a\cos\theta\dd\theta$ なので，
+\[
+\begin{aligned}
+ \int_0^{\frac a2}\sqrt{a^2-x^2}\dd x
+ &=a^2\int_0^{\frac\pi6}\cos^2\theta\dd\theta\\
+ &=a^2\left[\frac\theta2+\frac14\sin(2\theta)\right]_0^{\frac\pi6}\\
+ &=a^2\left(\frac\pi{12}+\frac{\sqrt3}{8}\right).
+\end{aligned}
+\]
+最後は $\sin\frac\pi3=\frac{\sqrt3}{2}$ を用いた。
+
+\paragraph{5.6}
+$0\le\theta\le\frac\pi3$ で $x=\tan\theta$ と置く。端点は $0,\sqrt3$ に対応し，この区間では $\cos\theta\ne0$ である。よって
+\[
+ \int_0^{\sqrt3}\frac1{1+x^2}\dd x
+ =\int_0^{\frac\pi3}\frac1{1+\tan^2\theta}
+   \frac1{\cos^2\theta}\dd\theta
+ =\int_0^{\frac\pi3}1\dd\theta=\frac\pi3.
+\]
+分母と微分に現れる因子が等しいことを使っている。
+
+\paragraph{5.7}
+変数を換えるときは，端点だけでなく被積分関数と微分の記号も書き換える必要がある。$t=x^2$ では $\dd t=2x\dd x$ であり，$\dd x$ をそのまま $\dd t$ にすることはできない。また $-1\le x\le1$ 全体で $x=\sqrt{t}$ と戻すこともできない。負の $x$ は $x=-\sqrt{t}$ という別の枝に属する。したがって，$1$ の積分を同じ端点の $t$ の積分として表す根拠がない。実際には $\int_{-1}^1 1\dd x=2$ である。
+
+一方，第二の積分には $2x\dd x$ があるから，合成形の置換をそのまま使える。
+\[
+ \int_{-1}^1\frac{2x}{1+x^2}\dd x
+ =\int_1^1\frac1{1+t}\dd t=0.
+\]
+原始関数 $\log(1+x^2)$ の上下端の値がともに $\log2$ になることからも確かめられる。同じ端点へ移ることだけでなく，置換公式の形を満たしていることが結論を支えている。
