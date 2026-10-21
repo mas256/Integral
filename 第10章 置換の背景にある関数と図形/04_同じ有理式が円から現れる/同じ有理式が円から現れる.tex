@@ -1,0 +1,49 @@
+\section{同じ有理式が円から現れる}\label{節:円の有理パラメータ}
+
+前節の二式は
+\[
+X=\frac{1-t^2}{1+t^2},\qquad
+Y=\frac{2t}{1+t^2}
+\]
+と書くと，$X^2+Y^2=1$を満たす。正弦と余弦を使ったのだから当然ともいえるが，この式は三角関数なしでも導ける。
+
+図\ref{図:円の有理パラメータ}のように，単位円上の点$A=(-1,0)$を固定し，傾き$t$の直線$Y=t(X+1)$を引く。円との交点を求めるため代入すると
+\[
+\begin{aligned}
+X^2+t^2(X+1)^2&=1,\\
+(X+1)\{(1+t^2)X+(t^2-1)\}&=0.
+\end{aligned}
+\]
+一つの解$X=-1$は，固定した点$A$である。もう一つの交点$P$は，上の$X,Y$で表される。$t$を動かして点を表すので，$t$を\textbf{媒介変数}，この表示を円の\textbf{有理パラメータ表示}という。
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[x=2.25cm,y=2.25cm,>=Stealth]
+ \draw[->] (-1.4,0)--(1.45,0) node[right]{$X$};
+ \draw[->] (0,-1.2)--(0,1.35) node[above]{$Y$};
+ \draw[thick,tealblack] (0,0) circle(1);
+ \draw[thick,blueblack] (-1.23,-0.115)--(1.15,1.075);
+ \draw[dashed] (0.6,0)--(0.6,0.8)--(0,0.8);
+ \draw[blueblack] (0,0)--(0.6,0.8);
+ \draw[->] (0.26,0) arc[start angle=0,end angle=53.1301,radius=0.26];
+ \node at (0.35,0.17) {$x$};
+ \draw[->] (-0.65,0) arc[start angle=0,end angle=26.5651,radius=0.35];
+ \node at (-0.42,0.15) {$\frac x2$};
+ \fill (-1,0) circle(1.2pt) node[below left]{$A=(-1,0)$};
+ \fill (0.6,0.8) circle(1.2pt);
+ \draw[thin,gray] (0.63,0.79)--(1.04,0.56);
+ \node[anchor=west] at (1.04,0.52) {$P=(\cos x,\sin x)$};
+ \node[above right] at (0.97,0.985) {$Y=t(X+1)$};
+ \node[below left] at (0,0) {$O$};
+\end{tikzpicture}
+\caption{円上の固定点から引いた直線の傾きで，もう一つの交点を表す。図は$t=\frac12$の場合。}
+\label{図:円の有理パラメータ}
+\end{figure}
+
+$P=(X,Y)\ne A$からは$t=\frac{Y}{X+1}$と戻せるので，有限な実数$t$で，円上の$A$以外のすべての点を一度ずつ表せる。$P=(\cos x,\sin x)$なら
+\[
+t=\frac{\sin x}{1+\cos x}=\tan\frac x2
+\]
+である。最後の等式は二倍角の公式から確かめられる。図の上半円では，二等辺三角形$AOP$の角を見ても，直線$AP$が正の$X$方向となす角は$\frac x2$になる。半角が現れる理由を，円の上の角としても読めた。表せなかった点$A$は，ちょうど$x=(2k+1)\pi$に対応する。
+
+\input{第10章 置換の背景にある関数と図形/04_同じ有理式が円から現れる/01_有理数の点から整数の直角三角形へ.tex}%

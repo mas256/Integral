@@ -1,0 +1,33 @@
+\subsection{複数の特異点は独立に調べる}
+
+両端に特異性がある場合は，内部の一点$c$を固定して
+\[
+ \int_a^bf(x)\dd x
+ =\int_a^cf(x)\dd x+\int_c^bf(x)\dd x
+\]
+と定める。ただし，右辺の二つの広義積分がそれぞれ収束することが必要である。両端を同じ速さで動かして相殺することは，この定義には含まれない。分割点$c$を別の内部の点へ変えても，その間の通常の定積分が一方に加わり，他方から引かれるだけなので，値は変わらない。
+
+区間内部に特異点$d$があれば，$d$の左右にも分ける。また，実数全体の積分は，例えば
+\[
+ \int_{-\infty}^{\infty}f(x)\dd x
+ =\int_{-\infty}^{0}f(x)\dd x+\int_0^{\infty}f(x)\dd x
+\]
+として，左右を独立に調べる。複数の特異点があるときは，それぞれに別の切り取り幅や上限を用意して考えると，何を確認すべきかが明確になる。
+
+この違いを$\frac1x$で確かめよう。$\varepsilon>0$に対して
+\[
+ \int_{-1}^{-\varepsilon}\frac1x\dd x=\log\varepsilon\longrightarrow-\infty,
+ \qquad
+ \int_{\varepsilon}^{1}\frac1x\dd x=-\log\varepsilon\longrightarrow+\infty.
+\]
+したがって$\int_{-1}^1\frac1x\dd x$は広義積分として収束しない。しかし，同じ$\varepsilon$を使って足せば常に$0$になる。このような対称的な切り取り方による極限を，コーシーの主値という。
+\[
+ \operatorname{PV}\int_{-1}^1\frac1x\dd x
+ =\lim_{\varepsilon\to0+}
+ \left(\int_{-1}^{-\varepsilon}\frac1x\dd x
+       +\int_{\varepsilon}^{1}\frac1x\dd x\right)=0.
+\]
+主値が存在しても，広義積分が収束するとは限らない。実際，左を$\varepsilon$，右を$2\varepsilon$で切れば，二つの積分の和は$-\log2$になる。切り取り方を結び付けて得られた相殺だけでは，各側の収束を示したことにならない。
+
+無限区間でも同じ注意が要る。例えば$\frac{x}{1+x^2}$は奇関数なので，任意の$R$に対して$\int_{-R}^R\frac{x}{1+x^2}\dd x=0$である。一方，右半分の積分は$\frac12\log(1+R^2)$となり発散する。奇関数であることを使う前に，広義積分の収束を確認する必要がある。
+

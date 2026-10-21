@@ -1,0 +1,31 @@
+\subsection{三角関数と弧度法}
+三角関数を微分するとき，角は必ず弧度法で表す。基本になる極限は
+\[
+ \lim_{h\to0}\frac{\sin h}{h}=1
+\]
+である。$0<h<\frac\pi2$ では，単位円における三角形，扇形，外側の三角形の面積比較から
+\[
+ \sin h<h<\tan h
+\]
+を得る。したがって $\cos h<\frac{\sin h}{h}<1$ であり，挟み撃ちの原理から右極限は $1$ となる。$\frac{\sin h}{h}$ は $h$ の符号を変えても同じだから，左極限も $1$ である。また，
+\[
+ \frac{\cos h-1}{h}
+ =-\cfrac{2\sin^2\cfrac h2}{h}
+ =-\sin\frac h2\,\cfrac{\sin\cfrac h2}{\cfrac h2}
+ \longrightarrow0.
+\]
+加法定理に代入すれば，
+\begin{align*}
+ \frac{\sin(x+h)-\sin x}{h}
+ &=\sin x\frac{\cos h-1}{h}
+   +\cos x\frac{\sin h}{h}\\
+ &\longrightarrow\cos x.
+\end{align*}
+同様に余弦を微分でき，商の公式から正接も求まる。
+\[
+ (\sin x)'=\cos x,\qquad
+ (\cos x)'=-\sin x,\qquad
+ (\tan x)'=\frac1{\cos^2x}\quad(\cos x\ne0).
+\]
+度数法で $x$ を表すと，弧度への換算係数が微分に現れる。上の簡潔な公式が成り立つのは，弧度法を使っているからである。
+

@@ -1,0 +1,59 @@
+\subsection{隣り合う積分の比をはさむ}
+
+公式は積分の値を積で表したものである。今度は，積分の大小を使ってその積の極限を求める。$0\leqq\sin x\leqq1$だから，指数を大きくすると値は小さくなる。したがって
+\[
+ I_{n+2}\leqq I_{n+1}\leqq I_n.
+\]
+$I_n>0$で割り，式\eqref{式:ウォリス漸化式}を使うと
+\[
+ \frac{n+1}{n+2}
+ =\frac{I_{n+2}}{I_n}
+ \leqq\frac{I_{n+1}}{I_n}\leqq1.
+\]
+両端が$1$へ近づくため
+\begin{equation}\label{式:ウォリス隣接比}
+ \lim_{n\to\infty}\frac{I_{n+1}}{I_n}=1
+\end{equation}
+である。各$I_n$の極限を先に求めなくても，比の極限は分かる。
+
+ここで，次の有限の積を作る。
+\[
+ P_m=\prod_{k=1}^{m}\frac{(2k)^2}{(2k-1)(2k+1)}.
+\]
+$\prod$は，指定された範囲の項をすべて掛ける記号である。最初の数項を書けば
+\[
+ P_m=\frac{2\cdot2}{1\cdot3}
+      \frac{4\cdot4}{3\cdot5}\cdots
+      \frac{2m\cdot2m}{(2m-1)(2m+1)}.
+\]
+偶数と奇数の積をそれぞれまとめ，式\eqref{式:ウォリス偶数}と式\eqref{式:ウォリス奇数}を使うと
+\begin{align*}
+ \frac{I_{2m+1}}{I_{2m}}
+ &=\frac{2}{\pi}
+   \frac{\{(2m)!!\}^2}{(2m-1)!!(2m+1)!!}\\
+ &=\frac{2}{\pi}P_m.
+\end{align*}
+左辺は$1$へ近づくので，次の極限が得られる。
+\begin{equation}\label{式:ウォリスの積}
+ \boxed{\displaystyle
+ \lim_{m\to\infty}\prod_{k=1}^{m}
+ \frac{4k^2}{4k^2-1}=\frac{\pi}{2}}
+\end{equation}
+これが\textbf{ウォリスの積}である。無限個の数を一度に掛けたと考えるのではなく，有限の積$P_m$の数列の極限として定義している。
+
+証明の途中の不等式を残しておけば，近似の誤差も評価できる。$n=2m$の場合には
+\[
+ \frac{2m+1}{2m+2}
+ \leqq\frac{I_{2m+1}}{I_{2m}}\leqq1
+\]
+だから
+\[
+ \frac{2m+1}{2m+2}\frac{\pi}{2}
+ \leqq P_m\leqq\frac{\pi}{2}.
+\]
+従って，正の数を掛けて整理すれば
+\[
+ 2P_m\leqq\pi\leqq\frac{2m+2}{2m+1}\,2P_m.
+\]
+公式が極限を与えるだけでなく，有限の計算の結果がどれほど確かな範囲を与えるかも分かる。
+

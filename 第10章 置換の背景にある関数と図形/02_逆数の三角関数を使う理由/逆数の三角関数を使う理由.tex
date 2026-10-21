@@ -1,0 +1,60 @@
+\section{逆数の三角関数を使う理由}\label{節:相反三角関数}
+
+三角置換では$\frac1{\cos\theta}$や$\frac1{\sin\theta}$が繰り返し現れる。これらを一つの関数として書くと，平方や微分の関係を読み取りやすい。
+\begin{definition}{正割・余割・余接}
+分母が$0$でないところで
+\[
+\sec x=\frac1{\cos x},\qquad
+\csc x=\frac1{\sin x},\qquad
+\cot x=\frac{\cos x}{\sin x}
+\]
+と定義する。順に正割，余割，余接という。ここでの逆数と，前節の逆関数は異なる操作である。
+\end{definition}
+
+$\sin^2x+\cos^2x=1$を$\cos^2x$，$\sin^2x$で割ると，それぞれ
+\[
+1+\tan^2x=\sec^2x,\qquad
+1+\cot^2x=\csc^2x
+\]
+となる。微分も，すでに知っている商の微分から得られる。例えば
+\[
+(\sec x)'=\frac{\sin x}{\cos^2x}=\sec x\tan x.
+\]
+同様に計算して
+\begin{equation}\label{式:相反三角関数の微分}
+(\csc x)'=-\csc x\cot x,\qquad
+(\cot x)'=-\csc^2x
+\end{equation}
+を得る。この記法により，$x=\tan\theta$と置いたときの$\dd x$は$\sec^2\theta\dd\theta$，$\sqrt{1+x^2}$は$|\sec\theta|$と短く書ける。ただし，記号を短くしても，絶対値を外すための符号の確認は残る。
+
+\begin{example}{正割と余割を対数へ結び付ける}
+$\int\sec x\dd x$と$\int\csc x\dd x$を求めよ。
+\end{example}
+
+$\sec x$の微分は$\sec x\tan x$，$\tan x$の微分は$\sec^2x$である。この二つを足すと
+\[
+(\sec x+\tan x)'=\sec x(\sec x+\tan x)
+\]
+となり，元の$\sec x$が因子に現れる。また
+\[
+(\sec x+\tan x)(\sec x-\tan x)=1
+\]
+だから，$\sec x+\tan x$は定義されるところで$0$にならない。従って
+\[
+\int\sec x\dd x
+=\int\frac{(\sec x+\tan x)'}{\sec x+\tan x}\dd x
+=\log|\sec x+\tan x|+C.
+\]
+これは，分母の微分を分子に作る対数型の積分である。
+
+余割では引き算を考えると
+\[
+(\csc x-\cot x)'=-\csc x\cot x+\csc^2x
+=\csc x(\csc x-\cot x).
+\]
+さらに$(\csc x-\cot x)(\csc x+\cot x)=1$なので，
+\[
+\int\csc x\dd x=\log|\csc x-\cot x|+C
+\]
+となる。どちらも，もとの三角関数が定義される一つの区間で使う。特異点をまたぐ不定積分の定数を，一つにそろえる必要はない。
+

@@ -1,0 +1,31 @@
+\subsection{三角置換では正割の三乗になる}
+
+$x=\tan\theta$，$-\frac\pi2<\theta<\frac\pi2$と置く。この範囲では$\sec\theta>0$なので
+\[
+\sqrt{1+x^2}=\sec\theta,\qquad
+\dd x=\sec^2\theta\dd\theta,\qquad
+\int\sqrt{1+x^2}\dd x=\int\sec^3\theta\dd\theta.
+\]
+根号はなくなったが，三乗の積分が残った。$J=\int\sec^3\theta\dd\theta$と書き，$\sec\theta$を微分する側，$\sec^2\theta$を積分する側にして部分積分する。
+\[
+\begin{aligned}
+J&=\sec\theta\tan\theta
+-\int\sec\theta\tan^2\theta\dd\theta\\
+&=\sec\theta\tan\theta
+-\int\sec\theta(\sec^2\theta-1)\dd\theta\\
+&=\sec\theta\tan\theta-J+\int\sec\theta\dd\theta.
+\end{aligned}
+\]
+任意定数を最後にまとめるものとして，この等式を$J$について解く。前に求めた正割の積分から
+\[
+J=\frac12\sec\theta\tan\theta
++\frac12\log(\sec\theta+\tan\theta)+C.
+\]
+この範囲では$\sec\theta>|\tan\theta|$だから，対数の中は正である。$x$へ戻して
+\begin{equation}\label{式:一と二乗の根号積分}
+\int\sqrt{1+x^2}\dd x
+=\frac12\left\{x\sqrt{1+x^2}
++\log\bigl(x+\sqrt{1+x^2}\bigr)\right\}+C
+\end{equation}
+を得る。三角置換だけで計算が終わるのではなく，その後に部分積分を使った。
+

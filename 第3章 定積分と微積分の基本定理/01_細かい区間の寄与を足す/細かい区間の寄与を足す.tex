@@ -1,0 +1,56 @@
+\section{細かい区間の寄与を足す}\label{節:リーマン和}
+\chapterref{章:導入}では，長方形の幅を小さくして面積を求めた。そのときは等しい幅に分け，左端や右端の高さを使った。しかし，同じ図形の面積が，幅の分け方や高さを選ぶ点によって変わっては困る。そこで，まず分け方と点の選び方を明示し，それらに依存しない極限が存在するときに定積分を定義する。
+
+$a<b$ とし，区間 $[a,b]$ を
+\[
+ a=x_0<x_1<\cdots<x_n=b
+\]
+と分ける。この点の組を\textbf{分割} $P$ といい，第 $k$ 小区間の幅を $\Delta x_k=x_k-x_{k-1}$ と書く。さらに，各小区間 $[x_{k-1},x_k]$ の中から点 $\xi_k$ を一つずつ選ぶ。$f$ が $[a,b]$ で有界なら，
+\[
+ S(P,\xi)=\sum_{k=1}^{n}f(\xi_k)\Delta x_k
+\]
+を作れる。これを\textbf{リーマン和}という。$f(\xi_k)$ が正なら高さと幅の積であり，負なら符号を付けた寄与として足し合わせる。
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[x=3cm,y=1.8cm,>=Stealth]
+ \filldraw[fill=blue!12,draw=blue!55] (0,0) rectangle (0.8,1.1225);
+ \filldraw[fill=blue!12,draw=blue!55] (0.8,0) rectangle (1.8,1.01);
+ \filldraw[fill=blue!12,draw=blue!55] (1.8,0) rectangle (3,1.5625);
+ \draw[->] (-0.1,0)--(3.35,0) node[right]{$x$};
+ \draw[->] (0,-0.13)--(0,2.4) node[above]{$y$};
+ \draw[very thick,domain=0:3.1,samples=80] plot (\x,{1+0.25*(\x-1)^2});
+ \foreach \xx/\hh/\name in {0.3/1.1225/1,1.2/1.01/2,2.5/1.5625/3}{
+  \draw[blue,dashed] (\xx,0)--(\xx,\hh);
+  \fill[blue] (\xx,\hh) circle(1.7pt);
+  \node[blue] at (\xx,-0.45) {$\xi_{\name}$};
+ }
+ \node[below left] at (0,0) {$a=x_0$};
+ \node[below] at (0.8,0) {$x_1$};
+ \node[below] at (1.8,0) {$x_2$};
+ \node[below right] at (3,0) {$x_3=b$};
+ \node at (2.7,2.28) {$y=f(x)$};
+\end{tikzpicture}
+\caption{幅が異なっていてもよく，各小区間のどの点の高さを使ってもよい。}
+\label{図:リーマン和}
+\end{figure}
+
+図\ref{図:リーマン和}のように，分割を等間隔にする必要はなく，代表点 $\xi_k$ を端点にする必要もない。分割を細かくするとは，単に小区間の個数を増やすことではない。一つだけ幅の広い区間が残っている可能性を除くため，最大の幅
+\[
+ \|P\|=\max_{1\le k\le n}\Delta x_k
+\]
+を $0$ に近づける。
+
+\begin{definition}{定積分}
+$[a,b]$ 上の有界な関数 $f$ に対し，$\|P\|\to0$ のとき，分割と代表点の選び方によらずリーマン和が同じ有限値 $I$ に近づくなら，$f$ は $[a,b]$ で\textbf{積分可能}であるという。その値を\textbf{定積分}と呼び，
+\[
+ \int_a^b f(x)\dd x=I
+\]
+と書く。
+\end{definition}
+
+正確には，任意の $\varepsilon>0$ に対して，ある $\delta>0$ を選び，$\|P\|<\delta$ を満たすすべての分割とすべての代表点について $|S(P,\xi)-I|<\varepsilon$ とできることである。特定の分け方で一つの極限が求まるだけでは，この定義を満たすことまでは証明できない。
+
+記号 $\int$ は和を極限まで進める操作を表し，$\dd x$ はどの変数に沿った幅を足しているかを表す。$
+\int_a^b f(t)\dd t$ と文字を替えても同じ数である。$x$ や $t$ はこの積分の内部で用いる変数であり，$a,b$ が固定されていれば，定積分全体は一つの数になる。
+

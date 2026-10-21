@@ -1,0 +1,14 @@
+\section{積分で量を表す}
+$a<b$とする。必要な連続性・滑らかさを仮定し，曲線や立体の同じ部分を重複して数えない。
+\begin{align*}
+ \text{二曲線間の面積}\quad&A=\int_a^b|f(x)-g(x)|\dd x,\\
+ \text{断面積からの体積}\quad&V=\int_a^b A(x)\dd x,\\
+ \text{円環断面の体積}\quad&V=\pi\int_a^b\{R(x)^2-r(x)^2\}\dd x,\\
+ \text{グラフの長さ}\quad&L=\int_a^b\sqrt{1+f'(x)^2}\dd x,\\
+ \text{媒介曲線の長さ}\quad&L=\int_\alpha^\beta\sqrt{x'(t)^2+y'(t)^2}\dd t,\\
+ \text{位置の変化}\quad&s(b)-s(a)=\int_a^b v(t)\dd t,\\
+ \text{道のり}\quad&D=\int_a^b|v(t)|\dd t,\\
+ \text{関数の平均値}\quad&\overline f=\frac1{b-a}\int_a^b f(x)\dd x.
+\end{align*}
+円環の式の$R,r$は回転軸からの距離であり，$0\le r\le R$である。回転させる領域が軸をまたぐとき，符号付きの高さをそのまま外半径・内半径に使わない。\chapterref{章:積分の応用}を参照。
+

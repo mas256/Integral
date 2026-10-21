@@ -1,0 +1,32 @@
+\subsection{基準になる二つの積分}
+
+無限大での収束を調べる基準は
+\[
+ \int_1^{\infty}\frac1{x^p}\dd x
+\]
+である。$p\ne1$なら，まず有限の$R$まで積分して
+\[
+ \int_1^R x^{-p}\dd x=\frac{R^{1-p}-1}{1-p}.
+\]
+$p>1$なら$R^{1-p}\to0$なので収束し，値は$\frac1{p-1}$となる。$p<1$なら$R^{1-p}\to\infty$なので発散する。$p=1$では$\log R\to\infty$であり，やはり発散する。
+
+これに対して，有限端点$0$の近くでは
+\[
+ \int_{\varepsilon}^{1}x^{-p}\dd x
+ =\frac{1-\varepsilon^{1-p}}{1-p}\qquad(p\ne1)
+\]
+である。今度は$\varepsilon\to0+$なので，$p<1$のときに収束し，値は$\frac1{1-p}$になる。$p\geq1$では発散する。
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+積分 & 収束する条件 & 収束時の値\\
+\midrule
+$\int_1^{\infty}x^{-p}\dd x$ & $p>1$ & $\frac1{p-1}$\\[4pt]
+$\int_0^1x^{-p}\dd x$ & $p<1$ & $\frac1{1-p}$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+同じべき関数でも，不等号の向きが逆になる。遠くで減る速さを調べる場合と，端点で大きくなる速さを調べる場合では，問題が異なるからである。覚えるときは，$\frac1x$がどちらでも境目になることと，実際の原始関数の極限を対応させたい。
+
