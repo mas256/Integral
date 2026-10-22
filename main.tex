@@ -17,7 +17,7 @@
 \definecolor{softblue}{HTML}{F0F5F7}
 \definecolor{softteal}{HTML}{EDF6F3}
 \usepackage[unicode,colorlinks=true,linkcolor=blueblack,urlcolor=tealblack,bookmarksnumbered=true]{hyperref}
-\hypersetup{pdftitle={積分の体系的解説},pdfsubject={微分とのつながりから，計算の選択と発展へ}}
+\hypersetup{pdftitle={微積分の体系的解説},pdfsubject={高校数学から学ぶ微積分}}
 \setcounter{tocdepth}{1}
 \setcounter{secnumdepth}{2}
 \renewcommand{\arraystretch}{1.35}
@@ -43,7 +43,7 @@
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[L]{\small\nouppercase{\leftmark}}
-\fancyhead[R]{\small 積分の体系的解説}
+\fancyhead[R]{\small 微積分の体系的解説}
 \fancyfoot[C]{\thepage}
 \renewcommand{\headrulewidth}{0.3pt}
 \renewcommand{\chaptermark}[1]{\markboth{第\thechapter 章\quad #1}{}}
@@ -55,9 +55,9 @@
 \vspace*{15mm}
 {\sffamily\color{tealblack}\large CALCULUS\par}
 \vspace{7mm}
-{\sffamily\bfseries\color{blueblack}\Huge 積分の体系的解説\par}
+{\sffamily\bfseries\color{blueblack}\Huge 微積分の体系的解説\par}
 \vspace{6mm}
-{\Large 微分とのつながりから，計算の選択と発展へ\par}
+
 \vspace{18mm}
 \begin{center}
 \begin{tikzpicture}[x=2.9cm,y=1.9cm,>=Stealth]
@@ -73,30 +73,32 @@
 \end{tikzpicture}
 \end{center}
 \vfill
-{\large 高校の微積分から，その先の考え方へ\par}
+
 \vspace{4mm}
-{第1版\quad 2026年10月21日\par}
+{改稿版\quad 2026年10月22日\par}
 \end{titlepage}
 \frontmatter
 \input{前付/はじめに.tex}
 \tableofcontents
 \mainmatter
-\input{第1章 曲線の面積と変化をどう求めるか/曲線の面積と変化をどう求めるか.tex}
+\input{第1章 運動と面積/運動と面積.tex}
 \input{第2章 極限と微分/極限と微分.tex}
-\input{第3章 定積分と微積分の基本定理/定積分と微積分の基本定理.tex}
-\input{第4章 基本的な積分と式の整理/基本的な積分と式の整理.tex}
-\input{第5章 置換積分/置換積分.tex}
-\input{第6章 部分積分/部分積分.tex}
-\input{第7章 定積分の対称性/定積分の対称性.tex}
-\input{第8章 面積・体積・長さと運動/面積・体積・長さと運動.tex}
-\input{第9章 積分と数列・不等式/積分と数列・不等式.tex}
-\input{第10章 置換の背景にある関数と図形/置換の背景にある関数と図形.tex}
-\input{第11章 近似と広義積分/近似と広義積分.tex}
-\input{第12章 総合演習/総合演習.tex}
+\input{第3章 微分の応用/微分の応用.tex}
+\input{第4章 積分/積分.tex}
+\input{第5章 積分の計算/積分の計算.tex}
+\input{第6章 置換積分/置換積分.tex}
+\input{第7章 部分積分/部分積分.tex}
+\input{第8章 定積分の対称性/定積分の対称性.tex}
+\input{第9章 積分の応用/積分の応用.tex}
+\input{第10章 積分と数列/積分と数列.tex}
+\input{第11章 置換と図形/置換と図形.tex}
+\input{第12章 近似と広義積分/近似と広義積分.tex}
+\input{第13章 総合演習/総合演習.tex}
+
 \appendix
 \renewcommand{\chaptermark}[1]{\markboth{付録\thechapter\quad #1}{}}
-\input{付録A 章末問題・総合演習の解答/章末問題・総合演習の解答.tex}%
-\input{付録B 公式と解法の参照表/公式と解法の参照表.tex}
+\input{付録A 解答/解答.tex}
+\input{付録B 公式/公式.tex}
 \backmatter
 \input{後付/用語索引.tex}
 \input{後付/参考資料.tex}

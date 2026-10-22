@@ -1,0 +1,51 @@
+\section{微分の公式}\label{節:微分法則}
+基本的な関数を一つずつ定義から微分しても,複雑な式を毎回展開するのは大変である.そこで,式の作られ方と微分の関係を先に調べる.
+
+\begin{theorem}{和・積・商の微分}
+$f,g$ が微分可能で,\,$c$ が定数なら,
+\begin{align*}
+ (f+g)'&=f'+g',& (cf)'&=cf',\\
+ (fg)'&=f'g+fg',&
+ \left(\frac fg\right)'&=\frac{f'g-fg'}{g^2}\quad(g\ne0)
+\end{align*}
+が成り立つ.
+\end{theorem}
+
+和と定数倍は差商を分ければ分かる.積の公式では,二つの因子が同時に変わることに注意する.途中の項を一つ足して引けば,
+\begin{align*}
+ &f(x+h)g(x+h)-f(x)g(x)\\
+ &\quad=\{f(x+h)-f(x)\}g(x+h)
+       +f(x)\{g(x+h)-g(x)\}.
+\end{align*}
+これを $h$ で割って極限をとる.微分可能な $g$ は連続だから $g(x+h)\to g(x)$ となり,積の公式が得られる.積を微分して単に $f'g'$ としてはいけない.
+
+逆数については,
+\[
+ \cfrac{\cfrac1{g(x+h)}-\cfrac1{g(x)}}h
+ =-\frac{g(x+h)-g(x)}{h\,g(x+h)g(x)}
+ \longrightarrow-\frac{g'(x)}{g(x)^2}.
+\]
+$g(x)\ne0$ と連続性により,十分近くでは $g(x+h)\ne0$ となる.この逆数の公式と積の公式から,商の公式も導ける.
+
+\begin{theorem}{合成関数の微分}\label{定理:合成微分}
+$u=g(x)$ が $x$ で微分可能で,\,$f$ が $u=g(x)$ で微分可能なら,
+\[
+ \frac{\dd}{\dd x}f(g(x))=f'(g(x))g'(x)
+\]
+である.
+\end{theorem}
+
+外側の関数の変化率に,内側の変数の変化率を掛ける公式である.証明のため,\,$\Delta u=g(x+h)-g(x)$ とおく.\,$g$ の連続性から $\Delta u\to0$ であり,\,$f$ の微分可能性から
+\[
+ f(u+\Delta u)-f(u)=f'(u)\Delta u+\Delta u\,\eta(\Delta u),
+ \qquad \eta(\Delta u)\to0
+\]
+と書ける.\,$\eta(0)=0$ と定めれば,\,$\Delta u=0$ の場合もこの等式は使える.\,$h$ で割ると
+\[
+ \frac{f(g(x+h))-f(g(x))}h
+ =\{f'(g(x))+\eta(\Delta u)\}
+   \frac{g(x+h)-g(x)}h.
+\]
+右辺の極限は $f'(g(x))g'(x)$ になる.途中で $\Delta u$ を分母に置いていないので,内側の関数が同じ値を取る場合も含めて証明できた.
+
+

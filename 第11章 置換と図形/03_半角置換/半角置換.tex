@@ -1,0 +1,53 @@
+\section{半角置換}\label{節:半角置換}
+
+$\int R(\sin x,\cos x)\dd x$のように,正弦と余弦を足す・掛ける・割ることで作った式を考える.このような式を,二変数の\textbf{有理式}$R$で表すと書く.\,$t=\sin x$と置くだけでは,\,$\cos x$を$\pm\sqrt{1-t^2}$と表すことになり,根号が残る.両方を一度に有理式へ変えるには,半分の角の正接を使う.
+
+$t=\tan\frac x2$と置く.二倍角の公式と$1+\tan^2\frac x2=\sec^2\frac x2$から
+\begin{equation}\label{式:半角置換}
+\begin{aligned}
+\sin x&=\cfrac{2\sin\cfrac x2\cos\cfrac x2}
+ {\cos^2\cfrac x2+\sin^2\cfrac x2}
+ =\frac{2t}{1+t^2},\\
+\cos x&=\cfrac{\cos^2\cfrac x2-\sin^2\cfrac x2}
+ {\cos^2\cfrac x2+\sin^2\cfrac x2}
+ =\frac{1-t^2}{1+t^2},\\
+\frac{\dd t}{\dd x}&=\frac12\sec^2\frac x2
+ =\frac{1+t^2}{2},\qquad
+\dd x=\frac{2}{1+t^2}\dd t
+\end{aligned}
+\end{equation}
+を得る.最初の二つでは分子・分母を$\cos^2\frac x2$で割っている.この操作が可能な,\,$x\ne(2k+1)\pi$の区間を選ぶ.ここで$k$は整数である.
+
+この置換を\textbf{半角置換},または\textbf{ワイエルシュトラス置換}という.例えば$-\pi<x<\pi$では$t$は実数全体を狭義単調増加して動き,逆向きには$x=2\arctan t$と書ける.一般には
+\[
+(2k-1)\pi<x<(2k+1)\pi,\qquad
+x=2\arctan t+2k\pi
+\]
+である.正弦・余弦・$\dd x$のすべてが$t$の有理式になるので,置換後は割り算や部分分数などの代数的な整理を使える.
+
+\begin{example}{半角置換}
+$\int_0^{\frac\pi2}\frac1{2+\sin x}\dd x$を求めよ.
+\end{example}
+
+分母$2+\sin x$の微分は$\cos x$であり,分子には現れていない.そこで半角置換を使う.\,$t=\tan\frac x2$と置くと,端点は$t=0,1$へ移り,
+\[
+\begin{aligned}
+\int_0^{\frac\pi2}\frac1{2+\sin x}\dd x
+&=\int_0^1\cfrac1{2+\cfrac{2t}{1+t^2}}
+ \frac2{1+t^2}\dd t\\
+&=\int_0^1\frac1{t^2+t+1}\dd t.
+\end{aligned}
+\]
+ここで分母を平方完成すると$t^2+t+1=\left(t+\frac12\right)^2+\frac34$である.よって
+\[
+\begin{aligned}
+\int_0^1\frac1{t^2+t+1}\dd t
+&=\frac2{\sqrt3}\left[\arctan\frac{2t+1}{\sqrt3}\right]_0^1\\
+&=\frac2{\sqrt3}\left(\frac\pi3-\frac\pi6\right)
+=\frac\pi{3\sqrt3}.
+\end{aligned}
+\]
+
+もし積分区間が$[0,2\pi]$なら,\,$x=\pi$で$t$が定義されなくなる.端点だけを$t=0,0$へ換えて答えを$0$としてはいけない.元の被積分関数は$\pi$で連続でも,置換に使った座標はそこで途切れる.この場合には$\pi$の前後に分け,\,$t\to+\infty$と$t\to-\infty$を別々に扱う.章末問題で確かめる.
+
+

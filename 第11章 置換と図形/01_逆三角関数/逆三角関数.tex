@@ -1,0 +1,37 @@
+\section{逆三角関数}\label{節:逆三角関数}
+
+$\sin\theta=\frac12$を満たす角は,\,$\frac\pi6$,\,$\frac{5\pi}6$など無数にある.このままでは,\,$x$から角を返す関数にはならない.\sectionref{節:逆向きの置換}で扱った枝の選択を,ここでも行う.
+
+\begin{definition}{逆三角関数とその値の範囲}
+次の区間に制限した三角関数の逆関数を,それぞれ$\arcsin$,\,$\arccos$,\,$\arctan$と書く.
+\[
+\begin{array}{c|c|c}
+\text{逆関数}&\text{入力の範囲}&\text{返す角の範囲}\\ \hline
+\arcsin x&[-1,1]&\left[-\frac\pi2,\frac\pi2\right]\\[3pt]
+\arccos x&[-1,1]&[0,\pi]\\[3pt]
+\arctan x&\R&\left(-\frac\pi2,\frac\pi2\right)
+\end{array}
+\]
+例えば$\theta=\arcsin x$とは,\,$\sin\theta=x$かつ$-\frac\pi2\leqq\theta\leqq\frac\pi2$であることを表す.
+\end{definition}
+
+正弦と正接は指定した区間で狭義単調増加し,余弦は狭義単調減少するので,角は一つに決まる.正接の範囲の端を含めないのは,そこで$\cos\theta=0$になり,正接が定義されないためである.\,$\sin^{-1}x$などの表記もあるが,逆数との混同を避け,本書では$\arcsin x$を使う.
+
+定義から$\sin(\arcsin x)=x$は$-1\leqq x\leqq1$で成り立つ.一方,\,$\arcsin(\sin\theta)=\theta$は,\,$\theta$が選んだ範囲にあるときに限る.左辺が返す値は,必ずその範囲内だからである.
+
+\begin{example}{逆三角関数の範囲}
+次の値を求めよ.
+\[
+\arcsin\left(\sin\frac{5\pi}6\right),\qquad
+\arccos\left(\cos\frac{7\pi}6\right),\qquad
+\arctan\left(\tan\frac{3\pi}4\right).
+\]
+\end{example}
+
+第一の正弦は$\frac12$であり,\,$\arcsin$の値の範囲にある角は$\frac\pi6$である.第二の余弦は$-\frac{\sqrt3}2$であり,\,$[0,\pi]$の中では$\frac{5\pi}6$になる.第三の正接は$-1$であり,\,$\left(-\frac\pi2,\frac\pi2\right)$の中では$-\frac\pi4$になる.従って答えは順に
+\[
+\frac\pi6,\qquad\frac{5\pi}6,\qquad-\frac\pi4
+\]
+である.逆関数の記号を打ち消す前に,戻った角が指定された範囲にあるかを確かめる.
+
+\input{第11章 置換と図形/01_逆三角関数/01_逆三角関数の微分.tex}%

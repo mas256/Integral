@@ -1,0 +1,57 @@
+\section{融合問題}\label{節:融合問題}
+以下では,数列・図形・整数・組合せ・ベクトル・確率に関係する問題を扱う.新しい大学数学の定理は使わず,必要な考え方は問題文と解答で説明する.
+\begin{enumerate}[label=\textbf{\thechapter.\arabic*},leftmargin=*,itemsep=6pt,start=19]
+\item\label{問:融合ニュートン}
+$x_1=2$,\,$x_{n+1}=\frac12\left(x_n+\frac2{x_n}\right)$とする.
+\begin{enumerate}[label=(\arabic*),leftmargin=*]
+\item この漸化式が,方程式$x^2-2=0$に対するニュートン法から得られることを示せ.
+\item $b_n=\frac{x_n-\sqrt2}{x_n+\sqrt2}$とおき,\,$b_{n+1}$を$b_n$で表せ.これを用いて$x_n$を$n$の式で表せ.
+\item $q=\frac{2-\sqrt2}{2+\sqrt2}$として,\,$\lim_{n\to\infty}\frac{x_n-\sqrt2}{q^{2^{n-1}}}$を求めよ.
+\end{enumerate}
+\item\label{問:融合放物線}
+放物線$y=x^2$上の二点$A(a,a^2),B(b,b^2)$を考える.ただし$a<b$とする.両点における接線の交点を$T$,放物線上で$x$座標が$\frac{a+b}{2}$である点を$C$とする.
+\begin{enumerate}[label=(\arabic*),leftmargin=*]
+\item $T$の座標を求めよ.また$AB$に平行な接線の接点が$C$であることを示せ.
+\item 弦$AB$と放物線に囲まれた面積$Q$,三角形$ABC$の面積$P$,三角形$ABT$の面積$R$を求め,比$Q:P:R$を求めよ.
+\item $a+b=2c$を固定するとき,\,$T$の軌跡を求めよ.
+\end{enumerate}
+\item\label{問:融合自然対数の底}
+正の整数$n$について,\,$f_n(x)=\frac{x^n(1-x)^n}{n!}$,\,$I_n=\int_0^1\e^x f_n(x)\dd x$とする.
+\begin{enumerate}[label=(\arabic*),leftmargin=*]
+\item $0\le k\le2n$のすべての整数$k$について,\,$f_n^{(k)}(0),f_n^{(k)}(1)$が整数であることを示せ.ただし$f_n^{(0)}=f_n$とする.
+\item $I_n=A_n\e+B_n$を満たす整数$A_n,B_n$が存在することを示せ.
+\item $0<I_n\le\frac{\e}{4^n n!}$を示し,\,$\e$が無理数であることを証明せよ.
+\end{enumerate}
+\item\label{問:融合二項係数}
+正の整数$m$と非負整数$n$について
+\[
+ S_{m,n}=\sum_{k=0}^n\frac{(-1)^k\binom nk}{m+k}
+\]
+とする.
+\begin{enumerate}[label=(\arabic*),leftmargin=*]
+\item $S_{m,n}$を一つの定積分で表し,階乗を用いて値を求めよ.
+\item $m$を固定するとき,\,$\lim_{n\to\infty}n^m S_{m,n}$を求めよ.
+\end{enumerate}
+\item\label{問:融合近似とベクトル}
+実数$a,b$に対し,\,$E(a,b)=\int_0^1\{x^2-(ax+b)\}^2\dd x$とする.
+\begin{enumerate}[label=(\arabic*),leftmargin=*]
+\item $p(x)=x^2-x+\frac16$について,\,$\int_0^1p(x)\dd x=\int_0^1xp(x)\dd x=0$を示せ.
+\item $E(a,b)$の最小値と,それを与える$a,b$を求めよ.
+\item ベクトルの等式$|\boldsymbol u+\boldsymbol v|^2=|\boldsymbol u|^2+2\boldsymbol u\cdot\boldsymbol v+|\boldsymbol v|^2$と,(2)の計算を比較せよ.積分のどの式が内積の役割をしているか説明せよ.
+\end{enumerate}
+\Needspace{17\baselineskip}
+\item\label{問:融合確率と距離}
+一辺$1$の正方形$0\le x\le1,0\le y\le1$から点$P(x,y)$を無作為に選ぶ.ある部分に入る確率は,その部分の面積に等しいものとする.原点から$P$までの距離を$R$とする.
+\begin{enumerate}[label=(\arabic*),leftmargin=*]
+\item $0\le r\le\sqrt2$について,\,$R\le r$となる確率を求めよ.逆三角関数を使う場合は,角の範囲も明記すること.
+\item 距離の平均値は,次のように表される.
+\[
+ M=\int_0^1\left\{\int_0^1\sqrt{x^2+y^2}\dd y\right\}\dd x.
+\]
+内側を先に積分し,その結果を$x$について積分する記号である.正方形を対角線で分けることにより,
+\[
+ M=2\int_0^1\left\{\int_0^x\sqrt{x^2+y^2}\dd y\right\}\dd x
+\]
+と書けることを説明し,\,$M$を求めよ.
+\end{enumerate}
+\end{enumerate}

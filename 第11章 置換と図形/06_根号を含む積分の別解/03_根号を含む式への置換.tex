@@ -1,0 +1,51 @@
+\subsection{根号を含む式への置換}
+
+第三の方法では,関数の名前を使わずに
+\[
+t=x+\sqrt{1+x^2}
+\]
+と置く.この和を選ぶ理由は,差との積が$1$になるためである.
+\[
+\bigl(\sqrt{1+x^2}+x\bigr)
+\bigl(\sqrt{1+x^2}-x\bigr)=1.
+\]
+従って$\sqrt{1+x^2}-x=\frac1t$であり,和と差を取れば
+\[
+x=\frac12\left(t-\frac1t\right),\qquad
+\sqrt{1+x^2}=\frac12\left(t+\frac1t\right),\qquad
+\dd x=\frac12\left(1+\frac1{t^2}\right)\dd t.
+\]
+$t>0$であり,この$x$の式は$t>0$から実数全体への狭義単調増加な対応である.根号も微分も有理式へ変わったので,
+\[
+\begin{aligned}
+\int\sqrt{1+x^2}\dd x
+&=\frac14\int\left(t+\frac2t+\frac1{t^3}\right)\dd t\\
+&=\frac{t^2}{8}+\frac12\log t-\frac1{8t^2}+C.
+\end{aligned}
+\]
+ここで
+\[
+x\sqrt{1+x^2}=\frac14\left(t^2-\frac1{t^2}\right)
+\]
+だから,再び同じ答えになる.
+
+実は第二,第三の置換は直接つながっている.\,$x=\sinh u$なら
+\[
+t=x+\sqrt{1+x^2}=\sinh u+\cosh u=\e^u.
+\]
+つまり第三の方法は,双曲線の媒介変数$u$の代わりに$\e^u$を変数として,式を有理式へ直したものである.三角置換は円の関係式$1+\tan^2\theta=\sec^2\theta$を使い,双曲線置換は$\cosh^2u-\sinh^2u=1$を使う.同じ平方根に対して,どの恒等式と微分の組が短い計算を作るかが違う.
+
+最後に答えを微分して確認しておく.\,$s=\sqrt{1+x^2}$と書けば$s'=\frac xs$であり,
+\[
+\frac{\dd}{\dd x}\log(x+s)
+=\cfrac{1+\cfrac xs}{x+s}=\frac1s.
+\]
+従って式\eqref{式:一と二乗の根号積分}の右辺の微分は
+\[
+\frac12\left(s+\frac{x^2}{s}+\frac1s\right)
+=\frac12(s+s)=\sqrt{1+x^2}
+\]
+となる.三つの計算は同じ原始関数へ到達した.
+
+
+

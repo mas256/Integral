@@ -1,0 +1,54 @@
+\section{発展問題}\label{節:総合発展}
+
+\begin{enumerate}[label=\textbf{\thechapter.\arabic*},leftmargin=*,start=13]
+ \item\label{問:総合十三積分方程式}
+ $[0,1]$で連続な関数$f$が,すべての$x\in[0,1]$について
+ \[
+  f(x)=1+\int_0^x(x-t)f(t)\dd t
+ \]
+ を満たすとする.\,$f$を求め,求めた関数が確かにこの等式を満たすことを確かめよ.
+ 微分方程式の一般的な解法は用いず,積の微分と基本定理から求めてよい.
+ \item\label{問:総合十四二つの制約}
+ $[0,1]$で連続な実数値関数$f$が
+ \[
+  \int_0^1f(x)\dd x=1,\qquad
+  \int_0^1xf(x)\dd x=0
+ \]
+ を満たすとする.\,$\int_0^1f(x)^2\dd x$の最小値と,それを与える関数を求めよ.
+ \item\label{問:総合十五媒介曲線}
+ $0\leqq t\leqq\pi$で
+ \[
+  x=t-\frac12\sin2t,\qquad y=\sin^2t
+ \]
+ と表される曲線を考える.この曲線と$x$軸で囲まれる領域の面積,曲線の長さ,領域を$x$軸のまわりに一回転してできる立体の体積を求めよ.
+ 面積と体積の積分で,同じ部分を重複して数えていないことも確かめること.
+ \item\label{問:総合十六近似と条件収束}
+ 次の二つの問いに,原始関数の初等的な表示を求めずに答えよ.
+ \begin{enumerate}[label=(\arabic*),leftmargin=*]
+  \item 有限テイラー公式を使い,\,$A=\int_0^1\sin(x^2)\dd x$を幅$\frac1{10000}$以下の有理数の区間に挟め.
+  \item 広義積分$\int_1^{\infty}\sin(x^2)\dd x$が条件収束することを示せ.
+ \end{enumerate}
+ \item\label{問:総合十七ウォリス}
+ 非負整数$n$に対して
+ \[
+  C_n=\int_0^1(1-x^2)^n\dd x
+ \]
+ とする.\,$C_0$と$C_n$の漸化式を求め,\,$C_n$を有限の積で表せ.
+ 次にウォリスの積分との関係を使って,
+ \[
+  \lim_{n\to\infty}\sqrt n\,C_n,
+  \qquad
+  \lim_{n\to\infty}n^{\frac32}(C_n-C_{n+1})
+ \]
+ を求めよ.
+ \item\label{問:総合十八相補と半角}
+ $n$を正の整数とする.次の広義積分を,\,$n$を含む有限の積で表せ.
+ \[
+  J_n=\int_{-\pi}^{\pi}
+  \frac{\sin^{2n}x}{(1+\e^x)\sqrt{1+\cos x}}\dd x.
+ \]
+ 最初に両端での収束を確かめること.対称性,半角公式,置換積分,部分積分を組み合わせれば,ベータ関数やガンマ関数の公式を使わずに求められる.
+\end{enumerate}
+
+\clearpage
+

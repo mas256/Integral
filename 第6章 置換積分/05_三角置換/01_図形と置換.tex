@@ -1,0 +1,9 @@
+\subsection{図形と置換}
+定積分$\int_0^1\sqrt{1-x^2}\dd x$は,半径$1$の四分円の面積だから$\frac\pi4$である.三角置換でも確かめてみよう.\,$x=\sin\theta$,\,$0\le\theta\le\frac\pi2$とすると,
+\[
+ \int_0^1\sqrt{1-x^2}\dd x
+ =\int_0^{\frac\pi2}\cos^2\theta\dd\theta
+ =\frac12\int_0^{\frac\pi2}(1+\cos2\theta)\dd\theta=\frac\pi4.
+\]
+この場合は図形から値を求めるほうが短い.しかし,同じ置換は$\int_0^a\sqrt{1-x^2}\dd x$にも使え,途中までの面積を表せる.変数$x$を円上の角$\theta$で表したのである.その際には,高さの$\cos\theta$に加え,横幅の変化からも$\dd x=\cos\theta\dd\theta$が現れる.円上の高さを置き換えるだけでは,面積の計算にはならない.
+

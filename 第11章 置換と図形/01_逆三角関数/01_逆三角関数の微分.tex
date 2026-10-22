@@ -1,0 +1,59 @@
+\subsection{逆三角関数の微分}
+
+$y=\arcsin x$,\,$-1<x<1$とおく.\,$\sin y=x$だから,逆関数の微分の公式,または両辺の微分によって
+\[
+\cos y\,y'=1
+\]
+となる.ここで$-\frac\pi2<y<\frac\pi2$なので$\cos y>0$である.従って$\cos y=\sqrt{1-x^2}$と符号まで決まり,
+\[
+(\arcsin x)'=\frac1{\sqrt{1-x^2}}\qquad(-1<x<1)
+\]
+を得る.端点では分母が$0$になり,この有限な微分係数の公式は使えない.
+
+$y=\arccos x$の場合には,\,$0<y<\pi$で$\sin y>0$であり,\,$-\sin y\,y'=1$となる.そのため
+\[
+(\arccos x)'=-\frac1{\sqrt{1-x^2}}\qquad(-1<x<1)
+\]
+である.負号は,余弦が選んだ区間で減少することとも一致する.\,$y=\arctan x$では$\tan y=x$を微分して
+\[
+(1+\tan^2y)y'=1,\qquad
+(\arctan x)'=\frac1{1+x^2}\qquad(x\in\R)
+\]
+となる.これらは積分公式を仮定して得たものではなく,もとの三角関数の微分から得た公式である.
+
+合成関数の微分を使えば,\,$a>0$に対して
+\begin{equation}\label{式:逆三角関数の積分}
+\begin{aligned}
+\int\frac1{a^2+x^2}\dd x
+ &=\frac1a\arctan\frac xa+C,\\
+\int\frac1{\sqrt{a^2-x^2}}\dd x
+ &=\arcsin\frac xa+C\qquad(|x|<a)
+\end{aligned}
+\end{equation}
+を得る.第一の式では,\,$x$を$a$で割ることと,外側の係数$\frac1a$の両方が必要である.第二の式では,根号から出る$a$と合成関数の微分の$\frac1a$が打ち消し合う.
+
+\begin{example}{二次式の逆数の積分}
+次の不定積分を求めよ.
+\[
+\text{(1)}\quad\int\frac1{x^2-4x+8}\dd x,
+\qquad
+\text{(2)}\quad\int\frac1{\sqrt{9-4x^2}}\dd x.
+\]
+\end{example}
+
+(1) の分母は$(x-2)^2+4$である.中心を$2$へ移し,長さの尺度を$2$でそろえるため,\,$u=\frac{x-2}{2}$と置く.\,$\dd x=2\dd u$だから
+\[
+\int\frac1{x^2-4x+8}\dd x
+=\frac12\int\frac1{1+u^2}\dd u
+=\frac12\arctan\frac{x-2}{2}+C.
+\]
+(2) では$u=\frac{2x}{3}$と置くと,\,$\dd x=\frac32\dd u$,\,$\sqrt{9-4x^2}=3\sqrt{1-u^2}$である.よって
+\[
+\int\frac1{\sqrt{9-4x^2}}\dd x
+=\frac12\int\frac1{\sqrt{1-u^2}}\dd u
+=\frac12\arcsin\frac{2x}{3}+C.
+\]
+もとの関数が実数で定義される区間は$-\frac32<x<\frac32$であり,この範囲で答えを用いる.
+
+
+

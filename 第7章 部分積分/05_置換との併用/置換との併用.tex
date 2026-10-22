@@ -1,0 +1,41 @@
+\section{置換との併用}\label{節:置換と部分積分}
+
+積分法は,問題ごとに一つだけ選ぶものではない.置換によって合成関数をほどくと,今度は二つの関数の積が現れ,部分積分が使えることがある.前章でも,根号を変数に換えた後で割り算を使った.同じように,途中の式に合わせて次の道具を選べばよい.
+
+\begin{example}{対数と三角関数}
+$x>0$ において,\,$\int\sin(\log x)\dd x$ を求めよ.
+\end{example}
+
+角の $\log x$ を一つの変数 $t$ にしたい.しかし,もとの積分には $\frac1x$ がないので,\,$\sin t\dd t$ と置き換えることはできない.\,$t=\log x$ を $x=\e^t$ と解き直すと,
+\[
+ \dd x=\e^t\dd t
+\]
+である.この微分の係数も含めて換えると,
+\[
+ \int\sin(\log x)\dd x
+ =\int\e^t\sin t\dd t
+\]
+となる.これは直前の例題で求めた形だから,
+\[
+\begin{aligned}
+ \int\sin(\log x)\dd x
+ &=\frac12\e^t(\sin t-\cos t)+C\\
+ &=\frac x2\{\sin(\log x)-\cos(\log x)\}+C.
+\end{aligned}
+\]
+$\log x$ は $x>0$ で狭義単調増加し,逆向きの対応 $x=\e^t$ も一つに決まっている.置換後に $\e^t$ が現れたのは,新しい問題を余計に作ったためではなく,\,$\dd x$ を正しく書き換えたためである.
+
+検算では,外にある $x$ と,内側の $\log x$ の両方を微分する.
+\[
+\begin{aligned}
+ &\frac{\dd}{\dd x}
+ \left[\frac x2\{\sin(\log x)-\cos(\log x)\}\right]\\
+ &\qquad=\frac12\{\sin(\log x)-\cos(\log x)\}
+   +\frac x2\cdot\frac1x
+     \{\cos(\log x)+\sin(\log x)\}\\
+ &\qquad=\sin(\log x).
+\end{aligned}
+\]
+$t=\log x$ と置くだけでは終わらず,置換後の積を部分積分で求め,最後に元の変数へ戻した.この順序が,それぞれの手法の役割を分けている.
+
+
