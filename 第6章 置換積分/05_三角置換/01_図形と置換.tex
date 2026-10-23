@@ -1,9 +1,37 @@
 \subsection{図形と置換}
-定積分$\int_0^1\sqrt{1-x^2}\dd x$は,半径$1$の四分円の面積だから$\frac\pi4$である.三角置換でも確かめてみよう.\,$x=\sin\theta$,\,$0\le\theta\le\frac\pi2$とすると,
+四分円の途中までの面積も求めてみよう.半径を引き続き$a>0$とし,$0\leq b\leq a$に対して
 \[
- \int_0^1\sqrt{1-x^2}\dd x
- =\int_0^{\frac\pi2}\cos^2\theta\dd\theta
- =\frac12\int_0^{\frac\pi2}(1+\cos2\theta)\dd\theta=\frac\pi4.
+ \int_0^b\sqrt{a^2-x^2}\dd x
 \]
-この場合は図形から値を求めるほうが短い.しかし,同じ置換は$\int_0^a\sqrt{1-x^2}\dd x$にも使え,途中までの面積を表せる.変数$x$を円上の角$\theta$で表したのである.その際には,高さの$\cos\theta$に加え,横幅の変化からも$\dd x=\cos\theta\dd\theta$が現れる.円上の高さを置き換えるだけでは,面積の計算にはならない.
+を考える.\,$x=a\sin\theta$と置き,$\sin\beta=\frac ba$となる角$\beta$を$0\leq\beta\leq\frac\pi2$から選ぶ.上端$x=b$は$\theta=\beta$に対応するので,
+\begin{align*}
+ \int_0^b\sqrt{a^2-x^2}\dd x
+ &=a^2\int_0^\beta\cos^2\theta\dd\theta\\
+ &=\frac{a^2\beta}{2}+\frac{a^2\sin\beta\cos\beta}{2}\\
+ &=\frac{a^2\beta}{2}+\frac{b\sqrt{a^2-b^2}}2
+\end{align*}
+となる.高さの$\sqrt{a^2-x^2}$が$a\cos\theta$になるだけでなく,横幅の変化からも$\dd x=a\cos\theta\dd\theta$が現れる.この二つを掛けたものが$a^2\cos^2\theta\dd\theta$である.
 
+図形からも同じ二つの項が得られる.図\ref{図:円の部分面積}で$O$を原点,$A=(0,a)$,\,$P=(b,\sqrt{a^2-b^2})$,\,$H=(b,0)$とする.\,$\beta$は$y$軸の正の向きと$OP$のなす角である.求める領域を線分$OP$で分けると,扇形$AOP$と直角三角形$OHP$になる.それぞれの面積が$\frac{a^2\beta}{2}$と$\frac{b\sqrt{a^2-b^2}}2$であり,積分で得た二項に対応する.\,$b=a$なら$\beta=\frac\pi2$で三角形の面積が$0$となり,四分円の面積に戻る.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[x=4cm,y=4cm,>=Stealth]
+ \fill[softteal] (0,0)--(0,1) arc[start angle=90,end angle=53.130102,radius=1]--cycle;
+ \fill[softblue] (0,0)--(.6,0)--(.6,.8)--cycle;
+ \draw[->] (-.05,0)--(1.15,0) node[right]{$x$};
+ \draw[->] (0,-.05)--(0,1.15) node[above]{$y$};
+ \draw[thick] (1,0) arc[start angle=0,end angle=90,radius=1];
+ \draw[thick] (0,0)--(.6,.8)--(.6,0);
+ \draw (.55,0)--(.55,.05)--(.6,.05);
+ \draw (0,.25) arc[start angle=90,end angle=53.130102,radius=.25];
+ \node at (.105,.30) {$\beta$};
+ \node[left] at (0,1) {$A(0,a)$};
+ \node[above right] at (.6,.8) {$P(b,\sqrt{a^2-b^2})$};
+ \node[below] at (.6,0) {$H(b,0)$};
+ \node[below left] at (0,0) {$O$};
+ \node[below] at (1,0) {$a$};
+\end{tikzpicture}
+\caption{円の途中までの面積を,扇形と直角三角形に分ける.}
+\label{図:円の部分面積}
+\end{figure}

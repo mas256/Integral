@@ -18,11 +18,29 @@ $0<x<1$では分母は正なので,\,$x=\frac1{\sqrt2}$の前後で増加から�
 \]
 したがって$S=4xy\le2$である.等号は$x=y=\frac1{\sqrt2}$のときに成り立つ.図形では,長方形が正方形になる場合である.
 
-幾何的にも,長方形の辺を$a,b$,対角線を$2$とすれば,$a,b$を二辺とする直角三角形の斜辺は$2$である.この直角三角形を四つ並べ,外側を一辺$2$の正方形,中央を一辺$|a-b|$の正方形にすると,面積の和から
+幾何的にも,長方形の辺を$a,b$,対角線を$2$とすれば,$a,b$を二辺とする直角三角形の斜辺は$2$である.図\ref{図:三角形の並べ替え}のように,四つの斜辺を外側の正方形の辺にして並べると,中央には一辺$|a-b|$の正方形が残る.面積の和から
 \[
  4=4\cdot\frac{ab}{2}+(a-b)^2
 \]
 となる.したがって$ab\le2$であり,等号は中央の正方形の面積が$0$,すなわち$a=b$のときに成り立つ.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[x=2cm,y=2cm]
+ \filldraw[fill=softblue,draw=blueblack] (0,0)--(2,0)--(1.28,.96)--cycle;
+ \filldraw[fill=softteal,draw=blueblack] (2,0)--(2,2)--(1.04,1.28)--cycle;
+ \filldraw[fill=softblue,draw=blueblack] (2,2)--(0,2)--(.72,1.04)--cycle;
+ \filldraw[fill=softteal,draw=blueblack] (0,2)--(0,0)--(.96,.72)--cycle;
+ \filldraw[fill=tealblack!20,draw=blueblack] (1.28,.96)--(1.04,1.28)--(.72,1.04)--(.96,.72)--cycle;
+ \draw[thick] (0,0) rectangle (2,2);
+ \node[below] at (1,0) {$2$};
+ \node[above left] at (.64,.48) {$a$};
+ \node[above right] at (1.64,.48) {$b$};
+ \draw (1.16,1.12)--(2.15,1.55) node[right]{$|a-b|$};
+\end{tikzpicture}
+\caption{斜辺を外側にして四つの直角三角形を並べる.}
+\label{図:三角形の並べ替え}
+\end{figure}
 
 微分による解法は,円を別の曲線へ変えても,一つの変数で面積を表せれば使える.一方,平方を使った解法では,円の条件$x^2+y^2=1$がそのまま上からの評価になる.答えの正方形も,等号条件$x=y$から分かる.このように,計算の長さだけでなく,条件のどの部分を使ったかまで比べておきたい.
 
