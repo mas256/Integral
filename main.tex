@@ -40,6 +40,10 @@
 \newenvironment{theorem}[1]{\refstepcounter{result}\begin{tcolorbox}[enhanced,breakable,colback=softteal,colframe=tealblack,boxrule=0.4pt,arc=0mm,title={定理\theresult\quad #1},fonttitle=\bfseries]}{\end{tcolorbox}}
 \newenvironment{definition}[1]{\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=tealblack,boxrule=0.4pt,arc=0mm,title={定義\quad #1},fonttitle=\bfseries]}{\end{tcolorbox}}
 \newenvironment{note}{\par\smallskip\noindent\textbf{補足}\quad}{\par\smallskip}
+% 解法の説明の直後,例題の前に置く手順の要点.中身は \textbf{POINT}\par に続けて1〜2行で書く.
+\newtcolorbox{bookpoint}{enhanced,unbreakable,sharp corners,colback=softblue,colframe=blueblack,boxrule=0pt,leftrule=1.2pt,left=5pt,right=3pt,top=3pt,bottom=3pt,before skip=6pt,after skip=6pt}
+% 例題の【方針】【解答】【解法】や,発想・別解などの区切り.
+\newcommand{\paragraphbf}[1]{\par\medskip\noindent\textbf{【#1】}\par\nobreak}
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[L]{\small\nouppercase{\leftmark}}
