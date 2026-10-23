@@ -1,11 +1,11 @@
 \section{第13章の解答}\label{解答:第13章}
 
 \paragraph{13.1}
-分母の次数より分子の次数が高いので,先に多項式の割り算をする.
+分子の次数が分母の次数より高いので,先に多項式の割り算をして,残りを対数の積分に帰着させる.
 \[
  x^3+x^2+2x+1=(x+1)(1+x^2)+x
 \]
-だから
+より,
 \[
  \begin{aligned}
  \int_0^1\frac{x^3+x^2+2x+1}{1+x^2}\dd x
@@ -17,169 +17,198 @@
 余りの分子$x$が分母の微分$2x$の定数倍になったため,対数の形で積分できた.
 
 \paragraph{13.2}
-$u=1+x^2$と置くと$\dd u=2x\dd x$であり,\,$x=0,1$はそれぞれ$u=1,2$に対応する.従って
+$u=1+x^2$と置いて,\,$u^{\frac12}$の積分に帰着させる.\,$\dd u=2x\dd x$であり,\,$x=0,1$はそれぞれ$u=1,2$に対応する.したがって置換後の区間は$1\leqq u\leqq2$であり,
 \[
+ \begin{aligned}
  \int_0^1x\sqrt{1+x^2}\dd x
- =\frac12\int_1^2u^{\frac12}\dd u
- =\left[\frac13u^{\frac32}\right]_1^2
- =\boxed{\frac{2\sqrt2-1}{3}}.
+ &=\frac12\int_1^2u^{\frac12}\dd u\\
+ &=\left[\frac13u^{\frac32}\right]_1^2\\
+ &=\boxed{\frac{2\sqrt2-1}{3}}.
+ \end{aligned}
 \]
-積分変数を$u$へ変えた時点で,端点も$u$の値へ変えている.
 
 \paragraph{13.3}
-$\log x$を微分し,\,$x$を積分すると,残りは整式の積分になる.部分積分により
+$\log x$を微分し,\,$x$を積分する部分積分によって,整式の積分に帰着させる.
 \[
  \begin{aligned}
  \int_1^{\e}x\log x\dd x
  &=\left[\frac{x^2}{2}\log x\right]_1^{\e}
    -\frac12\int_1^{\e}x\dd x\\
- &=\frac{\e^2}{2}-\frac{\e^2-1}{4}
- =\boxed{\frac{\e^2+1}{4}}.
+ &=\frac{\e^2}{2}-\frac{\e^2-1}{4}\\
+ &=\boxed{\frac{\e^2+1}{4}}.
  \end{aligned}
 \]
 
 \paragraph{13.4}
-$G(u)=\int_0^u\sqrt{1+t^2}\dd t$と置く.基本定理より$G'(u)=\sqrt{1+u^2}$であり,\,$F(x)=G(x^2)-G(x)$だから,合成関数の微分によって
+両端が動く積分を,下端が$0$に固定された関数の差に書き直し,基本定理と合成関数の微分に帰着させる.
+$G(u)=\int_0^u\sqrt{1+t^2}\dd t$と置くと,基本定理より$G'(u)=\sqrt{1+u^2}$である.\,$F(x)=G(x^2)-G(x)$だから,合成関数の微分によって
 \[
- F'(x)=2x\sqrt{1+x^4}-\sqrt{1+x^2}.
+ F'(x)=2x\sqrt{1+x^4}-\sqrt{1+x^2}
 \]
-上端だけでなく,下端からも項が現れる.\,$x=1$では上下端が一致するため$F(1)=0$,また$F'(1)=\sqrt2$である.従って接線は
+となる.上端だけでなく,下端からも項が現れる.\,$x=1$では上下端が一致するので$F(1)=0$であり,
+\[
+ F'(1)=2\sqrt2-\sqrt2=\sqrt2
+\]
+である.したがって接線は
 \[
  \boxed{y=\sqrt2(x-1)}.
 \]
 
 \paragraph{13.5}
-求める積分を$I$とする.\,$x=-t$と置き,\,$1+x^2$が偶関数であることを使えば
+$x=-t$と置いて書き直した積分を元の積分と足し,指数関数を含む重みを消して整式の積分に帰着させる.
+求める積分を$I$とする.\,$x=-t$と置き,\,$1+x^2$が偶関数であることを使うと
 \[
- I=\int_{-a}^{a}\frac{1+t^2}{1+\e^{-t}}\dd t.
+ I=\int_{-a}^{a}\frac{1+t^2}{1+\e^{-t}}\dd t
 \]
-元の式と足すと,
+となる.積分変数の文字を$x$に戻して元の式と足すと,
 \[
  \frac1{1+\e^x}+\frac1{1+\e^{-x}}=1
 \]
-によって重みが消える.従って
+によって重みが消える.したがって
 \[
- 2I=\int_{-a}^{a}(1+x^2)\dd x
- =2a+\frac{2a^3}{3},\qquad
+ \begin{aligned}
+ 2I&=\int_{-a}^{a}(1+x^2)\dd x\\
+ &=2a+\frac{2a^3}{3}
+ \end{aligned}
+\]
+より,
+\[
  \boxed{I=a+\frac{a^3}{3}}.
 \]
-不定積分を求めずに値が決まるのは,区間と分子が反転に対して変わらないためである.
 
 \paragraph{13.6}
+面積は上下の高さの差を,体積は回転軸からの2つの距離の平方の差を積分する.
 交点は$x^2=x$より$x=0,1$である.\,$0\leqq x\leqq1$では$x^2\leqq x$なので,面積$S$は
 \[
- S=\int_0^1(x-x^2)\dd x
- =\left[\frac{x^2}{2}-\frac{x^3}{3}\right]_0^1
- =\boxed{\frac16}.
+ \begin{aligned}
+ S&=\int_0^1(x-x^2)\dd x\\
+ &=\left[\frac{x^2}{2}-\frac{x^3}{3}\right]_0^1\\
+ &=\boxed{\frac16}.
+ \end{aligned}
 \]
-回転すると,\,$x$を固定した断面は外半径$x$,内半径$x^2$の円環になる.従って体積$V$は
+回転すると,\,$x$を固定した断面は外半径$x$,内半径$x^2$の円環になる.したがって体積$V$は
 \[
- V=\pi\int_0^1\{x^2-(x^2)^2\}\dd x
- =\pi\left(\frac13-\frac15\right)
- =\boxed{\frac{2\pi}{15}}.
+ \begin{aligned}
+ V&=\pi\int_0^1\{x^2-(x^2)^2\}\dd x\\
+ &=\pi\left(\frac13-\frac15\right)\\
+ &=\boxed{\frac{2\pi}{15}}.
+ \end{aligned}
 \]
-面積では上下の高さの差を積分し,体積では二つの半径の平方の差を積分している.
 
 \paragraph{13.7}
+端点を微分して極値の候補を求める.値の比較は,積分区間の中心を変数に取り直し,\,$H$を平方完成した形に帰着させて行う.
+
 積分の両端を微分すると
 \[
  \begin{aligned}
  H'(a)&=\{(a+1)^2-2(a+1)\}^2-(a^2-2a)^2\\
  &=(a^2-1)^2-(a^2-2a)^2\\
- &=(2a-1)(2a^2-2a-1).
+ &=(2a-1)(2a^2-2a-1)
  \end{aligned}
 \]
-従って極値の候補は$a=\frac12,\frac{1-\sqrt3}{2},\frac{1+\sqrt3}{2}$である.候補の値を比べ,実数全体での最小値を確かめるため,積分区間の中心を使って式を整理する.
+となる.したがって極値の候補は$a=\frac12,\frac{1-\sqrt3}{2},\frac{1+\sqrt3}{2}$である.候補の値を比べ,それが実数全体での最小値であることも確かめるため,積分区間の中心を使って式を整理する.
 
 $y=a-\frac12$とし,\,$x=a+\frac12+s$と置くと,\,$-\frac12\leqq s\leqq\frac12$,\,$x-1=y+s$である.\,$x^2-2x=(x-1)^2-1$なので
 \[
- H(a)=\int_{-\frac12}^{\frac12}\{(y+s)^2-1\}^2\dd s.
+ H(a)=\int_{-\frac12}^{\frac12}\{(y+s)^2-1\}^2\dd s
 \]
-展開後の$s$の奇数次の項は積分すると消える.残る項は
+となる.展開した後の$s$の奇数次の項は,積分すると消える.残る項を積分して
 \[
  \begin{aligned}
  H(a)
  &=\int_{-\frac12}^{\frac12}
    \{s^4+(6y^2-2)s^2+(y^2-1)^2\}\dd s\\
  &=\frac1{80}+\frac{6y^2-2}{12}+(y^2-1)^2\\
- &=y^4-\frac32y^2+\frac{203}{240}
- =\left(y^2-\frac34\right)^2+\frac{17}{60}.
+ &=y^4-\frac32y^2+\frac{203}{240}\\
+ &=\left(y^2-\frac34\right)^2+\frac{17}{60}
  \end{aligned}
 \]
-最後の平方は$0$以上で,\,$y=\pm\frac{\sqrt3}{2}$のときに限り$0$になる.従って
+を得る.最後の平方は$0$以上で,\,$y=\pm\frac{\sqrt3}{2}$のときに限り$0$になる.したがって
 \[
  \boxed{\min H(a)=\frac{17}{60},\qquad
- a=\frac{1-\sqrt3}{2},\ \frac{1+\sqrt3}{2}}.
+ a=\frac{1-\sqrt3}{2},\ \frac{1+\sqrt3}{2}}
 \]
-二つの区間が同じ最小値を与えるのは,被積分関数が$x=1$に関して対称であることにも対応する.
+である.2つの区間が同じ最小値を与えるのは,被積分関数$\{(x-1)^2-1\}^2$が直線$x=1$に関して対称であることに対応する.
 
 \paragraph{13.8}
-対数の中を$u=1+x^2$と置くと,\,$\dd u=2x\dd x$,\,$x^2=u-1$だから
+$u=1+x^2$と置いて$(u-1)\log u$の積分に直し,\,$\log u$を微分する部分積分に帰着させる.
+$\dd u=2x\dd x$,\,$x^2=u-1$だから
 \[
- x^3\dd x=\frac12(u-1)\dd u.
+ x^3\dd x=\frac12(u-1)\dd u
 \]
-区間は$[1,2]$となり,求める積分は$\frac12\int_1^2(u-1)\log u\dd u$である.ここで$\log u$を微分する部分積分を行う.
+であり,区間は$[1,2]$となる.\,$u-1$の原始関数として$\frac{u^2}{2}-u$を選んで部分積分すると,
 \[
  \begin{aligned}
- \frac12\int_1^2(u-1)\log u\dd u
+ \int_0^1x^3\log(1+x^2)\dd x
+ &=\frac12\int_1^2(u-1)\log u\dd u\\
  &=\frac12\left[\left(\frac{u^2}{2}-u\right)\log u\right]_1^2
    -\frac12\int_1^2\left(\frac u2-1\right)\dd u\\
- &=\left[-\frac{u^2}{8}+\frac u2\right]_1^2
- =\frac12-\frac38
- =\boxed{\frac18}.
+ &=-\frac12\int_1^2\left(\frac u2-1\right)\dd u\\
+ &=\left[-\frac{u^2}{8}+\frac u2\right]_1^2\\
+ &=\frac12-\frac38\\
+ &=\boxed{\frac18}.
  \end{aligned}
 \]
 端点の項は,\,$u=1$では$\log1=0$,\,$u=2$では$\frac{u^2}{2}-u=0$となるため,両方とも消える.
 
 \paragraph{13.9}
-一項を
+1項を$\frac1nf\left(\frac kn\right)$の形に書き,区分求積法によって定積分に帰着させる.
 \[
  \frac{k^2}{n(n^2+k^2)}
  =\frac1n\cfrac{\left(\cfrac kn\right)^2}{1+\left(\cfrac kn\right)^2}
 \]
-と書く.\,$f(x)=\frac{x^2}{1+x^2}$は$[0,1]$で連続なので,この和の極限はその区間での積分である.分子を$x^2=(1+x^2)-1$と分けると
+と書ける.\,$f(x)=\frac{x^2}{1+x^2}$は$[0,1]$で連続なので,この和の極限は$\int_0^1f(x)\dd x$である.分子を$x^2=(1+x^2)-1$と分けると
 \[
  \begin{aligned}
  \int_0^1\frac{x^2}{1+x^2}\dd x
  &=\int_0^1\left(1-\frac1{1+x^2}\right)\dd x\\
- &=\left[x-\arctan x\right]_0^1
- =\boxed{1-\frac{\pi}{4}}.
+ &=\left[x-\arctan x\right]_0^1\\
+ &=\boxed{1-\frac{\pi}{4}}.
  \end{aligned}
 \]
 
 \paragraph{13.10}
-各$x\in[0,1]$で,縦の線分は$y=x-1$から$y=x$まであり,常に$x$軸を含む.従って回転断面の中心には穴がなく,円板になる.端点の軸からの距離はそれぞれ$1-x$,\,$x$なので,半径$r(x)$は
+各$x$での回転断面が円板か円環かを決め,その半径の平方を積分する.
+各$x\in[0,1]$で,縦の線分は$y=x-1$から$y=x$まであり,常に$x$軸上の点を含む.したがって回転断面の中心には穴がなく,円板になる.端点の軸からの距離はそれぞれ$1-x$,\,$x$なので,半径$r(x)$は
 \[
  r(x)=
  \begin{cases}
   1-x&\left(0\leqq x\leqq\frac12\right),\\
-  x&\left(\frac12\leqq x\leqq1\right).
+  x&\left(\frac12\leqq x\leqq1\right)
  \end{cases}
 \]
-切り替わりは$x=1-x$,すなわち$x=\frac12$で起こる.従って
+である.切り替わりは$x=1-x$,すなわち$x=\frac12$で起こる.したがって
+\[
+ V=\pi\int_0^{\frac12}(1-x)^2\dd x
+   +\pi\int_{\frac12}^{1}x^2\dd x
+\]
+となる.第1項は$t=1-x$と置くと$\pi\int_{\frac12}^1t^2\dd t$となり,第2項に等しい.よって
 \[
  \begin{aligned}
- V&=\pi\int_0^{\frac12}(1-x)^2\dd x
-   +\pi\int_{\frac12}^{1}x^2\dd x\\
- &=2\pi\int_{\frac12}^{1}x^2\dd x
- =\frac{2\pi}{3}\left(1-\frac18\right)
- =\boxed{\frac{7\pi}{12}}.
+ V&=2\pi\int_{\frac12}^{1}x^2\dd x\\
+ &=\frac{2\pi}{3}\left(1-\frac18\right)\\
+ &=\boxed{\frac{7\pi}{12}}.
  \end{aligned}
 \]
-上下の部分を別々に回して体積を足すと,同じ円板内の点を重複して数える.ここでは回転後にできる断面そのものを一枚ずつ数えた.
+$x$軸より上の部分と下の部分を別々に回転させて体積を足すと,両方の円板が重なる部分を2回数えてしまう.ここでは回転後の断面そのものを1枚ずつ積分した.
 
 \paragraph{13.11}
+隣り合う2つの積分を足して分母を消し,漸化式に帰着させる.交代和は,漸化式に符号を付けて足し合わせれば得られる.
+
 まず
 \[
- K_0=\int_0^1\frac1{1+x}\dd x=\log2.
+ K_0=\int_0^1\frac1{1+x}\dd x=\log2
 \]
-$n\geqq1$では,隣り合う二つの積分を足すと分母が消える.
+である.\,$n\geqq1$では
 \[
+ \begin{aligned}
  K_n+K_{n-1}
- =\int_0^1\frac{x^n+x^{n-1}}{1+x}\dd x
- =\int_0^1x^{n-1}\dd x=\frac1n.
+ &=\int_0^1\frac{x^n+x^{n-1}}{1+x}\dd x\\
+ &=\int_0^1x^{n-1}\dd x\\
+ &=\frac1n
+ \end{aligned}
 \]
-従って漸化式は$K_n=\frac1n-K_{n-1}$であり,順に
+となる.したがって漸化式は$K_n=\frac1n-K_{n-1}$であり,順に
 \[
  K_1=1-\log2,\qquad
  K_2=\log2-\frac12,\qquad
@@ -189,39 +218,49 @@ $n\geqq1$では,隣り合う二つの積分を足すと分母が消える.
 
 また$0\leqq x\leqq1$では$0\leqq\frac{x^n}{1+x}\leqq x^n$だから
 \[
- 0\leqq K_n\leqq\frac1{n+1}\longrightarrow0.
+ 0\leqq K_n\leqq\frac1{n+1}
 \]
-ここで漸化式の添字を$k$とし,両辺に$(-1)^{k-1}$を掛けて$k=1,\ldots,n$について足す.
-中間の$K_k$が消え,
+であり,\,$K_n\to0$である.
+
+漸化式の添字を$k$とし,両辺に$(-1)^{k-1}$を掛けると
 \[
- \sum_{k=1}^n\frac{(-1)^{k-1}}k
- =K_0+(-1)^{n-1}K_n
- =\log2+(-1)^{n-1}K_n
+ (-1)^{k-1}K_{k-1}-(-1)^kK_k=\frac{(-1)^{k-1}}k
 \]
-となる.右辺の最後の項は$0$へ近づくので,求める極限は$\log2$である.同時に,部分和と$\log2$との差の絶対値が$\frac1{n+1}$以下であることも分かる.
+となる.これを$k=1,\ldots,n$について足すと,左辺は隣り合う項が打ち消し合い,
+\[
+ \begin{aligned}
+ \sum_{k=1}^n\frac{(-1)^{k-1}}k
+ &=K_0-(-1)^nK_n\\
+ &=\log2+(-1)^{n-1}K_n
+ \end{aligned}
+\]
+を得る.右辺の最後の項は$0$へ近づくので,求める極限は$\log2$である.同時に,部分和と$\log2$との差の絶対値が$\frac1{n+1}$以下であることも分かる.
 
 \paragraph{13.12}
-積分を$x=1$で分け,\,$0$と無限大を独立に調べる.\,$x\to0+$では
+積分を$x=1$で分け,\,$0$付近と無限大付近を,それぞれべき関数との極限比較に帰着させる.
+$x\to0+$では
 \[
  \cfrac{\cfrac{x^\alpha}{1+x^2}}{x^\alpha}
- =\frac1{1+x^2}\longrightarrow1.
+ =\frac1{1+x^2}\longrightarrow1
 \]
-従って$0$付近では$x^\alpha$との極限比較が使え,収束条件は$\alpha>-1$である.
+である.したがって$0$付近では$x^\alpha$との極限比較が使え,収束条件は$\alpha>-1$である.
 一方,\,$x\to\infty$では
 \[
  \cfrac{\cfrac{x^\alpha}{1+x^2}}{x^{\alpha-2}}
- =\frac{x^2}{1+x^2}\longrightarrow1.
+ =\frac{x^2}{1+x^2}\longrightarrow1
 \]
-無限大で$x^{\alpha-2}$が積分可能になる条件は$\alpha-2<-1$,すなわち$\alpha<1$である.
-従って全体の収束条件は
+である.無限大で$x^{\alpha-2}$の積分が収束する条件は$\alpha-2<-1$,すなわち$\alpha<1$である.
+したがって全体の収束条件は
 \[
  \boxed{-1<\alpha<1}.
 \]
-$\alpha=0$では,端点を避けて計算してから極限を取り,
+$\alpha=0$では被積分関数は$x=0$で連続なので,上端だけ極限を取ればよい.
 \[
+ \begin{aligned}
  \int_0^{\infty}\frac1{1+x^2}\dd x
- =\lim_{R\to\infty}\arctan R-\lim_{\varepsilon\to0+}\arctan\varepsilon
- =\boxed{\frac{\pi}{2}}.
+ &=\lim_{R\to\infty}\arctan R\\
+ &=\boxed{\frac{\pi}{2}}.
+ \end{aligned}
 \]
 
 \paragraph{13.13}
