@@ -1,0 +1,70 @@
+\section{和と積分の比較}\label{節:和と積分の比較}
+
+区分求積では,極限を取って和と積分を結び付けた.単調性が分かる場合には,有限の$n$でも大小関係が得られる.\,$f$が$[1,\infty)$で正かつ単調減少なら,\,$k\leqq x\leqq k+1$において
+\[
+ f(k+1)\leqq f(x)\leqq f(k)
+\]
+である.長さ$1$の区間で積分すると
+\[
+ f(k+1)\leqq\int_k^{k+1}f(x)\dd x\leqq f(k).
+\]
+この不等式を足すと
+\begin{equation}\label{式:減少関数の和比較}
+ \int_1^{n+1}f(x)\dd x
+ \leqq\sum_{k=1}^{n}f(k)
+ \leqq f(1)+\int_1^{n}f(x)\dd x
+\end{equation}
+を得る.右側では,\,$k=2,\ldots,n$について$f(k)\leqq\int_{k-1}^{k}f(x)\dd x$を足し,最初の$f(1)$だけを別に残している.
+
+図\ref{図:和と積分の比較}では,各長方形の高さを小区間の左端の値にしている.減少関数では長方形が曲線の上に出るので,長方形の面積の和が積分の上からの評価になる.高さを右端の値に変えれば,大小関係が逆になる.
+
+\begin{figure}[htbp]
+ \centering
+ \begin{tikzpicture}[x=1.15cm,y=2.9cm,>=Stealth]
+  \foreach \k in {1,2,3,4} {
+   \pgfmathsetmacro{\h}{1/\k}
+   \fill[blue!12] (\k,0) rectangle ({\k+1},\h);
+   \draw[blue!65!black] (\k,0) rectangle ({\k+1},\h);
+  }
+  \draw[->] (0.55,0)--(5.45,0) node[right]{$x$};
+  \draw[->] (0.7,0)--(0.7,1.25) node[above]{$y$};
+  \draw[thick,domain=1:5,samples=90] plot (\x,{1/\x});
+  \node[anchor=west] at (2,0.86) {$y=\frac1x$};
+  \foreach \k in {1,2,3,4,5}
+   \node[below] at (\k,0) {$\k$};
+ \end{tikzpicture}
+ \caption{減少関数の左端の値で作った長方形は,曲線の上に出る.}
+ \label{図:和と積分の比較}
+\end{figure}
+
+\begin{example}{調和数}
+$H_n=\sum_{k=1}^{n}\frac1k$とおく.\,$H_n\to\infty$であること,および
+\[
+ \lim_{n\to\infty}\frac{H_n}{\log n}=1
+\]
+を示せ.後の比は$n\geqq2$について考える.
+\end{example}
+
+式\eqref{式:減少関数の和比較}を$f(x)=\frac1x$に用いると
+\[
+ \log(n+1)\leqq H_n\leqq1+\log n
+\]
+となる.下側の$\log(n+1)$が限りなく大きくなるため,\,$H_n$も限りなく大きくなる.次に,正の$\log n$で割れば
+\[
+ \frac{\log(n+1)}{\log n}
+ \leqq\frac{H_n}{\log n}
+ \leqq1+\frac1{\log n}.
+\]
+左辺は
+\[
+ \frac{\log(n+1)}{\log n}
+ =1+\cfrac{\log\left(1+\cfrac1n\right)}{\log n}
+ \longrightarrow1
+\]
+であり,右辺も$1$へ近づく.はさみうちの原理から求める極限が得られる.
+
+ここから$H_n-\log n\to0$と結論してはいけない.比が$1$へ近づくということは,差が元の大きさに比べて小さいことを表すだけである.実際,上の評価から分かるのは,差が$0$以上$1$以下の範囲にあることまでである.
+
+比較の向きを図から毎回考える必要はない.増加関数なら$f(k)\leqq f(x)\leqq f(k+1)$,減少関数ならその逆,と小区間ごとの不等式を書けばよい.添字のずれを避けるためにも,最初から大きな和の不等式を暗記するより,小区間から組み立てる方が扱いやすい.
+
+

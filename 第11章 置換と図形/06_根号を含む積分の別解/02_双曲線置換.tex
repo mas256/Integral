@@ -1,0 +1,20 @@
+\subsection{双曲線置換}
+
+$x=\sinh u$と置くと,実数$x$全体に対して$u$が一つに決まり,
+\[
+\sqrt{1+x^2}=\cosh u,\qquad
+\dd x=\cosh u\dd u
+\]
+となる.今回は微分も同じ$\cosh u$になるので,積分は二乗で済む.式\eqref{式:双曲線の二倍公式}より
+\[
+\begin{aligned}
+\int\sqrt{1+x^2}\dd x
+&=\int\cosh^2u\dd u\\
+&=\frac12\int\{1+\cosh(2u)\}\dd u\\
+&=\frac u2+\frac14\sinh(2u)+C\\
+&=\frac12\{u+\sinh u\cosh u\}+C.
+\end{aligned}
+\]
+$u=\log(x+\sqrt{1+x^2})$と戻せば,式\eqref{式:一と二乗の根号積分}と一致する.
+
+

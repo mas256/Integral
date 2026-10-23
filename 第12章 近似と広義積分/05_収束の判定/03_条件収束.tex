@@ -1,0 +1,45 @@
+\subsection{条件収束}
+
+関数が正負に変わると,絶対値を積分した場合と,元の関数を積分した場合とで,収束の結果が異なることがある.
+
+\begin{definition}{絶対収束と条件収束}
+広義積分$\int f(x)\dd x$について,\,$\int|f(x)|\dd x$が収束するとき絶対収束するという.\,$\int f(x)\dd x$は収束するが,\,$\int|f(x)|\dd x$は発散するとき,条件収束するという.
+\end{definition}
+
+絶対収束なら元の積分も収束する.これを直前の比較判定から示そう.関数$f$を,正になる部分と負になる部分に分けるため,
+\[
+ g(x)=\frac{|f(x)|+f(x)}2,\qquad
+ h(x)=\frac{|f(x)|-f(x)}2
+\]
+と置く.\,$f(x)\geq0$なら$g(x)=f(x)$,\,$h(x)=0$であり,$f(x)<0$なら$g(x)=0$,\,$h(x)=-f(x)$である.したがって
+\[
+ 0\leq g(x)\leq|f(x)|,\qquad
+ 0\leq h(x)\leq|f(x)|,\qquad f(x)=g(x)-h(x)
+\]
+が成り立つ.\,$\int|f(x)|\dd x$が収束すれば,比較判定により$g,h$の積分はそれぞれ収束する.元の積分はその差だから,やはり有限の極限をもつ.
+
+\begin{example}{条件収束}
+$\int_1^{\infty}\frac{\sin x}{x}\dd x$は条件収束することを示せ.
+\end{example}
+
+$\frac1x$だけでは無限大で積分可能でない.しかし,\,$\sin x$を積分すると有界な$-\cos x$になり,\,$\frac1x$を微分すると$-\frac1{x^2}$になる.この二つを利用するため,部分積分を選ぶ.
+\[
+\begin{aligned}
+ \int_1^R\frac{\sin x}{x}\dd x
+ &=\left[-\frac{\cos x}{x}\right]_1^R
+   -\int_1^R\frac{\cos x}{x^2}\dd x\\
+ &=\cos1-\frac{\cos R}{R}-\int_1^R\frac{\cos x}{x^2}\dd x.
+\end{aligned}
+\]
+境界項$\frac{\cos R}{R}$は$0$へ近づく.また$\frac{|\cos x|}{x^2}\leq\frac1{x^2}$なので,最後の積分は絶対収束する.よって元の積分は収束する.
+
+絶対値を付けた積分は別に調べる.整数$k\geq1$について,\,$[k\pi,(k+1)\pi]$では$x\leq(k+1)\pi$だから
+\[
+ \int_{k\pi}^{(k+1)\pi}\frac{|\sin x|}{x}\dd x
+ \geq\frac1{(k+1)\pi}\int_{k\pi}^{(k+1)\pi}|\sin x|\dd x
+ =\frac2{(k+1)\pi}.
+\]
+この下限を足すと調和級数の定数倍になり,発散する.したがって絶対値の積分は発散し,元の積分は条件収束である.ここでは積分の値そのものを求めていない.収束を証明することと,値を計算することは別の課題である.
+
+
+

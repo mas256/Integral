@@ -1,0 +1,56 @@
+\subsection{三角関数と弧度法}
+三角関数を微分するとき,角は必ず弧度法で表す.基本になる極限は
+\[
+ \lim_{h\to0}\frac{\sin h}{h}=1
+\]
+である.\,$0<h<\frac\pi2$として,単位円の中心を$O$,点$(1,0)$を$A$,角$h$に対応する円上の点を$P$とする.半直線$OP$と直線$x=1$の交点を$Q$とすれば,$P=(\cos h,\sin h)$,\,$Q=(1,\tan h)$である.図\ref{図:正弦の極限}のように,三角形$OAP$は扇形$OAP$に含まれ,扇形は三角形$OAQ$に含まれる.面積を順に書くと
+\[
+ \frac12\sin h<\frac h2<\frac12\tan h
+\]
+だから,$\sin h<h<\tan h$を得る.
+
+したがって $\cos h<\frac{\sin h}{h}<1$ であり,挟み撃ちの原理から右極限は $1$ となる.\,$\frac{\sin h}{h}$ は $h$ の符号を変えても同じだから,左極限も $1$ である.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[x=3cm,y=3cm,>=Stealth]
+ \fill[softblue] (0,0)--(1,0)--(1,.83910)--cycle;
+ \fill[softteal] (0,0)--(1,0) arc[start angle=0,end angle=40,radius=1]--cycle;
+ \draw[->] (-.05,0)--(1.3,0) node[right]{$x$};
+ \draw[thick] (1,0) arc[start angle=0,end angle=90,radius=1];
+ \draw[thick] (0,0)--(1,.83910)--(1,0);
+ \draw[thick] (1,0)--(.766044,.642788);
+ \draw (0.25,0) arc[start angle=0,end angle=40,radius=.25];
+ \node at (.34,.12) {$h$};
+ \fill (.766044,.642788) circle(.6pt) node[above left]{$P$};
+ \node[above right] at (1,.83910) {$Q$};
+ \node[below] at (1,0) {$A$};
+ \node[below left] at (0,0) {$O$};
+\end{tikzpicture}
+\caption{三角形,扇形,外側の三角形の面積を比べる.}
+\label{図:正弦の極限}
+\end{figure}
+
+また,
+\[
+ \frac{\cos h-1}{h}
+ =-\cfrac{2\sin^2\cfrac h2}{h}
+ =-\sin\frac h2\,\cfrac{\sin\cfrac h2}{\cfrac h2}
+ \longrightarrow0.
+\]
+加法定理に代入すれば,
+\begin{align*}
+ \frac{\sin(x+h)-\sin x}{h}
+ &=\sin x\frac{\cos h-1}{h}
+   +\cos x\frac{\sin h}{h}\\
+ &\longrightarrow\cos x.
+\end{align*}
+同様に余弦を微分でき,商の公式から正接も求まる.
+\[
+ (\sin x)'=\cos x,\qquad
+ (\cos x)'=-\sin x,\qquad
+ (\tan x)'=\frac1{\cos^2x}\quad(\cos x\ne0).
+\]
+度数法で $x$ を表すと,弧度への換算係数が微分に現れる.上の簡潔な公式が成り立つのは,弧度法を使っているからである.
+
+

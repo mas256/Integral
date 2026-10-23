@@ -1,0 +1,86 @@
+\section{長方形による求積}\label{節:導入長方形}
+次に,\,$y=x^2$ のグラフの下で,\,$0\le x\le1$ の範囲にある部分の面積を考える.この部分の面積を $S$ と書く.横の区間を $n$ 等分すると,一つの小区間の幅は $\frac1n$ である.\,$x^2$ はこの範囲で増加するから,小区間の左端の高さで作った長方形は曲線の下に収まり,右端の高さで作った長方形は曲線の上まで覆う.
+
+左端の高さを使った和を $L_n$,右端の高さを使った和を $U_n$ とすると,
+\begin{align*}
+ L_n&=\frac1n\sum_{k=0}^{n-1}\left(\frac{k}{n}\right)^2,\\
+ U_n&=\frac1n\sum_{k=1}^{n}\left(\frac{k}{n}\right)^2
+\end{align*}
+である.添字が異なるのは,左端では $0$ から $\frac{n-1}{n}$ まで,右端では $\frac1n$ から $1$ までの高さを使うためである.図\ref{図:導入長方形}では $n=4$ としている.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[x=3.7cm,y=3.1cm,>=Stealth]
+ \begin{scope}
+  \foreach \k in {0,1,2,3}{
+   \pgfmathsetmacro{\xl}{\k/4}
+   \pgfmathsetmacro{\xr}{(\k+1)/4}
+   \pgfmathsetmacro{\hh}{(\k/4)^2}
+   \filldraw[fill=blue!16,draw=blue!60] (\xl,0) rectangle (\xr,\hh);
+  }
+  \draw[->] (-0.08,0)--(1.13,0) node[right]{$x$};
+  \draw[->] (0,-0.05)--(0,1.17) node[above]{$y$};
+  \draw[thick,domain=0:1,samples=60] plot (\x,{\x*\x});
+  \node[below] at (1,0) {$1$};
+  \node at (0.5,-0.23) {左端の高さ：$L_4$};
+ \end{scope}
+ \begin{scope}[xshift=5.4cm]
+  \foreach \k in {0,1,2,3}{
+   \pgfmathsetmacro{\xl}{\k/4}
+   \pgfmathsetmacro{\xr}{(\k+1)/4}
+   \pgfmathsetmacro{\hh}{((\k+1)/4)^2}
+   \filldraw[fill=red!13,draw=red!60] (\xl,0) rectangle (\xr,\hh);
+  }
+  \draw[->] (-0.08,0)--(1.13,0) node[right]{$x$};
+  \draw[->] (0,-0.05)--(0,1.17) node[above]{$y$};
+  \draw[thick,domain=0:1,samples=60] plot (\x,{\x*\x});
+  \node[below] at (1,0) {$1$};
+  \node at (0.5,-0.23) {右端の高さ：$U_4$};
+ \end{scope}
+\end{tikzpicture}
+\caption{下からの長方形和と上からの長方形和.分割を細かくすると両者の差が小さくなる.}
+\label{図:導入長方形}
+\end{figure}
+
+自然数の平方の和の公式
+\[
+ \sum_{k=1}^{n}k^2=\frac{n(n+1)(2n+1)}6
+\]
+を使うと,
+\begin{align*}
+ U_n&=\frac{n(n+1)(2n+1)}{6n^3}
+     =\frac13+\frac{1}{2n}+\frac{1}{6n^2},\\
+ L_n&=\frac{(n-1)n(2n-1)}{6n^3}
+     =\frac13-\frac{1}{2n}+\frac{1}{6n^2}
+\end{align*}
+となる.面積は両者の間にあるから,
+\[
+ L_n\le S\le U_n
+\]
+である.そして $n$ を大きくすれば,\,$L_n$ も $U_n$ も $\frac13$ に近づく.したがって $S=\frac13$ と考えられる.この議論を,曲線に囲まれた面積の定義まで含めて明確にするのが定積分である.
+
+二つの和の差は,展開せずに求めることもできる.同じ高さの項が打ち消し合うので,
+\[
+ U_n-L_n
+ =\frac1n\left(1^2-0^2\right)=\frac1n
+\]
+となる.つまり,求めたい値を幅 $\frac1n$ の範囲に閉じ込められる.このように\textbf{値そのものをただ予想するだけでなく,どれだけの幅で挟めたかを調べる}と,近似の確かさが分かる.
+
+\begin{example}{面積の近似}
+上の放物線の面積を $10$ 等分した長方形で挟め.さらに,右端の和 $U_{10}$ を面積の近似値としたとき,どの程度大きく見積もる可能性があるか説明せよ.
+\end{example}
+$n=10$ を代入すると,
+\[
+ L_{10}=\frac13-\frac1{20}+\frac1{600}
+       =\frac{57}{200}=0.285,
+ \qquad
+ U_{10}=\frac{77}{200}=0.385
+\]
+である.したがって $0.285\le S\le0.385$ と分かる.\,$U_{10}$ は常に面積以上であり,
+\[
+ 0\le U_{10}-S\le U_{10}-L_{10}=0.1
+\]
+である.この情報だけからでも,大きく見積もる誤差は $0.1$ 以下と保証できる.実際の面積 $\frac13$ を知った後なら,誤差は $\frac{31}{600}$ と計算できるが,未知の値を求める途中でも使えるのは前者の評価である.
+
+
+
