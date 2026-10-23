@@ -264,6 +264,8 @@ $\alpha=0$では被積分関数は$x=0$で連続なので,上端だけ極限を�
 \]
 
 \paragraph{13.13}
+与式を微分して$f''=f$と初期値を導き,\,$\e^{-x}$や$\e^x$を掛けた関数の微分を使って積分へ戻す.
+
 最初から$f$が微分可能だと仮定せず,右辺の積分から確かめる.
 \[
  A(x)=\int_0^xf(t)\dd t,\qquad
@@ -273,9 +275,12 @@ $\alpha=0$では被積分関数は$x=0$で連続なので,上端だけ極限を�
 \[
  f(x)=1+xA(x)-B(x)
 \]
-と書けるので,右辺が微分可能であり,
+と書けるので,右辺は微分可能であり,
 \[
- f'(x)=A(x)+xf(x)-xf(x)=A(x)
+ \begin{aligned}
+ f'(x)&=A(x)+xf(x)-xf(x)\\
+ &=A(x)
+ \end{aligned}
 \]
 を得る.さらに$f''(x)=f(x)$である.また$x=0$を代入すると
 \[
@@ -294,37 +299,46 @@ $f'(x)+f(x)=\e^x$となる.今度は$\e^xf(x)$を微分すれば
 \]
 $0$から$x$まで積分し,\,$f(0)=1$を使うと
 \[
- \e^xf(x)-1=\frac{\e^{2x}-1}{2},\qquad
+ \e^xf(x)-1=\frac{\e^{2x}-1}{2}
+\]
+より,
+\[
  \boxed{f(x)=\frac{\e^x+\e^{-x}}2}.
 \]
 
 微分して得た条件だけでは,元の積分の等式を満たすかの確認が残る.
-求めた関数を$g(x)=\frac{\e^x+\e^{-x}}2$と書くと,\,$g''=g$,\,$g(0)=1$,\,$g'(0)=0$である.従って部分積分によって
+求めた関数を$g(x)=\frac{\e^x+\e^{-x}}2$と書くと,\,$g''=g$,\,$g(0)=1$,\,$g'(0)=0$である.したがって部分積分によって
 \[
  \begin{aligned}
  \int_0^x(x-t)g(t)\dd t
  &=\int_0^x(x-t)g''(t)\dd t\\
  &=\bigl[(x-t)g'(t)\bigr]_0^x+\int_0^xg'(t)\dd t\\
- &=-xg'(0)+g(x)-g(0)=g(x)-1.
+ &=-xg'(0)+g(x)-g(0)\\
+ &=g(x)-1.
  \end{aligned}
 \]
-よって元の等式も成立する.また,条件を満たすどの$f$も上の計算から同じ式になるため,解は一つに定まる.
+よって元の等式も成り立つ.また,条件を満たすどの$f$も上の計算から同じ式になるため,解は1つに定まる.
 
 \paragraph{13.14}
-二つの制約を満たす一次関数を先に探す.\,$\ell(x)=a+bx$を代入すると
+2つの制約を満たす一次関数$\ell$を候補とし,任意の$f$との差$g=f-\ell$を使って,\,$\int_0^1f(x)^2\dd x$を2つの平方の積分の和に帰着させる.
+
+$\ell(x)=a+bx$を制約に代入すると
 \[
  a+\frac b2=1,\qquad \frac a2+\frac b3=0.
 \]
 これを解くと$a=4$,\,$b=-6$なので,\,$\ell(x)=4-6x$である.
-任意の条件を満たす$f$について$g(x)=f(x)-\ell(x)$と置けば
+条件を満たす任意の$f$について$g(x)=f(x)-\ell(x)$と置けば
 \[
  \int_0^1g(x)\dd x=0,\qquad
- \int_0^1xg(x)\dd x=0.
+ \int_0^1xg(x)\dd x=0
 \]
-従って
+である.したがって
 \[
+ \begin{aligned}
  \int_0^1\ell(x)g(x)\dd x
- =4\int_0^1g(x)\dd x-6\int_0^1xg(x)\dd x=0.
+ &=4\int_0^1g(x)\dd x-6\int_0^1xg(x)\dd x\\
+ &=0.
+ \end{aligned}
 \]
 この関係を平方の展開に使うと
 \[
@@ -333,33 +347,38 @@ $0$から$x$まで積分し,\,$f(0)=1$を使うと
  &=\int_0^1\ell(x)^2\dd x
    +2\int_0^1\ell(x)g(x)\dd x+\int_0^1g(x)^2\dd x\\
  &=\int_0^1(16-48x+36x^2)\dd x+\int_0^1g(x)^2\dd x\\
- &=4+\int_0^1g(x)^2\dd x\geqq4.
+ &=4+\int_0^1g(x)^2\dd x\\
+ &\geqq4.
  \end{aligned}
 \]
 $g$は連続なので,最後の積分が$0$になるのは$g(x)=0$が全区間で成り立つ場合に限る.
-実際,ある点で$g\ne0$なら,その近くでは$g^2$が正の一定値以上になり,積分も正になる.従って
+実際,ある点で$g\ne0$なら,その近くでは$g^2$が正の一定値以上になり,積分も正になる.したがって
 \[
  \boxed{\min\int_0^1f(x)^2\dd x=4,\qquad f(x)=4-6x}.
 \]
-制約から候補を見つけた後で,どの関数との差も平方の積分として表したことが,最小値の証明になっている.
 
 \paragraph{13.15}
+$x(t)$が単調に増加することを確かめ,面積と体積を$t$の積分に直してウォリスの積分公式に帰着させる.
+
 微分すると
 \[
  x'(t)=1-\cos2t=2\sin^2t,\qquad
- y'(t)=2\sin t\cos t.
+ y'(t)=2\sin t\cos t
 \]
-$0<t<\pi$では$x'(t)>0$なので,\,$x$は$0$から$\pi$まで狭義に増加する.また$y\geqq0$であり,両端で$y=0$となる.このため曲線は各$x$に対して一つの高さを持ち,曲線の下の領域を$x$方向に積分して重複することはない.
+である.\,$0<t<\pi$では$x'(t)>0$なので,\,$x$は$0$から$\pi$まで狭義に増加する.また$y\geqq0$であり,両端で$y=0$となる.このため曲線は各$x$に対して1つの高さを持ち,曲線の下の領域を$x$方向に積分しても重複は生じない.
 
 面積$S$は
 \[
- S=\int_0^\pi y(t)x'(t)\dd t
- =2\int_0^\pi\sin^4t\dd t.
+ \begin{aligned}
+ S&=\int_0^\pi y(t)x'(t)\dd t\\
+ &=2\int_0^\pi\sin^4t\dd t\\
+ &=4\int_0^{\frac\pi2}\sin^4t\dd t
+ \end{aligned}
 \]
-反転$t\mapsto\pi-t$で両半分の積分は等しい.ウォリスの公式より
+となる.最後は,\,$t$を$\pi-t$に置き換えても$\sin^4t$が変わらないので,左右の半分の積分が等しいことを使った.ウォリスの積分公式より
 \[
  \int_0^{\frac\pi2}\sin^4t\dd t
- =\frac34\frac12\frac\pi2=\frac{3\pi}{16}
+ =\frac34\cdot\frac12\cdot\frac\pi2=\frac{3\pi}{16}
 \]
 なので,
 \[
@@ -371,50 +390,57 @@ $0<t<\pi$では$x'(t)>0$なので,\,$x$は$0$から$\pi$まで狭義に増加す
  \begin{aligned}
  \sqrt{x'(t)^2+y'(t)^2}
  &=\sqrt{4\sin^4t+4\sin^2t\cos^2t}\\
- &=2|\sin t|=2\sin t\qquad(0\leqq t\leqq\pi).
+ &=2|\sin t|\\
+ &=2\sin t\qquad(0\leqq t\leqq\pi).
  \end{aligned}
 \]
-従って
+したがって
 \[
  \boxed{L=\int_0^\pi2\sin t\dd t=4}.
 \]
 
-回転体の断面は半径$y(t)$の円板であり,\,$x$の増分は$x'(t)\dd t$である.従って体積は
+回転体の断面は半径$y(t)$の円板であり,\,$x$の増分は$x'(t)\dd t$である.したがって体積は
 \[
  \begin{aligned}
- V&=\pi\int_0^\pi y(t)^2x'(t)\dd t
- =2\pi\int_0^\pi\sin^6t\dd t\\
- &=4\pi\int_0^{\frac\pi2}\sin^6t\dd t
- =4\pi\cdot\frac{5\pi}{32}
- =\boxed{\frac{5\pi^2}{8}}.
+ V&=\pi\int_0^\pi y(t)^2x'(t)\dd t\\
+ &=2\pi\int_0^\pi\sin^6t\dd t\\
+ &=4\pi\int_0^{\frac\pi2}\sin^6t\dd t\\
+ &=4\pi\cdot\frac{5\pi}{32}\\
+ &=\boxed{\frac{5\pi^2}{8}}.
  \end{aligned}
 \]
-ここでも$x(t)$の単調性により,同じ$x$での円板を二回数えていない.
+ここでも$x(t)$の単調性により,同じ$x$での円板を2回数えていない.
 
 \paragraph{13.16}
+(1)は$\sin u$の有限テイラー公式に$u=x^2$を代入し,多項式の積分と剰余の評価に帰着させる.(2)は$u=x^2$と置いて$\frac{\sin u}{\sqrt u}$の積分に直し,収束は部分積分で,絶対値の積分の発散は区間ごとの下からの評価で示す.
+
 (1) $g(u)=\sin u$の$0$を中心とする六次テイラー多項式は
 \[
  P_6(u)=u-\frac{u^3}{6}+\frac{u^5}{120}
 \]
-である.偶数次の係数は$0$だが,六次までの有限テイラー公式として剰余を評価する.
-七階微分は$g^{(7)}(u)=-\cos u$なので,\,$0\leqq u\leqq1$では
-$-1\leqq g^{(7)}(u)\leqq0$である.従って
+である.偶数次の係数は$0$だが,六次までの有限テイラー公式として剰余を評価する.剰余項は
+\[
+ R_6(u)=\frac1{6!}\int_0^u(u-t)^6g^{(7)}(t)\dd t
+\]
+であり,\,$g^{(7)}(t)=-\cos t$なので,\,$0\leqq t\leqq1$では$-1\leqq g^{(7)}(t)\leqq0$である.\,$\int_0^u(u-t)^6\dd t=\frac{u^7}{7}$だから,\,$0\leqq u\leqq1$で
 \[
  \sin u=P_6(u)+R_6(u),\qquad
- -\frac{u^7}{5040}\leqq R_6(u)\leqq0.
+ -\frac{u^7}{5040}\leqq R_6(u)\leqq0
 \]
-$u=x^2$を代入して積分した多項式の値は
+となる.\,$u=x^2$を代入して積分した多項式の値は
 \[
- Q=\int_0^1\left(x^2-\frac{x^6}{6}+\frac{x^{10}}{120}\right)\dd x
- =\frac13-\frac1{42}+\frac1{1320}
- =\frac{2867}{9240}.
+ \begin{aligned}
+ Q&=\int_0^1\left(x^2-\frac{x^6}{6}+\frac{x^{10}}{120}\right)\dd x\\
+ &=\frac13-\frac1{42}+\frac1{1320}\\
+ &=\frac{2867}{9240}
+ \end{aligned}
 \]
-残りの積分は
+である.剰余の積分は
 \[
  -\frac1{5040}\int_0^1x^{14}\dd x
  \leqq A-Q\leqq0
 \]
-だから
+を満たし,左辺は$-\frac1{75600}$である.したがって
 \[
  \boxed{\frac{2867}{9240}-\frac1{75600}
  \leqq A\leqq\frac{2867}{9240}}.
@@ -424,43 +450,52 @@ $u=x^2$を代入して積分した多項式の値は
 (2) 有限の$R>1$に対して$u=x^2$と置けば
 \[
  \int_1^R\sin(x^2)\dd x
- =\frac12\int_1^{R^2}\frac{\sin u}{\sqrt u}\dd u.
+ =\frac12\int_1^{R^2}\frac{\sin u}{\sqrt u}\dd u
 \]
-右辺で部分積分を行う.\,$T>1$として
+となる.右辺で部分積分を行う.\,$T>1$として
 \[
  \begin{aligned}
  \int_1^T\frac{\sin u}{\sqrt u}\dd u
  &=\left[-\frac{\cos u}{\sqrt u}\right]_1^T
-   -\frac12\int_1^T\cfrac{\cos u}{u^{\cfrac32}}\dd u\\
+   -\frac12\int_1^T\frac{\cos u}{u\sqrt u}\dd u\\
  &=\cos1-\frac{\cos T}{\sqrt T}
-   -\frac12\int_1^T\cfrac{\cos u}{u^{\cfrac32}}\dd u.
+   -\frac12\int_1^T\frac{\cos u}{u\sqrt u}\dd u.
  \end{aligned}
 \]
-境界項$\frac{\cos T}{\sqrt T}$は$0$へ近づく.また
-$\cfrac{|\cos u|}{u^{\cfrac32}}\leqq u^{-\frac32}$であり,右辺のべき関数は無限大で積分可能だから,最後の積分は絶対収束する.従って元の広義積分は収束する.
+境界項$\frac{\cos T}{\sqrt T}$は$0$へ近づく.また$\frac{|\cos u|}{u\sqrt u}\leqq u^{-\frac32}$であり,右辺のべき関数の積分は無限大で収束するから,最後の積分は絶対収束する.したがって元の広義積分は収束する.
 
 絶対値を付けた場合も同じ置換が使え,
 \[
  \int_1^R|\sin(x^2)|\dd x
- =\frac12\int_1^{R^2}\frac{|\sin u|}{\sqrt u}\dd u.
+ =\frac12\int_1^{R^2}\frac{|\sin u|}{\sqrt u}\dd u
 \]
-整数$k\geqq1$について,\,$u\in[k\pi,(k+1)\pi]$なら
-$\frac1{\sqrt u}\geqq\frac1{\sqrt{(k+1)\pi}}$なので
+となる.整数$k\geqq1$について,\,$u\in[k\pi,(k+1)\pi]$なら$\frac1{\sqrt u}\geqq\frac1{\sqrt{(k+1)\pi}}$なので
 \[
+ \begin{aligned}
  \int_{k\pi}^{(k+1)\pi}\frac{|\sin u|}{\sqrt u}\dd u
- \geqq\frac1{\sqrt{(k+1)\pi}}
-       \int_{k\pi}^{(k+1)\pi}|\sin u|\dd u
- =\frac2{\sqrt{(k+1)\pi}}.
+ &\geqq\frac1{\sqrt{(k+1)\pi}}
+       \int_{k\pi}^{(k+1)\pi}|\sin u|\dd u\\
+ &=\frac2{\sqrt{(k+1)\pi}}
+ \end{aligned}
 \]
-$R^2\geqq(N+1)\pi$なら区間$[\pi,(N+1)\pi]$は$[1,R^2]$に含まれるので,\,$k=1,\ldots,N$のこの下限を足したものは$\int_1^{R^2}\frac{|\sin u|}{\sqrt u}\dd u$以下である.この下限の和は発散する.実際,\,$t^{-\frac12}$の減少性から
+である.\,$R^2\geqq(N+1)\pi$なら,区間$[\pi,(N+1)\pi]$は$[1,R^2]$に含まれるので
 \[
- \sum_{k=1}^N\frac1{\sqrt{k+1}}
- \geqq\int_2^{N+2}\frac1{\sqrt t}\dd t
- =2(\sqrt{N+2}-\sqrt2)\longrightarrow\infty.
+ \int_1^{R^2}\frac{|\sin u|}{\sqrt u}\dd u
+ \geqq\frac2{\sqrt\pi}\sum_{k=1}^N\frac1{\sqrt{k+1}}
 \]
-従って絶対値の積分は発散し,\,$\int_1^{\infty}\sin(x^2)\dd x$は条件収束する.
+となる.\,$t^{-\frac12}$の減少性から
+\[
+ \begin{aligned}
+ \sum_{k=1}^N\frac1{\sqrt{k+1}}
+ &\geqq\int_2^{N+2}\frac1{\sqrt t}\dd t\\
+ &=2(\sqrt{N+2}-\sqrt2)
+ \end{aligned}
+\]
+であり,これは$N\to\infty$で発散する.したがって絶対値の積分は発散し,\,$\int_1^{\infty}\sin(x^2)\dd x$は条件収束する.
 
 \paragraph{13.17}
+部分積分で$(1-x^2)$の指数を1つ下げて漸化式を作る.極限は,置換によって$C_n$をウォリスの積分$I_{2n+1}$に帰着させて求める.
+
 $n=0$では$C_0=1$である.\,$n\geqq1$で,\,$(1-x^2)^n$を微分し,\,$1$を積分する部分積分を行う.
 \[
  \begin{aligned}
@@ -471,33 +506,31 @@ $n=0$では$C_0=1$である.\,$n\geqq1$で,\,$(1-x^2)^n$を微分し,\,$1$を積
  &=2n(C_{n-1}-C_n).
  \end{aligned}
 \]
-従って漸化式と有限積の表示は
+$C_n$を左辺に集めると,漸化式と有限積の表示は
 \[
  \boxed{C_n=\frac{2n}{2n+1}C_{n-1},\qquad
  C_n=\prod_{k=1}^n\frac{2k}{2k+1}}.
 \]
 
-極限を求めるため,\,$x=\sin t$と置くと
+極限を求めるため,\,$x=\cos t$と置く.\,$\dd x=-\sin t\dd t$であり,\,$x=0,1$はそれぞれ$t=\frac\pi2,0$に対応するので
 \[
- C_n=\int_0^{\frac\pi2}\cos^{2n+1}t\dd t.
+ \begin{aligned}
+ C_n&=\int_{\frac\pi2}^0(\sin^2t)^n(-\sin t)\dd t\\
+ &=\int_0^{\frac\pi2}\sin^{2n+1}t\dd t
+ \end{aligned}
 \]
-$W_m=\int_0^{\frac\pi2}\cos^mt\dd t$と書けば$C_n=W_{2n+1}$である.
-$t\mapsto\frac\pi2-t$により$W_m$は$\sin$のべきのウォリス積分と等しい.
-従って偶数,奇数の積の公式から
+となる.つまり$C_n$は\sectionref{節:ウォリス公式}のウォリスの積分$I_{2n+1}$である.ウォリスの積分公式の偶数の場合と奇数の場合を掛けると
 \[
- W_{2n}W_{2n+1}=\frac{\pi}{2(2n+1)}.
+ I_{2n}I_{2n+1}=\frac{\pi}{2(2n+1)}
 \]
-また$0\leqq\cos t\leqq1$なので$W_{2n+2}\leqq W_{2n+1}\leqq W_{2n}$であり,漸化式を使うと
+を得る.また,式\eqref{式:ウォリス隣接比}より隣り合う積分の比は$1$へ近づく.積と比を合わせて
 \[
- \frac{2n+1}{2n+2}
- =\frac{W_{2n+2}}{W_{2n}}
- \leqq\frac{W_{2n+1}}{W_{2n}}\leqq1.
-\]
-従って隣り合う二つの比は$1$へ近づく.積と比を合わせて
-\[
+ \begin{aligned}
  nC_n^2
- =nW_{2n}W_{2n+1}\frac{W_{2n+1}}{W_{2n}}
- \longrightarrow\frac\pi4.
+ &=nI_{2n}I_{2n+1}\cdot\frac{I_{2n+1}}{I_{2n}}\\
+ &=\frac{n\pi}{2(2n+1)}\cdot\frac{I_{2n+1}}{I_{2n}}\\
+ &\longrightarrow\frac\pi4.
+ \end{aligned}
 \]
 $C_n>0$なので平方根を取り,
 \[
@@ -505,50 +538,54 @@ $C_n>0$なので平方根を取り,
 \]
 最後に漸化式から
 \[
+ \begin{aligned}
  C_n-C_{n+1}
- =\left(1-\frac{2n+2}{2n+3}\right)C_n
- =\frac{C_n}{2n+3}.
+ &=\left(1-\frac{2n+2}{2n+3}\right)C_n\\
+ &=\frac{C_n}{2n+3}.
+ \end{aligned}
 \]
-元の数列の極限をこの式へ戻せば
+これに直前の極限を使うと
 \[
- \boxed{\lim_{n\to\infty}n^{\frac32}(C_n-C_{n+1})
- =\lim_{n\to\infty}\frac{n}{2n+3}\sqrt n\,C_n
- =\frac{\sqrt\pi}{4}}.
+ \begin{aligned}
+ \lim_{n\to\infty}n^{\frac32}(C_n-C_{n+1})
+ &=\lim_{n\to\infty}\frac{n}{2n+3}\sqrt n\,C_n\\
+ &=\boxed{\frac{\sqrt\pi}{4}}.
+ \end{aligned}
 \]
 
 \paragraph{13.18}
-まず両端の収束を調べる.\,$-\pi<x<\pi$では$\cos\frac x2>0$だから,半角公式により
-\[
- \begin{aligned}
- h_n(x):=\frac{\sin^{2n}x}{\sqrt{1+\cos x}}
- &=\frac{2^{2n}}{\sqrt2}
-   \sin^{2n}\frac x2\,\cos^{2n-1}\frac x2.
- \end{aligned}
-\]
-$n\geqq1$より$2n-1\geqq1$である.\,$x\to\pi-$,\,$x\to-\pi+$のそれぞれで$\cos\frac x2\to0$となり,\,$\sin^{2n}\frac x2$は有界なので,\,$h_n(x)\to0$となる.
-さらに$\frac1{1+\e^x}$は両端を含めて連続である.従って元の被積分関数は,各端点で値$0$を補えば連続になる.左右の広義積分はそれぞれ有限に収束し,ここからは対称性や置換を使ってよい.
+両端の収束を確かめた後,\,$x$を$-x$にした積分と足して指数関数を含む重みを消し,半角公式と置換で$\int_0^1u^{2n}(1-u^2)^{n-1}\dd u$に帰着させる.この積分は,部分積分で$(1-u^2)$の指数を1つずつ下げて求める.
 
-$h_n$は偶関数である.\,$w(x)=\frac1{1+\e^x}$と置けば$w(x)+w(-x)=1$だから,\,$x=-t$による反転で得た式を元の積分と足して
+まず両端の収束を調べる.\,$-\pi<x<\pi$では$\cos\frac x2>0$である.半角公式$\sin x=2\sin\frac x2\cos\frac x2$,\,$1+\cos x=2\cos^2\frac x2$により
+\[
+ h_n(x):=\frac{\sin^{2n}x}{\sqrt{1+\cos x}}
+ =\frac{2^{2n}}{\sqrt2}
+   \sin^{2n}\frac x2\,\cos^{2n-1}\frac x2
+\]
+となる.\,$n\geqq1$より$2n-1\geqq1$である.\,$x\to\pi-$,\,$x\to-\pi+$のそれぞれで$\cos\frac x2\to0$となり,\,$\sin^{2n}\frac x2$は有界なので,\,$h_n(x)\to0$となる.
+さらに$\frac1{1+\e^x}$は両端を含めて連続である.したがって元の被積分関数は,各端点で値$0$を補えば連続になる.左右の広義積分はそれぞれ有限に収束し,ここからは対称性や置換を使ってよい.
+
+$h_n$は偶関数である.\,$w(x)=\frac1{1+\e^x}$と置けば$w(x)+w(-x)=1$だから,\,$x=-t$と置いて書き直した式を元の積分と足して
 \[
  \begin{aligned}
  2J_n
  &=\int_{-\pi}^{\pi}h_n(x)\{w(x)+w(-x)\}\dd x\\
- &=\int_{-\pi}^{\pi}h_n(x)\dd x
- =2\int_0^\pi h_n(x)\dd x.
+ &=\int_{-\pi}^{\pi}h_n(x)\dd x\\
+ &=2\int_0^\pi h_n(x)\dd x.
  \end{aligned}
 \]
-従って指数関数を含む重みは消え,\,$J_n=\int_0^\pi h_n(x)\dd x$となる.
+したがって指数関数を含む重みは消え,\,$J_n=\int_0^\pi h_n(x)\dd x$となる.
 
-先ほどの半角公式を使い,\,$t=\frac x2$と置くと
+先ほどの半角公式の形を使い,\,$t=\frac x2$と置く.\,$\dd x=2\dd t$なので
 \[
  J_n=2^{2n}\sqrt2\int_0^{\frac\pi2}
           \sin^{2n}t\cos^{2n-1}t\dd t.
 \]
 次に$u=\sin t$と置く.\,$\dd u=\cos t\dd t$なので,\,$\cos$の残りの偶数べきは$(1-u^2)^{n-1}$になり,
 \[
- J_n=2^{2n}\sqrt2\int_0^1u^{2n}(1-u^2)^{n-1}\dd u.
+ J_n=2^{2n}\sqrt2\int_0^1u^{2n}(1-u^2)^{n-1}\dd u
 \]
-最後の積分は多項式の積分である.しかし,展開すると項数が$n$個になるため,ここでは$(1-u^2)$の指数を部分積分で一つずつ下げる.
+を得る.最後の積分は多項式の積分である.しかし,展開すると項数が$n$個になるため,ここでは$(1-u^2)$の指数を部分積分で1つずつ下げる.
 
 非負整数$r,s$に対して
 \[
@@ -563,23 +600,26 @@ $h_n$は偶関数である.\,$w(x)=\frac1{1+\e^x}$と置けば$w(x)+w(-x)=1$だ�
  &=\frac{2s}{2r+1}L_{r+1,s-1}.
  \end{aligned}
 \]
-端点の項は,\,$u=0$では$u^{2r+1}=0$,\,$u=1$では$(1-u^2)^s=0$なので消える.\,$s=0$の初期値は別に
+端点の項は,\,$u=0$では$u^{2r+1}=0$,\,$u=1$では$(1-u^2)^s=0$なので消える.\,$s=0$の場合は
 \[
  L_{r,0}=\int_0^1u^{2r}\dd u=\frac1{2r+1}
 \]
-である.漸化式を$s$回使い,最後にこの初期値へ戻すと
+である.漸化式を$s$回使い,最後にこの値へ戻すと
 \[
+ \begin{aligned}
  L_{r,s}
- =\frac{2^s s!}{(2r+1)(2r+3)\cdots(2r+2s+1)}.
+ &=\frac{2s}{2r+1}\cdot\frac{2(s-1)}{2r+3}\cdots\frac{2}{2r+2s-1}\,L_{r+s,0}\\
+ &=\frac{2^s s!}{(2r+1)(2r+3)\cdots(2r+2s+1)}
+ \end{aligned}
 \]
-$r=n$,\,$s=n-1$を代入し,前の係数$2^{2n}\sqrt2$を掛けることで
+となる.\,$r=n$,\,$s=n-1$を代入し,前の係数$2^{2n}\sqrt2$を掛けることで
 \[
  \boxed{J_n=
  \frac{2^{3n-1}\sqrt2\,(n-1)!}
- {(2n+1)(2n+3)\cdots(4n-1)}}.
+ {(2n+1)(2n+3)\cdots(4n-1)}}
 \]
-分母には$n$個の奇数因子がある.例えば$n=1$では分母は$3$だけになり,\,$J_1=\frac{4\sqrt2}{3}$となる.
-端点の収束を確かめた後,対称性で指数関数を除き,半角公式と置換で整数べきの積分へ直した.最後の有限積は,その多項式の積分を部分積分で順に結んだ結果である.
+を得る.分母には$n$個の奇数因子がある.例えば$n=1$では分母は$3$だけになり,\,$J_1=\frac{4\sqrt2}{3}$となる.
+
 \paragraph{13.19}
 (1) $f(x)=x^2-2$に対して,点$(x_n,f(x_n))$における接線と$x$軸の交点の$x$座標を求めると,
 \[
