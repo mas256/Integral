@@ -1,37 +1,65 @@
 \section{区間の反転}\label{節:区間の反転}
 
-対称の中心は原点に限らない.区間 $[a,b]$ の両端を交換するには,\,$x=a+b-t$ と置けばよい.対応は
-\[
-x=a\longleftrightarrow t=b,\qquad
-x=b\longleftrightarrow t=a
-\]
-であり,\,$\dd x=-\dd t$ だから,
-\begin{equation}\label{式:区間反転}
-\int_a^b f(x)\dd x=\int_a^b f(a+b-x)\dd x
-\end{equation}
-を得る.置換の直後は積分の上下端が逆になるが,微分の負号と合わせて向きを戻している.
-
-この式の左右は同じ値なので,加えて二で割ると
-\begin{equation}\label{式:反転平均}
-\int_a^b f(x)\dd x
- =\frac12\int_a^b\{f(x)+f(a+b-x)\}\dd x
-\end{equation}
-となる.\,$f(x)+f(a+b-x)$ が定数 $C$ になれば,答えは $C(b-a)$ の半分である.元の式を個別に積分できるかどうかは,この計算では問題にならない.
-
-今度は,関数 $g$ が区間の中央について対称,すなわち
+前節では,区間が原点について対称であった.では,原点を中心としない区間 $[a,b]$ でも,左右の値を組にして考えられないだろうか.本節では特に,区間の中央について対称な関数 $g$,すなわち
 \[
 g(a+b-x)=g(x)
 \]
-を満たすとする.このとき $xg(x)$ の積分を $I$ とすると,反転により
+を満たす $g$ に一次因子 $x$ が掛かった積分
 \[
-I=\int_a^b(a+b-x)g(x)\dd x.
+\int_a^b xg(x)\dd x
 \]
-元の式を加えると $x+(a+b-x)=a+b$ なので,
+を考える.この積分から $x$ を取り除き,\,$\int_a^b g(x)\dd x$ に帰着させることを目標とする.
+
+少々発想しにくい変形であるため,結果からお見せしよう.
 \begin{equation}\label{式:対称な重みの一次因子}
 \int_a^b xg(x)\dd x
  =\frac{a+b}{2}\int_a^b g(x)\dd x
 \end{equation}
-となる.中央からの距離が等しい二点では $g$ の値が等しく,その二点の $x$ 座標の平均は常に区間の中央になる,という関係である.
+が成り立つ.つまり,積分の中の $x$ を区間の中央 $\frac{a+b}{2}$ に置き換えてよいのだ.
+
+これを示すために,区間 $[a,b]$ の両端を交換する置換 $x=a+b-t$ を考える.対応は
+\[
+x=a\longleftrightarrow t=b,\qquad
+x=b\longleftrightarrow t=a
+\]
+であり,\,$\dd x=-\dd t$ だから,一般の関数 $f$ について
+\[
+\begin{aligned}
+\int_a^b f(x)\dd x
+ &=\int_b^a f(a+b-t)(-\dd t)\\
+ &=\int_a^b f(a+b-t)\dd t
+\end{aligned}
+\]
+となる.置換の直後は積分の上下端が逆になるが,微分の負号と合わせて向きを戻している.積分変数の文字を $x$ に戻せば,
+\begin{equation}\label{式:区間反転}
+\int_a^b f(x)\dd x=\int_a^b f(a+b-x)\dd x
+\end{equation}
+を得る.
+
+$I=\int_a^b xg(x)\dd x$ と置き,式\eqref{式:区間反転}を $f(x)=xg(x)$ に使う.\,$g(a+b-x)=g(x)$ だから
+\[
+I=\int_a^b(a+b-x)g(x)\dd x
+\]
+である.もとの式と加えると,\,$x+(a+b-x)=a+b$ なので
+\[
+\begin{aligned}
+2I&=\int_a^b\{x+(a+b-x)\}g(x)\dd x\\
+ &=(a+b)\int_a^b g(x)\dd x
+\end{aligned}
+\]
+となる.両辺を $2$ で割れば式\eqref{式:対称な重みの一次因子}を得る.
+
+ここで行ったのは,反転した積分ともとの積分を加えて $2$ で割ることである.一般の $f$ について書けば
+\begin{equation}\label{式:反転平均}
+\int_a^b f(x)\dd x
+ =\frac12\int_a^b\{f(x)+f(a+b-x)\}\dd x
+\end{equation}
+となる.式\eqref{式:反転平均}の中括弧が定数 $k$ になれば,答えは $\frac12k(b-a)$ である.もとの式を個別に積分できるかどうかは,この計算では問題にならない.次節以降では,中括弧が定数になる例を扱う.
+
+\begin{bookpoint}
+\textbf{POINT}\par
+$x=a+b-t$ と置いて反転した積分を作り,もとの積分と加える.\,$g(a+b-x)=g(x)$ なら,\,$x$ を区間の中央 $\frac{a+b}{2}$ に置き換えられる.
+\end{bookpoint}
 
 \begin{example}{反転による計算}
 次の定積分を求めよ.
@@ -40,21 +68,47 @@ I=\int_0^\pi x\sin^3x\dd x.
 \]
 \end{example}
 
-$x$ と三角関数の積を見ると部分積分を考えたくなる.しかしこの区間では $\sin(\pi-x)=\sin x$ である.\,$g(x)=\sin^3x$ は区間の中央について対称なので,式\eqref{式:対称な重みの一次因子}から
-\[
-I=\frac{\pi}{2}\int_0^\pi\sin^3x\dd x.
-\]
-残りは $\sin^3x=(1-\cos^2x)\sin x$ として $u=\cos x$ と置く.
-\[
-\int_0^\pi\sin^3x\dd x
- =\int_{-1}^1(1-u^2)\dd u
- =\left[u-\frac{u^3}{3}\right]_{-1}^1
- =\frac43.
-\]
-したがって $I=\frac{2\pi}{3}$ である.反転で $x$ を取り除き,置換で三角関数を取り除くという二段階で計算できた.
+\paragraphbf{方針}
+$\sin(\pi-x)=\sin x$ より,\,$\sin^3x$ は区間の中央 $\frac{\pi}{2}$ について対称である.反転で $x$ を $\frac{\pi}{2}$ に置き換え,残りは $u=\cos x$ と置く.
 
+\paragraphbf{解答}
+$I=\frac{2\pi}{3}$
+
+\paragraphbf{解法}
+$x$ と三角関数の積を見ると部分積分を考えたくなるだろう.しかしこの区間では $\sin(\pi-x)=\sin x$ であり,\,$g(x)=\sin^3x$ は $g(\pi-x)=g(x)$ を満たす.式\eqref{式:対称な重みの一次因子}で $a=0$,\,$b=\pi$ とすれば
+\[
+I=\frac{\pi}{2}\int_0^\pi\sin^3x\dd x
+\]
+となる.残りは $\sin^3x=(1-\cos^2x)\sin x$ として $u=\cos x$ と置く.\,$x=0,\pi$ に対して $u=1,-1$ であり,\,$\sin x\dd x=-\dd u$ だから
+\[
+\begin{aligned}
+\int_0^\pi\sin^3x\dd x
+ &=\int_1^{-1}(1-u^2)(-\dd u)\\
+ &=\int_{-1}^1(1-u^2)\dd u\\
+ &=\left[u-\frac{u^3}{3}\right]_{-1}^1\\
+ &=\frac43
+\end{aligned}
+\]
+である.したがって
+\[
+I=\frac{\pi}{2}\cdot\frac43=\frac{2\pi}{3}
+\]
+を得る.反転で $x$ を取り除き,置換で三角関数を取り除くという2段階で計算できた.
+
+\paragraphbf{反転の発想}
+反転 $x\mapsto a+b-x$ は,前節の $x\mapsto-x$ を区間の中央 $c=\frac{a+b}{2}$ のまわりで行ったものである.実際,\,$x=c+s$ と置けば $a+b-x=2c-(c+s)=c-s$ であり,反転は $s\mapsto-s$ にほかならない.
+
+この見方で式\eqref{式:対称な重みの一次因子}をもう一度導いてみよう.\,$h=\frac{b-a}{2}$ とし,\,$x=c+s$ と置くと,区間は $-h\leq s\leq h$ となる.\,$G(s)=g(c+s)$ と置けば,\,$g(a+b-x)=g(x)$ は $G(-s)=G(s)$,すなわち $G$ が偶関数であることを表す.したがって
+\[
+\begin{aligned}
+\int_a^b xg(x)\dd x
+ &=\int_{-h}^h(c+s)G(s)\dd s\\
+ &=c\int_{-h}^hG(s)\dd s+\int_{-h}^h sG(s)\dd s
+\end{aligned}
+\]
+となる.\,$sG(s)$ は奇関数なので第2項は $0$ であり,第1項は $c\int_a^b g(x)\dd x$ に等しい.中央からの距離が等しい2点では $g$ の値が等しく,その2点の $x$ 座標の平均は常に区間の中央 $c$ になる.式\eqref{式:対称な重みの一次因子}は,このことを積分で表したものである.
+
+\paragraphbf{反転が使えない場合}
 式\eqref{式:対称な重みの一次因子}を使う際には,\,$xg(x)$ 全体が対称なのではなく,\,$g$ が対称であることを確認する.たとえば $\int_0^1 x\e^x\dd x$ では $\e^{1-x}=\e^x$ が成り立たないので,\,$x$ を区間の中央 $\frac12$ に置き換えることはできない.
 
-また,\,$x^2g(x)$ まで同じように中央の二乗に置き換えられるわけでもない.\,$x^2+(a+b-x)^2$ は $x$ を含むからである.反転して足すことで何が消えるのかを,その都度式で確かめる必要がある.
-
-
+また,\,$x^2g(x)$ まで同じように中央の2乗に置き換えられるわけでもない.\,$x^2+(a+b-x)^2$ は $x$ を含むからである.反転して足すことで何が消えるのかを,その都度式で確かめる必要がある.
