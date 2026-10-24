@@ -6,14 +6,14 @@
 \]
 を考えたい.例えば$p=\frac12$なら$x^{p-1}=\frac1{\sqrt x}$となり,\,$x=0$で値が定まらない.閉区間で連続な関数の積分という,これまでの定義をそのまま使うことはできない.
 
-そこで,問題のある端点をいったん避けて積分し,その端点へ近づけてみよう.\,$\frac1{\sqrt x}$と,比べるために$\frac1x$について,\,$\int_\varepsilon^1$を計算すると次のようになる.
+そこで,問題のある端点をいったん避けて積分し,その端点へ近づけてみよう.\,$\frac1{\sqrt x}$と,比べるために$\frac1x$について,\,$\varepsilon$から$1$までの積分を計算すると次のようになる.
 \begin{center}
 \begin{tabular}{ccccc}
 \toprule
 $\varepsilon$ & $0.1$ & $0.01$ & $0.0001$ & $0.000001$\\
 \midrule
-$\int_\varepsilon^1\frac1{\sqrt x}\dd x=2-2\sqrt\varepsilon$ & $1.3675$ & $1.8$ & $1.98$ & $1.998$\\[3pt]
-$\int_\varepsilon^1\frac1x\dd x=-\log\varepsilon$ & $2.3026$ & $4.6052$ & $9.2103$ & $13.8155$\\
+$\frac1{\sqrt x}$の積分\ $2-2\sqrt\varepsilon$ & $1.3675$ & $1.8$ & $1.98$ & $1.998$\\[4pt]
+$\frac1x$の積分\ $-\log\varepsilon$ & $2.3026$ & $4.6052$ & $9.2103$ & $13.8155$\\
 \bottomrule
 \end{tabular}
 \end{center}
