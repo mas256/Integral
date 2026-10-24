@@ -1,37 +1,55 @@
 \subsection{二項係数}
 
-偶数公式の分数には,階乗を使った別の形がある.
+偶数の公式の分数は,階乗で書き直せる.偶数の積からは$2$を1つずつくくり出せるので
 \[
- (2m)!!=2^m m!,\qquad
- (2m-1)!!=\frac{(2m)!}{2^m m!}
+ (2m)!!=2^m m!
 \]
-だから
+である.また$(2m)!$は偶数の積と奇数の積に分かれるので
+\[
+ (2m-1)!!=\frac{(2m)!}{(2m)!!}=\frac{(2m)!}{2^m m!}
+\]
+となる.これらを式\eqref{式:ウォリス偶数}に代入すると
 \begin{equation}\label{式:ウォリスと二項係数}
- I_{2m}=\frac{\pi}{2}\frac{(2m)!}{2^{2m}(m!)^2}
- =\frac{\pi}{2}\frac{\binom{2m}{m}}{4^m}.
+ I_{2m}=\frac{\pi}{2}\cdot\frac{(2m)!}{2^{2m}(m!)^2}
+ =\frac{\pi}{2}\cdot\frac{1}{4^m}\binom{2m}{m}
 \end{equation}
-ここで$\binom{2m}{m}=\frac{(2m)!}{(m!)^2}$は二項係数である.
+を得る.ここで$\binom{2m}{m}=\frac{(2m)!}{(m!)^2}$は二項係数であり,\,$2m$個から$m$個を選ぶ組合せの数${}_{2m}\mathrm{C}_m$に等しい.
 
-さらに偶数公式と奇数公式を掛けると,多くの因子が消えて
+二項係数$\binom{2m}{m}$は$m$とともに急速に大きくなる.では,\,$4^m$で割った値はどうなるだろうか.\,$\sqrt m$を掛けて調べてみよう.
+\begin{center}
+\begin{tabular}{cccccc}
+\toprule
+$m$ & $1$ & $10$ & $100$ & $1000$ & $10000$\\
+\midrule
+$\frac{\sqrt m}{4^m}\binom{2m}{m}$ & $0.5$ & $0.5572$ & $0.5635$ & $0.5641$ & $0.5642$\\
+\bottomrule
+\end{tabular}
+\end{center}
+値は$0.564$付近へ近づいているように見える.この値を,ウォリスの積分から求めよう.
+
+偶数の公式と奇数の公式を掛けると,分子と分母の偶数がすべて約分されて
 \[
- I_{2m}I_{2m+1}=\frac{\pi}{2(2m+1)}
+ I_{2m}I_{2m+1}
+ =\frac{1\cdot3\cdots(2m-1)}{3\cdot5\cdots(2m+1)}\cdot\frac{\pi}{2}
+ =\frac{\pi}{2(2m+1)}
 \]
-となる.これと$\frac{I_{2m+1}}{I_{2m}}\to1$を組み合わせれば
-\[
+となる.これと式\eqref{式:ウォリス隣接比}の$\frac{I_{2m+1}}{I_{2m}}\to1$を組み合わせれば
+\begin{align*}
  mI_{2m}^2
- =\frac{m\pi}{2(2m+1)}\frac{I_{2m}}{I_{2m+1}}
- \longrightarrow\frac{\pi}{4}.
-\]
-$I_{2m}>0$なので平方根を取ることができ,
+ &=m\,I_{2m}I_{2m+1}\cdot\frac{I_{2m}}{I_{2m+1}}\\
+ &=\frac{m\pi}{2(2m+1)}\cdot\frac{I_{2m}}{I_{2m+1}}
+ \longrightarrow\frac{\pi}{4}
+\end{align*}
+となる.\,$I_{2m}>0$なので正の平方根を取ることができ,
 \[
- \sqrt m\,I_{2m}\longrightarrow\frac{\sqrt\pi}{2}.
+ \sqrt m\,I_{2m}\longrightarrow\frac{\sqrt\pi}{2}
 \]
-式\eqref{式:ウォリスと二項係数}に戻すと
+である.式\eqref{式:ウォリスと二項係数}より$\frac{\sqrt m}{4^m}\binom{2m}{m}=\frac2\pi\sqrt m\,I_{2m}$なので
 \begin{equation}\label{式:中央二項係数の極限}
  \lim_{m\to\infty}\frac{\sqrt m}{4^m}\binom{2m}{m}
  =\frac1{\sqrt\pi}
 \end{equation}
-を得る.階乗を含む数列の大きさが,三角関数の積分を経由して分かったことになる.
+を得る.表の$0.564$付近の値は,\,$\frac1{\sqrt\pi}=0.56418\ldots$だったのだ.階乗を含む数列の大きさが,三角関数の積分を経由して分かったことになる.
 
-
-
+\paragraphbf{硬貨を投げる確率}
+硬貨を$2m$回投げて表がちょうど$m$回出る確率は,\,$\frac1{4^m}\binom{2m}{m}$である.式\eqref{式:中央二項係数の極限}によれば,この確率は$m$が大きいとき$\frac{1}{\sqrt{\pi m}}$に近い.例えば$200$回投げて表がちょうど$100$回出る確率は,\,$\frac1{\sqrt{100\pi}}=0.0564\ldots$に近く,実際の値は$0.0563\ldots$である.表と裏が半分ずつになることが最も起こりやすいとはいえ,ちょうど半分になる確率そのものは$0$へ近づいていく.
