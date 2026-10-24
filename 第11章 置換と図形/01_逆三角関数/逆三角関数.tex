@@ -1,6 +1,6 @@
 \section{逆三角関数}\label{節:逆三角関数}
 
-$\sin\theta=\frac12$を満たす角は,\,$\frac\pi6$,\,$\frac{5\pi}6$など無数にある.このままでは,\,$x$から角を返す関数にはならない.\sectionref{節:逆向きの置換}で扱った枝の選択を,ここでも行う.
+$\sin\theta=\frac12$を満たす角は,\,$\frac\pi6$,\,$\frac{5\pi}6$など無数にある.このままでは,\,$x$から角を1つ返す関数にはならない.そこで\sectionref{節:逆向きの置換}で扱った枝の選択を,ここでも行う.三角関数を単調な区間に制限すれば,逆関数が作れる.
 
 \begin{definition}{逆三角関数とその値の範囲}
 次の区間に制限した三角関数の逆関数を,それぞれ$\arcsin$,\,$\arccos$,\,$\arctan$と書く.
@@ -15,7 +15,7 @@ $\sin\theta=\frac12$を満たす角は,\,$\frac\pi6$,\,$\frac{5\pi}6$など無�
 例えば$\theta=\arcsin x$とは,\,$\sin\theta=x$かつ$-\frac\pi2\leqq\theta\leqq\frac\pi2$であることを表す.
 \end{definition}
 
-正弦と正接は指定した区間で狭義単調増加し,余弦は狭義単調減少するので,角は一つに決まる.正接の範囲の端を含めないのは,そこで$\cos\theta=0$になり,正接が定義されないためである.\,$\sin^{-1}x$などの表記もあるが,逆数との混同を避け,本書では$\arcsin x$を使う.
+正弦と正接は指定した区間で狭義単調増加し,余弦は狭義単調減少するので,角は1つに決まる.正接の範囲の端を含めないのは,そこで$\cos\theta=0$になり,正接が定義されないためである.\,$\sin^{-1}x$などの表記もあるが,逆数との混同を避け,本書では$\arcsin x$を使う.
 
 定義から$\sin(\arcsin x)=x$は$-1\leqq x\leqq1$で成り立つ.一方,\,$\arcsin(\sin\theta)=\theta$は,\,$\theta$が選んだ範囲にあるときに限る.左辺が返す値は,必ずその範囲内だからである.
 
@@ -28,10 +28,18 @@ $\sin\theta=\frac12$を満たす角は,\,$\frac\pi6$,\,$\frac{5\pi}6$など無�
 \]
 \end{example}
 
-第一の正弦は$\frac12$であり,\,$\arcsin$の値の範囲にある角は$\frac\pi6$である.第二の余弦は$-\frac{\sqrt3}2$であり,\,$[0,\pi]$の中では$\frac{5\pi}6$になる.第三の正接は$-1$であり,\,$\left(-\frac\pi2,\frac\pi2\right)$の中では$-\frac\pi4$になる.従って答えは順に
-\[
-\frac\pi6,\qquad\frac{5\pi}6,\qquad-\frac\pi4
-\]
-である.逆関数の記号を打ち消す前に,戻った角が指定された範囲にあるかを確かめる.
+\paragraphbf{方針}
+先に三角関数の値を求め,その値を取る角のうち,各逆関数が返す範囲にあるものを選ぶ.
+
+\paragraphbf{解答}
+順に$\frac\pi6$,\,$\frac{5\pi}6$,\,$-\frac\pi4$
+
+\paragraphbf{解法}
+\begin{enumerate}[label=(\arabic*)]
+\item $\sin\frac{5\pi}6=\frac12$であり,\,$\left[-\frac\pi2,\frac\pi2\right]$の中で正弦が$\frac12$になる角は$\frac\pi6$である.
+\item $\cos\frac{7\pi}6=-\frac{\sqrt3}2$であり,\,$[0,\pi]$の中で余弦が$-\frac{\sqrt3}2$になる角は$\frac{5\pi}6$である.
+\item $\tan\frac{3\pi}4=-1$であり,\,$\left(-\frac\pi2,\frac\pi2\right)$の中で正接が$-1$になる角は$-\frac\pi4$である.
+\end{enumerate}
+どれも元の角とは異なる.逆関数の記号を打ち消してよいのは,元の角が指定された範囲にあるときだけである.
 
 \input{第11章 置換と図形/01_逆三角関数/01_逆三角関数の微分.tex}%
