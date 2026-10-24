@@ -1,51 +1,109 @@
 \subsection{双曲線関数の逆関数}
 
-$\cosh u>0$なので,\,$\sinh u$は実数全体で狭義単調増加する.また$u\to\infty$で$\sinh u\to\infty$,\,$u\to-\infty$で$\sinh u\to-\infty$だから,どの実数$x$も$x=\sinh u$と一意に書ける.この逆関数を$\operatorname{arsinh}x$と書く.
+$(\sinh u)'=\cosh u>0$なので,\,$\sinh u$は実数全体で狭義単調増加する.また$u\to\infty$で$\sinh u\to\infty$,\,$u\to-\infty$で$\sinh u\to-\infty$だから,どの実数$x$も$x=\sinh u$と一意に書ける.この逆関数を$\operatorname{arsinh}x$と書く.
 
-$x=\sinh u$なら,\,$\cosh u=\sqrt{1+x^2}$である.定義式を足すと$\sinh u+\cosh u=\e^u$だから
+$x=\sinh u$なら,\,$\cosh u>0$と$\cosh^2u=1+\sinh^2u$より$\cosh u=\sqrt{1+x^2}$である.定義式を足すと$\sinh u+\cosh u=\e^u$だから
 \begin{equation}\label{式:逆双曲線正弦}
-u=\operatorname{arsinh}x=\log\bigl(x+\sqrt{1+x^2}\bigr).
+u=\operatorname{arsinh}x=\log\bigl(x+\sqrt{1+x^2}\bigr)
 \end{equation}
-対数の中は,\,$\sqrt{1+x^2}>|x|$によって常に正である.逆関数の微分から
+となる.対数の中は,\,$\sqrt{1+x^2}>|x|$によって常に正である.逆関数の微分から
 \[
 \frac{\dd u}{\dd x}=\frac1{\cosh u}
 =\frac1{\sqrt{1+x^2}}
 \]
-となる.ここでも積分の値から逆関数を定義したのではなく,指数関数による定義から順に導いた.
+を得る.ここでも積分の値から逆関数を定義したのではなく,指数関数による定義から順に導いた.
+
+この関係を置換積分に使おう.\,$a>0$として$x=a\sinh u$と置くと
+\[
+\sqrt{a^2+x^2}=a\cosh u,\qquad
+\dd x=a\cosh u\dd u
+\]
+となり,根号と$\dd x$に同じ$\cosh u$が現れる.三角置換$x=a\tan\theta$では,根号が$a\sec\theta$,\,$\dd x$が$a\sec^2\theta\dd\theta$となって次数がずれたが,双曲線関数では次数がずれない.
+
+\begin{bookpoint}
+\textbf{POINT}\par
+$\sqrt{a^2+x^2}$を含む積分は$x=a\sinh u$と置き,\,$\sqrt{a^2+x^2}=a\cosh u$,\,$\dd x=a\cosh u\dd u$を代入する.
+\end{bookpoint}
 
 \begin{example}{双曲線正弦への置換}
 $\int_0^3\frac1{\sqrt{4+x^2}}\dd x$を求めよ.
 \end{example}
 
+\paragraphbf{方針}
+$x=2\sinh u$と置くと,分母と$\dd x$の$2\cosh u$が打ち消し合い,\,$1$の積分になる.
+
+\paragraphbf{解答}
+$\log\frac{3+\sqrt{13}}2$
+
+\paragraphbf{解法}
 $x=2\sinh u$と置けば
 \[
 \dd x=2\cosh u\dd u,\qquad
-\sqrt{4+x^2}=2\cosh u.
+\sqrt{4+x^2}=2\cosh u
 \]
-分母と微分の係数が打ち消し合う.端点$x=0$は$u=0$へ,\,$x=3$は
+である.端点$x=0$は$u=0$へ,\,$x=3$は
 \[
 u=\operatorname{arsinh}\frac32
+=\log\left(\frac32+\sqrt{1+\frac94}\right)
 =\log\frac{3+\sqrt{13}}2
 \]
-へ移る.従って積分値は$\log\frac{3+\sqrt{13}}2$である.三角置換$x=2\tan\theta$では$\sec\theta$の積分が残るが,この置換では$1$の積分になる.
+へ移る.したがって
+\[
+\int_0^3\frac1{\sqrt{4+x^2}}\dd x
+=\int_0^{\log\frac{3+\sqrt{13}}2}1\dd u
+=\log\frac{3+\sqrt{13}}2
+\]
+となる.
 
+\paragraphbf{三角置換との関係}
+同じ積分を$x=2\tan\theta$で置換すると,\,$\int\sec\theta\dd\theta$が残る.\,\sectionref{節:相反三角関数}の結果を使えば
+\[
+\int\sec\theta\dd\theta=\log(\sec\theta+\tan\theta)+C
+\]
+である.ここで$\tan\theta=\frac x2$,\,$\sec\theta=\frac{\sqrt{4+x^2}}2$を代入すると,対数の中は$\frac{x+\sqrt{4+x^2}}2$となり,\,$\operatorname{arsinh}\frac x2$と一致する.2つの置換は$\tan\theta=\sinh u$で結ばれ,このとき$\sec\theta=\cosh u$,\,$\sec\theta+\tan\theta=\e^u$となる.正割の積分に現れた$\sec\theta+\tan\theta$は,双曲線関数で書けば$\e^u$だったのだ.
+
+また\chapterref{章:部分積分}では,\,$\log\bigl(x+\sqrt{1+x^2}\bigr)$を微分すると$\frac1{\sqrt{1+x^2}}$になることを直接確かめた.式\eqref{式:逆双曲線正弦}は,その対数が$\operatorname{arsinh}x$であることを表している.
+
+\paragraphbf{偶関数の逆関数}
 $\cosh u$は偶関数なので,実数全体では逆関数を持たない.しかし$u\geqq0$に制限すれば,\,$1$から無限大へ狭義単調増加する.\,$x=\cosh u$を使う置換では,このように枝を選ぶ.\,$\sinh$と$\cosh$で,逆向きに戻すときの条件は同じではない.
 
 \begin{example}{双曲線正接への置換}
 $\int_0^{\frac12}\frac1{1-x^2}\dd x$を求めよ.
 \end{example}
 
-$\tanh u=\frac{\e^{2u}-1}{\e^{2u}+1}$は実数全体で狭義単調増加し,値の範囲は$(-1,1)$である.\,$x=\tanh u$と置けば,式\eqref{式:双曲線正接の微分}によって$\dd x=(1-x^2)\dd u$となる.元へ戻す式は
+\paragraphbf{方針}
+$x=\tanh u$と置くと,\,$\dd x=(1-x^2)\dd u$となって被積分関数の分母が消える.
+
+\paragraphbf{解答}
+$\frac12\log3$
+
+\paragraphbf{解法}
+$\tanh u=\frac{\e^{2u}-1}{\e^{2u}+1}$は実数全体で狭義単調増加し,値の範囲は$(-1,1)$である.\,$x=\tanh u$と置けば,式\eqref{式:双曲線正接の微分}によって
 \[
-x(\e^{2u}+1)=\e^{2u}-1,\qquad
-\e^{2u}=\frac{1+x}{1-x},\qquad
-u=\frac12\log\frac{1+x}{1-x}
+\dd x=(1-\tanh^2u)\dd u=(1-x^2)\dd u
 \]
-である.従って端点は$0$と$\frac12\log3$へ移り,求める積分値は$\frac12\log3$となる.部分分数で
+となる.元へ戻す式は,\,$x=\frac{\e^{2u}-1}{\e^{2u}+1}$を$\e^{2u}$について解いて
+\begin{align*}
+x(\e^{2u}+1)&=\e^{2u}-1\\
+\e^{2u}&=\frac{1+x}{1-x}\\
+u&=\frac12\log\frac{1+x}{1-x}
+\end{align*}
+である.したがって端点$x=0,\frac12$は$u=0,\frac12\log3$へ移り,
+\[
+\int_0^{\frac12}\frac1{1-x^2}\dd x
+=\int_0^{\frac12\log3}1\dd u
+=\frac12\log3
+\]
+となる.
+
+\paragraphbf{部分分数分解との関係}
+部分分数分解で
 \[
 \frac1{1-x^2}=\frac12\left(\frac1{1+x}+\frac1{1-x}\right)
 \]
-と分けても同じ対数が現れる.双曲線正接の逆関数が,その二つの対数を一つにまとめている.
-
-
-
+と分けても解ける.原始関数は
+\[
+\frac12\log(1+x)-\frac12\log(1-x)
+=\frac12\log\frac{1+x}{1-x}
+\]
+であり,\,$-1<x<1$で上の$u$と同じ式である.部分分数分解で現れる2つの対数の差が,双曲線正接の逆関数そのものになっている.
