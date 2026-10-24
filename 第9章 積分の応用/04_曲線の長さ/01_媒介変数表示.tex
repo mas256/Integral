@@ -2,7 +2,7 @@
 
 円や,縦向きの接線を持つ曲線は,1つの関数 $y=f(x)$ のグラフとして扱いにくい.そこで
 \[
-x=x(t),\qquad y=y(t),\qquad \alpha\leq t\leq\beta
+x=x(t),\qquad y=y(t),\qquad \alpha\le t\le\beta
 \]
 と表された曲線の長さを考えよう.\,$x(t),y(t)$ は連続微分可能であるとする.
 
@@ -17,9 +17,9 @@ L=\int_\alpha^\beta\sqrt{x'(t)^2+y'(t)^2}\dd t
 \end{equation}
 を得る.導関数が連続であることから近似の誤差は区間全体で小さくできるが,ここではその評価の詳細は省き,この式を用いる.途中で $\sqrt{x'(t)^2+y'(t)^2}$ が $0$ になる点があっても,この式はそのまま使える.
 
-ここで1つ断りをいれておこう.この積分は,\,$t$ に沿って点が進んだ長さを数える.同じ部分を2度たどれば2度数える.たとえば $x=\cos t$,\,$y=\sin t$ を $0\leq t\leq4\pi$ で積分すると $4\pi$ になるが,図形としての単位円の周の長さは $2\pi$ である.図形そのものの長さを求めるなら,1度だけたどる区間を選ぶ.
+ここで1つ断りをいれておこう.この積分は,\,$t$ に沿って点が進んだ長さを数える.同じ部分を2度たどれば2度数える.たとえば $x=\cos t$,\,$y=\sin t$ を $0\le t\le4\pi$ で積分すると $4\pi$ になるが,図形としての単位円の周の長さは $2\pi$ である.図形そのものの長さを求めるなら,1度だけたどる区間を選ぶ.
 
-媒介変数表示は面積にも使える.\,$x(t)$ が単調増加し,\,$y(t)\geq0$ であるとする.このとき曲線は $x$ の関数のグラフであり,曲線と $x$ 軸の間の面積は $\int_{x(\alpha)}^{x(\beta)}y\dd x$ である.\,$x=x(t)$ と置換すると $\dd x=x'(t)\dd t$ なので,
+媒介変数表示は面積にも使える.\,$x(t)$ が単調増加し,\,$y(t)\ge0$ であるとする.このとき曲線は $x$ の関数のグラフであり,曲線と $x$ 軸の間の面積は $\int_{x(\alpha)}^{x(\beta)}y\dd x$ である.\,$x=x(t)$ と置換すると $\dd x=x'(t)\dd t$ なので,
 \begin{equation}\label{式:媒介曲線の面積}
 S=\int_\alpha^\beta y(t)x'(t)\dd t
 \end{equation}
@@ -33,7 +33,7 @@ S=\int_\alpha^\beta y(t)x'(t)\dd t
 \begin{example}{媒介曲線の面積と長さ}
 $a>0$ とする.曲線
 \[
-x=a(t-\sin t),\qquad y=a(1-\cos t),\qquad 0\leq t\leq2\pi
+x=a(t-\sin t),\qquad y=a(1-\cos t),\qquad 0\le t\le2\pi
 \]
 の長さと,この曲線と $x$ 軸に囲まれた部分の面積を求めよ.
 \end{example}
@@ -54,7 +54,7 @@ x'(t)^2+y'(t)^2
  &=a^2(2-2\cos t)\\
  &=4a^2\sin^2\frac t2
 \end{align*}
-となる.平方根は $2a\left|\sin\frac t2\right|$ である.\,$0\leq t\leq2\pi$ では $0\leq\frac t2\leq\pi$ なので $\sin\frac t2\geq0$ であり,
+となる.平方根は $2a\left|\sin\frac t2\right|$ である.\,$0\le t\le2\pi$ では $0\le\frac t2\le\pi$ なので $\sin\frac t2\ge0$ であり,
 \begin{align*}
 L&=2a\int_0^{2\pi}\sin\frac t2\dd t\\
  &=\left[-4a\cos\frac t2\right]_0^{2\pi}\\
@@ -62,7 +62,7 @@ L&=2a\int_0^{2\pi}\sin\frac t2\dd t\\
  &=8a.
 \end{align*}
 
-\textbf{面積}\quad $x'(t)=a(1-\cos t)$ は $0<t<2\pi$ で正なので,\,$x$ は区間全体で単調増加する.また $y\geq0$ で,両端では $y=0$ である.よって
+\textbf{面積}\quad $x'(t)=a(1-\cos t)$ は $0<t<2\pi$ で正なので,\,$x$ は区間全体で単調増加する.また $y\ge0$ で,両端では $y=0$ である.よって
 \begin{align*}
 S&=\int_0^{2\pi}a(1-\cos t)\cdot a(1-\cos t)\dd t\\
  &=a^2\int_0^{2\pi}(1-2\cos t+\cos^2t)\dd t\\

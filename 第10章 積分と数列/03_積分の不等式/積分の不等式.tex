@@ -1,12 +1,12 @@
 \section{積分の不等式}\label{節:積分の不等式}
 
-$f(x)\leqq g(x)$が区間全体で成り立てば,\,$\int_a^b f(x)\dd x\leqq\int_a^b g(x)\dd x$である.この基本的な性質を積や平方の形に使うと,2つの関数の積分の間に成り立つ不等式が得られる.
+$f(x)\le g(x)$が区間全体で成り立てば,\,$\int_a^b f(x)\dd x\le\int_a^b g(x)\dd x$である.この基本的な性質を積や平方の形に使うと,2つの関数の積分の間に成り立つ不等式が得られる.
 
 \begin{theorem}{積分に対するコーシー・シュワルツの不等式}
 $a<b$とし,\,$f,g$は$[a,b]$で実数値を取る連続関数とする.このとき
 \begin{equation}\label{式:積分のコーシーシュワルツ}
  \left(\int_a^b f(x)g(x)\dd x\right)^2
- \leqq
+ \le
  \left(\int_a^b f(x)^2\dd x\right)
  \left(\int_a^b g(x)^2\dd x\right)
 \end{equation}
@@ -15,7 +15,7 @@ $a<b$とし,\,$f,g$は$[a,b]$で実数値を取る連続関数とする.この�
 
 平方は負にならないので,任意の実数$t$について
 \[
- 0\leqq\int_a^b\{f(x)-tg(x)\}^2\dd x
+ 0\le\int_a^b\{f(x)-tg(x)\}^2\dd x
 \]
 である.式を短くするため
 \[
@@ -25,15 +25,15 @@ $a<b$とし,\,$f,g$は$[a,b]$で実数値を取る連続関数とする.この�
 \]
 と置くと,右辺を展開して
 \[
- 0\leqq Ct^2-2Bt+A
+ 0\le Ct^2-2Bt+A
 \]
 となる.
 
 $C>0$とする\footnote{$C=0$なら,下の等号の議論と同じく連続性から$g$は区間全体で$0$となり,\,$B=0$である.このとき不等式の両辺はともに$0$である.}.右辺は$t$の2次関数であり,すべての実数$t$で$0$以上である.ここで1つの知識を思い出そう.2次関数がすべての実数で$0$以上なら,その判別式は$0$以下である.右辺の判別式を$D$とすると
 \[
- \frac{D}{4}=B^2-AC\leqq0
+ \frac{D}{4}=B^2-AC\le0
 \]
-となり,\,$B^2\leqq AC$を得る.これが式\eqref{式:積分のコーシーシュワルツ}である.
+となり,\,$B^2\le AC$を得る.これが式\eqref{式:積分のコーシーシュワルツ}である.
 
 等号$B^2=AC$が成り立つのは判別式が$0$のときであり,そのとき2次関数は$t=\frac BC$で$0$になる.つまり
 \[
@@ -44,7 +44,7 @@ $C>0$とする\footnote{$C=0$なら,下の等号の議論と同じく連続性�
 この不等式を使うときには,評価したい積分の中身を$f(x)g(x)$という積に分ける.片方を$1$とすることも多い.例えば$g(x)=1$とすれば
 \begin{equation}\label{式:平均と二乗平均}
  \left(\int_a^b f(x)\dd x\right)^2
- \leqq(b-a)\int_a^b f(x)^2\dd x
+ \le(b-a)\int_a^b f(x)^2\dd x
 \end{equation}
 となる.両辺を$(b-a)^2$で割ると,関数の平均値の平方は,平方の平均値を超えないことが分かる.等号は$f$が定数関数のときに限る.
 
@@ -58,7 +58,7 @@ $h$は$[a,b]$で連続で,すべての$x$について$h(x)>0$を満たすとす�
 \[
  \left(\int_a^b h(x)\dd x\right)
  \left(\int_a^b\frac1{h(x)}\dd x\right)
- \geqq(b-a)^2
+ \ge(b-a)^2
 \]
 を示し,等号条件を求めよ.
 \end{example}
@@ -74,13 +74,13 @@ $f=\sqrt h$,\,$g=\frac1{\sqrt h}$と置く.\,$h$は閉区間で連続かつ正�
 \[
  (b-a)^2
  =\left(\int_a^b1\dd x\right)^2
- \leqq\left(\int_a^b h(x)\dd x\right)
+ \le\left(\int_a^b h(x)\dd x\right)
        \left(\int_a^b\frac1{h(x)}\dd x\right)
 \]
 となる.\,$g$は恒等的に$0$ではないので,等号条件は$f=cg$である.これは$\sqrt h=\frac c{\sqrt h}$,すなわち$h=c$を意味する.
 
 \paragraphbf{対数の評価}
-例えば$h(x)=1+x$,\,$0\leqq x\leqq1$とすると,
+例えば$h(x)=1+x$,\,$0\le x\le1$とすると,
 \[
  \int_0^1(1+x)\dd x=\frac32,\qquad
  \int_0^1\frac1{1+x}\dd x=\log2

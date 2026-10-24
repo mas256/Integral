@@ -4,19 +4,19 @@
 
 ここで1つ断りをいれておこう.本節では,\,$f$は$[1,\infty)$で正かつ単調減少する連続関数とする.増加関数なら,以下の不等号の向きがすべて逆になる.
 
-$k\leqq x\leqq k+1$において
+$k\le x\le k+1$において
 \[
- f(k+1)\leqq f(x)\leqq f(k)
+ f(k+1)\le f(x)\le f(k)
 \]
 である.長さ$1$の区間で積分すると
 \[
- f(k+1)\leqq\int_k^{k+1}f(x)\dd x\leqq f(k)
+ f(k+1)\le\int_k^{k+1}f(x)\dd x\le f(k)
 \]
-となる.右側の不等式$\int_k^{k+1}f(x)\dd x\leqq f(k)$を$k=1,\ldots,n$について足すと,\,$\int_1^{n+1}f(x)\dd x\leqq\sum_{k=1}^{n}f(k)$を得る.左側の不等式は添字を1だけ減らして$f(k)\leqq\int_{k-1}^{k}f(x)\dd x$とし,\,$k=2,\ldots,n$について足して,最初の$f(1)$だけを別に残す.まとめると
+となる.右側の不等式$\int_k^{k+1}f(x)\dd x\le f(k)$を$k=1,\ldots,n$について足すと,\,$\int_1^{n+1}f(x)\dd x\le\sum_{k=1}^{n}f(k)$を得る.左側の不等式は添字を1だけ減らして$f(k)\le\int_{k-1}^{k}f(x)\dd x$とし,\,$k=2,\ldots,n$について足して,最初の$f(1)$だけを別に残す.まとめると
 \begin{equation}\label{式:減少関数の和比較}
  \int_1^{n+1}f(x)\dd x
- \leqq\sum_{k=1}^{n}f(k)
- \leqq f(1)+\int_1^{n}f(x)\dd x
+ \le\sum_{k=1}^{n}f(k)
+ \le f(1)+\int_1^{n}f(x)\dd x
 \end{equation}
 となる.
 
@@ -45,7 +45,7 @@ $k\leqq x\leqq k+1$において
 
 \begin{bookpoint}
 \textbf{POINT}\par
-小区間$[k,k+1]$で$f(k+1)\leqq f(x)\leqq f(k)$を書いて積分し,\,$k$について足して和を積分で挟む.
+小区間$[k,k+1]$で$f(k+1)\le f(x)\le f(k)$を書いて積分し,\,$k$について足して和を積分で挟む.
 \end{bookpoint}
 
 \begin{example}{調和数}
@@ -53,27 +53,27 @@ $H_n=\sum_{k=1}^{n}\frac1k$とおく.\,$H_n\to\infty$であること,および
 \[
  \lim_{n\to\infty}\frac{H_n}{\log n}=1
 \]
-を示せ.後の比は$n\geqq2$について考える.
+を示せ.後の比は$n\ge2$について考える.
 \end{example}
 
 \paragraphbf{方針}
 $f(x)=\frac1x$について和を積分で挟み,\,$\log n$で割ってはさみうちの原理を使う.
 
 \paragraphbf{解答}
-$\log(n+1)\leqq H_n\leqq1+\log n$から,どちらも示される.
+$\log(n+1)\le H_n\le1+\log n$から,どちらも示される.
 
 \paragraphbf{解法}
 $f(x)=\frac1x$は$[1,\infty)$で正かつ単調減少するので,式\eqref{式:減少関数の和比較}から
 \[
- \log(n+1)\leqq H_n\leqq1+\log n
+ \log(n+1)\le H_n\le1+\log n
 \]
 となる.下側の$\log(n+1)$が限りなく大きくなるため,\,$H_n$も限りなく大きくなる.
 
-次に,\,$n\geqq2$で正の$\log n$で各辺を割ると
+次に,\,$n\ge2$で正の$\log n$で各辺を割ると
 \[
  \frac{\log(n+1)}{\log n}
- \leqq\frac{H_n}{\log n}
- \leqq1+\frac1{\log n}.
+ \le\frac{H_n}{\log n}
+ \le1+\frac1{\log n}.
 \]
 左辺は
 \[
@@ -108,4 +108,4 @@ $H_n$と$\log n$はどちらも限りなく大きくなるが,差は$0$ではな
  =\int_n^{n+1}\frac1x\dd x-\frac1{n+1}
  =\int_n^{n+1}\left(\frac1x-\frac1{n+1}\right)\dd x
 \]
-である.被積分関数は$n<x<n+1$で正なので,\,$d_n>d_{n+1}$となり,\,$d_n$は単調減少する.一方,上の評価から$d_n\geqq\log(n+1)-\log n>0$である.下に有界な単調減少数列なので,\,$d_n$は$0$以上の極限を持つ.その値は$0.5772\ldots$であり,\textbf{オイラー定数}と呼ばれて$\gamma$と書かれる.\,$\gamma$が有理数かどうかは,現在も分かっていない.
+である.被積分関数は$n<x<n+1$で正なので,\,$d_n>d_{n+1}$となり,\,$d_n$は単調減少する.一方,上の評価から$d_n\ge\log(n+1)-\log n>0$である.下に有界な単調減少数列なので,\,$d_n$は$0$以上の極限を持つ.その値は$0.5772\ldots$であり,\textbf{オイラー定数}と呼ばれて$\gamma$と書かれる.\,$\gamma$が有理数かどうかは,現在も分かっていない.

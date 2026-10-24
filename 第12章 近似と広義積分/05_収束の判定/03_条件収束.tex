@@ -11,10 +11,10 @@
  g(x)=\frac{|f(x)|+f(x)}2,\qquad
  h(x)=\frac{|f(x)|-f(x)}2
 \]
-と置く.\,$f(x)\geq0$なら$g(x)=f(x)$,\,$h(x)=0$であり,\,$f(x)<0$なら$g(x)=0$,\,$h(x)=-f(x)$である.したがって
+と置く.\,$f(x)\ge0$なら$g(x)=f(x)$,\,$h(x)=0$であり,\,$f(x)<0$なら$g(x)=0$,\,$h(x)=-f(x)$である.したがって
 \[
- 0\leq g(x)\leq|f(x)|,\qquad
- 0\leq h(x)\leq|f(x)|,\qquad f(x)=g(x)-h(x)
+ 0\le g(x)\le|f(x)|,\qquad
+ 0\le h(x)\le|f(x)|,\qquad f(x)=g(x)-h(x)
 \]
 が成り立つ.\,$\int|f(x)|\dd x$が収束すれば,比較判定により$g,h$の積分はそれぞれ収束する.元の積分はその差だから,やはり有限の極限をもつ.
 
@@ -36,18 +36,18 @@ $\frac1x$だけでは無限大で積分が収束しない.しかし,\,$\sin x$�
    -\int_1^R\frac{\cos x}{x^2}\dd x\\
  &=\cos1-\frac{\cos R}{R}-\int_1^R\frac{\cos x}{x^2}\dd x.
 \end{align*}
-境界項$\frac{\cos R}{R}$は$0$へ近づく.また$\frac{|\cos x|}{x^2}\leq\frac1{x^2}$なので,最後の積分は絶対収束する.よって,\,$R\to\infty$で右辺は有限の値に近づき,元の積分は収束する.
+境界項$\frac{\cos R}{R}$は$0$へ近づく.また$\frac{|\cos x|}{x^2}\le\frac1{x^2}$なので,最後の積分は絶対収束する.よって,\,$R\to\infty$で右辺は有限の値に近づき,元の積分は収束する.
 
-絶対値を付けた積分は別に調べる.整数$k\geq1$について,\,$[k\pi,(k+1)\pi]$では$x\leq(k+1)\pi$だから
+絶対値を付けた積分は別に調べる.整数$k\ge1$について,\,$[k\pi,(k+1)\pi]$では$x\le(k+1)\pi$だから
 \[
  \int_{k\pi}^{(k+1)\pi}\frac{|\sin x|}{x}\dd x
- \geq\frac1{(k+1)\pi}\int_{k\pi}^{(k+1)\pi}|\sin x|\dd x
+ \ge\frac1{(k+1)\pi}\int_{k\pi}^{(k+1)\pi}|\sin x|\dd x
  =\frac2{(k+1)\pi}.
 \]
 $k=1,\ldots,n$について足すと
 \[
  \int_{\pi}^{(n+1)\pi}\frac{|\sin x|}{x}\dd x
- \geq\frac2{\pi}\sum_{k=1}^{n}\frac1{k+1}
+ \ge\frac2{\pi}\sum_{k=1}^{n}\frac1{k+1}
 \]
 となる.右辺は調和級数の定数倍から有限個の項を除いたものであり,\,$n\to\infty$で限りなく大きくなる.$\int_1^{\pi}$の部分は$0$以上なので,絶対値の積分は$+\infty$へ発散し,元の積分は条件収束である.ここでは積分の値そのものを求めていない.収束を証明することと,値を計算することは別の課題である.
 

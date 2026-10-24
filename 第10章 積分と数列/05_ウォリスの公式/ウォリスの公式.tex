@@ -9,11 +9,11 @@
 \[
  I_0=\frac{\pi}{2},\qquad I_1=1
 \]
-である.\,$n\geqq2$の$I_n$を,指数の小さい積分に帰着させることを目標とする.
+である.\,$n\ge2$の$I_n$を,指数の小さい積分に帰着させることを目標とする.
 
 $\sin^n x$を$\sin^{n-1}x\cdot\sin x$と分け,後ろの$\sin x$を積分する側にして部分積分する.微分された$\sin^{n-1}x$から$\cos x$が現れ,積分の中に$\cos^2x$ができる.これを$1-\sin^2x$に書き直せば,再び$\sin$のべきだけの積分になる.
 
-ここで1つ断りをいれておこう.\,$n\geqq2$なので$\sin^{n-1}0=0$であり,また$\cos\frac\pi2=0$である.したがって部分積分の端点の項は両端とも$0$になる.
+ここで1つ断りをいれておこう.\,$n\ge2$なので$\sin^{n-1}0=0$であり,また$\cos\frac\pi2=0$である.したがって部分積分の端点の項は両端とも$0$になる.
 \begin{align*}
  I_n
  &=\left[-\sin^{n-1}x\cos x\right]_0^{\frac{\pi}{2}}
@@ -23,7 +23,7 @@ $\sin^n x$を$\sin^{n-1}x\cdot\sin x$と分け,後ろの$\sin x$を積分する�
 \end{align*}
 最後の式の$I_n$を左辺に移項して$n$で割ると
 \begin{equation}\label{式:ウォリス漸化式}
- I_n=\frac{n-1}{n}I_{n-2}\qquad(n\geqq2)
+ I_n=\frac{n-1}{n}I_{n-2}\qquad(n\ge2)
 \end{equation}
 を得る.
 
@@ -38,7 +38,7 @@ $\sin^n x$を$\sin^{n-1}x\cdot\sin x$と分け,後ろの$\sin x$を積分する�
 となる.奇数番目も同じく$I_1$まで下げればよい.
 
 \begin{theorem}{ウォリスの積分公式}
-$m\geqq1$に対して
+$m\ge1$に対して
 \begin{equation}\label{式:ウォリス偶数}
  I_{2m}
  =\frac{1\cdot3\cdot5\cdots(2m-1)}{2\cdot4\cdot6\cdots2m}

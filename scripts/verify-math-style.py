@@ -192,9 +192,12 @@ def check_file(path: Path):
     for m in re.finditer("\uff0c\\$", text):
         if not in_math[m.start()]:
             err(m.start(), "読点の直後のインライン数式は \uff0c\\,$…$ と書く")
+    label_spans = [(m.start(), m.end()) for m in re.finditer(r"\\(?:label|ref|eqref|pageref|hyperref)\{[^}]*\}|\\hyperref\[[^\]]*\]", text)]
     for rx, msg in VOCAB:
         for m in rx.finditer(text):
             if in_math[m.start()]:
+                continue
+            if any(a <= m.start() < b for a, b in label_spans):
                 continue
             warn(m.start(), f"「{m.group(0)}」: {msg}")
     return errors, warns

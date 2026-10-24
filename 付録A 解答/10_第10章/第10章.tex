@@ -27,27 +27,27 @@ $\sqrt{n+k}=\sqrt n\sqrt{1+\frac{k}{n}}$なので,もとの和は
 分子の根号から出る$\sqrt n$と,前にある$n^{\frac32}$を合わせて,区分求積の幅$\frac1n$が現れる.
 
 \paragraph{10.3}
-$f(x)=\frac1{x^2}$は$x>0$で減少するので,\,$k\geqq2$に対して
+$f(x)=\frac1{x^2}$は$x>0$で減少するので,\,$k\ge2$に対して
 \[
  \int_k^{k+1}\frac1{x^2}\dd x
- \leqq\frac1{k^2}
- \leqq\int_{k-1}^{k}\frac1{x^2}\dd x.
+ \le\frac1{k^2}
+ \le\int_{k-1}^{k}\frac1{x^2}\dd x.
 \]
 $k=n+1,\ldots,N$について足せば
 \[
  \int_{n+1}^{N+1}\frac1{x^2}\dd x
- \leqq\sum_{k=n+1}^{N}\frac1{k^2}
- \leqq\int_n^N\frac1{x^2}\dd x.
+ \le\sum_{k=n+1}^{N}\frac1{k^2}
+ \le\int_n^N\frac1{x^2}\dd x.
 \]
 原始関数は$-\frac1x$だから,問題の不等式を得る.
 
 部分和$S_N=\sum_{k=1}^{N}\frac1{k^2}$は単調増加する.一方,\,$n=1$の右側の不等式を使うと
 \[
- S_N\leqq1+1-\frac1N<2\qquad(N\geqq2)
+ S_N\le1+1-\frac1N<2\qquad(N\ge2)
 \]
 なので,上に有界である.したがって有限の極限$S$を持つ.これを無限級数の和とし,\,$R_n=S-S_n$とおく.最初の不等式で$n$を固定して$N\to\infty$とすると
 \[
- \frac1{n+1}\leqq R_n\leqq\frac1n
+ \frac1{n+1}\le R_n\le\frac1n
 \]
 を得る.収束の証明では,和の正確な値を求める必要はなかった.
 
@@ -55,7 +55,7 @@ $k=n+1,\ldots,N$について足せば
 コーシー・シュワルツの不等式を$f(x)$と$x$に使うと
 \[
  1=\left(\int_0^1xf(x)\dd x\right)^2
- \leqq\left(\int_0^1f(x)^2\dd x\right)
+ \le\left(\int_0^1f(x)^2\dd x\right)
        \left(\int_0^1x^2\dd x\right)
  =\frac13\int_0^1f(x)^2\dd x.
 \]
@@ -66,7 +66,7 @@ $k=n+1,\ldots,N$について足せば
 から$c=3$となる.実際$f(x)=3x$なら制約を満たし,\,$\int_0^1(3x)^2\dd x=3$である.したがって最小値は$3$,それを与える関数は$f(x)=3x$である.
 
 \paragraph{10.5}
-まず$K_0=\int_1^{\e}1\dd x=\e-1$である.\,$n\geqq1$では$(\log x)^n$を微分する部分積分によって
+まず$K_0=\int_1^{\e}1\dd x=\e-1$である.\,$n\ge1$では$(\log x)^n$を微分する部分積分によって
 \begin{align*}
  K_n
  &=\left[x(\log x)^n\right]_1^{\e}
@@ -77,25 +77,25 @@ $k=n+1,\ldots,N$について足せば
 \[
  K_1=1,\qquad K_2=\e-2,\qquad K_3=\e-3(\e-2)=6-2\e.
 \]
-$n=0$を漸化式に形式的に代入すると$K_0=\e$という誤りが生じる.\,$x=1$の端点の項が$0$になるという議論は$n\geqq1$に対して行ったものである.
+$n=0$を漸化式に形式的に代入すると$K_0=\e$という誤りが生じる.\,$x=1$の端点の項が$0$になるという議論は$n\ge1$に対して行ったものである.
 
 \paragraph{10.6}
 本文の$I_n=\int_0^{\frac{\pi}{2}}\sin^n x\dd x$について
 \[
  \frac{2m+1}{2m+2}
- \leqq\frac{I_{2m+1}}{I_{2m}}\leqq1,
+ \le\frac{I_{2m+1}}{I_{2m}}\le1,
  \qquad
  P_m=\frac{\pi}{2}\frac{I_{2m+1}}{I_{2m}}
 \]
 である.したがって
 \[
  \frac{\pi}{2}\frac{2m+1}{2m+2}
- \leqq P_m\leqq\frac{\pi}{2}.
+ \le P_m\le\frac{\pi}{2}.
 \]
 $\frac{\pi}{2}$から各辺を引くと不等号の向きが逆になり
 \[
- 0\leqq\frac{\pi}{2}-P_m
- \leqq\frac{\pi}{2}\left(1-\frac{2m+1}{2m+2}\right)
+ 0\le\frac{\pi}{2}-P_m
+ \le\frac{\pi}{2}\left(1-\frac{2m+1}{2m+2}\right)
  =\frac{\pi}{4m+4}.
 \]
 次に$u=\frac{\pi}{2}-x$とおけば
@@ -124,13 +124,13 @@ $\frac{\pi}{2}$から各辺を引くと不等号の向きが逆になり
 \]
 
 \paragraph{10.8}
-$0<x\leqq\frac12$では$1-x\geqq\frac12$だから
+$0<x\le\frac12$では$1-x\ge\frac12$だから
 \[
- 0\leqq\sqrt{\frac{x}{1-x}}\leqq\sqrt2\sqrt x.
+ 0\le\sqrt{\frac{x}{1-x}}\le\sqrt2\sqrt x.
 \]
-右辺は$0$まで積分できる.\,$\frac12\leqq x<1$では
+右辺は$0$まで積分できる.\,$\frac12\le x<1$では
 \[
- 0\leqq\sqrt{\frac{x}{1-x}}\leqq\frac1{\sqrt{1-x}},
+ 0\le\sqrt{\frac{x}{1-x}}\le\frac1{\sqrt{1-x}},
 \]
 右辺の積分は$[-2\sqrt{1-x}]_{\frac12}^{1}=\sqrt2$で有限である.各端点に近づけた積分値は単調増加し,これらの有限な値で上から抑えられるので,両端で収束する.
 
