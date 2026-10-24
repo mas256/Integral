@@ -1,70 +1,98 @@
 \section{ウォリスの公式}\label{節:ウォリス公式}
 
-次に
+前節の方法を三角関数のべきに使ってみよう.
 \[
  I_n=\int_0^{\frac{\pi}{2}}\sin^n x\dd x
  \qquad(n=0,1,2,\ldots)
 \]
-を考える.最初の二つは
+を考える.最初の2つは
 \[
  I_0=\frac{\pi}{2},\qquad I_1=1
 \]
-である.\,$\sin^n x$を$\sin^{n-1}x\sin x$と分け,後ろの$\sin x$を積分すると,微分された$\sin^{n-1}x$から$\cos x$が現れ,\,$\cos^2x$を使う形になる.
+である.\,$n\geqq2$の$I_n$を,指数の小さい積分に帰着させることを目標とする.
 
-$n\geqq2$として部分積分を行うと
+$\sin^n x$を$\sin^{n-1}x\cdot\sin x$と分け,後ろの$\sin x$を積分する側にして部分積分する.微分された$\sin^{n-1}x$から$\cos x$が現れ,積分の中に$\cos^2x$ができる.これを$1-\sin^2x$に書き直せば,再び$\sin$のべきだけの積分になる.
+
+ここで1つ断りをいれておこう.\,$n\geqq2$なので$\sin^{n-1}0=0$であり,また$\cos\frac\pi2=0$である.したがって部分積分の端点の項は両端とも$0$になる.
 \begin{align*}
  I_n
  &=\left[-\sin^{n-1}x\cos x\right]_0^{\frac{\pi}{2}}
  +(n-1)\int_0^{\frac{\pi}{2}}\sin^{n-2}x\cos^2x\dd x\\
  &=(n-1)\int_0^{\frac{\pi}{2}}\sin^{n-2}x(1-\sin^2x)\dd x\\
- &=(n-1)(I_{n-2}-I_n).
+ &=(n-1)(I_{n-2}-I_n)
 \end{align*}
-両端の項は$0$である.最後の式の$I_n$を左辺に移すと
+最後の式の$I_n$を左辺に移項して$n$で割ると
 \begin{equation}\label{式:ウォリス漸化式}
  I_n=\frac{n-1}{n}I_{n-2}\qquad(n\geqq2)
 \end{equation}
-を得る.指数が$2$ずつ下がるので,偶数の場合は$I_0$へ,奇数の場合は$I_1$へつながる.
+を得る.
+
+この漸化式は,\,$I_n$を2つ前の$I_{n-2}$と結ぶ.指数が$2$ずつ下がるので,偶数番目は$I_0$へ,奇数番目は$I_1$へつながる.偶数番目だけを取り出して$u_m=I_{2m}$と置くと,\,$u_m=\frac{2m-1}{2m}u_{m-1}$となり,隣り合う項の比が$m$の式で与えられる階比型になる.よって比を順に掛けてやれば
+\begin{align*}
+ I_{2m}
+ &=\frac{2m-1}{2m}I_{2m-2}\\
+ &=\frac{2m-1}{2m}\cdot\frac{2m-3}{2m-2}I_{2m-4}\\
+ &\qquad\vdots\\
+ &=\frac{2m-1}{2m}\cdot\frac{2m-3}{2m-2}\cdots\frac12I_0
+\end{align*}
+となる.奇数番目も同じく$I_1$まで下げればよい.
 
 \begin{theorem}{ウォリスの積分公式}
 $m\geqq1$に対して
-\begin{align}
+\begin{equation}\label{式:ウォリス偶数}
  I_{2m}
- &=\frac{1\cdot3\cdot5\cdots(2m-1)}{2\cdot4\cdot6\cdots2m}
-   \frac{\pi}{2},\label{式:ウォリス偶数}\\
+ =\frac{1\cdot3\cdot5\cdots(2m-1)}{2\cdot4\cdot6\cdots2m}
+   \cdot\frac{\pi}{2},
+\end{equation}
+\begin{equation}\label{式:ウォリス奇数}
  I_{2m+1}
- &=\frac{2\cdot4\cdot6\cdots2m}{3\cdot5\cdot7\cdots(2m+1)}.
- \label{式:ウォリス奇数}
-\end{align}
+ =\frac{2\cdot4\cdot6\cdots2m}{3\cdot5\cdot7\cdots(2m+1)}.
+\end{equation}
 \end{theorem}
 
-例えば$I_6=\frac56I_4=\frac56\frac34I_2=\frac56\frac34\frac12I_0$であり,一般の場合もまったく同じように式\eqref{式:ウォリス漸化式}を繰り返せばよい.偶数の積と奇数の積を短く書くために
+偶数の積と奇数の積を短く書くために
 \[
  (2m)!!=2\cdot4\cdots2m,\qquad
  (2m-1)!!=1\cdot3\cdots(2m-1)
 \]
-と定義することがある.これは\textbf{二重階乗}と呼ばれ,階乗を二回行うという意味ではない.この記号なら
+と定義することがある.これは\textbf{二重階乗}と呼ばれ,階乗を2回行うという意味ではない.この記号なら
 \[
- I_{2m}=\frac{(2m-1)!!}{(2m)!!}\frac{\pi}{2},\qquad
+ I_{2m}=\frac{(2m-1)!!}{(2m)!!}\cdot\frac{\pi}{2},\qquad
  I_{2m+1}=\frac{(2m)!!}{(2m+1)!!}
 \]
 となる.
 
+\begin{bookpoint}
+\textbf{POINT}\par
+$\sin^nx=\sin^{n-1}x\cdot\sin x$と分けて部分積分し,\,$\cos^2x=1-\sin^2x$で$I_n$を戻して移項する.\,$I_n=\frac{n-1}{n}I_{n-2}$を$I_0$か$I_1$まで繰り返す.
+\end{bookpoint}
+
 \begin{example}{ウォリス積分}
-次の二つの積分を求めよ.
+次の2つの積分を求めよ.
 \[
  \int_0^{\frac{\pi}{2}}\sin^6x\dd x,\qquad
  \int_0^{\frac{\pi}{2}}\sin^7x\dd x.
 \]
 \end{example}
 
-偶数の場合は$I_0=\frac{\pi}{2}$,奇数の場合は$I_1=1$へ戻るので
+\paragraphbf{方針}
+漸化式\eqref{式:ウォリス漸化式}で,偶数は$I_0=\frac\pi2$まで,奇数は$I_1=1$まで指数を下げる.
+
+\paragraphbf{解答}
+$\int_0^{\frac{\pi}{2}}\sin^6x\dd x=\frac{5\pi}{32}$,\qquad
+$\int_0^{\frac{\pi}{2}}\sin^7x\dd x=\frac{16}{35}$
+
+\paragraphbf{解法}
+漸化式\eqref{式:ウォリス漸化式}を繰り返すと
 \begin{align*}
- I_6&=\frac56\frac34\frac12\frac{\pi}{2}
+ I_6&=\frac56\cdot\frac34\cdot\frac12\cdot\frac{\pi}{2}
      =\frac{5\pi}{32},\\
- I_7&=\frac67\frac45\frac23\cdot1
-     =\frac{16}{35}.
+ I_7&=\frac67\cdot\frac45\cdot\frac23\cdot1
+     =\frac{16}{35}
 \end{align*}
-偶数と奇数で最後の値が違うことが,答えに$\pi$が現れるかどうかの違いになっている.積分区間が$\left[0,\frac{\pi}{2}\right]$であることも大切である.任意の区間では,部分積分の端点の項が同じように消えるとは限らない.
+となる.偶数と奇数で最後に戻る値が違うことが,答えに$\pi$が現れるかどうかの違いになっている.
+
+積分区間が$\left[0,\frac{\pi}{2}\right]$であることも大切である.任意の区間では,部分積分の端点の項が同じように消えるとは限らない.
 
 \input{第10章 積分と数列/05_ウォリスの公式/01_積分の比.tex}%
 \input{第10章 積分と数列/05_ウォリスの公式/02_二項係数.tex}%

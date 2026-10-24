@@ -1,6 +1,6 @@
 \subsection{根号を含む式への置換}
 
-第三の方法では,関数の名前を使わずに
+第3の方法では,関数の名前を使わずに
 \[
 t=x+\sqrt{1+x^2}
 \]
@@ -9,7 +9,7 @@ t=x+\sqrt{1+x^2}
 \bigl(\sqrt{1+x^2}+x\bigr)
 \bigl(\sqrt{1+x^2}-x\bigr)=1.
 \]
-従って$\sqrt{1+x^2}-x=\frac1t$であり,和と差を取れば
+したがって$\sqrt{1+x^2}-x=\frac1t$であり,この式と$t$の式の和と差を取って2で割れば
 \[
 x=\frac12\left(t-\frac1t\right),\qquad
 \sqrt{1+x^2}=\frac12\left(t+\frac1t\right),\qquad
@@ -23,29 +23,50 @@ $t>0$であり,この$x$の式は$t>0$から実数全体への狭義単調増加
 &=\frac{t^2}{8}+\frac12\log t-\frac1{8t^2}+C.
 \end{aligned}
 \]
-ここで
+ここで,\,$x$と根号の$t$による式を掛けると
 \[
 x\sqrt{1+x^2}=\frac14\left(t^2-\frac1{t^2}\right)
 \]
-だから,再び同じ答えになる.
+なので,\,$\frac{t^2}{8}-\frac1{8t^2}=\frac12x\sqrt{1+x^2}$である.また$\frac12\log t=\frac12\log\bigl(x+\sqrt{1+x^2}\bigr)$なので,式\eqref{式:一と二乗の根号積分}と同じ答えになる.
 
-実は第二,第三の置換は直接つながっている.\,$x=\sinh u$なら
+\paragraphbf{3つの置換のつながり}
+3つの置換は,変数どうしの置換で直接結ばれている.まず双曲線置換と代数的な置換では,\,$x=\sinh u$なら
 \[
-t=x+\sqrt{1+x^2}=\sinh u+\cosh u=\e^u.
+t=x+\sqrt{1+x^2}=\sinh u+\cosh u=\e^u
 \]
-つまり第三の方法は,双曲線の媒介変数$u$の代わりに$\e^u$を変数として,式を有理式へ直したものである.三角置換は円の関係式$1+\tan^2\theta=\sec^2\theta$を使い,双曲線置換は$\cosh^2u-\sinh^2u=1$を使う.同じ平方根に対して,どの恒等式と微分の組が短い計算を作るかが違う.
+となる.つまり第3の方法は,双曲線の媒介変数$u$の代わりに$t=\e^u$を変数として,\,$\e^u$と$\e^{-u}$の式を有理式に直したものである.実際,\,$\cosh^2u=\frac14\left(t+\frac1t\right)^2$,\,$\dd u=\frac{\dd t}{t}$を代入すれば,第2の方法の$\int\cosh^2u\dd u$は第3の方法の$t$の積分になる.
+
+次に三角置換と双曲線置換では,\,$x=\tan\theta=\sinh u$であり,
+\[
+\sec\theta=\sqrt{1+\tan^2\theta}=\sqrt{1+\sinh^2u}=\cosh u
+\]
+となる.\,$\dd x$を2通りに書くと$\sec^2\theta\dd\theta=\cosh u\dd u$なので
+\[
+\int\sec^3\theta\dd\theta
+=\int\sec\theta\cdot\sec^2\theta\dd\theta
+=\int\cosh u\cdot\cosh u\dd u
+=\int\cosh^2u\dd u
+\]
+である.三角置換で現れた$\sec\theta$の3乗の積分は,双曲線置換の$\cosh u$の2乗の積分と同じものだったのだ.三角置換では$\dd x$が$\sec^2\theta\dd\theta$となって次数が1つ上がり,部分積分が必要になった.双曲線置換では$\dd x=\cosh u\dd u$の次数が根号と同じなので,2倍角の公式だけで済んだ.
+
+さらに,三角置換の答えに現れた$\sec\theta+\tan\theta$は$\cosh u+\sinh u=\e^u=t$である.3つの変数は
+\[
+x=\tan\theta=\sinh u,\qquad
+t=\sec\theta+\tan\theta=\e^u
+\]
+で互いに移り合う.\chapterref{章:部分積分}で,\,$\{x+\sqrt{1+x^2}\}'$の中に元の$x+\sqrt{1+x^2}$が現れたのも,これが$t=\e^u$であり,\,$\frac{\dd t}{\dd u}=t$となるからである.
 
 最後に答えを微分して確認しておく.\,$s=\sqrt{1+x^2}$と書けば$s'=\frac xs$であり,
 \[
 \frac{\dd}{\dd x}\log(x+s)
 =\cfrac{1+\cfrac xs}{x+s}=\frac1s.
 \]
-従って式\eqref{式:一と二乗の根号積分}の右辺の微分は
+したがって式\eqref{式:一と二乗の根号積分}の右辺の微分は
 \[
 \frac12\left(s+\frac{x^2}{s}+\frac1s\right)
 =\frac12(s+s)=\sqrt{1+x^2}
 \]
-となる.三つの計算は同じ原始関数へ到達した.
+となる.3つの計算は同じ原始関数へ到達した.
 
 
 
