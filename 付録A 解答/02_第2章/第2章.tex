@@ -1,31 +1,32 @@
 \section{第2章の解答}\label{解答:第2章}
 \paragraph{2.1}
 (1) 分子・分母を $n^2$ で割ると,
-\[
+\begin{align*}
  \frac{2n^2+3}{5n^2-n}
- =\cfrac{2+\cfrac3{n^2}}{5-\cfrac1n}
- \longrightarrow\frac25.
-\]
+ &=\cfrac{2+\cfrac3{n^2}}{5-\cfrac1n}\\
+ &\longrightarrow\frac25.
+\end{align*}
 分母の極限は $5\ne0$ なので,商の極限法則を適用できる.
 
 (2) 根号を含む差を有理化する.
-\[
+\begin{align*}
  \sqrt{n^2+2n}-n
- =\frac{2n}{\sqrt{n^2+2n}+n}
- =\cfrac2{\sqrt{1+\cfrac2n}+1}
- \longrightarrow1.
-\]
-二つの項がそれぞれ大きくなることだけでは差の極限は分からないが,この形なら分母が $2$ に近づくことが分かる.
+ &=\frac{2n}{\sqrt{n^2+2n}+n}\\
+ &=\cfrac2{\sqrt{1+\cfrac2n}+1}\\
+ &\longrightarrow1.
+\end{align*}
+2つの項がそれぞれ大きくなることだけでは差の極限は分からないが,この形なら分母が $2$ に近づくことが分かる.
 
 漸化式では,まず $1\le a_n<2$ を帰納的に示す.\,$a_1=1$ はこの条件を満たす.\,$1\le a_n<2$ なら,
 \[
  1<\sqrt3\le a_{n+1}=\sqrt{2+a_n}<2
 \]
 だから,次の項も条件を満たす.さらに,
-\[
+\begin{align*}
  a_{n+1}^2-a_n^2
- =2+a_n-a_n^2=(2-a_n)(a_n+1)>0.
-\]
+ &=2+a_n-a_n^2\\
+ &=(2-a_n)(a_n+1)>0.
+\end{align*}
 両項が正なので $a_{n+1}>a_n$ である.したがって数列は単調増加かつ上に有界であり,有限の極限 $L$ をもつ.
 
 $1\le L\le2$ であり,平方根の連続性から $L=\sqrt{2+L}$ となる.これを平方すると
