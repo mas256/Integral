@@ -27,14 +27,14 @@ def main():
         raise ValueError("PDF contains fonts that are not embedded")
     if not any("HaranoAji" in row for row in fonts):
         raise ValueError("Japanese fonts are missing")
-    info = subprocess.check_output(["pdfinfo", str(pdf)], text=True)
+    info = subprocess.check_output(["pdfinfo", str(pdf)], text=True, encoding="utf-8", errors="replace")
     match = re.search(r"Page size:\s+([\d.]+) x ([\d.]+) pts", info)
     if not match or any(abs(float(actual) - expected) > 1 for actual, expected in zip(match.groups(), (595.276, 841.890))):
         raise ValueError("PDF page size must be A4")
     metadata = {
         "commit": os.environ["COMMIT"],
         "built_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-        "tex": subprocess.check_output(["lualatex", "--version"], text=True).splitlines()[0],
+        "tex": subprocess.check_output(["lualatex", "--version"], text=True, encoding="utf-8", errors="replace").splitlines()[0],
         "toolchain": "Ubuntu 24.04 / TeX Live (apt)",
         "fonts": sorted({row.split()[0] for row in fonts if row.strip()}),
         "pdfs": {"a4": {"sha256": hashlib.sha256(data).hexdigest()}},
