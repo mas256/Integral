@@ -30,7 +30,7 @@
 latexmk -lualatex -interaction=nonstopmode -halt-on-error main.tex
 ```
 
-OverleafではLuaLaTeXを選び、`main.tex`をメイン文書にします。PDFやビルド中間物はGit履歴に含めません。
+OverleafではLuaLaTeXを選び、`main.tex`をメイン文書にします。PDFやビルド中間物はGit履歴に含めません。数式の表記と語彙は `python3 scripts/verify-math-style.py` で検査できます。
 
 ## 利用条件
 
