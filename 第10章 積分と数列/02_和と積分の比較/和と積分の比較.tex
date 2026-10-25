@@ -57,10 +57,7 @@ $H_n=\sum_{k=1}^{n}\frac1k$とおく.\,$H_n\to\infty$であること,および
 \end{example}
 
 \paragraphbf{方針}
-$f(x)=\frac1x$について和を積分で挟み,\,$\log n$で割ってはさみうちの原理を使う.
-
-\paragraphbf{解答}
-$\log(n+1)\le H_n\le1+\log n$から,どちらも示される.
+$f(x)=\frac1x$について和を積分で挟み,\,$\log n$で割って挟み撃ちの原理を使う.
 
 \paragraphbf{解法}
 $f(x)=\frac1x$は$[1,\infty)$で正かつ単調減少するので,式\eqref{式:減少関数の和比較}から
@@ -81,7 +78,7 @@ $f(x)=\frac1x$は$[1,\infty)$で正かつ単調減少するので,式\eqref{式:
  =1+\cfrac{\log\left(1+\cfrac1n\right)}{\log n}
  \longrightarrow1
 \]
-であり,右辺も$1$へ近づく.はさみうちの原理から
+であり,右辺も$1$へ近づく.挟み撃ちの原理から
 \[
  \lim_{n\to\infty}\frac{H_n}{\log n}=1
 \]

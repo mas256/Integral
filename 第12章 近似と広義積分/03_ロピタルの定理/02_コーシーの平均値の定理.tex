@@ -25,18 +25,37 @@ $f,g$が$[u,v]$で連続,内部で微分可能で,\,$g'\ne0$なら,ある$\xi\in
 \]
 となり,\,$\xi_x$は$c$と$x$の間にある.\,$x\to c$なら$\xi_x\to c$だから,右辺の極限が$L$であることから結論が従う.
 
-無限大の形では,もう一段の工夫が要る.例えば$x\to+\infty$で$|g(x)|\to\infty$,\,$L$が実数の場合,\,$\frac{f'(t)}{g'(t)}$が$L$に十分近い範囲の始点$B$を固定する.\,$x>B$に対して
+無限大の形では,もう一段の工夫が要る.\,$x\to+\infty$で$|g(x)|\to\infty$,\,$L$が実数の場合を,第2章の極限の定義に従って量的に示そう.正の数$\varepsilon$を任意にとる.\,$\frac{f'(t)}{g'(t)}\to L$なので,ある$B$があって,\,$t>B$なら
 \[
- D_x=\frac{f(x)-f(B)}{g(x)-g(B)}
+ \left|\frac{f'(t)}{g'(t)}-L\right|<\varepsilon
 \]
-は,コーシーの平均値の定理により,その範囲のどこかでの$\frac{f'}{g'}$に等しいので,\,$L$に十分近い.元の商は
+となる.この$B$を固定する.\,$x>B$なら,\,$[B,x]$でコーシーの平均値の定理を使うと
+\[
+ D_x=\frac{f(x)-f(B)}{g(x)-g(B)}=\frac{f'(\xi)}{g'(\xi)}
+\]
+となる$\xi\in(B,x)$がある.\,$\xi>B$だから$|D_x-L|<\varepsilon$である.元の商は
 \[
  \frac{f(x)}{g(x)}
  =D_x\left(1-\frac{g(B)}{g(x)}\right)+\frac{f(B)}{g(x)}
 \]
-と書ける.\,$B$を固定した後で$x\to+\infty$とすれば,\,$\frac{g(B)}{g(x)}$と$\frac{f(B)}{g(x)}$はそれぞれ$0$へ近づく.そのため元の商も$L$へ近づく.有限の端点で$|g|\to\infty$となる場合も,\,$B$を端点の十分近くに固定して同じ議論を使える.
+と書けるので,両辺から$L=L\left(1-\frac{g(B)}{g(x)}\right)+\frac{Lg(B)}{g(x)}$を引いて
+\[
+ \frac{f(x)}{g(x)}-L
+ =(D_x-L)\left(1-\frac{g(B)}{g(x)}\right)+\frac{f(B)-Lg(B)}{g(x)}
+\]
+を得る.\,$B$は固定してあるので,\,$f(B)$と$g(B)$は定数である.\,$|g(x)|\to\infty$だから,ある$X>B$があって,\,$x>X$なら
+\[
+ \left|\frac{g(B)}{g(x)}\right|<1,\qquad
+ \left|\frac{f(B)-Lg(B)}{g(x)}\right|<\varepsilon
+\]
+となる.このとき
+\[
+ \left|\frac{f(x)}{g(x)}-L\right|
+ <\varepsilon\cdot2+\varepsilon=3\varepsilon
+\]
+である.\,$\varepsilon$は任意だったので,\,$\frac{f(x)}{g(x)}\to L$が示された.有限の端点で$|g|\to\infty$となる場合も,\,$t>B$の代わりに「$t$が端点から$\delta$以内」という範囲をとれば,同じ議論を使える.
 
-$0$と$0$の形で端点が$+\infty$の場合は,十分大きい$x<y$の間でコーシーの平均値の定理を使う.増分の比が$L$に近いことを確かめた後,\,$x$を固定して$y\to+\infty$とすると,その比は$\frac{f(x)}{g(x)}$へ近づく.\,$L=+\infty$の場合は「$L$との差が小さい」の代わりに「任意の大きな定数より大きい」を用い,\,$L=-\infty$では不等号を逆にする.
+$0$と$0$の形で端点が$+\infty$の場合は,同じ$B$をとり,\,$B<x<y$の間でコーシーの平均値の定理を使う.増分の比$\frac{f(y)-f(x)}{g(y)-g(x)}$は$(x,y)$のどこかでの$\frac{f'}{g'}$に等しいので,\,$L$との差は$\varepsilon$未満である.\,$x$を固定して$y\to+\infty$とすると,\,$f(y)\to0$,\,$g(y)\to0$よりこの比は$\frac{f(x)}{g(x)}$へ近づく.よって$x>B$なら$\left|\frac{f(x)}{g(x)}-L\right|\le\varepsilon$となる.\,$L=+\infty$の場合は「$L$との差が$\varepsilon$未満」の代わりに「任意に与えた定数より大きい」を用い,\,$L=-\infty$では不等号を逆にする.
 
 \begin{bookpoint}
 \textbf{POINT}\par
@@ -48,7 +67,7 @@ $\lim_{x\to0}\cfrac{\log(1+x)-x+\cfrac{x^2}{2}}{x^3}$を求めよ.
 \end{example}
 
 \paragraphbf{方針}
-$0$と$0$の形なので,分子と分母を微分した商を調べる.微分した後に式を整理してから極限をとる.
+$0$と$0$の形である.分子を微分すると$\frac{x^2}{1+x}$とまとまり,分母の導関数$3x^2$と$x^2$で約分できるので,1回微分した商の極限を求めれば済む.
 
 \paragraphbf{解答}
 $\frac13$
