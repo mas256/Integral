@@ -35,12 +35,6 @@ rows = [json.loads(line) for line in Path("releases.ndjson").read_text().splitli
 print(json.dumps(rows, ensure_ascii=False))
 PY
 
-python3 "$here/render_index.py" \
-  --book book.at-tag.yml \
-  --releases releases.json \
-  --template "$root/.github/pages/index.template.html" \
-  --tag "$LATEST" \
-  --repo "$GH_REPO" \
-  --out site/index.html
+# index.html is rendered after catalog.json has been generated from the PDF title.
 
 ls -l site

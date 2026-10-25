@@ -10,7 +10,7 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
-from render_index import parse_book
+from render_index import read_pdf_title
 
 
 def read_json(path):
@@ -29,9 +29,7 @@ def main():
     args = parser.parse_args()
     if not re.fullmatch(r"v\d+\.\d+\.\d+", args.tag):
         raise ValueError("Invalid release version")
-    title = parse_book(Path("book.at-tag.yml").read_text(encoding="utf-8"))["title"]
-    if not title or re.search(r'[\\/<>:"|?*\x00-\x1f]', title):
-        raise ValueError("Title cannot be used as a PDF filename")
+    title = read_pdf_title(Path("site/book.pdf"))
     releases = read_json(Path("releases.json"))
     published = next(row["publishedAt"] for row in releases if row["tagName"] == args.tag)
     site = Path("site")
@@ -94,7 +92,8 @@ def main():
                     "--book", "book.at-tag.yml", "--releases", "releases.json",
                     "--template", str(root / ".github/pages/index.template.html"),
                     "--tag", args.tag, "--repo", args.repo,
-                    "--catalog", "site/catalog.json", "--out", "site/index.html"], check=True)
+                    "--catalog", "site/catalog.json", "--pdf", "site/book.pdf",
+                    "--out", "site/index.html"], check=True)
 
 
 if __name__ == "__main__":

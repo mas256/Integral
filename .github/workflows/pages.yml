@@ -59,6 +59,11 @@ jobs:
           gh api "repos/$GH_REPO/releases/tags/$LATEST" > release.json
           python3 scripts/verify-release-assets.py dist --release-json release.json
 
+      - name: Install PDF metadata reader
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq --no-install-recommends poppler-utils
+
       - name: Build site
         run: bash ./scripts/pages-build.sh
 

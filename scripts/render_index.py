@@ -11,9 +11,20 @@ import html
 import json
 import re
 import sys
+import subprocess
 from pathlib import Path
 from string import Template
 from urllib.parse import quote
+
+def read_pdf_title(pdf: Path) -> str:
+    """Read the embedded PDF title, which is the publication's display title."""
+    info = subprocess.check_output(["pdfinfo", str(pdf)])
+    title_line = next((line for line in info.splitlines() if line.startswith(b"Title:")), b"")
+    title = title_line.partition(b":")[2].decode("utf-8").strip()
+    if not title or re.search(r'[\\/<>:"|?*\x00-\x1f]', title):
+        raise ValueError(f"PDF title is missing or cannot be used as a filename: {pdf}")
+    return title
+
 
 SEMVER = re.compile(r"^v(\d+)\.(\d+)\.(\d+)$")
 
@@ -63,6 +74,7 @@ def main() -> int:
     ap.add_argument("--repo", required=True)
     ap.add_argument("--out", required=True)
     ap.add_argument("--catalog")
+    ap.add_argument("--pdf", required=True)
     args = ap.parse_args()
 
     if not SEMVER.match(args.tag):
@@ -70,6 +82,7 @@ def main() -> int:
         return 1
 
     book = parse_book(Path(args.book).read_text(encoding="utf-8"))
+    title = read_pdf_title(Path(args.pdf))
     releases = json.loads(Path(args.releases).read_text(encoding="utf-8"))
 
     rows = []
@@ -94,7 +107,9 @@ def main() -> int:
         )
 
     catalog = json.loads(Path(args.catalog).read_text(encoding="utf-8")) if args.catalog else None
-    filename = f"{book['title']}-{args.tag}.pdf"
+    filename = f"{title}-{args.tag}.pdf"
+    if catalog and catalog['title'] != title:
+        raise ValueError('Catalog title does not match the published PDF')
     mobile_link = ""
     if catalog and catalog["release"].get("mobile"):
         url = quote(catalog["release"]["mobile"]["pdf"])
@@ -118,7 +133,7 @@ def main() -> int:
     esc = html.escape
     page = Template(Path(args.template).read_text(encoding="utf-8")).substitute(
         lang=esc(str(book.get("language", "ja")), quote=True),
-        title=esc(str(book.get("title", ""))),
+        title=esc(title),
         authors=esc("、".join(authors)),
         description=esc(book.get("description", "")),
         pdf_url=esc(quote(filename), quote=True),
