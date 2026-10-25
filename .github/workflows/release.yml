@@ -1,0 +1,113 @@
+# GitHubのActions画面から正式版を作る。
+# Pagesはpages.ymlが担当する。workflow名はpages.ymlとの照合に使うため変更しない。
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: '公開する新しい版番号（例: v1.0.3）'
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+defaults:
+  run:
+    shell: bash
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    outputs:
+      commit: ${{ github.sha }}
+    steps:
+      - name: Checkout main and tags
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Validate request
+        env:
+          TAG: ${{ inputs.version }}
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          if [ "$GITHUB_REF" != "refs/heads/main" ]; then
+            echo "::error::Releaseはmainブランチを選んで実行してください"
+            exit 1
+          fi
+          echo "$TAG" | grep -Eq '^v[0-9]+\.[0-9]+\.[0-9]+$' \
+            || { echo "::error::版番号はvMAJOR.MINOR.PATCH形式にしてください: $TAG"; exit 1; }
+          existing="$(git ls-remote --tags origin "refs/tags/$TAG" "refs/tags/$TAG^{}")"
+          if [ -n "$existing" ]; then
+            existing_commit="$(git rev-parse "refs/tags/$TAG^{commit}" 2>/dev/null || true)"
+            [ "$existing_commit" = "$GITHUB_SHA" ] || {
+              echo "::error::このタグは別のコミットですでに使われています: $TAG"
+              exit 1
+            }
+            published="$(gh api --paginate "repos/$GH_REPO/releases?per_page=100" \
+              --jq "[.[] | select(.tag_name == \"$TAG\" and .draft == false)] | length")"
+            [ "$published" -eq 0 ] || {
+              echo "::error::この版はすでに正式公開されています: $TAG"
+              exit 1
+            }
+            echo "前回の未完了分を同じコミットから再開します: $TAG"
+          fi
+          echo "公開対象: $TAG / $GITHUB_SHA"
+
+      - name: Confirm the version is newer than published releases
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          TAG: ${{ inputs.version }}
+        run: |
+          latest="$(source scripts/lib/common.sh && latest_release)"
+          if [ -n "$latest" ]; then
+            top="$(printf '%s\n%s\n' "$latest" "$TAG" | sort -V | tail -n 1)"
+            if [ "$top" != "$TAG" ]; then
+              echo "::error::$TAG は最新正式版 $latest より新しい版番号ではありません"
+              exit 1
+            fi
+          fi
+
+  build:
+    needs: verify
+    uses: ./.github/workflows/_build.yml
+    with:
+      ref: ${{ github.sha }}
+      artifact-name: release-build
+      retention-days: 1
+
+  publish:
+    needs: [verify, build]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+      TAG: ${{ inputs.version }}
+      COMMIT: ${{ needs.verify.outputs.commit }}
+      BUILD_DIR: build-out
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.verify.outputs.commit }}
+          persist-credentials: false
+
+      - name: Download build outputs
+        uses: actions/download-artifact@v4
+        with:
+          name: release-build
+          path: build-out
+
+      - name: Create draft, verify, publish
+        run: bash ./scripts/release-publish.sh

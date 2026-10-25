@@ -1,0 +1,35 @@
+name: Build
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**/*.tex'
+      - '.latexmkrc'
+      - 'book.yml'
+      - '.github/workflows/**'
+      - 'scripts/**'
+      - 'tests/**'
+  pull_request:
+    paths:
+      - '**/*.tex'
+      - '.latexmkrc'
+      - 'book.yml'
+      - '.github/workflows/**'
+      - 'scripts/**'
+      - 'tests/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    uses: ./.github/workflows/_build.yml
+    with:
+      artifact-name: latex-build
+      retention-days: 30

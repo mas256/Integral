@@ -35,3 +35,15 @@ OverleafではLuaLaTeXを選び、`main.tex`をメイン文書にします。PDF
 ## 利用条件
 
 原稿・図版はCC0 1.0です。第三者のソフトウェアやフォントには、それぞれのライセンスが適用されます。詳細は `LICENSE` を参照してください。
+
+## PDFの公開
+
+- 本棚: https://mas256.github.io/math-textbooks/
+- 教科書の公開ページ: https://mas256.github.io/Integral/
+- 正式版一覧: https://github.com/mas256/Integral/releases
+
+mainへの原稿の更新で **Build** がLuaLaTeXを実行します。PDFの参照・文字・フォント・A4寸法を検査し、成功した成果物だけを **Deploy Pages** が最新版PDFとして公開します。失敗したビルドでは公開済みPDFを維持します。開発ビルドごとのTagやReleaseは作りません。
+
+正式版はActionsの **Release** をmainから実行し、`v0.1.0` のような新しい版番号を指定します。PDFとSHA-256を検証してからReleaseを公開します。初回公開後は正式版とlatestを同じ公開処理で配信し、本棚は `catalog.json` から版番号・更新日時・PDF名を取得します。
+
+正式版PDFは `微積分の体系的解説-vMAJOR.MINOR.PATCH.pdf`、開発中PDFは `latest-微積分の体系的解説-vMAJOR.MINOR.PATCH.pdf` です。latestには現在の正式版番号を付け、内容のSHA-256をURLに含めてキャッシュを区別します。更新日時はReleaseの公開日時と成功ビルドの日時であり、Pagesの再配信では変更しません。
