@@ -1,13 +1,15 @@
 \section{第8章の解答}\label{解答:第8章}
 
 \paragraph{8.1}
-$\frac{x^3}{1+x^2}$ は,分子が奇関数,分母が零にならない偶関数なので奇関数である.したがって,対称区間での積分は零になる.残る二項は偶関数だから,求める値は
+$\frac{x^3}{1+x^2}$ は,分子が奇関数,分母が $0$ にならない偶関数なので奇関数である.したがって,対称区間での積分は $0$ になる.残る2項は偶関数だから,求める値は
 \[
-2\int_0^2(2x^2-\cos x)\dd x
- =2\left[\frac{2x^3}{3}-\sin x\right]_0^2
- =\frac{32}{3}-2\sin2.
+\begin{aligned}
+&2\int_0^2(2x^2-\cos x)\dd x\\
+&\qquad=2\left[\frac{2x^3}{3}-\sin x\right]_0^2\\
+&\qquad=\frac{32}{3}-2\sin2
+\end{aligned}
 \]
-最初の分数を割り算して積分する必要はない.ただし,分母に零がないことは確認している.
+最初の分数を割り算して積分する必要はない.ただし,分母が $0$ にならないことは確認している.
 
 \paragraph{8.2}
 積分を $I$ とする.\,$x=\pi-t$ と置くと,\,$\sin^2(\pi-t)=\sin^2t$ より
@@ -16,39 +18,46 @@ I=\int_0^\pi(\pi-x)\sin^2x\dd x.
 \]
 元の式と加えて,
 \[
-2I=\pi\int_0^\pi\sin^2x\dd x
- =\frac{\pi}{2}\int_0^\pi(1-\cos2x)\dd x
- =\frac{\pi^2}{2}.
+\begin{aligned}
+2I&=\pi\int_0^\pi\sin^2x\dd x\\
+ &=\frac{\pi}{2}\int_0^\pi(1-\cos2x)\dd x\\
+ &=\frac{\pi^2}{2}
+\end{aligned}
 \]
-よって $I=\frac{\pi^2}{4}$ である.\,$\pi$ が二度現れるのは,一つが一次因子 $x$ の平均 $\frac{\pi}{2}$,もう一つが $\sin^2x$ の積分 $\frac{\pi}{2}$ に由来するからである.
+よって $I=\frac{\pi^2}{4}$ である.\,$\pi$ が2度現れるのは,1つが一次因子 $x$ の平均 $\frac{\pi}{2}$,もう1つが $\sin^2x$ の積分 $\frac{\pi}{2}$ に由来するからである.
 
 \paragraph{8.3}
-$\sin^2x+\cos^2x=1$ なので,\,$\sin x$ と $\cos x$ は同時に零にならない.それぞれの六乗は非負だから,分母は正である.積分を $I$ として $x=\frac{\pi}{2}-t$ と置けば
+$\sin^2x+\cos^2x=1$ なので,\,$\sin x$ と $\cos x$ は同時に $0$ にならない.それぞれの六乗は非負だから,分母は正である.積分を $I$ として $x=\frac{\pi}{2}-t$ と置けば
 \[
 I=\int_0^{\frac{\pi}{2}}
 \frac{\sin^6x}{\sin^6x+\cos^6x}\dd x.
 \]
-二式を加えると
+2式を加えると
 \[
 2I=\int_0^{\frac{\pi}{2}}1\dd x=\frac{\pi}{2},
 \]
 したがって $I=\frac{\pi}{4}$ である.
 
 \paragraph{8.4}
-$|\cos x|$ は周期 $\pi$ を持つ.区間の長さは $3\pi$ なので,始点に関係なく三周期分である.一周期分は,零点 $\frac{\pi}{2}$ で符号を分けて
+$|\cos x|$ は周期 $\pi$ を持つ.区間の長さは $3\pi$ なので,始点に関係なく3周期分である.1周期分は,零点 $\frac{\pi}{2}$ で符号を分けて
 \[
+\begin{aligned}
 \int_0^\pi|\cos x|\dd x
- =\int_0^{\frac{\pi}{2}}\cos x\dd x
-  -\int_{\frac{\pi}{2}}^\pi\cos x\dd x
- =1+1=2.
+ &=\int_0^{\frac{\pi}{2}}\cos x\dd x
+  -\int_{\frac{\pi}{2}}^\pi\cos x\dd x\\
+ &=1+1\\
+ &=2
+\end{aligned}
 \]
-よって最初の積分は $6$ である.一方,絶対値のない積分は
+よって最初の積分は $3\times2=6$ である.一方,絶対値のない積分は
 \[
+\begin{aligned}
 \left[\sin x\right]_{\frac{\pi}{3}}^{\frac{10\pi}{3}}
- =-\frac{\sqrt3}{2}-\frac{\sqrt3}{2}
- =-\sqrt3.
+ &=-\frac{\sqrt3}{2}-\frac{\sqrt3}{2}\\
+ &=-\sqrt3
+\end{aligned}
 \]
-$\cos x$ 自体の周期は $2\pi$ であり,この区間はその整数周期分ではない.また絶対値のある積分はグラフと軸の間の面積をすべて正に数えるが,絶対値のない積分は軸の下の部分を負に数える.この二つの違いを区別する.
+$\cos x$ 自体の周期は $2\pi$ であり,この区間はその整数周期分ではない.また絶対値のある積分はグラフと軸の間の面積をすべて正に数えるが,絶対値のない積分は軸の下の部分を負に数える.この2つの違いを区別する.
 
 \paragraph{8.5}
 積分を $I$ とする.\,$x=\frac1t$ なら $\dd x=-\frac1{t^2}\dd t$ なので,
@@ -57,10 +66,12 @@ I=\int_{\frac14}^4\frac{t^3}{1+t^4}\dd t.
 \]
 積分変数の文字を $x$ に戻し,元の式と加える.
 \[
-2I=\int_{\frac14}^4
-\left(\frac{1}{x(1+x^4)}+\frac{x^3}{1+x^4}\right)\dd x
- =\int_{\frac14}^4\frac{1}{x}\dd x
- =2\log4.
+\begin{aligned}
+2I&=\int_{\frac14}^4
+\left(\frac{1}{x(1+x^4)}+\frac{x^3}{1+x^4}\right)\dd x\\
+ &=\int_{\frac14}^4\frac{1}{x}\dd x\\
+ &=2\log4
+\end{aligned}
 \]
 よって $I=\log4$ である.変形の途中では,分子を通分すると $1+x^4$ になり,分母の同じ因子が消える.
 
@@ -69,11 +80,14 @@ $3x^2+1$ は偶関数,\,$x^5$ は奇関数である.反転した重みは
 \[
 \frac{1}{1+\e^{-x^5}}=\frac{\e^{x^5}}{1+\e^{x^5}}
 \]
-だから,元の重みと加えると一になる.求める積分は
+だから,元の重みと加えると $1$ になる.求める積分は
 \[
+\begin{aligned}
 \frac12\int_{-1}^1(3x^2+1)\dd x
- =\int_0^1(3x^2+1)\dd x
- =\left[x^3+x\right]_0^1=2.
+ &=\int_0^1(3x^2+1)\dd x\\
+ &=\left[x^3+x\right]_0^1\\
+ &=2
+\end{aligned}
 \]
 指数 $x^5$ の微分 $5x^4$ が分子にないため,指数を新変数にする置換は直ちには簡単にならない.ここでは指数の奇偶を見るのが有効である.
 
@@ -85,31 +99,41 @@ $3x^2+1$ は偶関数,\,$x^5$ は奇関数である.反転した重みは
 \]
 分子は偶関数であり,指数は奇関数なので,この値は
 \[
+\begin{aligned}
 \int_0^2(u^2+2)\dd u
- =\left[\frac{u^3}{3}+2u\right]_0^2
- =\frac{20}{3}
+ &=\left[\frac{u^3}{3}+2u\right]_0^2\\
+ &=\frac{20}{3}
+\end{aligned}
 \]
 である.原点に関する対称性に移してから使うことで,分子と分母の変化を同時に確認できる.
 
 \paragraph{8.8}
 反転した式と元の式を加えると
 \[
-2I=\int_0^\pi\{x^2+(\pi-x)^2\}\sin x\dd x
- =2I-2\pi\int_0^\pi x\sin x\dd x
-  +\pi^2\int_0^\pi\sin x\dd x.
+\begin{aligned}
+2I&=\int_0^\pi\{x^2+(\pi-x)^2\}\sin x\dd x\\
+ &=\int_0^\pi(2x^2-2\pi x+\pi^2)\sin x\dd x\\
+ &=2I-2\pi\int_0^\pi x\sin x\dd x
+  +\pi^2\int_0^\pi\sin x\dd x
+\end{aligned}
 \]
 ここで $\int_0^\pi x\sin x\dd x=\pi$,\,$\int_0^\pi\sin x\dd x=2$ だから,右辺は $2I$ に戻る.\,$x^2$ の項が残るため,\,$I$ を決める新しい等式にはならない.
 
 部分積分では,\,$x^2$ を微分し,\,$\sin x$ を積分する.
 \[
-I=\left[-x^2\cos x\right]_0^\pi
-  +2\int_0^\pi x\cos x\dd x
- =\pi^2+2\int_0^\pi x\cos x\dd x.
+\begin{aligned}
+I&=\left[-x^2\cos x\right]_0^\pi
+  +2\int_0^\pi x\cos x\dd x\\
+ &=\pi^2+2\int_0^\pi x\cos x\dd x
+\end{aligned}
 \]
 もう一度部分積分すると
 \[
+\begin{aligned}
 \int_0^\pi x\cos x\dd x
- =\left[x\sin x\right]_0^\pi-\int_0^\pi\sin x\dd x
- =-2.
+ &=\left[x\sin x\right]_0^\pi-\int_0^\pi\sin x\dd x\\
+ &=0-2\\
+ &=-2
+\end{aligned}
 \]
 したがって $I=\pi^2-4$ である.反転は正しい操作でも,それだけで未知の積分が求まるとは限らない.変数の次数を下げる部分積分が必要な場面である.

@@ -1,15 +1,31 @@
 \subsection{三角関数と弧度法}
-三角関数を微分するとき,角は必ず弧度法で表す.基本になる極限は
+$\sin x$ を定義から微分しようとすると,加法定理から
+\[
+ \frac{\sin(x+h)-\sin x}{h}
+ =\sin x\cdot\frac{\cos h-1}{h}
+   +\cos x\cdot\frac{\sin h}{h}
+\]
+となる.したがって,\,$\frac{\sin h}{h}$ と $\frac{\cos h-1}{h}$ の極限が分かればよい.まずは実験をしてみよう.角を弧度法で測り,\,$h$ を小さくして $\frac{\sin h}{h}$ を計算すると,次のようになる.
+\begin{center}
+\begin{tabular}{ccccc}
+\toprule
+$h$ & $1$ & $0.5$ & $0.1$ & $0.01$\\
+\midrule
+$\frac{\sin h}{h}$ & $0.8415$ & $0.9589$ & $0.9983$ & $0.99998$\\
+\bottomrule
+\end{tabular}
+\end{center}
+$1$ に近づきそうである.一方,角を度数法で測り,\,$h$ 度の正弦を $h$ で割ると,\,$h=1,0.1,0.01$ のいずれでも約 $0.01745$ となり,\,$1$ にはならない.この値の意味は後で分かる.以後,三角関数を微分するときは,角は必ず弧度法で表す.
+
+予想した極限
 \[
  \lim_{h\to0}\frac{\sin h}{h}=1
 \]
-である.\,$0<h<\frac\pi2$として,単位円の中心を$O$,点$(1,0)$を$A$,角$h$に対応する円上の点を$P$とする.半直線$OP$と直線$x=1$の交点を$Q$とすれば,$P=(\cos h,\sin h)$,\,$Q=(1,\tan h)$である.図\ref{図:正弦の極限}のように,三角形$OAP$は扇形$OAP$に含まれ,扇形は三角形$OAQ$に含まれる.面積を順に書くと
+を証明しよう.\,$0<h<\frac\pi2$ として,単位円の中心を $O$,点 $(1,0)$ を $A$,角 $h$ に対応する円上の点を $P$ とする.半直線 $OP$ と直線 $x=1$ の交点を $Q$ とすれば,\,$P=(\cos h,\sin h)$,\,$Q=(1,\tan h)$ である.図\ref{図:正弦の極限}のように,三角形 $OAP$ は扇形 $OAP$ に含まれ,扇形は三角形 $OAQ$ に含まれる.面積を順に書くと
 \[
  \frac12\sin h<\frac h2<\frac12\tan h
 \]
-だから,$\sin h<h<\tan h$を得る.
-
-したがって $\cos h<\frac{\sin h}{h}<1$ であり,挟み撃ちの原理から右極限は $1$ となる.\,$\frac{\sin h}{h}$ は $h$ の符号を変えても同じだから,左極限も $1$ である.
+だから,\,$\sin h<h<\tan h$ を得る.
 
 \begin{figure}[htbp]
 \centering
@@ -31,26 +47,32 @@
 \label{図:正弦の極限}
 \end{figure}
 
-また,
+$\sin h<h$ を $h$ で割り,\,$h<\tan h$ の両辺に $\frac{\cos h}{h}$ を掛けると,
 \[
- \frac{\cos h-1}{h}
- =-\cfrac{2\sin^2\cfrac h2}{h}
- =-\sin\frac h2\,\cfrac{\sin\cfrac h2}{\cfrac h2}
- \longrightarrow0.
+ \cos h<\frac{\sin h}{h}<1
 \]
-加法定理に代入すれば,
+となる.\,$h\to0+$ で $\cos h\to1$ だから,挟み撃ちの原理から右極限は $1$ である.\,$\frac{\sin h}{h}$ は $h$ の符号を変えても同じ値だから,左極限も $1$ である.
+
+もう一方の極限は,半角の公式 $1-\cos h=2\sin^2\frac h2$ を使って,今示した極限に帰着させてやる.
 \begin{align*}
- \frac{\sin(x+h)-\sin x}{h}
- &=\sin x\frac{\cos h-1}{h}
-   +\cos x\frac{\sin h}{h}\\
- &\longrightarrow\cos x.
+ \frac{\cos h-1}{h}
+ &=-\cfrac{2\sin^2\cfrac h2}{h}\\
+ &=-\sin\frac h2\cdot\cfrac{\sin\cfrac h2}{\cfrac h2}\\
+ &\longrightarrow0\cdot1=0
 \end{align*}
-同様に余弦を微分でき,商の公式から正接も求まる.
+これらを最初の式に代入すれば,
+\[
+ \frac{\sin(x+h)-\sin x}{h}\longrightarrow\cos x
+\]
+を得る.同様に余弦を微分でき,商の公式から正接も求まる.
 \[
  (\sin x)'=\cos x,\qquad
  (\cos x)'=-\sin x,\qquad
  (\tan x)'=\frac1{\cos^2x}\quad(\cos x\ne0).
 \]
-度数法で $x$ を表すと,弧度への換算係数が微分に現れる.上の簡潔な公式が成り立つのは,弧度法を使っているからである.
 
-
+最後に,度数法の実験で現れた値を説明しておこう.\,$x$ 度は $\frac{\pi x}{180}$ ラジアンなので,\,$x$ 度の正弦は $\sin\frac{\pi x}{180}$ である.合成関数の微分から
+\[
+ \frac{\dd}{\dd x}\sin\frac{\pi x}{180}=\frac{\pi}{180}\cos\frac{\pi x}{180}
+\]
+となり,換算係数 $\frac{\pi}{180}\approx0.017453$ が現れる.実験の約 $0.01745$ はこの値だったのだ.上の簡潔な公式が成り立つのは,弧度法を使っているからである.

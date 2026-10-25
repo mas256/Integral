@@ -13,7 +13,7 @@ $\cos\frac{5\pi}4=-\frac{\sqrt2}2$であり,\,$\arccos$が返す角は$[0,\pi]$�
 \[
 \arctan\left(\tan\left(-\frac{2\pi}3\right)\right)=\frac\pi3.
 \]
-微分では合成関数の公式を使う.\,$-1<x<1$なら$0\leqq x^2<1$なので,逆正弦の微分の分母は正であり,
+微分では合成関数の公式を使う.\,$-1<x<1$なら$0\le x^2<1$なので,逆正弦の微分の分母は正であり,
 \[
 \frac{\dd}{\dd x}\arcsin(x^2)
 =\frac{2x}{\sqrt{1-(x^2)^2}}
@@ -34,13 +34,13 @@ $u=\frac{x+1}{2}$と置けば$\dd x=2\dd u$だから
 \]
 分母は実数全体で正なので,この答えは実数全体で用いることができる.
 
-第二の積分は,\,$\arcsin\frac x2$の微分が$\frac1{\sqrt{4-x^2}}$であることから
+2つ目の積分は,\,$\arcsin\frac x2$の微分が$\frac1{\sqrt{4-x^2}}$であることから
 \[
 \int_0^1\frac1{\sqrt{4-x^2}}\dd x
 =\left[\arcsin\frac x2\right]_0^1
 =\frac\pi6.
 \]
-三角置換$x=2\sin\theta$を使っても,\,$0\leqq\theta\leqq\frac\pi6$で分母と$\dd x$の係数がともに$2\cos\theta$となり,同じ値を得る.
+三角置換$x=2\sin\theta$を使っても,\,$0\le\theta\le\frac\pi6$で分母と$\dd x$の係数がともに$2\cos\theta$となり,同じ値を得る.
 
 \paragraph{11.3}
 $\sin x\ne0$のところで商を微分すると
@@ -65,10 +65,10 @@ $\sin x\ne0$のところで商を微分すると
 &=\log|\tan x|+C.
 \end{aligned}
 \]
-もとの分母は$x=\frac{k\pi}{2}$で$0$になる.従って,整数$k$について$\left(\frac{k\pi}{2},\frac{(k+1)\pi}{2}\right)$のような,これらの点を含まない一つの区間で用いる.任意定数は区間ごとに独立である.
+もとの分母は$x=\frac{k\pi}{2}$で$0$になる.したがって,整数$k$について$\left(\frac{k\pi}{2},\frac{(k+1)\pi}{2}\right)$のような,これらの点を含まない1つの区間で用いる.任意定数は区間ごとに独立である.
 
 \paragraph{11.4}
-$2+\sin x\geqq1$なので,元の被積分関数は$[0,2\pi]$全体で連続である.ただし$t=\tan\frac x2$は$x=\pi$で定義されない.そこで
+$2+\sin x\ge1$なので,元の被積分関数は$[0,2\pi]$全体で連続である.ただし$t=\tan\frac x2$は$x=\pi$で定義されない.そこで
 \[
 I_1=\int_0^\pi\frac1{2+\sin x}\dd x,\qquad
 I_2=\int_\pi^{2\pi}\frac1{2+\sin x}\dd x
@@ -78,9 +78,9 @@ I_2=\int_\pi^{2\pi}\frac1{2+\sin x}\dd x
 I_1=\lim_{R\to\infty}\int_0^R\frac1{t^2+t+1}\dd t,\qquad
 I_2=\lim_{S\to\infty}\int_{-S}^0\frac1{t^2+t+1}\dd t
 \]
-となる.\,$x\to\pi-0$では$t\to+\infty$,\,$x\to\pi+0$では$t\to-\infty$だからである.二つの極限を独立に求める.
+となる.\,$x\to\pi-$では$t\to+\infty$,\,$x\to\pi+$では$t\to-\infty$だからである.2つの極限を独立に求める.
 
-原始関数の一つは
+原始関数の1つは
 \[
 F(t)=\frac2{\sqrt3}\arctan\frac{2t+1}{\sqrt3}.
 \]
@@ -93,7 +93,7 @@ I_2&=\frac2{\sqrt3}\left(\frac\pi6+\frac\pi2\right)
 =\frac{4\pi}{3\sqrt3}.
 \end{aligned}
 \]
-従って求める値は$I_1+I_2=\frac{2\pi}{\sqrt3}$である.無限の端点が現れたのは置換によるものであり,元の積分に特異点があるわけではない.
+したがって求める値は$I_1+I_2=\frac{2\pi}{\sqrt3}$である.無限の端点が現れたのは置換によるものであり,元の積分に特異点があるわけではない.
 
 \paragraph{11.5}
 固定点$(-1,0)$から与えられた点へ引く直線の傾きは
@@ -105,9 +105,9 @@ $m=5,n=1$とすれば
 \[
 m^2-n^2=24,\qquad2mn=10,\qquad m^2+n^2=26.
 \]
-三整数の最大公約数$2$で割って,\,$(12,5,13)$を得る.実際$12^2+5^2=13^2$であり,斜辺で割ると元の円上の点へ戻る.
+3つの整数の最大公約数$2$で割って,\,$(12,5,13)$を得る.実際$12^2+5^2=13^2$であり,斜辺で割ると元の円上の点へ戻る.
 
-$m,n$がともに奇数なら,\,$m^2,n^2$もともに奇数である.従って差$m^2-n^2$と和$m^2+n^2$は偶数であり,\,$2mn$も偶数である.\,$t=\frac nm$を既約分数にしても,公式から得る三整数に共通因数がないとは限らない.
+$m,n$がともに奇数なら,\,$m^2,n^2$もともに奇数である.したがって差$m^2-n^2$と和$m^2+n^2$は偶数であり,\,$2mn$も偶数である.\,$t=\frac nm$を既約分数にしても,公式から得る3つの整数に共通因数がないとは限らない.
 
 \paragraph{11.6}
 定義を使って積を計算すると
@@ -126,7 +126,7 @@ $\e^{2\log2}=4$,\,$\e^{-2\log2}=\frac14$より
 \[
 \sinh(2\log2)=\cfrac{4-\cfrac14}{2}=\frac{15}{8}.
 \]
-従って積分値は$\frac12\log2+\frac{15}{32}$である.
+したがって積分値は$\frac12\log2+\frac{15}{32}$である.
 
 \paragraph{11.7}
 $u>0$で$\cosh u$は$1$から無限大へ狭義単調増加するので,\,$x>1$と一対一に対応する.この範囲なら$\sinh u>0$であり,
@@ -135,7 +135,7 @@ x=\cosh u,\qquad
 \sqrt{x^2-1}=\sqrt{\sinh^2u}=\sinh u,\qquad
 \dd x=\sinh u\dd u.
 \]
-従って積分は$\int1\dd u=u+C$になる.元へ戻すには
+したがって積分は$\int1\dd u=u+C$になる.元へ戻すには
 \[
 x+\sqrt{x^2-1}=\cosh u+\sinh u=\e^u
 \]
@@ -171,7 +171,7 @@ x=\frac12\left(t-\frac4t\right),\qquad
 \sqrt{4+x^2}=\frac12\left(t+\frac4t\right),\qquad
 \dd x=\frac12\left(1+\frac4{t^2}\right)\dd t
 \]
-を得る.端点は$t=2$と$t=2+2\sqrt2$である.従って
+を得る.端点は$t=2$と$t=2+2\sqrt2$である.したがって
 \[
 \begin{aligned}
 \int_0^2\sqrt{4+x^2}\dd x
@@ -188,8 +188,8 @@ x=\frac12\left(t-\frac4t\right),\qquad
 \[
 2\log(2+2\sqrt2)-2\log2=2\log(1+\sqrt2)
 \]
-なので,第一の方法と一致する.さらに$x=2\sinh u$を代入すれば
+なので,1つ目の方法と一致する.さらに$x=2\sinh u$を代入すれば
 \[
 t=2\sinh u+2\cosh u=2\e^u
 \]
-となる.二つの置換は,変数をこの式で換えたものになっている.
+となる.2つの置換は,変数をこの式で換えたものになっている.

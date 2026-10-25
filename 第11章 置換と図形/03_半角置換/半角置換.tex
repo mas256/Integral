@@ -1,8 +1,25 @@
 \section{半角置換}\label{節:半角置換}
 
-$\int R(\sin x,\cos x)\dd x$のように,正弦と余弦を足す・掛ける・割ることで作った式を考える.このような式を,二変数の\textbf{有理式}$R$で表すと書く.\,$t=\sin x$と置くだけでは,\,$\cos x$を$\pm\sqrt{1-t^2}$と表すことになり,根号が残る.両方を一度に有理式へ変えるには,半分の角の正接を使う.
+正弦と余弦を足す・掛ける・割ることで作った式の積分を考える.このような式は,2変数の\textbf{有理式}$R(X,Y)$の$X,Y$に$\sin x,\cos x$を代入したものなので,一般的な形は
+\[
+\int R(\sin x,\cos x)\dd x
+\]
+で与えられる.これを,\,$t$の有理式の積分に帰着させることを目標とする.有理式なら,割り算や部分分数分解で積分できるからである.
 
-$t=\tan\frac x2$と置く.二倍角の公式と$1+\tan^2\frac x2=\sec^2\frac x2$から
+さて,何と置けばよいだろうか.候補を挙げてみよう.
+\begin{enumerate}
+\item $t=\sin x$と置くと,\,$\cos x=\pm\sqrt{1-t^2}$となり,根号が残る.
+\item $t=\cos x$と置いても,同じく\,$\sin x$が根号で残る.
+\item $t=\tan x$と置くと,\,$\cos^2x=\frac1{1+t^2}$,\,$\sin x\cos x=\frac t{1+t^2}$は有理式になる.しかし$\sin x$単独は$\pm\frac{t}{\sqrt{1+t^2}}$となり,根号が残る.
+\end{enumerate}
+3では,\,$\cos^2x$と$\sin x\cos x$は有理式になった.したがって,2倍角の公式から
+\[
+\sin2x=2\sin x\cos x=\frac{2t}{1+t^2},\qquad
+\cos2x=2\cos^2x-1=\frac{1-t^2}{1+t^2}
+\]
+も$t=\tan x$の有理式である.つまり,正接は2倍の角の正弦・余弦を有理式で表す.そこで角を半分にして,\,$\tan\frac x2$を使えばよい.
+
+$t=\tan\frac x2$と置く.2倍角の公式で分子を書き,分母の$1=\cos^2\frac x2+\sin^2\frac x2$で割ると
 \begin{equation}\label{式:半角置換}
 \begin{aligned}
 \sin x&=\cfrac{2\sin\cfrac x2\cos\cfrac x2}
@@ -16,38 +33,66 @@ $t=\tan\frac x2$と置く.二倍角の公式と$1+\tan^2\frac x2=\sec^2\frac x2$
 \dd x=\frac{2}{1+t^2}\dd t
 \end{aligned}
 \end{equation}
-を得る.最初の二つでは分子・分母を$\cos^2\frac x2$で割っている.この操作が可能な,\,$x\ne(2k+1)\pi$の区間を選ぶ.ここで$k$は整数である.
+を得る.最初の2式では,中央の分数の分子と分母を$\cos^2\frac x2$で割った.
 
-この置換を\textbf{半角置換},または\textbf{ワイエルシュトラス置換}という.例えば$-\pi<x<\pi$では$t$は実数全体を狭義単調増加して動き,逆向きには$x=2\arctan t$と書ける.一般には
+ここで1つ断りをいれておこう.この割り算と$\tan\frac x2$の定義には,\,$\cos\frac x2\ne0$,すなわち$x\ne(2k+1)\pi$($k$は整数)が必要である.そこで,この置換は$(2k-1)\pi<x<(2k+1)\pi$の1つの区間の中で使う.この区間では$t$は実数全体を狭義単調増加して動き,逆向きには
 \[
-(2k-1)\pi<x<(2k+1)\pi,\qquad
 x=2\arctan t+2k\pi
 \]
-である.正弦・余弦・$\dd x$のすべてが$t$の有理式になるので,置換後は割り算や部分分数などの代数的な整理を使える.
+と書ける.とくに$-\pi<x<\pi$では$x=2\arctan t$である.
+
+この置換を\textbf{半角置換},または\textbf{ワイエルシュトラス置換}という.正弦・余弦・$\dd x$のすべてが$t$の有理式になるので,置換後は有理式の積分になる.
+
+\begin{bookpoint}
+\textbf{POINT}\par
+$t=\tan\frac x2$と置き,\,$\sin x=\frac{2t}{1+t^2}$,\,$\cos x=\frac{1-t^2}{1+t^2}$,\,$\dd x=\frac{2}{1+t^2}\dd t$を代入して$t$の有理式にする.
+\end{bookpoint}
 
 \begin{example}{半角置換}
 $\int_0^{\frac\pi2}\frac1{2+\sin x}\dd x$を求めよ.
 \end{example}
 
-分母$2+\sin x$の微分は$\cos x$であり,分子には現れていない.そこで半角置換を使う.\,$t=\tan\frac x2$と置くと,端点は$t=0,1$へ移り,
-\[
-\begin{aligned}
+\paragraphbf{方針}
+分母$2+\sin x$の微分$\cos x$は分子に現れないので,\,$t=\tan\frac x2$と置いて$t$の有理式にする.最後は平方完成して$\arctan$で積分する.
+
+\paragraphbf{解答}
+$\frac\pi{3\sqrt3}$
+
+\paragraphbf{解法}
+$t=\tan\frac x2$と置くと,\,$x=0,\frac\pi2$は$t=0,1$へ移る.式\eqref{式:半角置換}を代入すると
+\begin{align*}
 \int_0^{\frac\pi2}\frac1{2+\sin x}\dd x
-&=\int_0^1\cfrac1{2+\cfrac{2t}{1+t^2}}
+&=\int_0^1\cfrac1{2+\cfrac{2t}{1+t^2}}\cdot
  \frac2{1+t^2}\dd t\\
-&=\int_0^1\frac1{t^2+t+1}\dd t.
-\end{aligned}
-\]
-ここで分母を平方完成すると$t^2+t+1=\left(t+\frac12\right)^2+\frac34$である.よって
-\[
-\begin{aligned}
+&=\int_0^1\frac{2}{2(1+t^2)+2t}\dd t\\
+&=\int_0^1\frac1{t^2+t+1}\dd t
+\end{align*}
+となる.分母を平方完成すると$t^2+t+1=\left(t+\frac12\right)^2+\frac34$なので
+\begin{align*}
 \int_0^1\frac1{t^2+t+1}\dd t
 &=\frac2{\sqrt3}\left[\arctan\frac{2t+1}{\sqrt3}\right]_0^1\\
-&=\frac2{\sqrt3}\left(\frac\pi3-\frac\pi6\right)
-=\frac\pi{3\sqrt3}.
-\end{aligned}
-\]
+&=\frac2{\sqrt3}\left(\frac\pi3-\frac\pi6\right)\\
+&=\frac\pi{3\sqrt3}
+\end{align*}
+を得る.
 
-もし積分区間が$[0,2\pi]$なら,\,$x=\pi$で$t$が定義されなくなる.端点だけを$t=0,0$へ換えて答えを$0$としてはいけない.元の被積分関数は$\pi$で連続でも,置換に使った座標はそこで途切れる.この場合には$\pi$の前後に分け,\,$t\to+\infty$と$t\to-\infty$を別々に扱う.章末問題で確かめる.
+\paragraphbf{区間をまたぐ場合}
+もし積分区間が$[0,2\pi]$なら,\,$x=\pi$で$t$が定義されなくなる.端点だけを$t=\tan0=0$,\,$t=\tan\pi=0$へ換えて答えを$0$としてはいけない.元の被積分関数は$\pi$で連続でも,置換に使った$t$はそこで途切れる.この場合には$\pi$の前後に分け,\,$t\to+\infty$と$t\to-\infty$を別々に扱う.章末問題で確かめる.
 
-
+\paragraphbf{正割の積分の別解}
+前節の$\int\sec x\dd x$も,半角置換で解ける.\,$-\pi<x<\pi$,\,$x\ne\pm\frac\pi2$で$t=\tan\frac x2$と置くと,\,$\sec x=\frac{1+t^2}{1-t^2}$なので
+\begin{align*}
+\int\sec x\dd x
+&=\int\frac{1+t^2}{1-t^2}\cdot\frac{2}{1+t^2}\dd t\\
+&=\int\left(\frac1{1+t}+\frac1{1-t}\right)\dd t\\
+&=\log\left|\frac{1+t}{1-t}\right|+C
+\end{align*}
+となる.一方,\,$\sec x+\tan x$を$t$で書くと
+\begin{align*}
+\sec x+\tan x
+&=\frac{1+\sin x}{\cos x}\\
+&=\cfrac{1+\cfrac{2t}{1+t^2}}{\cfrac{1-t^2}{1+t^2}}\\
+&=\frac{(1+t)^2}{(1+t)(1-t)}
+=\frac{1+t}{1-t}
+\end{align*}
+である.前節で結果からお見せした$\sec x+\tan x$は,半角置換で書けば$\frac{1+t}{1-t}$という簡単な有理式なのだ.

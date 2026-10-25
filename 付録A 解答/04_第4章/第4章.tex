@@ -1,21 +1,24 @@
 \section{第4章の解答}\label{解答:第4章}
 
 \paragraph{4.1}
-一つの小区間の幅は$\Delta x=\frac2n$,第$k$区間の右端は$x_k=\frac{2k}{n}$である.したがってリーマン和は
-\[
+1つの小区間の幅は$\Delta x=\frac2n$,第$k$区間の右端は$x_k=\frac{2k}{n}$である.したがってリーマン和は
+\begin{align*}
  \sum_{k=1}^n\left(\frac{2k}{n}\right)^2\frac2n
- =\frac8{n^3}\sum_{k=1}^nk^2
- =\frac{4n(n+1)(2n+1)}{3n^3}.
-\]
+ &=\frac8{n^3}\sum_{k=1}^nk^2\\
+ &=\frac8{n^3}\cdot\frac{n(n+1)(2n+1)}{6}\\
+ &=\frac{4n(n+1)(2n+1)}{3n^3}
+\end{align*}
 $n\to\infty$で右辺は$\frac83$へ近づく.\,$x^2$は閉区間で連続なので,この極限が定積分の値であり,\,$\int_0^2x^2\dd x=\frac83$となる.
 
 \paragraph{4.2}
 区間の加法性から$\int_0^3f(x)\dd x=2+(-1)=1$である.次に積分の向きを直してから線形性を使うと,
-\[
+\begin{align*}
  \int_3^0\{2f(x)-3g(x)\}\dd x
- =-\left\{2\int_0^3f(x)\dd x-3\int_0^3g(x)\dd x\right\}
- =-(2-12)=10.
-\]
+ &=-\left\{2\int_0^3f(x)\dd x-3\int_0^3g(x)\dd x\right\}\\
+ &=-(2\cdot1-3\cdot4)\\
+ &=10
+\end{align*}
+となる.
 向きを逆にした負号は,被積分関数全体の積分に掛かる.
 
 \paragraph{4.3}
@@ -30,13 +33,17 @@ $x-1$は$[-1,1]$で$0$以下,\,$[1,2]$で$0$以上である.下側の三角形�
 いずれも区間内で連続であり,基本定理を適用できる.
 \begin{align*}
  \text{(1)}\quad\int_{-1}^2(x^2+2x)\dd x
- &=\left[\frac{x^3}{3}+x^2\right]_{-1}^2
- =\frac{20}{3}-\frac23=6,\\
+ &=\left[\frac{x^3}{3}+x^2\right]_{-1}^2\\
+ &=\frac{20}{3}-\frac23\\
+ &=6\\
  \text{(2)}\quad\int_0^{\frac\pi2}(\sin x+\cos x)\dd x
- &=[-\cos x+\sin x]_0^{\frac\pi2}=1-(-1)=2,\\
+ &=[-\cos x+\sin x]_0^{\frac\pi2}\\
+ &=1-(-1)\\
+ &=2\\
  \text{(3)}\quad\int_1^{\e}\left(\frac2x+x\right)\dd x
- &=\left[2\log x+\frac{x^2}{2}\right]_1^{\e}
- =2+\frac{\e^2-1}{2}=\frac{\e^2+3}{2}.
+ &=\left[2\log x+\frac{x^2}{2}\right]_1^{\e}\\
+ &=\left(2+\frac{\e^2}{2}\right)-\frac12\\
+ &=\frac{\e^2+3}{2}
 \end{align*}
 (3)の区間は正の側にあるので,対数を$\log x$と書ける.
 
@@ -63,7 +70,7 @@ $x-1$は$[-1,1]$で$0$以下,\,$[1,2]$で$0$以上である.下側の三角形�
 下端を微分したときの負号と,端点の公式にある負号が掛かって正になる.上下端の大小が入れ替わっても同じ式が成り立つ.
 
 \paragraph{4.7}
-$x^2\ge0$だから$\sqrt{1+x^2}\ge1$である.また両辺が非負であり,
+$x^2\ge0$だから$\sqrt{1+x^2}\ge1$である.また両辺が $0$ 以上であり,
 \[
  \left(1+\frac{x^2}{2}\right)^2-(1+x^2)=\frac{x^4}{4}\ge0
 \]
@@ -81,7 +88,7 @@ $x^2\ge0$だから$\sqrt{1+x^2}\ge1$である.また両辺が非負であり,
 \[
  (\e^xf(x))'=\e^x\{f(x)+f'(x)\}=0.
 \]
-従って$\e^xf(x)$は定数で,初期値から$f(x)=3\e^{-x}$となる.元の式にも
+したがって$\e^xf(x)$は定数で,初期値から$f(x)=3\e^{-x}$となる.元の式にも
 \[
  3-\int_0^x3\e^{-t}\dd t
  =3-[-3\e^{-t}]_0^x=3\e^{-x}

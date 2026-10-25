@@ -1,6 +1,6 @@
 \section{三角関数の逆数}\label{節:相反三角関数}
 
-三角置換では$\frac1{\cos\theta}$や$\frac1{\sin\theta}$が繰り返し現れる.これらを一つの関数として書くと,平方や微分の関係を読み取りやすい.
+三角置換では$\frac1{\cos\theta}$や$\frac1{\sin\theta}$が繰り返し現れる.これらを1つの関数として書くと,平方や微分の関係を読み取りやすい.
 \begin{definition}{正割・余割・余接}
 分母が$0$でないところで
 \[
@@ -11,51 +11,83 @@
 と定義する.順に正割,余割,余接という.ここでの逆数と,前節の逆関数は異なる操作である.
 \end{definition}
 
-$\sin^2x+\cos^2x=1$を$\cos^2x$,\,$\sin^2x$で割ると,それぞれ
+$\sin^2x+\cos^2x=1$の両辺を$\cos^2x$,\,$\sin^2x$で割ると,それぞれ
 \[
 1+\tan^2x=\sec^2x,\qquad
 1+\cot^2x=\csc^2x
 \]
 となる.微分も,すでに知っている商の微分から得られる.例えば
 \[
-(\sec x)'=\frac{\sin x}{\cos^2x}=\sec x\tan x.
+(\sec x)'=\frac{\sin x}{\cos^2x}=\sec x\tan x
 \]
-同様に計算して
+である.同様に計算して
 \begin{equation}\label{式:相反三角関数の微分}
 (\csc x)'=-\csc x\cot x,\qquad
 (\cot x)'=-\csc^2x
 \end{equation}
 を得る.この記法により,\,$x=\tan\theta$と置いたときの$\dd x$は$\sec^2\theta\dd\theta$,\,$\sqrt{1+x^2}$は$|\sec\theta|$と短く書ける.ただし,記号を短くしても,絶対値を外すための符号の確認は残る.
 
+では,\,$\sec x$そのものの積分はどうなるだろうか.\,$\sec x$は分母に$\cos x$があるだけの簡単な式だが,基本公式の形ではない.少々発想しにくい変形なので,結果からお見せしよう.
+
+$\sec x$の微分は$\sec x\tan x$,\,$\tan x$の微分は$\sec^2x$である.この2つを足すと
+\[
+(\sec x+\tan x)'=\sec x\tan x+\sec^2x=\sec x(\sec x+\tan x)
+\]
+となり,微分する前の$\sec x+\tan x$が因子に現れる.したがって
+\[
+\sec x=\frac{(\sec x+\tan x)'}{\sec x+\tan x}
+\]
+と,分母の微分が分子にある形に書ける.また$(\sec x+\tan x)(\sec x-\tan x)=\sec^2x-\tan^2x=1$だから,\,$\sec x+\tan x$は定義されるところで$0$にならない.よって
+\[
+\int\sec x\dd x=\log|\sec x+\tan x|+C
+\]
+となる.\,$\cos x$が$0$になる点の前後では,任意定数を別々に取ってよい.なぜ$\sec x+\tan x$を考えるのかは,例題の後で扱う.
+
+\begin{bookpoint}
+\textbf{POINT}\par
+微分すると元の式が因子として現れる組合せ$F(x)$($\sec x$なら$\sec x+\tan x$)を作り,被積分関数を$\frac{F'(x)}{F(x)}$と書き直して対数で積分する.
+\end{bookpoint}
+
 \begin{example}{三角関数の逆数の積分}
-$\int\sec x\dd x$と$\int\csc x\dd x$を求めよ.
+$\int\csc x\dd x$を求めよ.
 \end{example}
 
-$\sec x$の微分は$\sec x\tan x$,\,$\tan x$の微分は$\sec^2x$である.この二つを足すと
-\[
-(\sec x+\tan x)'=\sec x(\sec x+\tan x)
-\]
-となり,元の$\sec x$が因子に現れる.また
-\[
-(\sec x+\tan x)(\sec x-\tan x)=1
-\]
-だから,\,$\sec x+\tan x$は定義されるところで$0$にならない.従って
-\[
-\int\sec x\dd x
-=\int\frac{(\sec x+\tan x)'}{\sec x+\tan x}\dd x
-=\log|\sec x+\tan x|+C.
-\]
-これは,分母の微分を分子に作る対数型の積分である.
+\paragraphbf{方針}
+正割の場合にならい,微分すると$\csc x$倍になる組合せを,\,$\csc x$と$\cot x$から作る.
 
-余割では引き算を考えると
-\[
-(\csc x-\cot x)'=-\csc x\cot x+\csc^2x
-=\csc x(\csc x-\cot x).
-\]
-さらに$(\csc x-\cot x)(\csc x+\cot x)=1$なので,
+\paragraphbf{解答}
+$\int\csc x\dd x=\log|\csc x-\cot x|+C$
+
+\paragraphbf{解法}
+$(\csc x)'=-\csc x\cot x$,\,$(\cot x)'=-\csc^2x$なので,引き算を考えると
+\begin{align*}
+(\csc x-\cot x)'
+&=-\csc x\cot x+\csc^2x\\
+&=\csc x(\csc x-\cot x)
+\end{align*}
+となる.さらに$(\csc x-\cot x)(\csc x+\cot x)=\csc^2x-\cot^2x=1$なので,\,$\csc x-\cot x$は定義されるところで$0$にならない.よって
 \[
 \int\csc x\dd x=\log|\csc x-\cot x|+C
 \]
-となる.どちらも,もとの三角関数が定義される一つの区間で使う.特異点をまたぐ不定積分の定数を,一つにそろえる必要はない.
+を得る.\,$\sin x$が$0$になる点をまたがない1つの区間で用いる.
 
-
+\paragraphbf{発想}
+$\sec x+\tan x$は,既習の置換から自然に現れる.分子と分母に$\cos x$を掛けると
+\[
+\sec x=\frac{\cos x}{\cos^2x}=\frac{\cos x}{1-\sin^2x}
+\]
+となり,分子が$\sin x$の微分になる.\,$t=\sin x$と置けば$\dd t=\cos x\dd x$であり,部分分数分解によって
+\begin{align*}
+\int\sec x\dd x
+&=\int\frac{1}{1-t^2}\dd t\\
+&=\frac12\int\left(\frac1{1+t}+\frac1{1-t}\right)\dd t\\
+&=\frac12\log\left|\frac{1+t}{1-t}\right|+C
+\end{align*}
+となる.ここで$t=\sin x$を戻し,分子と分母に$1+\sin x$を掛けると
+\[
+\frac{1+\sin x}{1-\sin x}
+=\frac{(1+\sin x)^2}{1-\sin^2x}
+=\left(\frac{1+\sin x}{\cos x}\right)^2
+=(\sec x+\tan x)^2
+\]
+である.したがって$\frac12\log\left|\frac{1+t}{1-t}\right|=\log|\sec x+\tan x|$となり,2つの答えは一致する.\,$\sec x+\tan x$は,置換$t=\sin x$で得た対数の中身の平方根だったのだ.

@@ -1,6 +1,6 @@
 \section{対称性の使い方}\label{節:定積分の手法選択}
 
-ここまでの方法は,どれも新しい原始関数を増やすものではない.定積分を,値の等しい別の積分に書き換え,二つを組にする方法である.最初に区間を見て,次にその区間を保つ変換を考えると,計算の候補を絞れる.
+ここまでの方法は,どれも新しい原始関数を増やすものではない.定積分を,値の等しい別の積分に書き換え,2つを組にする方法である.では,与えられた定積分にどの置換を試せばよいのだろうか.最初に区間を見て,次にその区間を保つ変換を考えると,候補を絞れる.
 
 \begin{center}
 \begin{tabularx}{0.96\linewidth}{@{}lXX@{}}
@@ -16,7 +16,12 @@ $\left[\frac1b,b\right]$ と $\frac{\dd x}{x}$ & $x\mapsto\frac1x$ & 逆数に�
 \end{tabularx}
 \end{center}
 
-候補が見つかっても,対称性だけで最後まで解けるとは限らない.対称性によって厄介な因子を一つ除き,残った部分に置換積分や部分積分を使えばよい.
+候補が見つかっても,対称性だけで最後まで解けるとは限らない.その場合は,対称性によって厄介な因子を1つ除き,残った部分を置換積分や部分積分に帰着させればよい.
+
+\begin{bookpoint}
+\textbf{POINT}\par
+区間を保つ変換で $x$ などの厄介な因子を先に除き,残った積分を置換積分・部分積分・部分分数分解で計算する.
+\end{bookpoint}
 
 \begin{example}{反転と置換}
 次の定積分を求めよ.
@@ -25,31 +30,46 @@ I=\int_0^\pi\frac{x\sin x}{1+\sin^2x}\dd x.
 \]
 \end{example}
 
-$\frac{\sin x}{1+\sin^2x}$ は $x$ を $\pi-x$ に変えても同じである.したがって,最初に $x$ を対称性で取り除く.
+\paragraphbf{方針}
+$\frac{\sin x}{1+\sin^2x}$ は $x$ を $\pi-x$ に変えても同じなので,反転で $x$ を $\frac{\pi}{2}$ に置き換える.残りは $u=\cos x$ と置き,部分分数分解する.
+
+\paragraphbf{解答}
+$I=\frac{\pi}{\sqrt2}\log(\sqrt2+1)$
+
+\paragraphbf{解法}
+$g(x)=\frac{\sin x}{1+\sin^2x}$ は $g(\pi-x)=g(x)$ を満たす.式\eqref{式:対称な重みの一次因子}より
 \[
 I=\frac{\pi}{2}J,\qquad
-J=\int_0^\pi\frac{\sin x}{1+\sin^2x}\dd x.
+J=\int_0^\pi\frac{\sin x}{1+\sin^2x}\dd x
 \]
-$J$ では分子の $\sin x\dd x$ が $-\dd(\cos x)$ に対応する.\,$u=\cos x$ と置くと,\,$1+\sin^2x=2-u^2$ だから
+である.\,$J$ では分子の $\sin x\dd x$ が $-\dd(\cos x)$ に対応する.\,$u=\cos x$ と置くと,\,$x=0,\pi$ に対して $u=1,-1$ であり,\,$1+\sin^2x=2-u^2$ だから
 \[
-J=\int_{-1}^1\frac{1}{2-u^2}\dd u.
+J=\int_{-1}^1\frac{1}{2-u^2}\dd u
 \]
-この分母は $(\sqrt2-u)(\sqrt2+u)$ に分かれる.よって
+となる.この分母は $(\sqrt2-u)(\sqrt2+u)$ に分かれるので,
 \[
 \frac{1}{2-u^2}
- =\frac{1}{2\sqrt2}\left(\frac{1}{\sqrt2-u}+\frac{1}{\sqrt2+u}\right),
+ =\frac{1}{2\sqrt2}\left(\frac{1}{\sqrt2-u}+\frac{1}{\sqrt2+u}\right)
 \]
+である.\,$-1\le u\le1$ では $\sqrt2-u$,\,$\sqrt2+u$ がともに正なので,
 \[
-J=\left[\frac{1}{2\sqrt2}
-\log\frac{\sqrt2+u}{\sqrt2-u}\right]_{-1}^1
- =\frac{1}{\sqrt2}\log\frac{\sqrt2+1}{\sqrt2-1}
- =\sqrt2\log(\sqrt2+1).
+\begin{aligned}
+J&=\left[\frac{1}{2\sqrt2}
+\log\frac{\sqrt2+u}{\sqrt2-u}\right]_{-1}^1\\
+ &=\frac{1}{2\sqrt2}\left(\log\frac{\sqrt2+1}{\sqrt2-1}-\log\frac{\sqrt2-1}{\sqrt2+1}\right)\\
+ &=\frac{1}{\sqrt2}\log\frac{\sqrt2+1}{\sqrt2-1}\\
+ &=\frac{1}{\sqrt2}\log(\sqrt2+1)^2\\
+ &=\sqrt2\log(\sqrt2+1)
+\end{aligned}
 \]
-ここでは $-1\leq u\leq1$ で対数の分子・分母がともに正である.最後の等式では $(\sqrt2+1)(\sqrt2-1)=1$ を使った.したがって
+となる.4行目では $(\sqrt2+1)(\sqrt2-1)=1$ より $\frac{\sqrt2+1}{\sqrt2-1}=(\sqrt2+1)^2$ を使った.したがって
 \[
-I=\frac{\pi}{\sqrt2}\log(\sqrt2+1).
+\begin{aligned}
+I&=\frac{\pi}{2}\cdot\sqrt2\log(\sqrt2+1)\\
+ &=\frac{\pi}{\sqrt2}\log(\sqrt2+1)
+\end{aligned}
 \]
+を得る.
 
-もし最初に部分積分を使うなら,\,$\frac{\sin x}{1+\sin^2x}$ の原始関数が必要になり,さらにその対数を積分する項が現れる.反転によって $x$ を除いたため,必要な計算が一度の置換と部分分数で済んだ.同じ式でも,不定積分では「微分の逆を作れるか」を見て,定積分ではそれに加えて「区間を保つ置換で二つの式を補い合わせられるか」を見るのである.
-
-
+\paragraphbf{部分積分から始めた場合}
+もし最初に部分積分を使うなら,\,$\frac{\sin x}{1+\sin^2x}$ の原始関数が必要になり,さらにその対数を積分する項が現れる.反転によって $x$ を除いたため,必要な計算が1度の置換と部分分数分解で済んだのである.同じ式でも,不定積分では「微分の逆を作れるか」を見る.定積分ではそれに加えて,「区間を保つ置換で2つの式を補い合わせられるか」を見るとよい.

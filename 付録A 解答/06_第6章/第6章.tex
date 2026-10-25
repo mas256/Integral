@@ -2,29 +2,30 @@
 
 \paragraph{6.1}
 括弧の中を $t=3x^2-4x+7$ と置くと,\,$\dd t=(6x-4)\dd x$ である.したがって
-\[
+\begin{align*}
  \int(6x-4)(3x^2-4x+7)^5\dd x
- =\int t^5\dd t
- =\frac{(3x^2-4x+7)^6}{6}+C.
-\]
-微分すれば,外側の六乗から $6$ が現れて分母と打ち消し合い,内側の微分 $6x-4$ が掛かって元の式に戻る.多項式なので全実数上で成り立つ.
+ &=\int t^5\dd t\\
+ &=\frac{(3x^2-4x+7)^6}{6}+C.
+\end{align*}
+微分すれば,外側の6乗から $6$ が現れて分母と打ち消し合い,内側の微分 $6x-4$ が掛かって元の式に戻る.多項式なので全実数上で成り立つ.
 
 \paragraph{6.2}
 $t=\log x$ と置くと $\dd t=\frac1x\dd x$ だから,
-\[
+\begin{align*}
  \int\frac1{x\log x}\dd x
- =\int\frac1t\dd t
- =\log|\log x|+C.
-\]
+ &=\int\frac1t\dd t\\
+ &=\log|\log x|+C.
+\end{align*}
 実数の対数のために $x>0$ が必要で,さらに分母の $\log x$ が $0$ となる $x=1$ を除く.よって適用する区間は $0<x<1$ と $1<x$ に分かれ,それぞれの任意定数は独立である.\,$0<x<1$ では $\log x<0$ なので,外側の対数の絶対値を外せない.
 
 \paragraph{6.3}
 $t=x^2$,\,$\dd t=2x\dd x$ と置く.\,$x=-2$ は $t=4$,\,$x=1$ は $t=1$ に対応するので,
-\[
+\begin{align*}
  \int_{-2}^1 2x\e^{x^2}\dd x
- =\int_4^1\e^t\dd t
- =[\e^t]_4^1=\e-\e^4.
-\]
+ &=\int_4^1\e^t\dd t\\
+ &=[\e^t]_4^1\\
+ &=\e-\e^4.
+\end{align*}
 合成形の置換は,\,$\frac{\dd}{\dd x}\e^{x^2}=2x\e^{x^2}$ に基づいており,\,$x^2$ が単調である必要はない.区間を分けても
 \[
  \int_4^0\e^t\dd t+\int_0^1\e^t\dd t
@@ -59,12 +60,13 @@ $x=a\sin\theta$ と置き,\,$0\le\theta\le\frac\pi6$ を選ぶ.この区間で $
 
 \paragraph{6.6}
 $0\le\theta\le\frac\pi3$ で $x=\tan\theta$ と置く.端点は $0,\sqrt3$ に対応し,この区間では $\cos\theta\ne0$ である.よって
-\[
+\begin{align*}
  \int_0^{\sqrt3}\frac1{1+x^2}\dd x
- =\int_0^{\frac\pi3}\frac1{1+\tan^2\theta}
-   \frac1{\cos^2\theta}\dd\theta
- =\int_0^{\frac\pi3}1\dd\theta=\frac\pi3.
-\]
+ &=\int_0^{\frac\pi3}\frac1{1+\tan^2\theta}\cdot
+   \frac1{\cos^2\theta}\dd\theta\\
+ &=\int_0^{\frac\pi3}1\dd\theta\\
+ &=\frac\pi3.
+\end{align*}
 分母と微分に現れる因子が等しいことを使っている.
 
 \paragraph{6.7}

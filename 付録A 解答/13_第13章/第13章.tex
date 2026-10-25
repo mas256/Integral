@@ -1,11 +1,11 @@
 \section{第13章の解答}\label{解答:第13章}
 
 \paragraph{13.1}
-分母の次数より分子の次数が高いので,先に多項式の割り算をする.
+分子の次数が分母の次数より高いので,先に多項式の割り算をして,残りを対数の積分に帰着させる.
 \[
  x^3+x^2+2x+1=(x+1)(1+x^2)+x
 \]
-だから
+より,
 \[
  \begin{aligned}
  \int_0^1\frac{x^3+x^2+2x+1}{1+x^2}\dd x
@@ -17,169 +17,198 @@
 余りの分子$x$が分母の微分$2x$の定数倍になったため,対数の形で積分できた.
 
 \paragraph{13.2}
-$u=1+x^2$と置くと$\dd u=2x\dd x$であり,\,$x=0,1$はそれぞれ$u=1,2$に対応する.従って
+$u=1+x^2$と置いて,\,$u^{\frac12}$の積分に帰着させる.\,$\dd u=2x\dd x$であり,\,$x=0,1$はそれぞれ$u=1,2$に対応する.したがって置換後の区間は$1\le u\le2$であり,
 \[
+ \begin{aligned}
  \int_0^1x\sqrt{1+x^2}\dd x
- =\frac12\int_1^2u^{\frac12}\dd u
- =\left[\frac13u^{\frac32}\right]_1^2
- =\boxed{\frac{2\sqrt2-1}{3}}.
+ &=\frac12\int_1^2u^{\frac12}\dd u\\
+ &=\left[\frac13u^{\frac32}\right]_1^2\\
+ &=\boxed{\frac{2\sqrt2-1}{3}}.
+ \end{aligned}
 \]
-積分変数を$u$へ変えた時点で,端点も$u$の値へ変えている.
 
 \paragraph{13.3}
-$\log x$を微分し,\,$x$を積分すると,残りは整式の積分になる.部分積分により
+$\log x$を微分し,\,$x$を積分する部分積分によって,整式の積分に帰着させる.
 \[
  \begin{aligned}
  \int_1^{\e}x\log x\dd x
  &=\left[\frac{x^2}{2}\log x\right]_1^{\e}
    -\frac12\int_1^{\e}x\dd x\\
- &=\frac{\e^2}{2}-\frac{\e^2-1}{4}
- =\boxed{\frac{\e^2+1}{4}}.
+ &=\frac{\e^2}{2}-\frac{\e^2-1}{4}\\
+ &=\boxed{\frac{\e^2+1}{4}}.
  \end{aligned}
 \]
 
 \paragraph{13.4}
-$G(u)=\int_0^u\sqrt{1+t^2}\dd t$と置く.基本定理より$G'(u)=\sqrt{1+u^2}$であり,\,$F(x)=G(x^2)-G(x)$だから,合成関数の微分によって
+両端が動く積分を,下端が$0$に固定された関数の差に書き直し,基本定理と合成関数の微分に帰着させる.
+$G(u)=\int_0^u\sqrt{1+t^2}\dd t$と置くと,基本定理より$G'(u)=\sqrt{1+u^2}$である.\,$F(x)=G(x^2)-G(x)$だから,合成関数の微分によって
 \[
- F'(x)=2x\sqrt{1+x^4}-\sqrt{1+x^2}.
+ F'(x)=2x\sqrt{1+x^4}-\sqrt{1+x^2}
 \]
-上端だけでなく,下端からも項が現れる.\,$x=1$では上下端が一致するため$F(1)=0$,また$F'(1)=\sqrt2$である.従って接線は
+となる.上端だけでなく,下端からも項が現れる.\,$x=1$では上下端が一致するので$F(1)=0$であり,
+\[
+ F'(1)=2\sqrt2-\sqrt2=\sqrt2
+\]
+である.したがって接線は
 \[
  \boxed{y=\sqrt2(x-1)}.
 \]
 
 \paragraph{13.5}
-求める積分を$I$とする.\,$x=-t$と置き,\,$1+x^2$が偶関数であることを使えば
+$x=-t$と置いて書き直した積分を元の積分と足し,指数関数を含む重みを消して整式の積分に帰着させる.
+求める積分を$I$とする.\,$x=-t$と置き,\,$1+x^2$が偶関数であることを使うと
 \[
- I=\int_{-a}^{a}\frac{1+t^2}{1+\e^{-t}}\dd t.
+ I=\int_{-a}^{a}\frac{1+t^2}{1+\e^{-t}}\dd t
 \]
-元の式と足すと,
+となる.積分変数の文字を$x$に戻して元の式と足すと,
 \[
  \frac1{1+\e^x}+\frac1{1+\e^{-x}}=1
 \]
-によって重みが消える.従って
+によって重みが消える.したがって
 \[
- 2I=\int_{-a}^{a}(1+x^2)\dd x
- =2a+\frac{2a^3}{3},\qquad
+ \begin{aligned}
+ 2I&=\int_{-a}^{a}(1+x^2)\dd x\\
+ &=2a+\frac{2a^3}{3}
+ \end{aligned}
+\]
+より,
+\[
  \boxed{I=a+\frac{a^3}{3}}.
 \]
-不定積分を求めずに値が決まるのは,区間と分子が反転に対して変わらないためである.
 
 \paragraph{13.6}
-交点は$x^2=x$より$x=0,1$である.\,$0\leqq x\leqq1$では$x^2\leqq x$なので,面積$S$は
+面積は上下の高さの差を,体積は回転軸からの2つの距離の平方の差を積分する.
+交点は$x^2=x$より$x=0,1$である.\,$0\le x\le1$では$x^2\le x$なので,面積$S$は
 \[
- S=\int_0^1(x-x^2)\dd x
- =\left[\frac{x^2}{2}-\frac{x^3}{3}\right]_0^1
- =\boxed{\frac16}.
+ \begin{aligned}
+ S&=\int_0^1(x-x^2)\dd x\\
+ &=\left[\frac{x^2}{2}-\frac{x^3}{3}\right]_0^1\\
+ &=\boxed{\frac16}.
+ \end{aligned}
 \]
-回転すると,\,$x$を固定した断面は外半径$x$,内半径$x^2$の円環になる.従って体積$V$は
+回転すると,\,$x$を固定した断面は外半径$x$,内半径$x^2$の円環になる.したがって体積$V$は
 \[
- V=\pi\int_0^1\{x^2-(x^2)^2\}\dd x
- =\pi\left(\frac13-\frac15\right)
- =\boxed{\frac{2\pi}{15}}.
+ \begin{aligned}
+ V&=\pi\int_0^1\{x^2-(x^2)^2\}\dd x\\
+ &=\pi\left(\frac13-\frac15\right)\\
+ &=\boxed{\frac{2\pi}{15}}.
+ \end{aligned}
 \]
-面積では上下の高さの差を積分し,体積では二つの半径の平方の差を積分している.
 
 \paragraph{13.7}
+端点を微分して極値の候補を求める.値の比較は,積分区間の中心を変数に取り直し,\,$H$を平方完成した形に帰着させて行う.
+
 積分の両端を微分すると
 \[
  \begin{aligned}
  H'(a)&=\{(a+1)^2-2(a+1)\}^2-(a^2-2a)^2\\
  &=(a^2-1)^2-(a^2-2a)^2\\
- &=(2a-1)(2a^2-2a-1).
+ &=(2a-1)(2a^2-2a-1)
  \end{aligned}
 \]
-従って極値の候補は$a=\frac12,\frac{1-\sqrt3}{2},\frac{1+\sqrt3}{2}$である.候補の値を比べ,実数全体での最小値を確かめるため,積分区間の中心を使って式を整理する.
+となる.したがって極値の候補は$a=\frac12,\frac{1-\sqrt3}{2},\frac{1+\sqrt3}{2}$である.候補の値を比べ,それが実数全体での最小値であることも確かめるため,積分区間の中心を使って式を整理する.
 
-$y=a-\frac12$とし,\,$x=a+\frac12+s$と置くと,\,$-\frac12\leqq s\leqq\frac12$,\,$x-1=y+s$である.\,$x^2-2x=(x-1)^2-1$なので
+$y=a-\frac12$とし,\,$x=a+\frac12+s$と置くと,\,$-\frac12\le s\le\frac12$,\,$x-1=y+s$である.\,$x^2-2x=(x-1)^2-1$なので
 \[
- H(a)=\int_{-\frac12}^{\frac12}\{(y+s)^2-1\}^2\dd s.
+ H(a)=\int_{-\frac12}^{\frac12}\{(y+s)^2-1\}^2\dd s
 \]
-展開後の$s$の奇数次の項は積分すると消える.残る項は
+となる.展開した後の$s$の奇数次の項は,積分すると消える.残る項を積分して
 \[
  \begin{aligned}
  H(a)
  &=\int_{-\frac12}^{\frac12}
    \{s^4+(6y^2-2)s^2+(y^2-1)^2\}\dd s\\
  &=\frac1{80}+\frac{6y^2-2}{12}+(y^2-1)^2\\
- &=y^4-\frac32y^2+\frac{203}{240}
- =\left(y^2-\frac34\right)^2+\frac{17}{60}.
+ &=y^4-\frac32y^2+\frac{203}{240}\\
+ &=\left(y^2-\frac34\right)^2+\frac{17}{60}
  \end{aligned}
 \]
-最後の平方は$0$以上で,\,$y=\pm\frac{\sqrt3}{2}$のときに限り$0$になる.従って
+を得る.最後の平方は$0$以上で,\,$y=\pm\frac{\sqrt3}{2}$のときに限り$0$になる.したがって
 \[
  \boxed{\min H(a)=\frac{17}{60},\qquad
- a=\frac{1-\sqrt3}{2},\ \frac{1+\sqrt3}{2}}.
+ a=\frac{1-\sqrt3}{2},\ \frac{1+\sqrt3}{2}}
 \]
-二つの区間が同じ最小値を与えるのは,被積分関数が$x=1$に関して対称であることにも対応する.
+である.2つの区間が同じ最小値を与えるのは,被積分関数$\{(x-1)^2-1\}^2$が直線$x=1$に関して対称であることに対応する.
 
 \paragraph{13.8}
-対数の中を$u=1+x^2$と置くと,\,$\dd u=2x\dd x$,\,$x^2=u-1$だから
+$u=1+x^2$と置いて$(u-1)\log u$の積分に直し,\,$\log u$を微分する部分積分に帰着させる.
+$\dd u=2x\dd x$,\,$x^2=u-1$だから
 \[
- x^3\dd x=\frac12(u-1)\dd u.
+ x^3\dd x=\frac12(u-1)\dd u
 \]
-区間は$[1,2]$となり,求める積分は$\frac12\int_1^2(u-1)\log u\dd u$である.ここで$\log u$を微分する部分積分を行う.
+であり,区間は$[1,2]$となる.\,$u-1$の原始関数として$\frac{u^2}{2}-u$を選んで部分積分すると,
 \[
  \begin{aligned}
- \frac12\int_1^2(u-1)\log u\dd u
+ \int_0^1x^3\log(1+x^2)\dd x
+ &=\frac12\int_1^2(u-1)\log u\dd u\\
  &=\frac12\left[\left(\frac{u^2}{2}-u\right)\log u\right]_1^2
    -\frac12\int_1^2\left(\frac u2-1\right)\dd u\\
- &=\left[-\frac{u^2}{8}+\frac u2\right]_1^2
- =\frac12-\frac38
- =\boxed{\frac18}.
+ &=-\frac12\int_1^2\left(\frac u2-1\right)\dd u\\
+ &=\left[-\frac{u^2}{8}+\frac u2\right]_1^2\\
+ &=\frac12-\frac38\\
+ &=\boxed{\frac18}.
  \end{aligned}
 \]
 端点の項は,\,$u=1$では$\log1=0$,\,$u=2$では$\frac{u^2}{2}-u=0$となるため,両方とも消える.
 
 \paragraph{13.9}
-一項を
+1項を$\frac1nf\left(\frac kn\right)$の形に書き,区分求積法によって定積分に帰着させる.
 \[
  \frac{k^2}{n(n^2+k^2)}
  =\frac1n\cfrac{\left(\cfrac kn\right)^2}{1+\left(\cfrac kn\right)^2}
 \]
-と書く.\,$f(x)=\frac{x^2}{1+x^2}$は$[0,1]$で連続なので,この和の極限はその区間での積分である.分子を$x^2=(1+x^2)-1$と分けると
+と書ける.\,$f(x)=\frac{x^2}{1+x^2}$は$[0,1]$で連続なので,この和の極限は$\int_0^1f(x)\dd x$である.分子を$x^2=(1+x^2)-1$と分けると
 \[
  \begin{aligned}
  \int_0^1\frac{x^2}{1+x^2}\dd x
  &=\int_0^1\left(1-\frac1{1+x^2}\right)\dd x\\
- &=\left[x-\arctan x\right]_0^1
- =\boxed{1-\frac{\pi}{4}}.
+ &=\left[x-\arctan x\right]_0^1\\
+ &=\boxed{1-\frac{\pi}{4}}.
  \end{aligned}
 \]
 
 \paragraph{13.10}
-各$x\in[0,1]$で,縦の線分は$y=x-1$から$y=x$まであり,常に$x$軸を含む.従って回転断面の中心には穴がなく,円板になる.端点の軸からの距離はそれぞれ$1-x$,\,$x$なので,半径$r(x)$は
+各$x$での回転断面が円板か円環かを決め,その半径の平方を積分する.
+各$x\in[0,1]$で,縦の線分は$y=x-1$から$y=x$まであり,常に$x$軸上の点を含む.したがって回転断面の中心には穴がなく,円板になる.端点の軸からの距離はそれぞれ$1-x$,\,$x$なので,半径$r(x)$は
 \[
  r(x)=
  \begin{cases}
-  1-x&\left(0\leqq x\leqq\frac12\right),\\
-  x&\left(\frac12\leqq x\leqq1\right).
+  1-x&\left(0\le x\le\frac12\right),\\
+  x&\left(\frac12\le x\le1\right)
  \end{cases}
 \]
-切り替わりは$x=1-x$,すなわち$x=\frac12$で起こる.従って
+である.切り替わりは$x=1-x$,すなわち$x=\frac12$で起こる.したがって
+\[
+ V=\pi\int_0^{\frac12}(1-x)^2\dd x
+   +\pi\int_{\frac12}^{1}x^2\dd x
+\]
+となる.第1項は$t=1-x$と置くと$\pi\int_{\frac12}^1t^2\dd t$となり,第2項に等しい.よって
 \[
  \begin{aligned}
- V&=\pi\int_0^{\frac12}(1-x)^2\dd x
-   +\pi\int_{\frac12}^{1}x^2\dd x\\
- &=2\pi\int_{\frac12}^{1}x^2\dd x
- =\frac{2\pi}{3}\left(1-\frac18\right)
- =\boxed{\frac{7\pi}{12}}.
+ V&=2\pi\int_{\frac12}^{1}x^2\dd x\\
+ &=\frac{2\pi}{3}\left(1-\frac18\right)\\
+ &=\boxed{\frac{7\pi}{12}}.
  \end{aligned}
 \]
-上下の部分を別々に回して体積を足すと,同じ円板内の点を重複して数える.ここでは回転後にできる断面そのものを一枚ずつ数えた.
+$x$軸より上の部分と下の部分を別々に回転させて体積を足すと,両方の円板が重なる部分を2回数えてしまう.ここでは回転後の断面そのものを1枚ずつ積分した.
 
 \paragraph{13.11}
+隣り合う2つの積分を足して分母を消し,漸化式に帰着させる.交代和は,漸化式に符号を付けて足し合わせれば得られる.
+
 まず
 \[
- K_0=\int_0^1\frac1{1+x}\dd x=\log2.
+ K_0=\int_0^1\frac1{1+x}\dd x=\log2
 \]
-$n\geqq1$では,隣り合う二つの積分を足すと分母が消える.
+である.\,$n\ge1$では
 \[
+ \begin{aligned}
  K_n+K_{n-1}
- =\int_0^1\frac{x^n+x^{n-1}}{1+x}\dd x
- =\int_0^1x^{n-1}\dd x=\frac1n.
+ &=\int_0^1\frac{x^n+x^{n-1}}{1+x}\dd x\\
+ &=\int_0^1x^{n-1}\dd x\\
+ &=\frac1n
+ \end{aligned}
 \]
-従って漸化式は$K_n=\frac1n-K_{n-1}$であり,順に
+となる.したがって漸化式は$K_n=\frac1n-K_{n-1}$であり,順に
 \[
  K_1=1-\log2,\qquad
  K_2=\log2-\frac12,\qquad
@@ -187,44 +216,56 @@ $n\geqq1$では,隣り合う二つの積分を足すと分母が消える.
 \]
 となる.
 
-また$0\leqq x\leqq1$では$0\leqq\frac{x^n}{1+x}\leqq x^n$だから
+また$0\le x\le1$では$0\le\frac{x^n}{1+x}\le x^n$だから
 \[
- 0\leqq K_n\leqq\frac1{n+1}\longrightarrow0.
+ 0\le K_n\le\frac1{n+1}
 \]
-ここで漸化式の添字を$k$とし,両辺に$(-1)^{k-1}$を掛けて$k=1,\ldots,n$について足す.
-中間の$K_k$が消え,
+であり,\,$K_n\to0$である.
+
+漸化式の添字を$k$とし,両辺に$(-1)^{k-1}$を掛けると
 \[
+ (-1)^{k-1}K_{k-1}-(-1)^kK_k=\frac{(-1)^{k-1}}k
+\]
+となる.これを$k=1,\ldots,n$について足すと,左辺は隣り合う項が打ち消し合い,
+\[
+ \begin{aligned}
  \sum_{k=1}^n\frac{(-1)^{k-1}}k
- =K_0+(-1)^{n-1}K_n
- =\log2+(-1)^{n-1}K_n
+ &=K_0-(-1)^nK_n\\
+ &=\log2+(-1)^{n-1}K_n
+ \end{aligned}
 \]
-となる.右辺の最後の項は$0$へ近づくので,求める極限は$\log2$である.同時に,部分和と$\log2$との差の絶対値が$\frac1{n+1}$以下であることも分かる.
+を得る.右辺の最後の項は$0$へ近づくので,求める極限は$\log2$である.同時に,部分和と$\log2$との差の絶対値が$\frac1{n+1}$以下であることも分かる.
 
 \paragraph{13.12}
-積分を$x=1$で分け,\,$0$と無限大を独立に調べる.\,$x\to0+$では
+積分を$x=1$で分け,\,$0$付近と無限大付近を,それぞれべき関数との極限比較に帰着させる.
+$x\to0+$では
 \[
  \cfrac{\cfrac{x^\alpha}{1+x^2}}{x^\alpha}
- =\frac1{1+x^2}\longrightarrow1.
+ =\frac1{1+x^2}\longrightarrow1
 \]
-従って$0$付近では$x^\alpha$との極限比較が使え,収束条件は$\alpha>-1$である.
+である.したがって$0$付近では$x^\alpha$との極限比較が使え,収束条件は$\alpha>-1$である.
 一方,\,$x\to\infty$では
 \[
  \cfrac{\cfrac{x^\alpha}{1+x^2}}{x^{\alpha-2}}
- =\frac{x^2}{1+x^2}\longrightarrow1.
+ =\frac{x^2}{1+x^2}\longrightarrow1
 \]
-無限大で$x^{\alpha-2}$が積分可能になる条件は$\alpha-2<-1$,すなわち$\alpha<1$である.
-従って全体の収束条件は
+である.無限大で$x^{\alpha-2}$の積分が収束する条件は$\alpha-2<-1$,すなわち$\alpha<1$である.
+したがって全体の収束条件は
 \[
  \boxed{-1<\alpha<1}.
 \]
-$\alpha=0$では,端点を避けて計算してから極限を取り,
+$\alpha=0$では被積分関数は$x=0$で連続なので,上端だけ極限を取ればよい.
 \[
+ \begin{aligned}
  \int_0^{\infty}\frac1{1+x^2}\dd x
- =\lim_{R\to\infty}\arctan R-\lim_{\varepsilon\to0+}\arctan\varepsilon
- =\boxed{\frac{\pi}{2}}.
+ &=\lim_{R\to\infty}\arctan R\\
+ &=\boxed{\frac{\pi}{2}}.
+ \end{aligned}
 \]
 
 \paragraph{13.13}
+与式を微分して$f''=f$と初期値を導き,\,$\e^{-x}$や$\e^x$を掛けた関数の微分を使って積分へ戻す.
+
 最初から$f$が微分可能だと仮定せず,右辺の積分から確かめる.
 \[
  A(x)=\int_0^xf(t)\dd t,\qquad
@@ -234,9 +275,12 @@ $\alpha=0$では,端点を避けて計算してから極限を取り,
 \[
  f(x)=1+xA(x)-B(x)
 \]
-と書けるので,右辺が微分可能であり,
+と書けるので,右辺は微分可能であり,
 \[
- f'(x)=A(x)+xf(x)-xf(x)=A(x)
+ \begin{aligned}
+ f'(x)&=A(x)+xf(x)-xf(x)\\
+ &=A(x)
+ \end{aligned}
 \]
 を得る.さらに$f''(x)=f(x)$である.また$x=0$を代入すると
 \[
@@ -255,37 +299,46 @@ $f'(x)+f(x)=\e^x$となる.今度は$\e^xf(x)$を微分すれば
 \]
 $0$から$x$まで積分し,\,$f(0)=1$を使うと
 \[
- \e^xf(x)-1=\frac{\e^{2x}-1}{2},\qquad
+ \e^xf(x)-1=\frac{\e^{2x}-1}{2}
+\]
+より,
+\[
  \boxed{f(x)=\frac{\e^x+\e^{-x}}2}.
 \]
 
 微分して得た条件だけでは,元の積分の等式を満たすかの確認が残る.
-求めた関数を$g(x)=\frac{\e^x+\e^{-x}}2$と書くと,\,$g''=g$,\,$g(0)=1$,\,$g'(0)=0$である.従って部分積分によって
+求めた関数を$g(x)=\frac{\e^x+\e^{-x}}2$と書くと,\,$g''=g$,\,$g(0)=1$,\,$g'(0)=0$である.したがって部分積分によって
 \[
  \begin{aligned}
  \int_0^x(x-t)g(t)\dd t
  &=\int_0^x(x-t)g''(t)\dd t\\
  &=\bigl[(x-t)g'(t)\bigr]_0^x+\int_0^xg'(t)\dd t\\
- &=-xg'(0)+g(x)-g(0)=g(x)-1.
+ &=-xg'(0)+g(x)-g(0)\\
+ &=g(x)-1.
  \end{aligned}
 \]
-よって元の等式も成立する.また,条件を満たすどの$f$も上の計算から同じ式になるため,解は一つに定まる.
+よって元の等式も成り立つ.また,条件を満たすどの$f$も上の計算から同じ式になるため,解は1つに定まる.
 
 \paragraph{13.14}
-二つの制約を満たす一次関数を先に探す.\,$\ell(x)=a+bx$を代入すると
+2つの制約を満たす一次関数$\ell$を候補とし,任意の$f$との差$g=f-\ell$を使って,\,$\int_0^1f(x)^2\dd x$を2つの平方の積分の和に帰着させる.
+
+$\ell(x)=a+bx$を制約に代入すると
 \[
  a+\frac b2=1,\qquad \frac a2+\frac b3=0.
 \]
 これを解くと$a=4$,\,$b=-6$なので,\,$\ell(x)=4-6x$である.
-任意の条件を満たす$f$について$g(x)=f(x)-\ell(x)$と置けば
+条件を満たす任意の$f$について$g(x)=f(x)-\ell(x)$と置けば
 \[
  \int_0^1g(x)\dd x=0,\qquad
- \int_0^1xg(x)\dd x=0.
+ \int_0^1xg(x)\dd x=0
 \]
-従って
+である.したがって
 \[
+ \begin{aligned}
  \int_0^1\ell(x)g(x)\dd x
- =4\int_0^1g(x)\dd x-6\int_0^1xg(x)\dd x=0.
+ &=4\int_0^1g(x)\dd x-6\int_0^1xg(x)\dd x\\
+ &=0.
+ \end{aligned}
 \]
 この関係を平方の展開に使うと
 \[
@@ -294,33 +347,38 @@ $0$から$x$まで積分し,\,$f(0)=1$を使うと
  &=\int_0^1\ell(x)^2\dd x
    +2\int_0^1\ell(x)g(x)\dd x+\int_0^1g(x)^2\dd x\\
  &=\int_0^1(16-48x+36x^2)\dd x+\int_0^1g(x)^2\dd x\\
- &=4+\int_0^1g(x)^2\dd x\geqq4.
+ &=4+\int_0^1g(x)^2\dd x\\
+ &\ge4.
  \end{aligned}
 \]
 $g$は連続なので,最後の積分が$0$になるのは$g(x)=0$が全区間で成り立つ場合に限る.
-実際,ある点で$g\ne0$なら,その近くでは$g^2$が正の一定値以上になり,積分も正になる.従って
+実際,ある点で$g\ne0$なら,その近くでは$g^2$が正の一定値以上になり,積分も正になる.したがって
 \[
  \boxed{\min\int_0^1f(x)^2\dd x=4,\qquad f(x)=4-6x}.
 \]
-制約から候補を見つけた後で,どの関数との差も平方の積分として表したことが,最小値の証明になっている.
 
 \paragraph{13.15}
+$x(t)$が単調に増加することを確かめ,面積と体積を$t$の積分に直してウォリスの積分公式に帰着させる.
+
 微分すると
 \[
  x'(t)=1-\cos2t=2\sin^2t,\qquad
- y'(t)=2\sin t\cos t.
+ y'(t)=2\sin t\cos t
 \]
-$0<t<\pi$では$x'(t)>0$なので,\,$x$は$0$から$\pi$まで狭義に増加する.また$y\geqq0$であり,両端で$y=0$となる.このため曲線は各$x$に対して一つの高さを持ち,曲線の下の領域を$x$方向に積分して重複することはない.
+である.\,$0<t<\pi$では$x'(t)>0$なので,\,$x$は$0$から$\pi$まで狭義に増加する.また$y\ge0$であり,両端で$y=0$となる.このため曲線は各$x$に対して1つの高さを持ち,曲線の下の領域を$x$方向に積分しても重複は生じない.
 
 面積$S$は
 \[
- S=\int_0^\pi y(t)x'(t)\dd t
- =2\int_0^\pi\sin^4t\dd t.
+ \begin{aligned}
+ S&=\int_0^\pi y(t)x'(t)\dd t\\
+ &=2\int_0^\pi\sin^4t\dd t\\
+ &=4\int_0^{\frac\pi2}\sin^4t\dd t
+ \end{aligned}
 \]
-反転$t\mapsto\pi-t$で両半分の積分は等しい.ウォリスの公式より
+となる.最後は,\,$t$を$\pi-t$に置き換えても$\sin^4t$が変わらないので,左右の半分の積分が等しいことを使った.ウォリスの積分公式より
 \[
  \int_0^{\frac\pi2}\sin^4t\dd t
- =\frac34\frac12\frac\pi2=\frac{3\pi}{16}
+ =\frac34\cdot\frac12\cdot\frac\pi2=\frac{3\pi}{16}
 \]
 なので,
 \[
@@ -332,97 +390,113 @@ $0<t<\pi$では$x'(t)>0$なので,\,$x$は$0$から$\pi$まで狭義に増加す
  \begin{aligned}
  \sqrt{x'(t)^2+y'(t)^2}
  &=\sqrt{4\sin^4t+4\sin^2t\cos^2t}\\
- &=2|\sin t|=2\sin t\qquad(0\leqq t\leqq\pi).
+ &=2|\sin t|\\
+ &=2\sin t\qquad(0\le t\le\pi).
  \end{aligned}
 \]
-従って
+したがって
 \[
  \boxed{L=\int_0^\pi2\sin t\dd t=4}.
 \]
 
-回転体の断面は半径$y(t)$の円板であり,\,$x$の増分は$x'(t)\dd t$である.従って体積は
+回転体の断面は半径$y(t)$の円板であり,\,$x$の増分は$x'(t)\dd t$である.したがって体積は
 \[
  \begin{aligned}
- V&=\pi\int_0^\pi y(t)^2x'(t)\dd t
- =2\pi\int_0^\pi\sin^6t\dd t\\
- &=4\pi\int_0^{\frac\pi2}\sin^6t\dd t
- =4\pi\cdot\frac{5\pi}{32}
- =\boxed{\frac{5\pi^2}{8}}.
+ V&=\pi\int_0^\pi y(t)^2x'(t)\dd t\\
+ &=2\pi\int_0^\pi\sin^6t\dd t\\
+ &=4\pi\int_0^{\frac\pi2}\sin^6t\dd t\\
+ &=4\pi\cdot\frac{5\pi}{32}\\
+ &=\boxed{\frac{5\pi^2}{8}}.
  \end{aligned}
 \]
-ここでも$x(t)$の単調性により,同じ$x$での円板を二回数えていない.
+ここでも$x(t)$の単調性により,同じ$x$での円板を2回数えていない.
 
 \paragraph{13.16}
+(1)は$\sin u$の有限テイラー公式に$u=x^2$を代入し,多項式の積分と剰余の評価に帰着させる.(2)は$u=x^2$と置いて$\frac{\sin u}{\sqrt u}$の積分に直し,収束は部分積分で,絶対値の積分の発散は区間ごとの下からの評価で示す.
+
 (1) $g(u)=\sin u$の$0$を中心とする六次テイラー多項式は
 \[
  P_6(u)=u-\frac{u^3}{6}+\frac{u^5}{120}
 \]
-である.偶数次の係数は$0$だが,六次までの有限テイラー公式として剰余を評価する.
-七階微分は$g^{(7)}(u)=-\cos u$なので,\,$0\leqq u\leqq1$では
-$-1\leqq g^{(7)}(u)\leqq0$である.従って
+である.偶数次の係数は$0$だが,六次までの有限テイラー公式として剰余を評価する.剰余項は
+\[
+ R_6(u)=\frac1{6!}\int_0^u(u-t)^6g^{(7)}(t)\dd t
+\]
+であり,\,$g^{(7)}(t)=-\cos t$なので,\,$0\le t\le1$では$-1\le g^{(7)}(t)\le0$である.\,$\int_0^u(u-t)^6\dd t=\frac{u^7}{7}$だから,\,$0\le u\le1$で
 \[
  \sin u=P_6(u)+R_6(u),\qquad
- -\frac{u^7}{5040}\leqq R_6(u)\leqq0.
+ -\frac{u^7}{5040}\le R_6(u)\le0
 \]
-$u=x^2$を代入して積分した多項式の値は
+となる.\,$u=x^2$を代入して積分した多項式の値は
 \[
- Q=\int_0^1\left(x^2-\frac{x^6}{6}+\frac{x^{10}}{120}\right)\dd x
- =\frac13-\frac1{42}+\frac1{1320}
- =\frac{2867}{9240}.
+ \begin{aligned}
+ Q&=\int_0^1\left(x^2-\frac{x^6}{6}+\frac{x^{10}}{120}\right)\dd x\\
+ &=\frac13-\frac1{42}+\frac1{1320}\\
+ &=\frac{2867}{9240}
+ \end{aligned}
 \]
-残りの積分は
+である.剰余の積分は
 \[
  -\frac1{5040}\int_0^1x^{14}\dd x
- \leqq A-Q\leqq0
+ \le A-Q\le0
 \]
-だから
+を満たし,左辺は$-\frac1{75600}$である.したがって
 \[
  \boxed{\frac{2867}{9240}-\frac1{75600}
- \leqq A\leqq\frac{2867}{9240}}.
+ \le A\le\frac{2867}{9240}}.
 \]
 両端は有理数であり,幅$\frac1{75600}$は$\frac1{10000}$より小さい.有限の式に対する区間全体の誤差を積分したので,無限級数と積分の交換は用いていない.
 
 (2) 有限の$R>1$に対して$u=x^2$と置けば
 \[
  \int_1^R\sin(x^2)\dd x
- =\frac12\int_1^{R^2}\frac{\sin u}{\sqrt u}\dd u.
+ =\frac12\int_1^{R^2}\frac{\sin u}{\sqrt u}\dd u
 \]
-右辺で部分積分を行う.\,$T>1$として
+となる.右辺で部分積分を行う.\,$T>1$として
 \[
  \begin{aligned}
  \int_1^T\frac{\sin u}{\sqrt u}\dd u
  &=\left[-\frac{\cos u}{\sqrt u}\right]_1^T
-   -\frac12\int_1^T\cfrac{\cos u}{u^{\cfrac32}}\dd u\\
+   -\frac12\int_1^T\frac{\cos u}{u\sqrt u}\dd u\\
  &=\cos1-\frac{\cos T}{\sqrt T}
-   -\frac12\int_1^T\cfrac{\cos u}{u^{\cfrac32}}\dd u.
+   -\frac12\int_1^T\frac{\cos u}{u\sqrt u}\dd u.
  \end{aligned}
 \]
-境界項$\frac{\cos T}{\sqrt T}$は$0$へ近づく.また
-$\cfrac{|\cos u|}{u^{\cfrac32}}\leqq u^{-\frac32}$であり,右辺のべき関数は無限大で積分可能だから,最後の積分は絶対収束する.従って元の広義積分は収束する.
+境界項$\frac{\cos T}{\sqrt T}$は$0$へ近づく.また$\frac{|\cos u|}{u\sqrt u}\le u^{-\frac32}$であり,右辺のべき関数の積分は無限大で収束するから,最後の積分は絶対収束する.したがって元の広義積分は収束する.
 
 絶対値を付けた場合も同じ置換が使え,
 \[
  \int_1^R|\sin(x^2)|\dd x
- =\frac12\int_1^{R^2}\frac{|\sin u|}{\sqrt u}\dd u.
+ =\frac12\int_1^{R^2}\frac{|\sin u|}{\sqrt u}\dd u
 \]
-整数$k\geqq1$について,\,$u\in[k\pi,(k+1)\pi]$なら
-$\frac1{\sqrt u}\geqq\frac1{\sqrt{(k+1)\pi}}$なので
+となる.整数$k\ge1$について,\,$u\in[k\pi,(k+1)\pi]$なら$\frac1{\sqrt u}\ge\frac1{\sqrt{(k+1)\pi}}$なので
 \[
+ \begin{aligned}
  \int_{k\pi}^{(k+1)\pi}\frac{|\sin u|}{\sqrt u}\dd u
- \geqq\frac1{\sqrt{(k+1)\pi}}
-       \int_{k\pi}^{(k+1)\pi}|\sin u|\dd u
- =\frac2{\sqrt{(k+1)\pi}}.
+ &\ge\frac1{\sqrt{(k+1)\pi}}
+       \int_{k\pi}^{(k+1)\pi}|\sin u|\dd u\\
+ &=\frac2{\sqrt{(k+1)\pi}}
+ \end{aligned}
 \]
-この下限の和は発散する.実際,\,$t^{-\frac12}$の減少性から
+である.\,$R^2\ge(N+1)\pi$なら,区間$[\pi,(N+1)\pi]$は$[1,R^2]$に含まれるので
 \[
- \sum_{k=1}^N\frac1{\sqrt{k+1}}
- \geqq\int_2^{N+2}\frac1{\sqrt t}\dd t
- =2(\sqrt{N+2}-\sqrt2)\longrightarrow\infty.
+ \int_1^{R^2}\frac{|\sin u|}{\sqrt u}\dd u
+ \ge\frac2{\sqrt\pi}\sum_{k=1}^N\frac1{\sqrt{k+1}}
 \]
-従って絶対値の積分は発散し,\,$\int_1^{\infty}\sin(x^2)\dd x$は条件収束する.
+となる.\,$t^{-\frac12}$の減少性から
+\[
+ \begin{aligned}
+ \sum_{k=1}^N\frac1{\sqrt{k+1}}
+ &\ge\int_2^{N+2}\frac1{\sqrt t}\dd t\\
+ &=2(\sqrt{N+2}-\sqrt2)
+ \end{aligned}
+\]
+であり,これは$N\to\infty$で発散する.したがって絶対値の積分は発散し,\,$\int_1^{\infty}\sin(x^2)\dd x$は条件収束する.
 
 \paragraph{13.17}
-$n=0$では$C_0=1$である.\,$n\geqq1$で,\,$(1-x^2)^n$を微分し,\,$1$を積分する部分積分を行う.
+部分積分で$(1-x^2)$の指数を1つ下げて漸化式を作る.極限は,置換によって$C_n$をウォリスの積分$I_{2n+1}$に帰着させて求める.
+
+$n=0$では$C_0=1$である.\,$n\ge1$で,\,$(1-x^2)^n$を微分し,\,$1$を積分する部分積分を行う.
 \[
  \begin{aligned}
  C_n
@@ -432,33 +506,31 @@ $n=0$では$C_0=1$である.\,$n\geqq1$で,\,$(1-x^2)^n$を微分し,\,$1$を積
  &=2n(C_{n-1}-C_n).
  \end{aligned}
 \]
-従って漸化式と有限積の表示は
+$C_n$を左辺に集めると,漸化式と有限積の表示は
 \[
  \boxed{C_n=\frac{2n}{2n+1}C_{n-1},\qquad
  C_n=\prod_{k=1}^n\frac{2k}{2k+1}}.
 \]
 
-極限を求めるため,\,$x=\sin t$と置くと
+極限を求めるため,\,$x=\cos t$と置く.\,$\dd x=-\sin t\dd t$であり,\,$x=0,1$はそれぞれ$t=\frac\pi2,0$に対応するので
 \[
- C_n=\int_0^{\frac\pi2}\cos^{2n+1}t\dd t.
+ \begin{aligned}
+ C_n&=\int_{\frac\pi2}^0(\sin^2t)^n(-\sin t)\dd t\\
+ &=\int_0^{\frac\pi2}\sin^{2n+1}t\dd t
+ \end{aligned}
 \]
-$W_m=\int_0^{\frac\pi2}\cos^mt\dd t$と書けば$C_n=W_{2n+1}$である.
-$t\mapsto\frac\pi2-t$により$W_m$は$\sin$のべきのウォリス積分と等しい.
-従って偶数,奇数の積の公式から
+となる.つまり$C_n$は\sectionref{節:ウォリス公式}のウォリスの積分$I_{2n+1}$である.ウォリスの積分公式の偶数の場合と奇数の場合を掛けると
 \[
- W_{2n}W_{2n+1}=\frac{\pi}{2(2n+1)}.
+ I_{2n}I_{2n+1}=\frac{\pi}{2(2n+1)}
 \]
-また$0\leqq\cos t\leqq1$なので$W_{2n+2}\leqq W_{2n+1}\leqq W_{2n}$であり,漸化式を使うと
+を得る.また,式\eqref{式:ウォリス隣接比}より隣り合う積分の比は$1$へ近づく.積と比を合わせて
 \[
- \frac{2n+1}{2n+2}
- =\frac{W_{2n+2}}{W_{2n}}
- \leqq\frac{W_{2n+1}}{W_{2n}}\leqq1.
-\]
-従って隣り合う二つの比は$1$へ近づく.積と比を合わせて
-\[
+ \begin{aligned}
  nC_n^2
- =nW_{2n}W_{2n+1}\frac{W_{2n+1}}{W_{2n}}
- \longrightarrow\frac\pi4.
+ &=nI_{2n}I_{2n+1}\cdot\frac{I_{2n+1}}{I_{2n}}\\
+ &=\frac{n\pi}{2(2n+1)}\cdot\frac{I_{2n+1}}{I_{2n}}\\
+ &\longrightarrow\frac\pi4.
+ \end{aligned}
 \]
 $C_n>0$なので平方根を取り,
 \[
@@ -466,56 +538,60 @@ $C_n>0$なので平方根を取り,
 \]
 最後に漸化式から
 \[
+ \begin{aligned}
  C_n-C_{n+1}
- =\left(1-\frac{2n+2}{2n+3}\right)C_n
- =\frac{C_n}{2n+3}.
+ &=\left(1-\frac{2n+2}{2n+3}\right)C_n\\
+ &=\frac{C_n}{2n+3}.
+ \end{aligned}
 \]
-元の数列の極限をこの式へ戻せば
+これに直前の極限を使うと
 \[
- \boxed{\lim_{n\to\infty}n^{\frac32}(C_n-C_{n+1})
- =\lim_{n\to\infty}\frac{n}{2n+3}\sqrt n\,C_n
- =\frac{\sqrt\pi}{4}}.
+ \begin{aligned}
+ \lim_{n\to\infty}n^{\frac32}(C_n-C_{n+1})
+ &=\lim_{n\to\infty}\frac{n}{2n+3}\sqrt n\,C_n\\
+ &=\boxed{\frac{\sqrt\pi}{4}}.
+ \end{aligned}
 \]
 
 \paragraph{13.18}
-まず両端の収束を調べる.\,$-\pi<x<\pi$では$\cos\frac x2>0$だから,半角公式により
-\[
- \begin{aligned}
- h_n(x):=\frac{\sin^{2n}x}{\sqrt{1+\cos x}}
- &=\frac{2^{2n}}{\sqrt2}
-   \sin^{2n}\frac x2\,\cos^{2n-1}\frac x2.
- \end{aligned}
-\]
-$n\geqq1$より$2n-1\geqq1$である.\,$x\to\pi-$,\,$x\to-\pi+$のそれぞれで$\cos\frac x2\to0$となり,\,$\sin^{2n}\frac x2$は有界なので,\,$h_n(x)\to0$となる.
-さらに$\frac1{1+\e^x}$は両端を含めて連続である.従って元の被積分関数は,各端点で値$0$を補えば連続になる.左右の広義積分はそれぞれ有限に収束し,ここからは対称性や置換を使ってよい.
+両端の収束を確かめた後,\,$x$を$-x$にした積分と足して指数関数を含む重みを消し,半角公式と置換で$\int_0^1u^{2n}(1-u^2)^{n-1}\dd u$に帰着させる.この積分は,部分積分で$(1-u^2)$の指数を1つずつ下げて求める.
 
-$h_n$は偶関数である.\,$w(x)=\frac1{1+\e^x}$と置けば$w(x)+w(-x)=1$だから,\,$x=-t$による反転で得た式を元の積分と足して
+まず両端の収束を調べる.\,$-\pi<x<\pi$では$\cos\frac x2>0$である.$h_n(x)=\frac{\sin^{2n}x}{\sqrt{1+\cos x}}$と置く.半角公式$\sin x=2\sin\frac x2\cos\frac x2$,\,$1+\cos x=2\cos^2\frac x2$により
+\[
+ h_n(x)
+ =\frac{2^{2n}}{\sqrt2}
+   \sin^{2n}\frac x2\,\cos^{2n-1}\frac x2
+\]
+となる.\,$n\ge1$より$2n-1\ge1$である.\,$x\to\pi-$,\,$x\to-\pi+$のそれぞれで$\cos\frac x2\to0$となり,\,$\sin^{2n}\frac x2$は有界なので,\,$h_n(x)\to0$となる.
+さらに$\frac1{1+\e^x}$は両端を含めて連続である.したがって元の被積分関数は,各端点で値$0$を補えば連続になる.左右の広義積分はそれぞれ有限に収束し,ここからは対称性や置換を使ってよい.
+
+$h_n$は偶関数である.\,$w(x)=\frac1{1+\e^x}$と置けば$w(x)+w(-x)=1$だから,\,$x=-t$と置いて書き直した式を元の積分と足して
 \[
  \begin{aligned}
  2J_n
  &=\int_{-\pi}^{\pi}h_n(x)\{w(x)+w(-x)\}\dd x\\
- &=\int_{-\pi}^{\pi}h_n(x)\dd x
- =2\int_0^\pi h_n(x)\dd x.
+ &=\int_{-\pi}^{\pi}h_n(x)\dd x\\
+ &=2\int_0^\pi h_n(x)\dd x.
  \end{aligned}
 \]
-従って指数関数を含む重みは消え,\,$J_n=\int_0^\pi h_n(x)\dd x$となる.
+したがって指数関数を含む重みは消え,\,$J_n=\int_0^\pi h_n(x)\dd x$となる.
 
-先ほどの半角公式を使い,\,$t=\frac x2$と置くと
+先ほどの半角公式の形を使い,\,$t=\frac x2$と置く.\,$\dd x=2\dd t$なので
 \[
  J_n=2^{2n}\sqrt2\int_0^{\frac\pi2}
           \sin^{2n}t\cos^{2n-1}t\dd t.
 \]
 次に$u=\sin t$と置く.\,$\dd u=\cos t\dd t$なので,\,$\cos$の残りの偶数べきは$(1-u^2)^{n-1}$になり,
 \[
- J_n=2^{2n}\sqrt2\int_0^1u^{2n}(1-u^2)^{n-1}\dd u.
+ J_n=2^{2n}\sqrt2\int_0^1u^{2n}(1-u^2)^{n-1}\dd u
 \]
-最後の積分は多項式の積分である.しかし,展開すると項数が$n$個になるため,ここでは$(1-u^2)$の指数を部分積分で一つずつ下げる.
+を得る.最後の積分は多項式の積分である.しかし,展開すると項数が$n$個になるため,ここでは$(1-u^2)$の指数を部分積分で1つずつ下げる.
 
 非負整数$r,s$に対して
 \[
  L_{r,s}=\int_0^1u^{2r}(1-u^2)^s\dd u
 \]
-と置く.\,$s\geqq1$なら
+と置く.\,$s\ge1$なら
 \[
  \begin{aligned}
  L_{r,s}
@@ -524,109 +600,157 @@ $h_n$は偶関数である.\,$w(x)=\frac1{1+\e^x}$と置けば$w(x)+w(-x)=1$だ�
  &=\frac{2s}{2r+1}L_{r+1,s-1}.
  \end{aligned}
 \]
-端点の項は,\,$u=0$では$u^{2r+1}=0$,\,$u=1$では$(1-u^2)^s=0$なので消える.\,$s=0$の初期値は別に
+端点の項は,\,$u=0$では$u^{2r+1}=0$,\,$u=1$では$(1-u^2)^s=0$なので消える.\,$s=0$の場合は
 \[
  L_{r,0}=\int_0^1u^{2r}\dd u=\frac1{2r+1}
 \]
-である.漸化式を$s$回使い,最後にこの初期値へ戻すと
+である.漸化式を$s$回使い,最後にこの値へ戻すと
 \[
+ \begin{aligned}
  L_{r,s}
- =\frac{2^s s!}{(2r+1)(2r+3)\cdots(2r+2s+1)}.
+ &=\frac{2s}{2r+1}\cdot\frac{2(s-1)}{2r+3}\cdots\frac{2}{2r+2s-1}\,L_{r+s,0}\\
+ &=\frac{2^s s!}{(2r+1)(2r+3)\cdots(2r+2s+1)}
+ \end{aligned}
 \]
-$r=n$,\,$s=n-1$を代入し,前の係数$2^{2n}\sqrt2$を掛けることで
+となる.\,$r=n$,\,$s=n-1$を代入し,前の係数$2^{2n}\sqrt2$を掛けることで
 \[
  \boxed{J_n=
  \frac{2^{3n-1}\sqrt2\,(n-1)!}
- {(2n+1)(2n+3)\cdots(4n-1)}}.
+ {(2n+1)(2n+3)\cdots(4n-1)}}
 \]
-分母には$n$個の奇数因子がある.例えば$n=1$では分母は$3$だけになり,\,$J_1=\frac{4\sqrt2}{3}$となる.
-端点の収束を確かめた後,対称性で指数関数を除き,半角公式と置換で整数べきの積分へ直した.最後の有限積は,その多項式の積分を部分積分で順に結んだ結果である.
-\paragraph{13.19}
-(1) $f(x)=x^2-2$に対して接線の零点を求めると,
-\[
- x_n-\frac{f(x_n)}{f'(x_n)}
- =x_n-\frac{x_n^2-2}{2x_n}
- =\frac12\left(x_n+\frac2{x_n}\right)
-\]
-である.また$x_1>\sqrt2$であり,\,$x_{n+1}-\sqrt2=\frac{(x_n-\sqrt2)^2}{2x_n}>0$だから,すべての項は$\sqrt2$より大きく,分母は$0$にならない.
+を得る.分母には$n$個の奇数因子がある.例えば$n=1$では分母は$3$だけになり,\,$J_1=\frac{4\sqrt2}{3}$となる.
 
-(2) $r=\sqrt2$と略記する.分子・分母をそれぞれ平方にすると,
+\paragraph{13.19}
+ニュートン法の式を書き下して比べる.\,$b_n$については,2乗を繰り返す漸化式$b_{n+1}=b_n^2$に帰着させる.
+
+(1) $f(x)=x^2-2$に対して,点$(x_n,f(x_n))$における接線と$x$軸の交点の$x$座標を求めると,
 \[
+ \begin{aligned}
+ x_n-\frac{f(x_n)}{f'(x_n)}
+ &=x_n-\frac{x_n^2-2}{2x_n}\\
+ &=\frac12\left(x_n+\frac2{x_n}\right)
+ \end{aligned}
+\]
+である.また$x_1>\sqrt2$であり,\,$x_{n+1}-\sqrt2=\frac{(x_n-\sqrt2)^2}{2x_n}$だから,帰納的にすべての項は$\sqrt2$より大きく,分母は$0$にならない.
+
+(2) $r=\sqrt2$と略記する.\,$x_{n+1}=\frac{x_n^2+2}{2x_n}$を$b_{n+1}$に代入し,分子と分母に$2x_n$を掛ける.\,$r^2=2$より分子と分母はそれぞれ平方になり,
+\[
+ \begin{aligned}
  b_{n+1}
- =\frac{x_n^2+2-2rx_n}{x_n^2+2+2rx_n}
- =\left(\frac{x_n-r}{x_n+r}\right)^2=b_n^2.
+ &=\frac{x_n^2+2-2rx_n}{x_n^2+2+2rx_n}\\
+ &=\frac{(x_n-r)^2}{(x_n+r)^2}\\
+ &=b_n^2
+ \end{aligned}
 \]
-$b_1=q$なので,順に$b_2=q^2,b_3=q^4,\ldots$となる.よって
+となる.\,$b_1=q$なので,順に$b_2=q^2,b_3=q^4,\ldots$となる.よって$b_n=q^{2^{n-1}}$である.\,$b_n=\frac{x_n-r}{x_n+r}$を$x_n$について解くと
 \[
- b_n=q^{2^{n-1}},\qquad
- x_n=r\frac{1+b_n}{1-b_n}
- =\sqrt2\frac{1+q^{2^{n-1}}}{1-q^{2^{n-1}}}.
+ \begin{aligned}
+ x_n&=r\frac{1+b_n}{1-b_n}\\
+ &=\boxed{\sqrt2\,\frac{1+q^{2^{n-1}}}{1-q^{2^{n-1}}}}.
+ \end{aligned}
 \]
-(3) $0<q<1$より$b_n\to0$であり,
+
+(3) $q=3-2\sqrt2$より$0<q<1$なので,\,$b_n\to0$である.(2)より$x_n-\sqrt2=\frac{2\sqrt2\,b_n}{1-b_n}$だから
 \[
+ \begin{aligned}
  \frac{x_n-\sqrt2}{q^{2^{n-1}}}
- =\frac{2\sqrt2}{1-q^{2^{n-1}}}\longrightarrow2\sqrt2.
+ &=\frac{2\sqrt2}{1-q^{2^{n-1}}}\\
+ &\longrightarrow\boxed{2\sqrt2}.
+ \end{aligned}
 \]
-誤差が小さくなる様子を,漸化式の大小関係だけでなく一般項からも確かめられた.
 
 \paragraph{13.20}
+接線の交点と3つの面積を$a,b$の式で書き下し,\,$h=b-a$の式にして比べる.
+
 (1) 接線は$y=2ax-a^2$,\,$y=2bx-b^2$だから,交点は
 \[
- T\left(\frac{a+b}{2},ab\right)
+ \boxed{T\left(\frac{a+b}{2},ab\right)}
 \]
-である.弦$AB$の傾きは$a+b$,点$C$での接線の傾きは$2\cdot\frac{a+b}{2}=a+b$であり,平行となる.
+である.弦$AB$の傾きは$\frac{b^2-a^2}{b-a}=a+b$である.点$(x,x^2)$での接線の傾きは$2x$なので,傾きが$a+b$となる接点は$x=\frac{a+b}{2}$の点,すなわち$C$に限る.
 
-(2) $h=b-a$とおく.弦の式は$y=(a+b)x-ab$なので,
-\begin{align*}
- Q&=\int_a^b(x-a)(b-x)\dd x\\
- &=\int_0^h u(h-u)\dd u=\frac{h^3}{6}.
-\end{align*}
-ここで$u=x-a$と置いた.弦の中点を$D$とすると,\,$D,C,T$はいずれも$x=\frac{a+b}{2}$上にある.縦の長さは
+(2) $h=b-a$と置く.弦の式は$y=(a+b)x-ab$なので,弦と放物線の差は
 \[
- DC=\frac{a^2+b^2}{2}-\frac{(a+b)^2}{4}=\frac{h^2}{4},
- \qquad DT=\frac{a^2+b^2}{2}-ab=\frac{h^2}{2}.
+ (a+b)x-ab-x^2=(x-a)(b-x)
 \]
-三角形$ABC$を$CD$で分け,\,$CD$を共通の底辺として左右の面積を足せば,\,$P=\frac12\cdot DC\cdot h=\frac{h^3}{8}$となる.同様に$R=\frac{h^3}{4}$である.したがって$Q:P:R=4:3:6$となる.取り尽くし法で得た$Q=\frac43P$を,今度は積分で確かめられた.
+である.\,$u=x-a$と置くと
+\[
+ \begin{aligned}
+ Q&=\int_a^b(x-a)(b-x)\dd x\\
+ &=\int_0^h u(h-u)\dd u\\
+ &=\frac{h^3}{6}.
+ \end{aligned}
+\]
+弦の中点を$D$とすると,\,$D,C,T$はいずれも直線$x=\frac{a+b}{2}$上にある.縦の長さは
+\[
+ \begin{aligned}
+ DC&=\frac{a^2+b^2}{2}-\frac{(a+b)^2}{4}=\frac{h^2}{4},\\
+ DT&=\frac{a^2+b^2}{2}-ab=\frac{h^2}{2}
+ \end{aligned}
+\]
+である.三角形$ABC$を$CD$で2つに分け,\,$CD$を共通の底辺として左右の面積を足せば,左右の高さの和は$h$なので$P=\frac12\cdot DC\cdot h=\frac{h^3}{8}$となる.同様に$R=\frac12\cdot DT\cdot h=\frac{h^3}{4}$である.したがって
+\[
+ \boxed{Q:P:R=4:3:6}
+\]
+となる.第1章の取り尽くし法で得た$Q=\frac43P$が,積分でも確かめられた.
 
-(3) $T$の$x$座標は$c$で一定である.\,$a=c-\frac h2,b=c+\frac h2$なので,\,$T$の$y$座標は$c^2-\frac{h^2}{4}$となる.\,$h>0$を自由に取れるから,軌跡は直線$x=c$上の$y<c^2$の部分である.端の点$(c,c^2)$は含まない.
+(3) $T$の$x$座標は$c$で一定である.\,$a=c-\frac h2$,\,$b=c+\frac h2$なので,\,$T$の$y$座標は$ab=c^2-\frac{h^2}{4}$となる.\,$h>0$は自由に取れるから,軌跡は
+\[
+ \boxed{\text{直線$x=c$上の$y<c^2$の部分}}
+\]
+である.端の点$(c,c^2)$は含まない.
 
 \paragraph{13.21}
+端点での導関数が整数であることを使い,部分積分を繰り返した式から$I_n$を$\e$の整数係数の1次式で表す.これと大きさの評価を合わせて,整数についての矛盾を導く.
+
 (1) 二項定理を使うと,
 \[
- f_n(x)=\frac1{n!}\sum_{j=0}^n(-1)^j\binom nj x^{n+j}.
+ f_n(x)=\frac1{n!}\sum_{j=0}^n(-1)^j\binom nj x^{n+j}
 \]
-$k$回微分して$x=0$を代入すると,\,$k<n$なら$0$,\,$k=n+j$なら
+である.\,$k$回微分して$x=0$を代入すると,\,$k<n$なら$0$,\,$k=n+j$なら
 \[
  f_n^{(k)}(0)=(-1)^j\binom nj\frac{(n+j)!}{n!}
 \]
-となり,整数である.\,$f_n(1-x)=f_n(x)$を$k$回微分すれば,\,$f_n^{(k)}(1)=(-1)^k f_n^{(k)}(0)$なので,こちらも整数である.
+となり,整数である.\,$f_n(1-x)=f_n(x)$を$k$回微分して$x=0$を代入すれば,\,$f_n^{(k)}(1)=(-1)^k f_n^{(k)}(0)$なので,こちらも整数である.
 
-(2) 部分積分を繰り返すと,
+(2) $f_n$を微分し,\,$\e^x$を積分する部分積分を繰り返すと,
 \[
- I_n=\left[\e^x\sum_{k=0}^{2n}(-1)^k f_n^{(k)}(x)\right]_0^1.
+ \begin{aligned}
+ I_n&=\bigl[\e^xf_n(x)\bigr]_0^1-\int_0^1\e^xf_n'(x)\dd x\\
+ &=\bigl[\e^x\{f_n(x)-f_n'(x)\}\bigr]_0^1+\int_0^1\e^xf_n''(x)\dd x\\
+ &\qquad\vdots\\
+ &=\left[\e^x\sum_{k=0}^{2n}(-1)^k f_n^{(k)}(x)\right]_0^1
+ \end{aligned}
 \]
-各回で$f_n$を微分し,\,$\e^x$を積分した.次数が$2n$なので,\,$2n+1$回微分すると$0$になり,残る積分はなくなる.(1)より両端の和は整数であるから,\,$I_n=A_n\e+B_n$と表せる.
+となる.\,$f_n$は$2n$次式なので,\,$2n+1$回微分すると$0$になり,残る積分はなくなる.したがって
+\[
+ A_n=\sum_{k=0}^{2n}(-1)^kf_n^{(k)}(1),\qquad
+ B_n=-\sum_{k=0}^{2n}(-1)^kf_n^{(k)}(0)
+\]
+と置けば$I_n=A_n\e+B_n$であり,(1)より$A_n,B_n$は整数である.
 
 (3) $0<x<1$で被積分関数は正なので$I_n>0$である.また$x(1-x)\le\frac14$,\,$\e^x\le\e$より
 \[
- I_n\le\int_0^1\frac{\e}{4^n n!}\dd x=\frac{\e}{4^n n!}\longrightarrow0.
+ I_n\le\int_0^1\frac{\e}{4^n n!}\dd x=\frac{\e}{4^n n!}
 \]
+であり,右辺は$n\to\infty$で$0$へ近づく.
 もし$\e=\frac ab$と書けるとする.ただし$a,b$は正の整数である.すると
 \[
  bI_n=A_na+bB_n
 \]
-は整数であり正である.ところが$I_n\to0$だから,十分大きな$n$では$0<bI_n<1$となる.この範囲に整数は存在しないので矛盾し,\,$\e$は無理数である.
-
-ここで積分の値を具体的に求める必要はなかった.部分積分は値の表し方を,大小比較は値の大きさを与え,二つを合わせることで整数についての矛盾が得られた.
+は整数であり,正である.ところが$I_n\to0$だから,十分大きな$n$では$0<bI_n<1$となる.この範囲に整数は存在しないので矛盾し,\,$\e$は無理数である.
 
 \paragraph{13.22}
+$\frac1{m+k}$を$x^{m+k-1}$の積分で表して和を積分の中へ入れ,二項定理で$\int_0^1x^{m-1}(1-x)^n\dd x$に帰着させる.
+
 (1) $\frac1{m+k}=\int_0^1x^{m+k-1}\dd x$だから,有限個の和を積分の中へ入れて
-\begin{align*}
+\[
+ \begin{aligned}
  S_{m,n}
  &=\int_0^1x^{m-1}\sum_{k=0}^n(-1)^k\binom nk x^k\dd x\\
- &=\int_0^1x^{m-1}(1-x)^n\dd x
- =\frac{(m-1)!n!}{(m+n)!}.
-\end{align*}
+ &=\int_0^1x^{m-1}(1-x)^n\dd x\\
+ &=\boxed{\frac{(m-1)!\,n!}{(m+n)!}}.
+ \end{aligned}
+\]
 最後の値は整数指数のベータ積分である.公式を使わずに求めるなら,\,$n\ge1$で部分積分して
 \[
  \int_0^1x^{m-1}(1-x)^n\dd x
@@ -636,46 +760,62 @@ $k$回微分して$x=0$を代入すると,\,$k<n$なら$0$,\,$k=n+j$なら
 
 (2) 階乗の比を積に戻すと,
 \[
+ \begin{aligned}
  n^m S_{m,n}
- =(m-1)!\prod_{j=1}^m\frac{n}{n+j}\longrightarrow(m-1)!.
+ &=(m-1)!\,\frac{n^m\,n!}{(n+m)!}\\
+ &=(m-1)!\prod_{j=1}^m\frac{n}{n+j}\\
+ &\longrightarrow\boxed{(m-1)!}.
+ \end{aligned}
 \]
-$m$は固定されているので,積の因子の個数も固定されている.元の和では項数が増え,正負の項が打ち消し合うが,積分でまとめると極限を求めやすい形になった.
+$m$は固定されているので,積の因子の個数も固定されており,各因子は$1$へ近づく.
 
 \paragraph{13.23}
+$x^2-(ax+b)$を$p(x)$と一次式の和に分け,(1)を使って$E(a,b)$を2つの平方の積分の和に帰着させる.
+
 (1) 直接積分して,
 \[
  \int_0^1p(x)\dd x=\frac13-\frac12+\frac16=0,
  \qquad
  \int_0^1xp(x)\dd x=\frac14-\frac13+\frac1{12}=0.
 \]
-(2) $u=1-a$,\,$v=-\frac16-b$とおくと,\,$x^2-(ax+b)=p(x)+ux+v$である.平方を展開して積分し,(1)を使うと,
-\begin{align*}
- E(a,b)&=\int_0^1p(x)^2\dd x+\int_0^1(ux+v)^2\dd x\\
- &=\frac1{180}+\int_0^1(ux+v)^2\dd x\ge\frac1{180}.
-\end{align*}
-ここで$p(x)^2=x^4-2x^3+\frac43x^2-\frac13x+\frac1{36}$を積分した.等号は連続な非負関数$(ux+v)^2$の積分が$0$のときであり,\,$ux+v=0$が全区間で成り立つ場合に限る.よって$u=v=0$,すなわち$a=1,b=-\frac16$のとき,最小値$\frac1{180}$を取る.
+(2) $u=1-a$,\,$v=-\frac16-b$と置くと,\,$x^2-(ax+b)=p(x)+ux+v$である.平方を展開して積分し,(1)を使うと,
+\[
+ \begin{aligned}
+ E(a,b)&=\int_0^1p(x)^2\dd x+2\int_0^1p(x)(ux+v)\dd x+\int_0^1(ux+v)^2\dd x\\
+ &=\int_0^1p(x)^2\dd x+\int_0^1(ux+v)^2\dd x\\
+ &=\frac1{180}+\int_0^1(ux+v)^2\dd x\\
+ &\ge\frac1{180}.
+ \end{aligned}
+\]
+ここで$p(x)^2=x^4-2x^3+\frac43x^2-\frac13x+\frac1{36}$を積分した.等号は連続な非負関数$(ux+v)^2$の積分が$0$のときであり,\,$ux+v=0$が全区間で成り立つ場合に限る.よって$u=v=0$,すなわち
+\[
+ \boxed{a=1,\quad b=-\frac16\text{のとき,最小値}\ \frac1{180}}
+\]
+を取る.
 
-(3) ベクトルの和は成分ごとに足すので,$|\boldsymbol u+\boldsymbol v|^2=(u_1+v_1)^2+(u_2+v_2)^2$を展開すれば,問題文の等式を得る.内積が$0$となる関係を\textbf{直交}という.どちらのベクトルも零ベクトル$(0,0)$でない場合,これは二つの矢印が垂直になることを表す.実際,差$\boldsymbol u-\boldsymbol v=(u_1-v_1,u_2-v_2)$を使うと,$|\boldsymbol u-\boldsymbol v|^2=|\boldsymbol u|^2+|\boldsymbol v|^2$となるので,三平方の定理の逆を使えばよい.
+(3) ベクトルの和は成分ごとに足すので,\,$|\boldsymbol u+\boldsymbol v|^2=(u_1+v_1)^2+(u_2+v_2)^2$を展開すれば,問題文の等式を得る.内積が$0$となる関係を\textbf{直交}という.どちらのベクトルも零ベクトル$(0,0)$でない場合,これは2つの矢印が垂直になることを表す.実際,差$\boldsymbol u-\boldsymbol v=(u_1-v_1,u_2-v_2)$を使うと,\,$|\boldsymbol u-\boldsymbol v|^2=|\boldsymbol u|^2+|\boldsymbol v|^2$となるので,三平方の定理の逆を使えばよい.
 
-関数$f,g$に対する$\int_0^1f(x)g(x)\dd x$が,ベクトルの内積に対応している.(1)は$p$が$1$と$x$のそれぞれに直交することに当たり,したがって任意の一次式$ux+v$に対しても積の積分が$0$になる.その結果,平方を展開した際の交差する項が消えた.ベクトルについての「直交していれば長さの二乗が足される」という計算を,関数にも同じ形で使えたのである.
+関数$f,g$に対する$\int_0^1f(x)g(x)\dd x$が,ベクトルの内積に対応している.(1)は$p$が$1$と$x$のそれぞれに直交することに当たり,したがって任意の一次式$ux+v$に対しても積の積分が$0$になる.その結果,(2)で平方を展開したときの交差する項$2\int_0^1p(x)(ux+v)\dd x$が消えた.ベクトルについての「直交していれば長さの2乗が足される」という計算を,関数にも同じ形で使えたのである.
 
 \paragraph{13.24}
-(1) 確率は正方形と円板$x^2+y^2\le r^2$が重なる部分の面積である.\,$0\le r\le1$なら四分円なので$\frac{\pi r^2}{4}$である.\,$1<r\le\sqrt2$では$a=\sqrt{r^2-1}$とおくと,\,$0\le x\le a$で正方形の高さ全体が入り,\,$a<x\le1$では高さが$\sqrt{r^2-x^2}$となる.よって
+(1)は$r=1$を境に場合を分けて,正方形と円板の重なりの面積を求める.(2)は対称性で三角形上の積分に直し,\,$y=xt$と置いて$x$の積分と$t$の積分の積に帰着させる.
+
+(1) 求める確率を$F(r)$とする.これは正方形と円板$x^2+y^2\le r^2$が重なる部分の面積である.\,$0\le r\le1$なら重なりは四分円なので,確率は$\frac{\pi r^2}{4}$である.\,$1<r\le\sqrt2$では$a=\sqrt{r^2-1}$と置くと,\,$0\le x\le a$で正方形の高さ全体が入り,\,$a<x\le1$では高さが$\sqrt{r^2-x^2}$となる.よって
 \[
  F(r)=a+\int_a^1\sqrt{r^2-x^2}\dd x.
 \]
 $x=r\sin\theta$で積分すれば,原始関数は
 \[
- \frac12\left\{x\sqrt{r^2-x^2}+r^2\arcsin\frac xr\right\}.
+ \frac12\left\{x\sqrt{r^2-x^2}+r^2\arcsin\frac xr\right\}
 \]
-ここで$\arcsin$の値域は$\left[-\frac\pi2,\frac\pi2\right]$である.\,$\arcsin\frac ar=\frac\pi2-\arcsin\frac1r$と$\sqrt{r^2-a^2}=1$より,
+である.ここで$\arcsin$の値域は$\left[-\frac\pi2,\frac\pi2\right]$である.\,$\arcsin\frac ar=\frac\pi2-\arcsin\frac1r$と$\sqrt{r^2-a^2}=1$より,
 \[
- F(r)=\sqrt{r^2-1}+r^2\left(\arcsin\frac1r-\frac\pi4\right)
- \quad(1<r\le\sqrt2).
+ \boxed{F(r)=\sqrt{r^2-1}+r^2\left(\arcsin\frac1r-\frac\pi4\right)}
+ \quad(1<r\le\sqrt2)
 \]
-$r=1$で$\frac\pi4$,\,$r=\sqrt2$で$1$となり,隣の範囲とも一致する.
+となる.\,$0\le r\le1$では$\boxed{F(r)=\frac{\pi r^2}{4}}$である.\,$r=1$で$\frac\pi4$,\,$r=\sqrt2$で$1$となり,隣の範囲や全体の確率とも一致する.
 
-(2) 被積分関数は$x,y$を交換しても変わらず,二つの三角形もその交換で移り合う.したがって正方形全体の平均は,下側の三角形$0\le y\le x\le1$での積分の$2$倍になる.この積分の意味は,小さい長方形ごとに「距離$\times$面積」を足していくことである.正方形の面積が$1$なので,さらに全体の面積で割る必要はない.
+(2) 被積分関数は$x,y$を交換しても変わらず,2つの三角形もその交換で移り合う.したがって正方形全体の平均は,下側の三角形$0\le y\le x\le1$での積分の$2$倍になる.この積分の意味は,小さい長方形ごとに「距離$\times$面積」を足していくことである.正方形の面積が$1$なので,さらに全体の面積で割る必要はない.
 
 内側の積分では$x>0$を固定し,\,$y=xt$と置く.すると
 \[
@@ -683,9 +823,11 @@ $r=1$で$\frac\pi4$,\,$r=\sqrt2$で$1$となり,隣の範囲とも一致する.
  =x^2\int_0^1\sqrt{1+t^2}\dd t.
 \]
 $x=0$では両辺とも$0$である.右辺の$t$についての積分は$x$によらないから,
-\begin{align*}
+\[
+ \begin{aligned}
  M&=2\int_0^1x^2\dd x\int_0^1\sqrt{1+t^2}\dd t\\
  &=\frac23\cdot\frac12\{\sqrt2+\log(1+\sqrt2)\}\\
- &=\frac{\sqrt2+\log(1+\sqrt2)}3.
-\end{align*}
+ &=\boxed{\frac{\sqrt2+\log(1+\sqrt2)}3}.
+ \end{aligned}
+\]
 距離の平方の平均なら$\int_0^1\int_0^1(x^2+y^2)\dd y\dd x=\frac23$だが,その平方根が距離の平均になるわけではない.平均する量自体を積分することが必要である.

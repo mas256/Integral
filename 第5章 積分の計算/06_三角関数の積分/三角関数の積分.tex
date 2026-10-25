@@ -1,15 +1,43 @@
 \section{三角関数の積分}\label{節:三角式の整理}
 
-$\sin x$ と $\cos x$ の原始関数は分かっていても,\,$\sin^2x$ や $\cos^2x$ は,いまの基本公式にそのまま当てはめられない.そこで,二倍角の公式
+$\sin x$ と $\cos x$ の原始関数は分かっていても,\,$\sin^2x$ や $\sin(3x)\cos x$ のような2乗や積は,基本公式にそのまま当てはめられない.そこで,三角関数の恒等式を使って $\sin(kx)$ や $\cos(kx)$ の和に直し,\sectionref{節:一次式の積分}の一次式の積分に帰着させよう.
+
+2乗には二倍角の公式
 \[
  \cos(2x)=1-2\sin^2x=2\cos^2x-1
 \]
-を解き直して
+を使う.これを $\sin^2x$,\,$\cos^2x$ について解き直して
 \[
  \sin^2x=\frac{1-\cos(2x)}2,\qquad
  \cos^2x=\frac{1+\cos(2x)}2
 \]
-とする.左辺は二乗だが,右辺は定数と余弦の和になった.ここまで変形すれば基本公式を使える.
+とする.左辺は2乗だが,右辺は定数と余弦の和になった.
+
+積には加法定理を使う.\,$\sin(\alpha+\beta)$ と $\sin(\alpha-\beta)$ の式を並べて足すと,
+\[
+ \begin{array}{rrl}
+  &\sin(\alpha+\beta)={}&\sin\alpha\cos\beta+\cos\alpha\sin\beta\\
+  +\,)&\sin(\alpha-\beta)={}&\sin\alpha\cos\beta-\cos\alpha\sin\beta\\ \hline
+  &\sin(\alpha+\beta)+\sin(\alpha-\beta)={}&2\sin\alpha\cos\beta
+ \end{array}
+\]
+となり,右辺の第2項が打ち消し合う.よって
+\[
+ \sin\alpha\cos\beta=\frac12\{\sin(\alpha+\beta)+\sin(\alpha-\beta)\}
+\]
+を得る.同様に,\,$\cos(\alpha-\beta)$ と $\cos(\alpha+\beta)$ の式を足し引きすると
+\[
+ \cos\alpha\cos\beta=\frac12\{\cos(\alpha-\beta)+\cos(\alpha+\beta)\},
+\]
+\[
+ \sin\alpha\sin\beta=\frac12\{\cos(\alpha-\beta)-\cos(\alpha+\beta)\}
+\]
+となる.\,$\alpha=mx$,\,$\beta=nx$ とすれば,積が $\sin$ や $\cos$ の一次式の和に変わる.あとは各項を,角の $x$ の係数で割って積分すればよい.
+
+\begin{bookpoint}
+\textbf{POINT}\par
+2乗は二倍角の公式で,積は加法定理を2つ足し引きして,\,$\sin(kx)$,\,$\cos(kx)$ の和に直し,\,$k$ で割って積分する.
+\end{bookpoint}
 
 \begin{example}{二乗と積を和へ直す}
 次の積分を求めよ.
@@ -20,37 +48,44 @@ $\sin x$ と $\cos x$ の原始関数は分かっていても,\,$\sin^2x$ や $\
 \]
 \end{example}
 
-(1) は二倍角の公式から
-\[
-\begin{aligned}
- \int_0^{\frac\pi2}\sin^2x\dd x
- &=\frac12\int_0^{\frac\pi2}\{1-\cos(2x)\}\dd x\\
- &=\left[\frac x2-\frac14\sin(2x)\right]_0^{\frac\pi2}
- =\frac\pi4.
-\end{aligned}
-\]
-$\cos(2x)$ の積分に $\frac12$ が付くため,全体の係数が $\frac14$ になる.最初から定積分を計算しているので,原始関数に任意定数を付けても上下端で差を取ると消える.
+\paragraphbf{方針}
+\begin{enumerate}[label=(\arabic*)]
+ \item 二倍角の公式で $\sin^2x=\frac{1-\cos(2x)}2$ と直す.
+ \item 積を和に直す式で $\alpha=3x$,\,$\beta=x$ とする.
+\end{enumerate}
 
-(2) は加法定理を二つ並べて考える.
-\[
- \sin(3x+x)=\sin(3x)\cos x+\cos(3x)\sin x,
-\]
-\[
- \sin(3x-x)=\sin(3x)\cos x-\cos(3x)\sin x.
-\]
-加えると右辺の第二項が打ち消し合うので,
-\[
- \sin(3x)\cos x=\frac12\{\sin(4x)+\sin(2x)\}.
-\]
-よって
-\[
- \int\sin(3x)\cos x\dd x
- =-\frac18\cos(4x)-\frac14\cos(2x)+C.
-\]
-積を和へ直す公式を忘れても,加法定理から必要な式を作れる.微分して $\frac12\sin(4x)+\frac12\sin(2x)$ に戻ることを確かめ,もう一度積に直せば確認も終わる.
+\paragraphbf{解答}
+\begin{enumerate}[label=(\arabic*)]
+ \item $\frac\pi4$
+ \item $-\frac18\cos(4x)-\frac14\cos(2x)+C$
+\end{enumerate}
 
-ここまでの計算では,積分記号の中の式を同じ値の別の式に書き換えてきた.どの変形を使うかは,元の式に現れた手がかりで決まる.整式の小さな積なら展開し,分子の次数が高ければ割り算をし,一次因子の積が分母にあれば部分分数を考える.二次式は平方完成でまとまりを見やすくし,三角関数の二乗や積は恒等式で和へ直す.
+\paragraphbf{解法}
+\begin{enumerate}[label=(\arabic*)]
+ \item 二倍角の公式から
+ \begin{align*}
+  \int_0^{\frac\pi2}\sin^2x\dd x
+  &=\frac12\int_0^{\frac\pi2}\{1-\cos(2x)\}\dd x\\
+  &=\left[\frac x2-\frac14\sin(2x)\right]_0^{\frac\pi2}\\
+  &=\frac\pi4
+ \end{align*}
+ となる.\,$\cos(2x)$ の積分で $2$ で割るので,全体の係数が $\frac14$ になる.定積分なので,任意定数は上下端で差を取ると消える.
+ \item $\sin\alpha\cos\beta=\frac12\{\sin(\alpha+\beta)+\sin(\alpha-\beta)\}$ で $\alpha=3x$,\,$\beta=x$ とすると
+ \[
+  \sin(3x)\cos x=\frac12\{\sin(4x)+\sin(2x)\}
+ \]
+ となる.よって
+ \[
+  \int\sin(3x)\cos x\dd x
+  =-\frac18\cos(4x)-\frac14\cos(2x)+C
+ \]
+ を得る.実数全体で成り立つ.右辺を微分すると $\frac12\sin(4x)+\frac12\sin(2x)$ となり,上の恒等式で積に戻る.
+\end{enumerate}
 
-ただし,式を長く展開すれば必ずよいわけではない.たとえば $x(x^2+1)^{20}$ は展開できるが,\,$x^2+1$ を一つの変数と考えれば計算を短くできる.その見方を正当化するのが,次章で学ぶ置換積分である.
+\paragraphbf{公式を忘れたとき}
+積を和へ直す3つの式を覚えていなくても,本節の初めのように加法定理を2つ書いて足し引きすれば,必要な式をその場で作れる.正弦と余弦の積なら正弦の加法定理を,正弦どうし,余弦どうしの積なら余弦の加法定理を並べればよい.
 
+\paragraphbf{式の整理の限界}
+本章では,積分記号の中の式を同じ値の別の式に書き換えてきた.どの変形を使うかは,元の式に現れた手がかりで決まる.整式の小さな積なら展開し,分子の次数が高ければ割り算をし,一次因子の積が分母にあれば部分分数を考える.二次式は平方完成でまとまりを作り,三角関数の2乗や積は恒等式で和へ直す.
 
+ただし,式を長く展開すれば必ずよいわけではない.たとえば $x(x^2+1)^{20}$ は展開できるが,\,$x^2+1$ を1つの変数 $t$ と置けば計算を短くできる.そう置いてよい根拠を与えるのが,次章で学ぶ置換積分である.
