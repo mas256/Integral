@@ -29,8 +29,16 @@ fi
 gh release upload "$TAG" "$work/$asset" "$work/$asset.sha256" --clobber
 mkdir -p "$work/verify"
 gh release download "$TAG" --pattern '*.pdf' --pattern '*.pdf.sha256' --dir "$work/verify"
-gh api "repos/$GH_REPO/releases/tags/$TAG" > "$work/release.json"
+# Draft releases must be retrieved by ID; the tag endpoint can return 404.
+release_id=""
+for attempt in {1..10}; do
+  release_id="$(gh api --paginate "repos/$GH_REPO/releases?per_page=100" --jq ".[] | select(.tag_name == \"$TAG\" and .draft == true) | .id")"
+  [ -n "$release_id" ] && break
+  sleep 2
+done
+[[ "$release_id" =~ ^[0-9]+$ ]] || die "Expected exactly one draft release"
+gh api "repos/$GH_REPO/releases/$release_id" > "$work/release.json"
 python3 scripts/verify-release-assets.py "$work/verify" --release-json "$work/release.json"
 cmp "$work/$asset.sha256" "$work/verify/$asset.sha256"
 [ "$(tag_commit "$GH_REPO" "$TAG")" = "$COMMIT" ] || die "Tag moved during publishing"
-gh release edit "$TAG" --draft=false --latest
+gh api -X PATCH "repos/$GH_REPO/releases/$release_id" -F draft=false -f make_latest=true > /dev/null
