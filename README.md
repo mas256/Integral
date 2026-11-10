@@ -46,6 +46,8 @@ mainへの原稿の更新で **Build** がLuaLaTeXを実行します。PDFの参
 
 正式版はActionsの **Release** をmainから実行し、`v0.1.0` のような新しい版番号を指定します。PDFとSHA-256を検証してからReleaseを公開します。初回公開後は正式版とlatestを同じ公開処理で配信し、本棚は `catalog.json` から版番号・更新日時・PDF名を取得します。
 
+`catalog.json` には目次 `toc` と正式版の履歴 `history` も含めます。目次は正式版PDFのしおりの上位2階層（章と節）から、ページ番号付きで作ります（`scripts/pages_toc.py`、poppler-utils の `pdftohtml` を使用）。履歴は公開済みの正式版を新しい順に並べたものです。本棚の教科書ページはこの情報から目次と版の履歴を表示します。しおりを読み取れない場合は警告を出し、目次を省いて公開を続けます。
+
 正式版PDFは `微積分の体系的解説-vMAJOR.MINOR.PATCH.pdf`、開発中PDFは `latest-微積分の体系的解説-vMAJOR.MINOR.PATCH.pdf` です。latestには現在の正式版番号を付け、内容のSHA-256をURLに含めてキャッシュを区別します。更新日時はReleaseの公開日時と成功ビルドの日時であり、Pagesの再配信では変更しません。
 
 公開ページの書名、PDFファイル名、本棚の書名は正式版PDFに埋め込まれたタイトルから生成します。書名を変更するときは原稿の `\\hypersetup{pdftitle={...}}` を変更し、新しい正式版を公開してください。本文の紹介と著者は `book.yml` から取得します。
