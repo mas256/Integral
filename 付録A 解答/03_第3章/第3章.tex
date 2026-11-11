@@ -94,3 +94,34 @@ $f(x)=x^2-3$,\,$f'(x)=2x$だから,
  L=\frac12\left(L+\frac3L\right)
 \]
 となる.これより$L^2=3$であり,\,$L>0$だから$L=\sqrt3$である.
+
+\paragraph{3.7}
+(1) $f(x)=a^x$ と置くと,\,$f(0)=1$ であり,\,$f'(x)=a^x\log a$ より $f'(0)=\log a$ である.微分係数の定義から
+\[
+ \lim_{h\to0}\frac{a^h-1}{h}=f'(0)=\log a
+\]
+が成り立つ.\,$h=\frac1n$ と置くと,\,$n\to\infty$ のとき $h\to0$ であり,\,$\sqrt[n]{a}=a^{\frac1n}$ だから
+\[
+ b_n=n\left(a^{\frac1n}-1\right)=\frac{a^h-1}{h}\longrightarrow\log a
+\]
+となる.
+
+(2) $u=a^{\frac1{n+1}}$ と置く.\,$u>0$ だから,\,$x=u-1$ は $x>-1$ を満たす.また,\,$\alpha=\frac{n+1}{n}$ は $\alpha\ge1$ を満たす.このとき
+\[
+ (1+x)^\alpha=u^{\frac{n+1}{n}}=a^{\frac1n}
+\]
+だから,不等式 $(1+x)^\alpha\ge1+\alpha x$ は
+\[
+ a^{\frac1n}\ge1+\frac{n+1}{n}\left(a^{\frac1{n+1}}-1\right)
+\]
+となる.\,$1$ を左辺へ移して両辺に $n$ を掛けると,
+\[
+ n\left(a^{\frac1n}-1\right)\ge(n+1)\left(a^{\frac1{n+1}}-1\right)
+\]
+すなわち $b_n\ge b_{n+1}$ を得る.
+
+(3) 自然数 $m$ を1つ固定する.(2) を繰り返し使うと,\,$n\ge m$ のすべての $n$ で $b_n\le b_m$ である.この不等式で $n\to\infty$ とすると,(1) より左辺は $\log a$ に近づくから,\,$\log a\le b_m$ となる.\,$m$ は任意の自然数だったので,すべての自然数 $n$ で
+\[
+ \log a\le n\left(\sqrt[n]{a}-1\right)
+\]
+が成り立つ.\,$n=1$ のときは $\log a\le a-1$ であり,\sectionref{節:微分方程式不等式}の例題で示した不等式 $\log x\le x-1$ になる.
